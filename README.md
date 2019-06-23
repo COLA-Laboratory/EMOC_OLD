@@ -1,2 +1,2 @@
 # Samaritan
-A package for Multi-objective evolutionary algorithm
+A C package of evolutionary multi-objective optimisation algorithms.
