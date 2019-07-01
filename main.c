@@ -4,8 +4,10 @@
 
 
 int main(int argc, char** argv) {
-    initialization_real_para(argc, argv);
-
+    if (FAIL == initialization_real_para(argc, argv))
+    {
+        return FAIL;
+    }
 
 
     for (g_algorithm_entity.run_index_current = g_algorithm_entity.run_index_begin;
@@ -16,6 +18,8 @@ int main(int argc, char** argv) {
             case NSGA2:
                 NSGA2_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
+            case IBEA:
+                IBEA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
             default:
                 break;
         }

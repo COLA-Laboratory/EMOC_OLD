@@ -32,6 +32,16 @@
 #include "../headers/metaheuristics.h"
 #include "../headers/random.h"
 
+static int parameter_check()
+{
+    if (g_algorithm_entity.algorithm_para.pop_size <= 50 || g_algorithm_entity.algorithm_para.pop_size %4 != 0)
+    {
+        printf("Population size is too small or Not a multiple of 4 \n");
+        return FAIL;
+    }
+
+
+}
 
 static void formalize_str(char *buff)
 {
@@ -223,6 +233,10 @@ int initialization_real_para (int argc, char** argv)
 
     fclose(config);
 
+    if (FAIL == parameter_check())
+    {
+        printf("Initialize parameter failed, because input wrong parameter in the config file\n");
+    }
     allocate_memory_for_pop(&g_algorithm_entity.parent_population, g_algorithm_entity.algorithm_para.pop_size);
     allocate_memory_for_pop(&g_algorithm_entity.offspring_population, g_algorithm_entity.algorithm_para.pop_size);
     allocate_memory_for_pop(&g_algorithm_entity.elit_population, g_algorithm_entity.algorithm_para.elite_pop_size);
@@ -303,7 +317,7 @@ int initialization_real_para (int argc, char** argv)
 
     randomize();
 
-    return 0;
+    return SUCCESS;
 }
 
 /* Initialize the ideal point */

@@ -8,6 +8,6 @@ extern void de_crossover (SMRT_individual *parent1, SMRT_individual *parent2, SM
 
 
 extern void crossover_nsga2(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table);
-
+extern void crossover_IBEA(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table);
 
 #endif

@@ -1,7 +1,7 @@
 algorithm_name:NSGA2
 test_problem:DTLZ1
 problem_param:
-number_variable:30
+number_variable:10
 number_objective:3
 popSize:300
 max_evaluation:75000
