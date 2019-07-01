@@ -35,6 +35,8 @@
 # define rho 1.1
 # define kappa 0.05
 
+
+#define MAX_SIZE      1000
 typedef enum test_problem{
     DTLZ1,
     DTLZ2,
@@ -104,13 +106,23 @@ typedef enum {
     N_PBI
 }MoeadFunction;
 
+typedef enum {
+    NEIGHBOR,
+    GLOBAL_PARENT
+}NeighborType;
+
+typedef struct {
+    int idx;
+    int *neighbor;
+}MOEAD_NEIGHBOR;
+
 typedef struct {
     int neighbor_size;
     MoeadFunction function_type;
     double neighborhood_selection_probability;
     int maximumNumberOfReplacedSolutions;
+    MOEAD_NEIGHBOR *neighbor_table;
 }MOEAD_PARA;
-
 
 
 

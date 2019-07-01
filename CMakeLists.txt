@@ -9,6 +9,7 @@ add_executable(Samaritan main.c
         core_code/population.c
         core_code/global.c
         core_code/dominance_relation.c
+        core_code/utility.c
 
 
         crossover/crossover_real.c
@@ -38,7 +39,9 @@ add_executable(Samaritan main.c
         indicators/HV/hv.c
 
 
-        metaheuristics/NSGA2.c)
+        metaheuristics/NSGA2.c
+        metaheuristics/IBEA.c
+        metaheuristics/MOEAD.c)
 
 
 target_link_libraries(Samaritan m)

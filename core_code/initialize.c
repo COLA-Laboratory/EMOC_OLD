@@ -321,7 +321,7 @@ int initialization_real_para (int argc, char** argv)
 }
 
 /* Initialize the ideal point */
-void initialize_idealpoint (SMRT_individual *pop_table, int pop_num, REFERENCE_POINT *ideal_point)
+extern void initialize_idealpoint (SMRT_individual *pop_table, int pop_num, REFERENCE_POINT *ideal_point)
 {
     int i;
     SMRT_individual *ind = NULL;
@@ -344,7 +344,7 @@ void initialize_idealpoint (SMRT_individual *pop_table, int pop_num, REFERENCE_P
 }
 
 /* Initialize the nadir point */
-void initialize_nadirpoint (SMRT_individual *pop_table, int pop_num, REFERENCE_POINT *nadir_point)
+extern void initialize_nadirpoint (SMRT_individual *pop_table, int pop_num, REFERENCE_POINT *nadir_point)
 {
     int i;
     SMRT_individual *ind = NULL;
@@ -369,5 +369,5 @@ void initialize_nadirpoint (SMRT_individual *pop_table, int pop_num, REFERENCE_P
 
 extern void destory_algorithm()
 {
-
+    return;
 }

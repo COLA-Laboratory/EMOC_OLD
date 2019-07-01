@@ -98,3 +98,45 @@ extern void crossover_nsga2(SMRT_individual *parent_pop_table, SMRT_individual *
     free(a2);
     return;
 }
+
+
+extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table)
+{
+    int i = 0, j = 0;
+    int rand = 0, type = 0;
+    int select_id[2] = {0};
+
+    printf("Enter the state of crossover\n");
+
+    for(i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
+    {
+        rand = randomperc();
+        if (rand < g_algorithm_entity.MOEAD_para.neighborhood_selection_probability)
+        {
+            type = NEIGHBOR;
+        }
+        else
+        {
+            type = GLOBAL_PARENT;
+        }
+        int i = 0;
+        int rand = 0;
+
+        for (j = 0; j < 2; j++)
+        {
+            if (NEIGHBOR == type)
+            {
+                rand = rnd (0, g_algorithm_entity.MOEAD_para.neighbor_size - 1);
+            }
+            else
+            {
+                rand = rnd(0, g_algorithm_entity.algorithm_para.pop_size - 1);
+            }
+            select_id[i] = g_algorithm_entity.neighbor_table[weight_index].neighbor[rand];
+        }
+        de_crossover(parent_pop_table + i, parent_pop_table + select_id[0],
+                     parent_pop_table + select_id[1], offspring_pop_table + i);
+    }
+
+    return;
+}
