@@ -3,7 +3,7 @@ project(NewSamaritan C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(NewSamaritan main.c
+add_executable(Samaritan main.c
         core_code/initialize.c
         core_code/print.c
         core_code/population.c
@@ -41,4 +41,4 @@ add_executable(NewSamaritan main.c
         metaheuristics/NSGA2.c)
 
 
-target_link_libraries(NewSamaritan m)
+target_link_libraries(Samaritan m)
