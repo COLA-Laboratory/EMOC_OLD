@@ -265,7 +265,7 @@ int initialization_real_para (int argc, char** argv)
 
     // intrisic parameters used in MOEA/D variants
     g_algorithm_entity.MOEAD_para.neighbor_size = 20;
-    g_algorithm_entity.MOEAD_para.function_type = ITCH;
+    g_algorithm_entity.MOEAD_para.function_type = TCH;
     g_algorithm_entity.MOEAD_para.neighborhood_selection_probability = 0.9;
     g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions = 2;
 
@@ -323,23 +323,21 @@ int initialization_real_para (int argc, char** argv)
 /* Initialize the ideal point */
 extern void initialize_idealpoint (SMRT_individual *pop_table, int pop_num, REFERENCE_POINT *ideal_point)
 {
-    int i;
+    int i = 0, j = 0;
     SMRT_individual *ind = NULL;
 
     for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
-        g_algorithm_entity.ideal_point.obj[i] = INF;
+        ideal_point->obj[i] = INF;
     //ideal_point[i] = 0;
-
-    for (i = 0 ;i < pop_num; i ++)
+    for (i = 0 ;i < pop_num; i++)
     {
         ind = pop_table + i;
-        for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
         {
-            if (ind->obj[i] < ideal_point->obj[i])
-                ideal_point->obj[i] = ind->obj[i];
+            if (ind->obj[j] < ideal_point->obj[j])
+                ideal_point->obj[j] = ind->obj[j];
         }
     }
-
     return;
 }
 

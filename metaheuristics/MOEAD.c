@@ -14,6 +14,68 @@ typedef struct {
 }Weight_distance_info_t;
 
 
+/*MOEAD*/
+static double cal_weighted_sum(SMRT_individual *pop, double *weight_vector, int obj_num)
+{
+    int  i = 0;
+    double fitness = 0;
+    for (i = 0; i < obj_num; i++)
+    {
+        fitness += pop->obj[i] * weight_vector[i];
+    }
+
+    pop->fitness = fitness;
+
+    return fitness;
+}
+
+static double cal_TCH(SMRT_individual *pop, double *weight_vector, int obj_num)
+{
+    int i = 0;
+    double fitness = 0, diff = 0, maxFit = 0;
+
+    maxFit = -1.0e+30;
+    for (i = 0; i < obj_num; i++)
+    {
+        diff = fabs(pop->obj[i] - g_algorithm_entity.ideal_point.obj[i]);
+        if (weight_vector[i] < EPS)
+        {
+            fitness = diff * 0.00001;
+        }
+        else
+        {
+            fitness = diff * weight_vector[i];
+        }
+
+        if (maxFit < fitness)
+        {
+            maxFit = fitness;
+        }
+    }
+
+    fitness = maxFit;
+    pop->fitness = fitness;
+    return fitness;
+}
+/*MOEAD*/
+
+
+extern double cal_moead_fitness(SMRT_individual *ind, double *weight, MoeadFunction function_type)
+{
+    switch (function_type)
+    {
+        case WS:
+            cal_weighted_sum(ind, weight, g_algorithm_entity.algorithm_para.objective_number);
+            break;
+
+        case TCH:
+            cal_TCH(ind, weight, g_algorithm_entity.algorithm_para.objective_number);
+            break;
+        default:
+            break;
+    }
+}
+
 static void bublesort_weight(Weight_distance_info_t* distanceInfo, int size)
 {
     int i = 0, j = 0;
@@ -142,7 +204,7 @@ void initialize_uniform_weight ()
     return;
 }
 
-static void ini_MOEAD(SMRT_individual *weight_table, int weight_num)
+static void ini_MOEAD(SMRT_individual *pop_table, int weight_num)
 {
     int i = 0, j = 0, k = 0;
     double difference = 0, distance_temp = 0, Euc_distance = 0;
@@ -163,7 +225,7 @@ static void ini_MOEAD(SMRT_individual *weight_table, int weight_num)
             distance_temp = 0;
             for (k = 0; k < g_algorithm_entity.algorithm_para.objective_number; k++)
             {
-                difference = fabs(weight_table[i].weight[k] -  weight_table[j].weight[k]);
+                difference = fabs(pop_table[i].weight[k] -  pop_table[j].weight[k]);
                 distance_temp += (double)difference * difference;
             }
 
@@ -181,17 +243,23 @@ static void ini_MOEAD(SMRT_individual *weight_table, int weight_num)
     return ;
 }
 
-static int update_subproblem(SMRT_individual *weight_table, SMRT_individual *offspring)
+static int update_subproblem(SMRT_individual *pop_table, SMRT_individual *offspring)
 {
-    int i = 0, j = 0, k =0;
+    int i = 0, j = 0;
     int index = 0, replace_num = 0;
     double temp = 0;
 
     printf("Enter the state of update neighbor solution\n");
+
+    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
+    {
+        cal_moead_fitness(pop_table + i, pop_table[i].weight, g_algorithm_entity.MOEAD_para.function_type);
+    }
+
     for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
     {
         printf("solution[%d]:%f\n", i , g_algorithm_entity.parent_population[i].fitness);
-        if (replace_num > g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions)
+        if (replace_num >= g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions)
         {
             replace_num = 0;
             continue;
@@ -200,10 +268,10 @@ static int update_subproblem(SMRT_individual *weight_table, SMRT_individual *off
         {
             temp = 0;
             index = g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor[j];
-            for (k = 0; k < g_algorithm_entity.algorithm_para.objective_number; k++)
-            {
-                temp +=  weight_table[index].weight[k] * offspring[i].obj[k];
-            }
+
+
+            temp = cal_moead_fitness(offspring + i, pop_table[index].weight, g_algorithm_entity.MOEAD_para.function_type);
+            printf("temp:%f\n", temp);
             if (temp < g_algorithm_entity.parent_population[index].fitness)
             {
                 memcpy(g_algorithm_entity.parent_population[index].variable, g_algorithm_entity.offspring_population[i].variable,
@@ -213,7 +281,6 @@ static int update_subproblem(SMRT_individual *weight_table, SMRT_individual *off
                 g_algorithm_entity.parent_population[index].fitness = temp;
                 replace_num++;
             }
-
         }
     }
 
@@ -227,14 +294,17 @@ extern void MOEAD_framework (SMRT_individual *pop, SMRT_individual *offspring_po
     printf ("|\tThe %d run\t|\t1%%\t|", g_algorithm_entity.run_index_current);
 
     // initialization process
-    initialize_uniform_weight (pop, g_algorithm_entity.algorithm_para.pop_size);
+    ini_MOEAD(pop, g_algorithm_entity.algorithm_para.pop_size);
+
     //print_error (number_weight != popsize, 1, "Number of weight vectors must be equal to the population size!");
     initialize_population_real (pop, g_algorithm_entity.algorithm_para.pop_size);
+
+
     evaluate_population (pop, g_algorithm_entity.algorithm_para.pop_size);
+
     initialize_idealpoint (pop, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.ideal_point);
 
     //track_evolution (pop, generation, 0);
-
 
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {

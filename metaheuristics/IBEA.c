@@ -62,7 +62,7 @@ void calcFitnessComponents(SMRT_individual* population, double *fitcomp, int siz
 }
 
 /* Assign the fitness values to the solutions within a population */
-void cal_fitnesses(SMRT_individual *population, double *fitcomp, int size)
+void cal_indicator(SMRT_individual *population, double *fitcomp, int size)
 {
     int i, j;
     double sum;
@@ -149,7 +149,7 @@ extern void IBEA_select(SMRT_individual *parent_pop, SMRT_individual* mixed_pop)
     }
 
 
-    cal_fitnesses(mixed_pop, figcomp, g_algorithm_entity.algorithm_para.pop_size * 2);
+    cal_indicator(mixed_pop, figcomp, g_algorithm_entity.algorithm_para.pop_size * 2);
     environmental_selection (mixed_pop, g_algorithm_entity.parent_population, flage_arr,
                              figcomp, g_algorithm_entity.algorithm_para.pop_size * 2);
 

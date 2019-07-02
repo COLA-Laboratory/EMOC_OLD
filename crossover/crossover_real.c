@@ -24,7 +24,7 @@ extern void crossover_IBEA(SMRT_individual *parent_pop_table, SMRT_individual *o
     a1 = (int *) malloc (g_algorithm_entity.algorithm_para.pop_size * sizeof(int));
     a2 = (int *) malloc (g_algorithm_entity.algorithm_para.pop_size * sizeof(int));
 
-    cal_fitnesses(parent_pop_table, figcomp, g_algorithm_entity.algorithm_para.pop_size );
+    cal_indicator(parent_pop_table, figcomp, g_algorithm_entity.algorithm_para.pop_size );
 
 
     for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
@@ -127,12 +127,14 @@ extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *
             if (NEIGHBOR == type)
             {
                 rand = rnd (0, g_algorithm_entity.MOEAD_para.neighbor_size - 1);
+                select_id[j] = g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor[rand];
             }
             else
             {
                 rand = rnd(0, g_algorithm_entity.algorithm_para.pop_size - 1);
+                select_id[j] = rand;
             }
-            select_id[i] = g_algorithm_entity.neighbor_table[weight_index].neighbor[rand];
+
         }
         de_crossover(parent_pop_table + i, parent_pop_table + select_id[0],
                      parent_pop_table + select_id[1], offspring_pop_table + i);

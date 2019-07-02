@@ -69,6 +69,7 @@ typedef enum{
     MOEAD
 }ALGORITHM_NAME;
 
+
 typedef enum{
     VAR,
     FUN,
@@ -77,6 +78,7 @@ typedef enum{
     HV,
     PLOT
 }INDICATOR_TYPE;
+
 
 typedef enum{
     POLYNOMIAL,
