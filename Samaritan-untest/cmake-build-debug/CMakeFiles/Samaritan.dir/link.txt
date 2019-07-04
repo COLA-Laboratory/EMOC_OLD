@@ -1,3 +1,0 @@
-"E:\CLion 2019.1.4\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\Samaritan.dir/objects.a
-E:\mingw\mingw64\bin\ar.exe cr CMakeFiles\Samaritan.dir/objects.a @CMakeFiles\Samaritan.dir\objects1.rsp
-E:\mingw\mingw64\bin\gcc.exe -g   -Wl,--whole-archive CMakeFiles\Samaritan.dir/objects.a -Wl,--no-whole-archive  -o Samaritan.exe -Wl,--out-implib,libSamaritan.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Samaritan.dir\linklibs.rsp
