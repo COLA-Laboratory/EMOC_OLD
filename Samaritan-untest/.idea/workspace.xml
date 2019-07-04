@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="NewSamaritan" targetName="Samaritan" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b552aaa7-fad3-4809-9592-b515dc7f23c7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ1.2D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ1.3D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ1.4D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ1.5D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ1.6D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ1.7D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ2.2D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ2.3D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ2.4D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ2.5D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ2.6D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ2.7D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ3.2D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ3.3D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ3.4D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ3.5D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ3.6D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ3.7D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ4.2D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ4.3D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ4.4D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ4.5D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ4.6D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ4.7D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ5.2D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ5.3D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ5.4D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ5.5D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ5.6D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/DTLZ5.7D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/ZDT1.2D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/ZDT2.2D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/ZDT3.2D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/ZDT4.2D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PF/ZDT6.2D.pf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithm/nsga2.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core_code/dominance_relation.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core_code/global.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core_code/initialize.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core_code/population.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core_code/print.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../crossover/crossover_operator.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../crossover/crossover_real.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../externals/MY_WFG/read.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../externals/MY_WFG/vector.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../externals/MY_WFG/vector.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../externals/MY_WFG/wfg.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../externals/MY_WFG/wfg.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../externals/WFG_1.15/CHANGELOG.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../externals/WFG_1.15/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../externals/WFG_1.15/README.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../externals/WFG_1.15/makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../externals/WFG_1.15/read.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../externals/WFG_1.15/read.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../externals/WFG_1.15/wfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../externals/WFG_1.15/wfg.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../externals/WFG_1.15/wfg.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../headers/crossover.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../headers/dominance_relation.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../headers/global.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../headers/hv.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../headers/initialize.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../headers/mating.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../headers/memory.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../headers/metaheuristics.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../headers/mutation.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../headers/population.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../headers/print.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../headers/problem.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../headers/random.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../indicators/HV/hv.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/memory.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/random.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mating/selection_mating.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../metaheuristics/IBEA.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../metaheuristics/NSGA2.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mutation/mutation_operator.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mutation/mutation_real.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test_problem/DTLZ.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test_problem/ZDT.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test_problem/evaluation.c" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/metaheuristics/MOEAD.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1614">
+              <caret line="266" column="80" selection-start-line="266" selection-start-column="80" selection-end-line="266" selection-end-column="80" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/headers/utility.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="383">
+              <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/metaheuristics/IBEA.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="361">
+              <caret line="187" column="17" selection-start-line="187" selection-start-column="17" selection-end-line="187" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/crossover/crossover_real.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="108" selection-start-line="108" selection-end-line="108" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/crossover/crossover_operator.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2090">
+              <caret line="110" column="53" selection-start-line="110" selection-start-column="53" selection-end-line="110" selection-end-column="53" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/externals/MY_WFG/wfg.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/externals/MY_WFG/vector.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3004">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <folding>
+                <element signature="e#1#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/headers/global.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-21">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core_code/initialize.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="455">
+              <caret line="161" selection-start-line="161" selection-end-line="161" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/headers/initialize.h" />
+        <option value="$PROJECT_DIR$/headers/crossover.h" />
+        <option value="$PROJECT_DIR$/headers/metaheuristics.h" />
+        <option value="$PROJECT_DIR$/main.c" />
+        <option value="$PROJECT_DIR$/core_code/utility.c" />
+        <option value="$PROJECT_DIR$/headers/utility.h" />
+        <option value="$PROJECT_DIR$/crossover/crossover_operator.c" />
+        <option value="$PROJECT_DIR$/crossover/crossover_real.c" />
+        <option value="$PROJECT_DIR$/metaheuristics/MOEAD.c" />
+        <option value="$PROJECT_DIR$/core_code/initialize.c" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/headers/global.h" />
+      </list>
+    </option>
+  </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="67" />
+    <option name="y" value="25" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="NewSamaritan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Samaritan-untest" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewSamaritan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Samaritan-untest" type="462c0819:PsiDirectoryNode" />
+              <item name="core_code" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewSamaritan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Samaritan-untest" type="462c0819:PsiDirectoryNode" />
+              <item name="crossover" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewSamaritan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Samaritan-untest" type="462c0819:PsiDirectoryNode" />
+              <item name="externals" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewSamaritan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Samaritan-untest" type="462c0819:PsiDirectoryNode" />
+              <item name="externals" type="462c0819:PsiDirectoryNode" />
+              <item name="MY_WFG" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewSamaritan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Samaritan-untest" type="462c0819:PsiDirectoryNode" />
+              <item name="headers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewSamaritan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Samaritan-untest" type="462c0819:PsiDirectoryNode" />
+              <item name="metaheuristics" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Archive" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Samaritan" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="NewSamaritan" TARGET_NAME="Samaritan" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="NewSamaritan" RUN_TARGET_NAME="Samaritan">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b552aaa7-fad3-4809-9592-b515dc7f23c7" name="Default Changelist" comment="" />
+      <created>1561956297491</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1561956297491</updated>
+      <workItem from="1561956299078" duration="14155000" />
+      <workItem from="1562121299157" duration="753000" />
+      <workItem from="1562232128544" duration="10776000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="25684000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18176973" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.30911064" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="CMake" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/metaheuristics/NSGA2.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-456">
+          <caret selection-end-line="7" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headers/initialize.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="106" selection-start-line="10" selection-start-column="106" selection-end-line="10" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headers/metaheuristics.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="111" selection-start-line="11" selection-start-column="111" selection-end-line="11" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headers/population.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mutation/mutation_real.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/externals/MY_WFG/wfg.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indicators/HV/hv.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+          <folding>
+            <element signature="e#907#940#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headers/problem.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headers/crossover.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core_code/utility.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headers/utility.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crossover/crossover_real.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core_code/initialize.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="161" selection-start-line="161" selection-end-line="161" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/metaheuristics/MOEAD.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1614">
+          <caret line="266" column="80" selection-start-line="266" selection-start-column="80" selection-end-line="266" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/metaheuristics/IBEA.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="187" column="17" selection-start-line="187" selection-start-column="17" selection-end-line="187" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headers/global.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-21">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crossover/crossover_operator.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2090">
+          <caret line="110" column="53" selection-start-line="110" selection-start-column="53" selection-end-line="110" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/externals/MY_WFG/wfg.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/externals/MY_WFG/vector.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3004">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#1#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
