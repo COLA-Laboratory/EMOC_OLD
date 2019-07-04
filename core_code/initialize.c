@@ -148,6 +148,8 @@ int initialization_real_para (int argc, char** argv)
     FILE *PF     = NULL;
     FILE *config = NULL;
 
+    int flag_default = 1;
+
     /*reg*/
     const char *pattern = "\\w+:";
     const size_t nmatch = 1;
@@ -157,9 +159,8 @@ int initialization_real_para (int argc, char** argv)
     int status;
 
 
-    int flag_default = 1;
 
-    config = fopen ("/home/maopl/CLionProjects/NewSamaritan/config.txt", "r");
+    config = fopen ("./config.txt", "r");
     print_error (config == NULL, 1, "Fail to read configure file: config.txt");
     regcomp(&reg, pattern, cflags);
 
@@ -228,8 +229,8 @@ int initialization_real_para (int argc, char** argv)
         {
             print_error(1,2, "Input a wrong parameter, unknown type");
         }
-    }
 
+    }
 
     fclose(config);
 
@@ -328,7 +329,6 @@ extern void initialize_idealpoint (SMRT_individual *pop_table, int pop_num, REFE
 
     for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
         ideal_point->obj[i] = INF;
-    //ideal_point[i] = 0;
     for (i = 0 ;i < pop_num; i++)
     {
         ind = pop_table + i;

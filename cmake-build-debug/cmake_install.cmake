@@ -1,4 +1,4 @@
-# Install script for directory: E:/workspace/Samaritan
+# Install script for directory: E:/workspace/Samaritan-untest
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "E:/workspace/Samaritan/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "E:/workspace/Samaritan-untest/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

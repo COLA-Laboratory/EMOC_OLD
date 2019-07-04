@@ -106,7 +106,6 @@ extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *
     int rand = 0, type = 0;
     int select_id[2] = {0};
 
-    printf("Enter the state of crossover\n");
 
     for(i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
     {
@@ -119,7 +118,6 @@ extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *
         {
             type = GLOBAL_PARENT;
         }
-        int i = 0;
         int rand = 0;
 
         for (j = 0; j < 2; j++)
@@ -136,8 +134,9 @@ extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *
             }
 
         }
-        de_crossover(parent_pop_table + i, parent_pop_table + select_id[0],
+       de_crossover(parent_pop_table + i, parent_pop_table + select_id[0],
                      parent_pop_table + select_id[1], offspring_pop_table + i);
+
     }
 
     return;

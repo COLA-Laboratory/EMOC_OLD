@@ -8,28 +8,28 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="E:/workspace/Samaritan/cmake-build-debug"/>
+				<Option working_dir="E:/workspace/Samaritan-untest/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="E:/workspace/Samaritan/cmake-build-debug"/>
+				<Option working_dir="E:/workspace/Samaritan-untest/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Samaritan">
-				<Option output="E:/workspace/Samaritan/cmake-build-debug/Samaritan.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/workspace/Samaritan/cmake-build-debug"/>
+				<Option output="E:/workspace/Samaritan-untest/cmake-build-debug/Samaritan.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/workspace/Samaritan-untest/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -39,15 +39,15 @@
 					<Add directory="E:/mingw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 Samaritan"/>
-					<CompileFile command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 Samaritan"/>
+					<CompileFile command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Samaritan/fast">
-				<Option output="E:/workspace/Samaritan/cmake-build-debug/Samaritan.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/workspace/Samaritan/cmake-build-debug"/>
+				<Option output="E:/workspace/Samaritan-untest/cmake-build-debug/Samaritan.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/workspace/Samaritan-untest/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -57,102 +57,102 @@
 					<Add directory="E:/mingw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 Samaritan/fast"/>
-					<CompileFile command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 Samaritan/fast"/>
+					<CompileFile command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="E:/workspace/Samaritan/cmake-build-debug"/>
+				<Option working_dir="E:/workspace/Samaritan-untest/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/Samaritan-untest/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="E:/workspace/Samaritan/core_code/dominance_relation.c">
+		<Unit filename="E:/workspace/Samaritan-untest/core_code/dominance_relation.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/core_code/global.c">
+		<Unit filename="E:/workspace/Samaritan-untest/core_code/global.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/core_code/initialize.c">
+		<Unit filename="E:/workspace/Samaritan-untest/core_code/initialize.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/core_code/population.c">
+		<Unit filename="E:/workspace/Samaritan-untest/core_code/population.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/core_code/print.c">
+		<Unit filename="E:/workspace/Samaritan-untest/core_code/print.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/core_code/utility.c">
+		<Unit filename="E:/workspace/Samaritan-untest/core_code/utility.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/crossover/crossover_operator.c">
+		<Unit filename="E:/workspace/Samaritan-untest/crossover/crossover_operator.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/crossover/crossover_real.c">
+		<Unit filename="E:/workspace/Samaritan-untest/crossover/crossover_real.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/externals/MY_WFG/read.c">
+		<Unit filename="E:/workspace/Samaritan-untest/externals/MY_WFG/read.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/externals/MY_WFG/vector.c">
+		<Unit filename="E:/workspace/Samaritan-untest/externals/MY_WFG/vector.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/externals/MY_WFG/vector.h">
+		<Unit filename="E:/workspace/Samaritan-untest/externals/MY_WFG/vector.h">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/externals/MY_WFG/wfg.c">
+		<Unit filename="E:/workspace/Samaritan-untest/externals/MY_WFG/wfg.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/externals/MY_WFG/wfg.h">
+		<Unit filename="E:/workspace/Samaritan-untest/externals/MY_WFG/wfg.h">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/indicators/HV/hv.c">
+		<Unit filename="E:/workspace/Samaritan-untest/indicators/HV/hv.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/lib/memory.c">
+		<Unit filename="E:/workspace/Samaritan-untest/lib/memory.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/lib/random.c">
+		<Unit filename="E:/workspace/Samaritan-untest/lib/random.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/main.c">
+		<Unit filename="E:/workspace/Samaritan-untest/main.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/mating/selection_mating.c">
+		<Unit filename="E:/workspace/Samaritan-untest/mating/selection_mating.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/metaheuristics/IBEA.c">
+		<Unit filename="E:/workspace/Samaritan-untest/metaheuristics/IBEA.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/metaheuristics/MOEAD.c">
+		<Unit filename="E:/workspace/Samaritan-untest/metaheuristics/MOEAD.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/metaheuristics/NSGA2.c">
+		<Unit filename="E:/workspace/Samaritan-untest/metaheuristics/NSGA2.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/mutation/mutation_operator.c">
+		<Unit filename="E:/workspace/Samaritan-untest/mutation/mutation_operator.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/mutation/mutation_real.c">
+		<Unit filename="E:/workspace/Samaritan-untest/mutation/mutation_real.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/test_problem/DTLZ.c">
+		<Unit filename="E:/workspace/Samaritan-untest/test_problem/DTLZ.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/test_problem/ZDT.c">
+		<Unit filename="E:/workspace/Samaritan-untest/test_problem/ZDT.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/test_problem/evaluation.c">
+		<Unit filename="E:/workspace/Samaritan-untest/test_problem/evaluation.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/Samaritan/CMakeLists.txt">
+		<Unit filename="E:/workspace/Samaritan-untest/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

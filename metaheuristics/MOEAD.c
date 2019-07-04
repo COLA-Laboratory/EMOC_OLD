@@ -249,7 +249,6 @@ static int update_subproblem(SMRT_individual *pop_table, SMRT_individual *offspr
     int index = 0, replace_num = 0;
     double temp = 0;
 
-    printf("Enter the state of update neighbor solution\n");
 
     for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
     {
@@ -258,20 +257,15 @@ static int update_subproblem(SMRT_individual *pop_table, SMRT_individual *offspr
 
     for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
     {
-        printf("solution[%d]:%f\n", i , g_algorithm_entity.parent_population[i].fitness);
-        if (replace_num >= g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions)
-        {
-            replace_num = 0;
-            continue;
-        }
         for (j = 0; j < g_algorithm_entity.MOEAD_para.neighbor_size; j++)
         {
-            temp = 0;
+            if (replace_num >= g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions)
+            {
+                replace_num = 0;
+                break;
+            }
             index = g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor[j];
-
-
             temp = cal_moead_fitness(offspring + i, pop_table[index].weight, g_algorithm_entity.MOEAD_para.function_type);
-            printf("temp:%f\n", temp);
             if (temp < g_algorithm_entity.parent_population[index].fitness)
             {
                 memcpy(g_algorithm_entity.parent_population[index].variable, g_algorithm_entity.offspring_population[i].variable,
@@ -295,6 +289,7 @@ extern void MOEAD_framework (SMRT_individual *pop, SMRT_individual *offspring_po
 
     // initialization process
     ini_MOEAD(pop, g_algorithm_entity.algorithm_para.pop_size);
+
 
     //print_error (number_weight != popsize, 1, "Number of weight vectors must be equal to the population size!");
     initialize_population_real (pop, g_algorithm_entity.algorithm_para.pop_size);

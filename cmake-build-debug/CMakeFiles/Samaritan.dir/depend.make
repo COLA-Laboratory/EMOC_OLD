@@ -26,6 +26,10 @@ CMakeFiles/Samaritan.dir/core_code/print.c.obj: ../core_code/print.c
 CMakeFiles/Samaritan.dir/core_code/print.c.obj: ../headers/global.h
 CMakeFiles/Samaritan.dir/core_code/print.c.obj: ../headers/print.h
 
+CMakeFiles/Samaritan.dir/core_code/utility.c.obj: ../core_code/utility.c
+CMakeFiles/Samaritan.dir/core_code/utility.c.obj: ../headers/global.h
+CMakeFiles/Samaritan.dir/core_code/utility.c.obj: ../headers/utility.h
+
 CMakeFiles/Samaritan.dir/crossover/crossover_operator.c.obj: ../crossover/crossover_operator.c
 CMakeFiles/Samaritan.dir/crossover/crossover_operator.c.obj: ../headers/crossover.h
 CMakeFiles/Samaritan.dir/crossover/crossover_operator.c.obj: ../headers/global.h
@@ -44,16 +48,6 @@ CMakeFiles/Samaritan.dir/externals/MY_WFG/read.c.obj: ../headers/global.h
 CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.obj: ../externals/MY_WFG/vector.c
 CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.obj: ../externals/MY_WFG/vector.h
 CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.obj: ../headers/global.h
-
-CMakeFiles/Samaritan.dir/externals/MY_WFG/wfg.c.obj: ../externals/MY_WFG/wfg.c
-CMakeFiles/Samaritan.dir/externals/MY_WFG/wfg.c.obj: ../externals/MY_WFG/wfg.h
-CMakeFiles/Samaritan.dir/externals/MY_WFG/wfg.c.obj: ../headers/global.h
-
-CMakeFiles/Samaritan.dir/indicators/HV/hv.c.obj: ../externals/MY_WFG/vector.h
-CMakeFiles/Samaritan.dir/indicators/HV/hv.c.obj: ../externals/MY_WFG/wfg.h
-CMakeFiles/Samaritan.dir/indicators/HV/hv.c.obj: ../headers/global.h
-CMakeFiles/Samaritan.dir/indicators/HV/hv.c.obj: ../headers/hv.h
-CMakeFiles/Samaritan.dir/indicators/HV/hv.c.obj: ../indicators/HV/hv.c
 
 CMakeFiles/Samaritan.dir/lib/memory.c.obj: ../headers/global.h
 CMakeFiles/Samaritan.dir/lib/memory.c.obj: ../headers/memory.h
@@ -75,6 +69,27 @@ CMakeFiles/Samaritan.dir/mating/selection_mating.c.obj: ../headers/global.h
 CMakeFiles/Samaritan.dir/mating/selection_mating.c.obj: ../headers/mating.h
 CMakeFiles/Samaritan.dir/mating/selection_mating.c.obj: ../headers/random.h
 CMakeFiles/Samaritan.dir/mating/selection_mating.c.obj: ../mating/selection_mating.c
+
+CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.obj: ../headers/crossover.h
+CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.obj: ../headers/global.h
+CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.obj: ../headers/metaheuristics.h
+CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.obj: ../headers/mutation.h
+CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.obj: ../headers/population.h
+CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.obj: ../headers/print.h
+CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.obj: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.obj: ../metaheuristics/IBEA.c
+
+CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.obj: ../headers/crossover.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.obj: ../headers/dominance_relation.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.obj: ../headers/global.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.obj: ../headers/initialize.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.obj: ../headers/metaheuristics.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.obj: ../headers/mutation.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.obj: ../headers/population.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.obj: ../headers/print.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.obj: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.obj: ../headers/utility.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.obj: ../metaheuristics/MOEAD.c
 
 CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.obj: ../headers/crossover.h
 CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.obj: ../headers/dominance_relation.h
