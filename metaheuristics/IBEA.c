@@ -121,7 +121,6 @@ void environmental_selection (SMRT_individual *mixed_ptr, SMRT_individual *new_p
         if (flag[i] != 1)
         {
             copy_individual (pop + i, new_pop + new_size);
-            printf("-------solution[%d]:fitness:%f------\n", i, pop[i].fitness);
             new_size++;
         }
     }
@@ -192,15 +191,6 @@ extern void IBEA_framework (SMRT_individual *parent_pop, SMRT_individual* offspr
         // environmental selection
         merge_population (mixed_pop, parent_pop, g_algorithm_entity.algorithm_para.pop_size, offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
         IBEA_select (parent_pop, mixed_pop);
-        for(i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
-        {
-            printf("solution[%d],fitness:%f   ", i, parent_pop[i].fitness);
-            for (int j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
-            {
-                printf("obj[%d]:%f", j, parent_pop[i].obj[j]);
-            }
-            printf("\n");
-        }
 
         // track the current evolutionary progress, including population and metrics
         //track_evolution (parent_pop, generation, evaluation_count >= max_evaluation);

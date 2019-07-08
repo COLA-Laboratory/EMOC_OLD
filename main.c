@@ -20,8 +20,13 @@ int main(int argc, char** argv) {
                 break;
             case IBEA:
                 IBEA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
             case MOEAD:
                 MOEAD_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
+            case MOEAD_DAR:
+                MOEAD_dar_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
             default:
                 break;
         }

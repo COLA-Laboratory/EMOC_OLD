@@ -4,7 +4,7 @@ problem_param:
 number_variable:10
 number_objective:3
 popSize:300
-max_evaluation:75000
+max_evaluation:60000
 runtime_output:1
 output_interval:10
 run_index_begin:1

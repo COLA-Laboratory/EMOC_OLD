@@ -160,7 +160,7 @@ int initialization_real_para (int argc, char** argv)
 
 
 
-    config = fopen ("./config.txt", "r");
+    config = fopen ("/home/maopl/CLionProjects/my_work/Samaritan/config.txt", "r");
     print_error (config == NULL, 1, "Fail to read configure file: config.txt");
     regcomp(&reg, pattern, cflags);
 

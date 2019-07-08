@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Samaritan"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Samaritan">
+				<Option output="/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Samaritan" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 Samaritan"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Samaritan/fast">
+				<Option output="/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Samaritan" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 Samaritan/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/core_code/dominance_relation.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/core_code/global.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/core_code/initialize.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/core_code/population.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/core_code/print.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/core_code/utility.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/crossover/crossover_operator.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/crossover/crossover_real.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/read.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.h">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/wfg.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/wfg.h">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/indicators/HV/hv.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/lib/memory.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/lib/random.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/lib/sort.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/main.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/mating/selection_mating.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/IBEA.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD-dar.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA2.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/mutation/mutation_operator.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/mutation/mutation_real.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/fitness.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/DTLZ.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/ZDT.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/evaluation.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

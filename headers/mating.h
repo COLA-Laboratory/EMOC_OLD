@@ -7,4 +7,8 @@ extern SMRT_individual *tournament_by_dominate_relation(SMRT_individual *ind1, S
 extern SMRT_individual *tournament_by_fitness(SMRT_individual *ind1, SMRT_individual *ind2);
 extern SMRT_individual *tournament_NSGA2(SMRT_individual *ind1, SMRT_individual *ind2);
 
+
+
+
+
 #endif

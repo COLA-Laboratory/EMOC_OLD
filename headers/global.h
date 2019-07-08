@@ -66,7 +66,8 @@ typedef enum test_problem{
 typedef enum{
     IBEA,
     NSGA2,
-    MOEAD
+    MOEAD,
+    MOEAD_DAR
 }ALGORITHM_NAME;
 
 
@@ -124,9 +125,18 @@ typedef struct {
     double neighborhood_selection_probability;
     int maximumNumberOfReplacedSolutions;
     MOEAD_NEIGHBOR *neighbor_table;
+    double *utility;
+    int    *frequency;
 }MOEAD_PARA;
 
-
+typedef struct {
+    int neighbor_size;
+    MoeadFunction function_type;
+    double neighborhood_selection_probability;
+    int maximumNumberOfReplacedSolutions;
+    MOEAD_NEIGHBOR *neighbor_table;
+    double *pai;
+}MOEAD_DAR_PARA;
 
 /*mutation parameter*/
 typedef struct {
@@ -192,6 +202,7 @@ typedef struct Evolution_algorithm_entity{
     int run_index_begin;
     int run_index_current;
     int run_index_end;
+    int testProblem;
     ALGORITHM_NAME algorithm_Name;
     INDICATOR_TYPE analyse_Type;
     SMRT_parameter algorithm_para;
@@ -211,7 +222,6 @@ typedef struct Evolution_algorithm_entity{
     SBX_PARA sbxPara;
     DE_PARA  dePara;
     MOEAD_PARA MOEAD_para;
-    int testProblem;
 
 }SMRT_entity;
 

@@ -371,7 +371,6 @@ static void NSGA2_select(SMRT_individual *parent_pop, SMRT_individual *merge_pop
     else
     {
         sort_num = crowding_distance_assign(merge_pop, pop_sort, merge_pop_number, rank_index);
-        printf("current_num:%d, sort_num:%d\n", current_pop_num, sort_num);
         /*这一行有点问题，出现了SIGSEG*/
         while(1)
         {

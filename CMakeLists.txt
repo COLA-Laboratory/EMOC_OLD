@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(NewSamaritan C)
+project(Samaritan C)
 
 set(CMAKE_C_STANDARD 99)
 
@@ -26,6 +26,9 @@ add_executable(Samaritan main.c
 
         lib/random.c
         lib/memory.c
+        lib/sort.c
+
+        selection/MOEAD/fitness.c
 
 
         test_problem/DTLZ.c
@@ -41,7 +44,8 @@ add_executable(Samaritan main.c
 
         metaheuristics/NSGA2.c
         metaheuristics/IBEA.c
-        metaheuristics/MOEAD.c)
+        metaheuristics/MOEAD.c
+        metaheuristics/MOEAD-dar.c)
 
 
 target_link_libraries(Samaritan m)
