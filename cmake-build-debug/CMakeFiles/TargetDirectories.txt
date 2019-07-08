@@ -1,3 +1,0 @@
-/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir
-/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/edit_cache.dir
