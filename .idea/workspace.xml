@@ -12,18 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0455c3f2-7ea3-4729-98b6-7f6942349db5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_code/initialize.c" beforeDir="false" afterPath="$PROJECT_DIR$/core_code/initialize.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_code/utility.c" beforeDir="false" afterPath="$PROJECT_DIR$/core_code/utility.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/global.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/global.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/mating.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/mating.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/metaheuristics.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/metaheuristics.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/utility.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/utility.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaheuristics/IBEA.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/IBEA.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaheuristics/MOEAD.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/MOEAD.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaheuristics/NSGA2.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/NSGA2.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metaheuristics/MOEAD-dar.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/MOEAD-dar.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/metaheuristics/MOEAD-dar.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1069">
-              <caret line="154" column="2" selection-start-line="154" selection-start-column="2" selection-end-line="154" selection-end-column="2" />
+            <state relative-caret-position="509">
+              <caret line="86" column="4" selection-start-line="86" selection-start-column="4" selection-end-line="86" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -219,6 +208,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Documents/workspace/samaritan/Archive——111" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -253,19 +243,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1562574321642</updated>
-      <workItem from="1562574323163" duration="5750000" />
+      <workItem from="1562574323163" duration="6029000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5750000" />
+    <option name="totallyTimeSpent" value="6029000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="3773" height="2135" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24979876" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24979876" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
@@ -275,7 +265,7 @@
       <window_info anchor="bottom" id="CMake" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32951146" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32951146" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32951146" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -378,8 +368,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/metaheuristics/MOEAD-dar.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1069">
-          <caret line="154" column="2" selection-start-line="154" selection-start-column="2" selection-end-line="154" selection-end-column="2" />
+        <state relative-caret-position="509">
+          <caret line="86" column="4" selection-start-line="86" selection-start-column="4" selection-end-line="86" selection-end-column="4" />
         </state>
       </provider>
     </entry>
