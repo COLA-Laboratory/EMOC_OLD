@@ -21,10 +21,10 @@
 * You should have received a copy of the GNU Lesser General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "../../headers/global.h"
-#include "../../headers/hv.h"
-#include "../../externals/MY_WFG/wfg.h"
-#include "../../externals/MY_WFG/vector.h"
+#include "../headers/global.h"
+#include "../headers/indicator.h"
+#include "../externals/MY_WFG/wfg.h"
+#include "../externals/MY_WFG/vector.h"
 
 double calculate_hv (void *ptr);
 
@@ -60,7 +60,7 @@ double calculate_hv (void *ptr)
 }
 
 /* Print the HV value into a specified file */
-void print_hv (char *file_name)
+extern void print_hv (char *file_name)
 {
     int i;
     double value;

@@ -84,7 +84,7 @@ static void set_algorithm_name(const char *algorithm_name)
 
     for(i = 0; i < ALGORITHM_NAME_NUM; i++)
     {
-        if (!strcmp(algorithm_name, g_algorithm_name_str[i]))
+        if (g_algorithm_name_str[i] != NULL && strcmp(algorithm_name, g_algorithm_name_str[i]) == 0)
         {
             g_algorithm_entity.algorithm_Name = i;
         }
@@ -101,7 +101,7 @@ static void set_problem_name(const char *problem_name)
 
     for(i = 0; i < PROBLEM_NAME_NUM; i++)
     {
-        if (!strcmp(problem_name, g_problem_name_str[i]))
+        if (g_problem_name_str[i] != NULL && strcmp(problem_name, g_problem_name_str[i]) == 0)
         {
             g_algorithm_entity.testProblem = i;
         }
@@ -125,7 +125,7 @@ static void set_analyse(const char *analyse_str)
 
     for(i = 0; i < ANALYSE_NAME_NUM; i++)
     {
-        if (!strcmp(analyse_str, g_analyse_name_str[i]))
+        if (g_analyse_name_str[i] != NULL && strcmp(analyse_str, g_analyse_name_str[i]) == 0)
         {
             g_algorithm_entity.analyse_Type = i;
         }

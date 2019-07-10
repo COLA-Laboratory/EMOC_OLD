@@ -12,6 +12,8 @@
 #include "../headers/selection.h"
 #include "../headers/random.h"
 #include "../headers/list.h"
+#include "../headers/analysis.h"
+
 
 static void comp_utility()
 {
@@ -207,7 +209,7 @@ extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring
         g_algorithm_entity.MOEAD_para.old_function[i] = cal_moead_fitness(pop + i, pop[i].weight, g_algorithm_entity.MOEAD_para.function_type);
     }
 
-    //track_evolution (pop, generation_count, 0);
+    track_evolution (pop, g_algorithm_entity.iteration_number, 0);
 
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
@@ -263,7 +265,7 @@ extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring
 
             }
         }
-        //track_evolution (pop, generation_count, evaluation_count >= max_evaluation);
+        track_evolution (pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
     }
 
     free(selected);

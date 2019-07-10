@@ -4,6 +4,9 @@
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
+#include "../headers/analysis.h"
+
+
 
 /* calculates the maximum epsilon value by which individual a must be
    decreased in all objectives such that individual b is weakly dominated */
@@ -175,7 +178,7 @@ extern void IBEA_framework (SMRT_individual *parent_pop, SMRT_individual* offspr
 
 
     // track the current evolutionary progress, including population and metrics
-    //track_evolution (parent_pop, generation, 0);
+    track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
 
 
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
@@ -193,7 +196,7 @@ extern void IBEA_framework (SMRT_individual *parent_pop, SMRT_individual* offspr
         IBEA_select (parent_pop, mixed_pop);
 
         // track the current evolutionary progress, including population and metrics
-        //track_evolution (parent_pop, generation, evaluation_count >= max_evaluation);
+        track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
     }
 
     return;

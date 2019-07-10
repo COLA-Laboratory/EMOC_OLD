@@ -5,6 +5,9 @@
 #include "../headers/problem.h"
 #include "../headers/print.h"
 #include "../headers/dominance_relation.h"
+#include "../headers/analysis.h"
+
+
 
 typedef struct distance_info_t{
     int index;
@@ -403,7 +406,7 @@ extern void NSGA2_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
     evaluate_population (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
 
     // track the current evolutionary progress, including population and metrics
-    //track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
+    track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
         g_algorithm_entity.iteration_number++;
@@ -419,7 +422,7 @@ extern void NSGA2_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
         NSGA2_select(parent_pop, mixed_pop);
 
         // track the current evolutionary progress, including population and metrics
-        //track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
+        track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
     }
 
     return;

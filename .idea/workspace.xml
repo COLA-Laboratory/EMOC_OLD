@@ -12,30 +12,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0455c3f2-7ea3-4729-98b6-7f6942349db5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/headers/list.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/list.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metaheuristics/SMS_EMOA.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/selection/MOEAD/update.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analysis/analysis.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/headers/analysis.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/indicators/GD.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/indicators/hv.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_code/global.c" beforeDir="false" afterPath="$PROJECT_DIR$/core_code/global.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algorithm/nsga2.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/core_code/initialize.c" beforeDir="false" afterPath="$PROJECT_DIR$/core_code/initialize.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crossover/crossover_real.c" beforeDir="false" afterPath="$PROJECT_DIR$/crossover/crossover_real.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/crossover.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/crossover.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headers/global.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/global.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/initialize.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/initialize.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/memory.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/memory.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/metaheuristics.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/metaheuristics.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/mutation.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/mutation.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/selection.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/selection.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/memory.c" beforeDir="false" afterPath="$PROJECT_DIR$/lib/memory.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/hv.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/indicator.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/indicators/HV/hv.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/metaheuristics/IBEA.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/IBEA.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaheuristics/MOEAD-dar.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/MOEAD-dra.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metaheuristics/MOEAD-dra.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/MOEAD-dra.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metaheuristics/MOEAD.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/MOEAD.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metaheuristics/NSGA2.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/NSGA2.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutation/mutation_real.c" beforeDir="false" afterPath="$PROJECT_DIR$/mutation/mutation_real.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,103 +42,97 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/metaheuristics/MOEAD-dra.c">
+        <entry file="file://$PROJECT_DIR$/analysis/analysis.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="157" column="64" selection-start-line="157" selection-start-column="64" selection-end-line="157" selection-end-column="64" />
+            <state relative-caret-position="761">
+              <caret line="42" column="31" lean-forward="true" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indicators/GD.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="705">
+              <caret line="58" column="10" lean-forward="true" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indicators/IGD.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1181">
+              <caret line="72" column="2" selection-start-line="72" selection-start-column="2" selection-end-line="72" selection-end-column="2" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="954">
+              <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/indicators/hv.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="704">
+              <caret line="77" column="17" lean-forward="true" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="17" />
+              <folding>
+                <element signature="e#907#937#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/headers/global.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2385">
-              <caret line="222" column="14" lean-forward="true" selection-start-line="222" selection-start-column="14" selection-end-line="222" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core_code/initialize.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
-              <caret line="326" selection-start-line="326" selection-end-line="326" selection-end-column="52" />
+            <state relative-caret-position="868">
+              <caret line="127" column="30" selection-start-line="127" selection-start-column="30" selection-end-line="127" selection-end-column="30" />
+              <folding>
+                <element signature="e#1038#1068#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/headers/initialize.h">
+        <entry file="file://$PROJECT_DIR$/headers/indicator.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="224">
-              <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
+              <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/headers/memory.h">
+        <entry file="file://$PROJECT_DIR$/headers/global.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="8" selection-start-column="8" selection-end-column="8" />
+            <state relative-caret-position="664">
+              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/memory.c">
+        <entry file="file://$PROJECT_DIR$/headers/analysis.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="90" selection-start-line="90" selection-end-line="90" selection-end-column="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/metaheuristics/MOEAD.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="649">
-              <caret line="83" column="33" selection-start-line="83" selection-start-column="33" selection-end-line="83" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#30#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/headers/crossover.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/crossover/crossover_real.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="135" column="65" selection-start-line="135" selection-start-column="65" selection-end-line="135" selection-end-column="65" />
-              <folding>
-                <element signature="e#0#30#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1484">
-              <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#27#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="168">
+              <caret line="6" column="76" selection-start-line="6" selection-start-column="76" selection-end-line="6" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -167,7 +152,6 @@
         <option value="$PROJECT_DIR$/headers/mutation.h" />
         <option value="$PROJECT_DIR$/metaheuristics/MOEAD-dar.c" />
         <option value="$PROJECT_DIR$/lib/list.c" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/headers/list.h" />
         <option value="$PROJECT_DIR$/headers/selection.h" />
         <option value="$PROJECT_DIR$/core_code/global.c" />
@@ -175,15 +159,27 @@
         <option value="$PROJECT_DIR$/headers/crossover.h" />
         <option value="$PROJECT_DIR$/core_code/print.c" />
         <option value="$PROJECT_DIR$/config.txt" />
-        <option value="$PROJECT_DIR$/headers/global.h" />
         <option value="$PROJECT_DIR$/selection/MOEAD/update.c" />
-        <option value="$PROJECT_DIR$/metaheuristics/MOEAD.c" />
         <option value="$PROJECT_DIR$/lib/memory.c" />
         <option value="$PROJECT_DIR$/headers/memory.h" />
         <option value="$PROJECT_DIR$/main.c" />
-        <option value="$PROJECT_DIR$/core_code/initialize.c" />
         <option value="$PROJECT_DIR$/headers/initialize.h" />
+        <option value="$PROJECT_DIR$/headers/global.h" />
+        <option value="$PROJECT_DIR$/headers/analysis.h" />
         <option value="$PROJECT_DIR$/metaheuristics/MOEAD-dra.c" />
+        <option value="$PROJECT_DIR$/metaheuristics/MOEAD.c" />
+        <option value="$PROJECT_DIR$/metaheuristics/NSGA2.c" />
+        <option value="$PROJECT_DIR$/metaheuristics/IBEA.c" />
+        <option value="$PROJECT_DIR$/headers/hv.h" />
+        <option value="$PROJECT_DIR$/indicators/HV/hv.c" />
+        <option value="$PROJECT_DIR$/indicators/indicator.c" />
+        <option value="$PROJECT_DIR$/indicators/hv.c" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/headers/indicator.h" />
+        <option value="$PROJECT_DIR$/analysis/analysis.c" />
+        <option value="$PROJECT_DIR$/indicators/GD.c" />
+        <option value="$PROJECT_DIR$/indicators/IGD.c" />
+        <option value="$PROJECT_DIR$/core_code/initialize.c" />
       </list>
     </option>
   </component>
@@ -209,6 +205,11 @@
             <path>
               <item name="Samaritan" type="b2602c69:ProjectViewProjectNode" />
               <item name="Samaritan" type="462c0819:PsiDirectoryNode" />
+              <item name="analysis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Samaritan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Samaritan" type="462c0819:PsiDirectoryNode" />
               <item name="core_code" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -220,6 +221,11 @@
               <item name="Samaritan" type="b2602c69:ProjectViewProjectNode" />
               <item name="Samaritan" type="462c0819:PsiDirectoryNode" />
               <item name="headers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Samaritan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Samaritan" type="462c0819:PsiDirectoryNode" />
+              <item name="indicators" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Samaritan" type="b2602c69:ProjectViewProjectNode" />
@@ -286,12 +292,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1562574321642</updated>
-      <workItem from="1562574323163" duration="53626000" />
+      <workItem from="1562574323163" duration="65753000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53626000" />
+    <option name="totallyTimeSpent" value="65753000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="3773" height="2135" extended-state="6" />
@@ -376,16 +382,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/metaheuristics/SMS_EMOA.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3136">
-          <caret line="112" column="2" selection-start-line="112" selection-start-column="2" selection-end-line="112" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/list.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="868">
@@ -440,20 +436,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core_code/global.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/headers/utility.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -475,26 +457,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/metaheuristics/IBEA.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4004">
-          <caret line="143" column="41" selection-start-line="143" selection-start-column="41" selection-end-line="143" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/metaheuristics/NSGA2.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8484">
-          <caret selection-end-line="6" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -546,16 +508,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/metaheuristics/MOEAD.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="649">
-          <caret line="83" column="33" selection-start-line="83" selection-start-column="33" selection-end-line="83" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/memory.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="537">
@@ -570,16 +522,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1484">
-          <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/headers/initialize.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -587,27 +529,162 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core_code/initialize.c">
+    <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="326" selection-start-line="326" selection-end-line="326" selection-end-column="52" />
+        <state relative-caret-position="504">
+          <caret line="18" column="54" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/metaheuristics/MOEAD-dra.c">
+    <entry file="file://$PROJECT_DIR$/metaheuristics/SMS_EMOA.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="157" column="64" selection-start-line="157" selection-start-column="64" selection-end-line="157" selection-end-column="64" />
+        <state relative-caret-position="2996">
+          <caret line="107" column="32" selection-start-line="107" selection-start-column="32" selection-end-line="107" selection-end-column="32" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/include/x86_64-linux-gnu/sys/stat.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="171" column="8" selection-start-line="171" selection-start-column="8" selection-end-line="171" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/metaheuristics/MOEAD-dra.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="14" selection-start-line="14" selection-end-line="14" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/metaheuristics/NSGA2.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/metaheuristics/MOEAD.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core_code/global.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/metaheuristics/IBEA.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indicators/HV/hv.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="62" column="7" selection-start-line="62" selection-start-column="7" selection-end-line="62" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indicators/indicator.c">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="954">
+          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headers/analysis.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="6" column="76" selection-start-line="6" selection-start-column="76" selection-end-line="6" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/headers/indicator.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/headers/global.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2385">
-          <caret line="222" column="14" lean-forward="true" selection-start-line="222" selection-start-column="14" selection-end-line="222" selection-end-column="14" />
+        <state relative-caret-position="664">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis/analysis.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="761">
+          <caret line="42" column="31" lean-forward="true" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indicators/hv.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="77" column="17" lean-forward="true" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="17" />
+          <folding>
+            <element signature="e#907#937#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indicators/IGD.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1181">
+          <caret line="72" column="2" selection-start-line="72" selection-start-column="2" selection-end-line="72" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/indicators/GD.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="58" column="10" lean-forward="true" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core_code/initialize.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="868">
+          <caret line="127" column="30" selection-start-line="127" selection-start-column="30" selection-end-line="127" selection-end-column="30" />
+          <folding>
+            <element signature="e#1038#1068#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -4,6 +4,9 @@ project(Samaritan C)
 set(CMAKE_C_STANDARD 99)
 
 add_executable(Samaritan main.c
+
+        analysis/analysis.c
+
         core_code/initialize.c
         core_code/print.c
         core_code/population.c
@@ -29,6 +32,8 @@ add_executable(Samaritan main.c
         lib/sort.c
         lib/list.c
 
+
+
         selection/MOEAD/fitness.c
         selection/MOEAD/update.c
 
@@ -41,7 +46,10 @@ add_executable(Samaritan main.c
         externals/MY_WFG/read.c
         externals/MY_WFG/vector.c
         externals/MY_WFG/wfg.c
-        indicators/HV/hv.c
+
+        indicators/hv.c
+        indicators/IGD.c
+        indicators/GD.c
 
 
         metaheuristics/NSGA2.c

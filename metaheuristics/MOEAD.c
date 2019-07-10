@@ -9,7 +9,7 @@
 #include "../headers/utility.h"
 #include "../headers/selection.h"
 #include "../headers/sort.h"
-
+#include "../headers/analysis.h"
 
 
 
@@ -72,7 +72,7 @@ extern void MOEAD_framework (SMRT_individual *pop, SMRT_individual *offspring_po
 
     initialize_idealpoint (pop, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.ideal_point);
 
-    //track_evolution (pop, generation, 0);
+    track_evolution (pop, g_algorithm_entity.iteration_number, 0);
     for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
     {
         cal_moead_fitness(pop + i, pop[i].weight, g_algorithm_entity.MOEAD_para.function_type);
@@ -94,7 +94,7 @@ extern void MOEAD_framework (SMRT_individual *pop, SMRT_individual *offspring_po
 
         g_algorithm_entity.iteration_number++;
 
-        //track_evolution (pop, generation, evaluation_count >= max_evaluation);
+        track_evolution (pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
     }
 
     return;

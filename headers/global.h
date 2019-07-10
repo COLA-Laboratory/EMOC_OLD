@@ -25,9 +25,9 @@
 # define BUFSIZE_M 128
 # define BUFSIZE_L 256
 
-#define ALGORITHM_NAME_NUM  5
-#define PROBLEM_NAME_NUM    22
-#define ANALYSE_NAME_NUM    6
+#define ALGORITHM_NAME_NUM  200
+#define PROBLEM_NAME_NUM    200
+#define ANALYSE_NAME_NUM    200
 
 # define PI  M_PI
 # define INF 1.0e14
