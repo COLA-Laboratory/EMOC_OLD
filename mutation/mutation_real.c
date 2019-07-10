@@ -3,7 +3,7 @@
 
 
 
-extern void mutation_real (SMRT_individual *pop_table)
+extern void mutation_pop(SMRT_individual *pop_table)
 {
     int i = 0;
 
@@ -11,5 +11,12 @@ extern void mutation_real (SMRT_individual *pop_table)
     {
         polymut_ind(pop_table + i);
     }
+    return;
+}
+
+
+extern void mutation_ind(SMRT_individual *individual)
+{
+    polymut_ind(individual);
     return;
 }

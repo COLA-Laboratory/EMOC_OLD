@@ -27,8 +27,10 @@ add_executable(Samaritan main.c
         lib/random.c
         lib/memory.c
         lib/sort.c
+        lib/list.c
 
         selection/MOEAD/fitness.c
+        selection/MOEAD/update.c
 
 
         test_problem/DTLZ.c
@@ -45,7 +47,8 @@ add_executable(Samaritan main.c
         metaheuristics/NSGA2.c
         metaheuristics/IBEA.c
         metaheuristics/MOEAD.c
-        metaheuristics/MOEAD-dar.c)
+        metaheuristics/MOEAD-dra.c
+        metaheuristics/SMS_EMOA.c)
 
 
 target_link_libraries(Samaritan m)

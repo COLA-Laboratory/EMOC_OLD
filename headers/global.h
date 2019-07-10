@@ -25,7 +25,7 @@
 # define BUFSIZE_M 128
 # define BUFSIZE_L 256
 
-#define ALGORITHM_NAME_NUM  3
+#define ALGORITHM_NAME_NUM  5
 #define PROBLEM_NAME_NUM    22
 #define ANALYSE_NAME_NUM    6
 
@@ -67,7 +67,8 @@ typedef enum{
     IBEA,
     NSGA2,
     MOEAD,
-    MOEAD_DAR
+    MOEAD_DAR,
+    SMS_EMOA
 }ALGORITHM_NAME;
 
 
@@ -126,7 +127,9 @@ typedef struct {
     int maximumNumberOfReplacedSolutions;
     MOEAD_NEIGHBOR *neighbor_table;
     double *utility;
-    int    *frequency;
+    double *old_function;
+    double *delta;
+    int *frequency;
 }MOEAD_PARA;
 
 typedef struct {

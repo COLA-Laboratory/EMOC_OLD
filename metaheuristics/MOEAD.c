@@ -13,7 +13,6 @@
 
 
 
-
 static void ini_MOEAD(SMRT_individual *pop_table, int weight_num)
 {
     int i = 0, j = 0, k = 0;
@@ -53,46 +52,10 @@ static void ini_MOEAD(SMRT_individual *pop_table, int weight_num)
     return ;
 }
 
-static int update_subproblem(SMRT_individual *pop_table, SMRT_individual *offspring)
-{
-    int i = 0, j = 0;
-    int index = 0, replace_num = 0;
-    double temp = 0;
-
-
-    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
-    {
-        cal_moead_fitness(pop_table + i, pop_table[i].weight, g_algorithm_entity.MOEAD_para.function_type);
-    }
-
-    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
-    {
-        for (j = 0; j < g_algorithm_entity.MOEAD_para.neighbor_size; j++)
-        {
-            if (replace_num >= g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions)
-            {
-                replace_num = 0;
-                break;
-            }
-            index = g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor[j];
-            temp = cal_moead_fitness(offspring + i, pop_table[index].weight, g_algorithm_entity.MOEAD_para.function_type);
-            if (temp < g_algorithm_entity.parent_population[index].fitness)
-            {
-                memcpy(g_algorithm_entity.parent_population[index].variable, g_algorithm_entity.offspring_population[i].variable,
-                       sizeof(double) * g_algorithm_entity.algorithm_para.variable_number);
-                memcpy(g_algorithm_entity.parent_population[index].obj, g_algorithm_entity.offspring_population[i].obj,
-                       sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
-                g_algorithm_entity.parent_population[index].fitness = temp;
-                replace_num++;
-            }
-        }
-    }
-
-    return SUCCESS;
-}
 
 extern void MOEAD_framework (SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
+    int  i = 0;
     g_algorithm_entity.iteration_number          = 1;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;
     printf ("|\tThe %d run\t|\t1%%\t|", g_algorithm_entity.run_index_current);
@@ -110,13 +73,17 @@ extern void MOEAD_framework (SMRT_individual *pop, SMRT_individual *offspring_po
     initialize_idealpoint (pop, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.ideal_point);
 
     //track_evolution (pop, generation, 0);
+    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
+    {
+        cal_moead_fitness(pop + i, pop[i].weight, g_algorithm_entity.MOEAD_para.function_type);
+    }
 
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
         print_progress ();
         // crossover and mutation
         crossover_MOEAD (pop, offspring_pop);
-        mutation_real (offspring_pop);
+        mutation_pop(offspring_pop);
         evaluate_population (offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
 
         // update ideal point

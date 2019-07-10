@@ -34,11 +34,13 @@
 
 static int parameter_check()
 {
-    if (g_algorithm_entity.algorithm_para.pop_size <= 50 || g_algorithm_entity.algorithm_para.pop_size %4 != 0)
+    if (g_algorithm_entity.algorithm_para.pop_size <= 50 || g_algorithm_entity.algorithm_para.pop_size % 4 != 0)
     {
         printf("Population size is too small or Not a multiple of 4 \n");
         return FAIL;
     }
+
+    return SUCCESS;
 
 
 }
@@ -320,6 +322,25 @@ int initialization_real_para (int argc, char** argv)
 
     return SUCCESS;
 }
+
+
+extern int destroy_real_para (int argc, char** argv)
+{
+    destroy_memory_for_pop(&g_algorithm_entity.parent_population, g_algorithm_entity.algorithm_para.pop_size);
+    destroy_memory_for_pop(&g_algorithm_entity.offspring_population, g_algorithm_entity.algorithm_para.pop_size);
+    destroy_memory_for_pop(&g_algorithm_entity.elit_population, g_algorithm_entity.algorithm_para.elite_pop_size);
+    destroy_memory_for_pop(&g_algorithm_entity.mix_population, g_algorithm_entity.algorithm_para.pop_size * 2);
+    destroy_memory_for_reference_point(&g_algorithm_entity.nadir_point);
+    destroy_memory_for_reference_point(&g_algorithm_entity.ideal_point);
+    destroy_memory_for_reference_point(&g_algorithm_entity.reference_point);
+
+    free(g_algorithm_entity.variable_lower_bound);
+    free(g_algorithm_entity.variable_higher_bound);
+
+    free(g_algorithm_entity.PF_Data);
+    return SUCCESS;
+}
+
 
 /* Initialize the ideal point */
 extern void initialize_idealpoint (SMRT_individual *pop_table, int pop_num, REFERENCE_POINT *ideal_point)

@@ -185,7 +185,7 @@ extern void IBEA_framework (SMRT_individual *parent_pop, SMRT_individual* offspr
 
         // reproduction (crossover and mutation)
         crossover_nsga2 (parent_pop, offspring_pop);
-        mutation_real (offspring_pop);
+        mutation_pop(offspring_pop);
         evaluate_population (offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
 
         // environmental selection

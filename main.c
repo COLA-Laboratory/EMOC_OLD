@@ -25,16 +25,20 @@ int main(int argc, char** argv) {
                 MOEAD_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
             case MOEAD_DAR:
-                MOEAD_dar_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                MOEAD_dra_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
+            case SMS_EMOA:
+                SMSEMOA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
             default:
                 break;
         }
     }
+
     printf("The output as follows:\n");
     for (int i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
     {
-        printf("solution[%d]\n", i);
+        printf("solution[%d]:fitness:%f  \n    ", i, g_algorithm_entity.parent_population[i].fitness);
         for (int j = 0; j < g_algorithm_entity.algorithm_para.variable_number; j++)
         {
             printf("variable[%d]:%f  ", j, g_algorithm_entity.parent_population[i].variable[j]);
@@ -45,5 +49,9 @@ int main(int argc, char** argv) {
         }
         printf("\n");
     }
+
+
+    destroy_real_para (argc, argv);
+
     return 0;
 }

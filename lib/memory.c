@@ -86,3 +86,57 @@ extern int allocate_memory_for_reference_point (REFERENCE_POINT *point)
 
     return SUCCESS;
 }
+
+
+extern int destroy_memory_for_pop (SMRT_individual **pop, int population_size)
+{
+    int i = 0;
+
+    for (i = 0; i < population_size; i++)
+    {
+        /*free variable space*/
+        if (NULL != (*pop)[i].variable)
+        {
+            free((*pop)[i].variable);
+            (*pop)[i].variable = NULL;
+        }
+
+
+        /*malloc objective space*/
+        if (NULL != (*pop)[i].obj)
+        {
+            free((*pop)[i].obj);
+            (*pop)[i].obj = NULL;
+        }
+
+        /*malloc individual weight*/
+        if (NULL != (*pop)[i].weight)
+        {
+            free((*pop)[i].weight);
+            (*pop)[i].weight = NULL;
+        }
+    }
+
+    free(*pop);
+    return SUCCESS;
+}
+
+
+extern int destroy_memory_for_reference_point (REFERENCE_POINT *point)
+{
+
+    /*free individual obj*/
+    if (NULL != point->obj)
+    {
+        free(point->obj);
+        point->obj = NULL;
+    }
+
+    if (NULL != point->variable)
+    {
+        free(point->variable);
+        point->variable = NULL;
+    }
+
+    return SUCCESS;
+}
