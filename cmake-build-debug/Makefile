@@ -366,6 +366,33 @@ crossover/crossover_real.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/crossover/crossover_real.c.s
 .PHONY : crossover/crossover_real.c.s
 
+externals/MY_WFG/Iwfg.o: externals/MY_WFG/Iwfg.c.o
+
+.PHONY : externals/MY_WFG/Iwfg.o
+
+# target to build an object file
+externals/MY_WFG/Iwfg.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/externals/MY_WFG/Iwfg.c.o
+.PHONY : externals/MY_WFG/Iwfg.c.o
+
+externals/MY_WFG/Iwfg.i: externals/MY_WFG/Iwfg.c.i
+
+.PHONY : externals/MY_WFG/Iwfg.i
+
+# target to preprocess a source file
+externals/MY_WFG/Iwfg.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/externals/MY_WFG/Iwfg.c.i
+.PHONY : externals/MY_WFG/Iwfg.c.i
+
+externals/MY_WFG/Iwfg.s: externals/MY_WFG/Iwfg.c.s
+
+.PHONY : externals/MY_WFG/Iwfg.s
+
+# target to generate assembly for a file
+externals/MY_WFG/Iwfg.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/externals/MY_WFG/Iwfg.c.s
+.PHONY : externals/MY_WFG/Iwfg.c.s
+
 externals/MY_WFG/read.o: externals/MY_WFG/read.c.o
 
 .PHONY : externals/MY_WFG/read.o
@@ -419,33 +446,6 @@ externals/MY_WFG/vector.s: externals/MY_WFG/vector.c.s
 externals/MY_WFG/vector.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.s
 .PHONY : externals/MY_WFG/vector.c.s
-
-externals/MY_WFG/wfg.o: externals/MY_WFG/wfg.c.o
-
-.PHONY : externals/MY_WFG/wfg.o
-
-# target to build an object file
-externals/MY_WFG/wfg.c.o:
-	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/externals/MY_WFG/wfg.c.o
-.PHONY : externals/MY_WFG/wfg.c.o
-
-externals/MY_WFG/wfg.i: externals/MY_WFG/wfg.c.i
-
-.PHONY : externals/MY_WFG/wfg.i
-
-# target to preprocess a source file
-externals/MY_WFG/wfg.c.i:
-	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/externals/MY_WFG/wfg.c.i
-.PHONY : externals/MY_WFG/wfg.c.i
-
-externals/MY_WFG/wfg.s: externals/MY_WFG/wfg.c.s
-
-.PHONY : externals/MY_WFG/wfg.s
-
-# target to generate assembly for a file
-externals/MY_WFG/wfg.c.s:
-	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/externals/MY_WFG/wfg.c.s
-.PHONY : externals/MY_WFG/wfg.c.s
 
 indicators/GD.o: indicators/GD.c.o
 
@@ -798,32 +798,32 @@ metaheuristics/NSGA2.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.s
 .PHONY : metaheuristics/NSGA2.c.s
 
-metaheuristics/SMS_EMOA.o: metaheuristics/SMS_EMOA.c.o
+metaheuristics/SMSEMOA.o: metaheuristics/SMSEMOA.c.o
 
-.PHONY : metaheuristics/SMS_EMOA.o
+.PHONY : metaheuristics/SMSEMOA.o
 
 # target to build an object file
-metaheuristics/SMS_EMOA.c.o:
-	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SMS_EMOA.c.o
-.PHONY : metaheuristics/SMS_EMOA.c.o
+metaheuristics/SMSEMOA.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o
+.PHONY : metaheuristics/SMSEMOA.c.o
 
-metaheuristics/SMS_EMOA.i: metaheuristics/SMS_EMOA.c.i
+metaheuristics/SMSEMOA.i: metaheuristics/SMSEMOA.c.i
 
-.PHONY : metaheuristics/SMS_EMOA.i
+.PHONY : metaheuristics/SMSEMOA.i
 
 # target to preprocess a source file
-metaheuristics/SMS_EMOA.c.i:
-	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SMS_EMOA.c.i
-.PHONY : metaheuristics/SMS_EMOA.c.i
+metaheuristics/SMSEMOA.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.i
+.PHONY : metaheuristics/SMSEMOA.c.i
 
-metaheuristics/SMS_EMOA.s: metaheuristics/SMS_EMOA.c.s
+metaheuristics/SMSEMOA.s: metaheuristics/SMSEMOA.c.s
 
-.PHONY : metaheuristics/SMS_EMOA.s
+.PHONY : metaheuristics/SMSEMOA.s
 
 # target to generate assembly for a file
-metaheuristics/SMS_EMOA.c.s:
-	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SMS_EMOA.c.s
-.PHONY : metaheuristics/SMS_EMOA.c.s
+metaheuristics/SMSEMOA.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.s
+.PHONY : metaheuristics/SMSEMOA.c.s
 
 mutation/mutation_operator.o: mutation/mutation_operator.c.o
 
@@ -1050,15 +1050,15 @@ help:
 	@echo "... crossover/crossover_real.o"
 	@echo "... crossover/crossover_real.i"
 	@echo "... crossover/crossover_real.s"
+	@echo "... externals/MY_WFG/Iwfg.o"
+	@echo "... externals/MY_WFG/Iwfg.i"
+	@echo "... externals/MY_WFG/Iwfg.s"
 	@echo "... externals/MY_WFG/read.o"
 	@echo "... externals/MY_WFG/read.i"
 	@echo "... externals/MY_WFG/read.s"
 	@echo "... externals/MY_WFG/vector.o"
 	@echo "... externals/MY_WFG/vector.i"
 	@echo "... externals/MY_WFG/vector.s"
-	@echo "... externals/MY_WFG/wfg.o"
-	@echo "... externals/MY_WFG/wfg.i"
-	@echo "... externals/MY_WFG/wfg.s"
 	@echo "... indicators/GD.o"
 	@echo "... indicators/GD.i"
 	@echo "... indicators/GD.s"
@@ -1098,9 +1098,9 @@ help:
 	@echo "... metaheuristics/NSGA2.o"
 	@echo "... metaheuristics/NSGA2.i"
 	@echo "... metaheuristics/NSGA2.s"
-	@echo "... metaheuristics/SMS_EMOA.o"
-	@echo "... metaheuristics/SMS_EMOA.i"
-	@echo "... metaheuristics/SMS_EMOA.s"
+	@echo "... metaheuristics/SMSEMOA.o"
+	@echo "... metaheuristics/SMSEMOA.i"
+	@echo "... metaheuristics/SMSEMOA.s"
 	@echo "... mutation/mutation_operator.o"
 	@echo "... mutation/mutation_operator.i"
 	@echo "... mutation/mutation_operator.s"

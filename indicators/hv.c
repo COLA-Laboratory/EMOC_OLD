@@ -23,7 +23,7 @@
 */
 #include "../headers/global.h"
 #include "../headers/indicator.h"
-#include "../externals/MY_WFG/wfg.h"
+#include "../externals/MY_WFG/Iwfg.h"
 #include "../externals/MY_WFG/vector.h"
 
 double calculate_hv (void *ptr);

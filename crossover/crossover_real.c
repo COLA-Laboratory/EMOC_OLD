@@ -2,7 +2,9 @@
 #include "../headers/crossover.h"
 #include "../headers/mating.h"
 #include "../headers/random.h"
-
+#include "../headers/memory.h"
+#include "../headers/dominance_relation.h"
+#include "../headers/population.h"
 
 
 extern void crossover_IBEA(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table)
@@ -166,6 +168,58 @@ extern void crossover_MOEAD_dra(SMRT_individual *parent_pop_table, SMRT_individu
                  parent_pop_table + select_id[1], offspring);
 
 
+
+    return;
+}
+
+extern void crossover_SMSEMOA(SMRT_individual *parent_pop_table, SMRT_individual *offspring)
+{
+    int i, temp, rand;
+    int *a1, *a2;
+    SMRT_individual *parent1, *parent2, *offspring1, *offspring2;
+    DOMINATE_RELATION dominateRelation;
+
+    allocate_memory_for_ind (&offspring1);
+    allocate_memory_for_ind (&offspring2);
+
+    a1 = (int *) malloc (g_algorithm_entity.algorithm_para.pop_size * sizeof(int));
+    a2 = (int *) malloc (g_algorithm_entity.algorithm_para.pop_size * sizeof(int));
+    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
+        a1[i] = a2[i] = i;
+
+    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
+    {
+        rand     = rnd (i, g_algorithm_entity.algorithm_para.pop_size - 1);
+        temp     = a1[rand];
+        a1[rand] = a1[i];
+        a1[i]    = temp;
+        temp     = a2[rand];
+        a2[rand] = a2[i];
+        a2[i]    = temp;
+    }
+
+    parent1 = tournament_NSGA2(&parent_pop_table[a1[0]], &parent_pop_table[a1[1]]);
+    parent2 = tournament_NSGA2(&parent_pop_table[a1[2]], &parent_pop_table[a1[3]]);
+    sbx_crossover (parent1, parent2, offspring1, offspring2);
+
+    dominateRelation = check_dominance(offspring1, offspring2);
+
+
+    if (DOMINATED == dominateRelation)
+    {
+        copy_individual(offspring1, offspring);
+    }
+    else if (DOMINATE == dominateRelation)
+    {
+        copy_individual(offspring2, offspring);
+    }
+    else
+    {
+        copy_individual(offspring1, offspring);
+    }
+
+    destroy_memory_for_ind(offspring1);
+    destroy_memory_for_ind(offspring2);
 
     return;
 }

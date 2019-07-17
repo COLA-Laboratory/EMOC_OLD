@@ -1,5 +1,5 @@
-#include "../../headers/global.h"
-#include "wfg.h"
+
+#include "Iwfg.h"
 
 static void trimLine(char line[])
 {
@@ -90,7 +90,8 @@ FILECONTENTS *readFile(char filename[])
 	return fc;
 }
 
-FILECONTENTS *read_data() {
+FILECONTENTS *read_data()
+{
     int front = 0, point = 0, objective = 0;
     // init the struct
     FILECONTENTS *fc = malloc(sizeof(FILECONTENTS));
@@ -119,6 +120,42 @@ FILECONTENTS *read_data() {
             f->n++;
             p->objectives = realloc(p->objectives, sizeof(OBJECTIVE) * f->n);
             p->objectives[objective] = g_algorithm_entity.parent_population[i].obj[j];
+        }
+    }
+    return fc;
+}
+
+
+FILECONTENTS *i_read_data(SMRT_individual *pop, int pop_num)
+{
+    int front = 0, point = 0, objective = 0;
+    // init the struct
+    FILECONTENTS *fc = malloc(sizeof(FILECONTENTS));
+    fc->nFronts = 0;
+    fc->fronts = NULL;
+    front = fc->nFronts;
+    fc->nFronts++;
+    fc->fronts = realloc(fc->fronts, sizeof(FRONT) * fc->nFronts);
+    fc->fronts[front].nPoints = 0;
+    fc->fronts[front].points = NULL;
+    // read the data
+
+    int i, j;
+
+    for (i = 0; i < pop_num; i++) {
+        FRONT *f = &fc->fronts[front];
+        point = f->nPoints;
+        f->nPoints++;
+        f->points = realloc(f->points, sizeof(POINT) * f->nPoints);
+        f->n = 0;
+        f->points[point].objectives = NULL;
+
+        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++) {
+            POINT *p = &f->points[point];
+            objective = f->n;
+            f->n++;
+            p->objectives = realloc(p->objectives, sizeof(OBJECTIVE) * f->n);
+            p->objectives[objective] = pop[i].obj[j];
         }
     }
     return fc;

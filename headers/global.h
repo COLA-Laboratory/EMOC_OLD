@@ -228,7 +228,13 @@ typedef struct Evolution_algorithm_entity{
 
 }SMRT_entity;
 
-
+typedef struct lists
+{
+    int index;
+    int index2;
+    struct lists *parent;
+    struct lists *child;
+} pop_list;
 
 extern SMRT_entity g_algorithm_entity;
 char *g_algorithm_name_str[ALGORITHM_NAME_NUM];

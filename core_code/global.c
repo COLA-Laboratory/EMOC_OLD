@@ -4,7 +4,7 @@ char *g_algorithm_name_str[ALGORITHM_NAME_NUM] = {
         "NSGA2",
         "MOEAD",
         "MOEAD_DRA",
-        "SMS_EMOA"
+        "SMSEMOA"
 };
 
 

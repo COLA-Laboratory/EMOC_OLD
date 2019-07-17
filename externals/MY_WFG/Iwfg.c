@@ -3,8 +3,8 @@
 #include <math.h>
 #include <sys/time.h>
 #include <sys/resource.h>
-#include "wfg.h"
-#include "../../headers/global.h"
+#include "Iwfg.h"
+
 #define BEATS(x,y)   (x > y) 
 #define WORSE(x,y)   (BEATS(y,x) ? (x) : (y)) 
 
@@ -538,6 +538,75 @@ double hv_wfg (void *ptr)
     int maxdepth;
 
     FILECONTENTS *f = read_data ();
+
+    // find the biggest fronts
+    maxn = maxm = 0;
+    for (i = 0; i < f->nFronts; i++)
+    {
+        if (f->fronts[i].nPoints > maxm)
+            maxm = f->fronts[i].nPoints;
+        if (f->fronts[i].n > maxn)
+            maxn = f->fronts[i].n;
+    }
+
+    // memory allocation
+    maxdepth = maxn - 2;
+    fs 		 = malloc (sizeof (FRONT) * maxdepth);
+    for (i = 0; i < maxdepth; i++)
+    {
+        fs[i].points = malloc (sizeof (POINT) * maxm);
+        for (j = 0; j < maxm; j++)
+            fs[i].points[j].objectives = malloc (sizeof (OBJECTIVE) * (maxn - i - 1));
+    }
+    nextp = malloc (sizeof (int *) * maxdepth);
+    for (i = 0; i < maxdepth; i++)
+        nextp[i] = malloc (sizeof (int) * maxm);
+    prevp = malloc (sizeof (int *) * maxdepth);
+    for (i = 0; i < maxdepth; i++)
+        prevp[i] = malloc(sizeof (int) * maxm);
+    firstp = malloc (sizeof (int) * maxdepth);
+    lastp = malloc (sizeof (int) * maxdepth);
+    psize = malloc (sizeof (int) * maxdepth);
+
+    // initialise the reference point
+    ref.objectives = malloc (sizeof (OBJECTIVE) * maxn);
+
+    // setting ref point
+    for (i = 0; i < maxn; i++)
+        ref.objectives[i] = g_algorithm_entity.nadir_point.obj[i];
+
+    // modify the objective values relative to the reference point
+    for (i = 0; i < f->nFronts; i++)
+        for(j = 0; j < f->fronts[i].nPoints; j++)
+            for(k = 0; k < f->fronts[i].n; k++)
+                f->fronts[i].points[j].objectives[k] = ref.objectives[k]> f->fronts[i].points[j].objectives[k]?(ref.objectives[k]-f->fronts[i].points[j].objectives[k]):0;
+
+    for (i = 0; i < f->nFronts; i++)
+    {
+        struct timeval tv1, tv2;
+        struct rusage ru_before, ru_after;
+        getrusage (RUSAGE_SELF, &ru_before);
+
+        n = f->fronts[i].n;
+        safe = 0;
+        //printf("hv(%d) = %1.10f\n", i+1, hv(f->fronts[i]));
+
+        getrusage (RUSAGE_SELF, &ru_after);
+        tv1 = ru_before.ru_utime;
+        tv2 = ru_after.ru_utime;
+    }
+
+    return  hv(f->fronts[0]);
+}
+
+
+double i_hv_wfg (SMRT_individual *pop, int pop_num)
+// processes each front from the file
+{
+    int i, j, k;
+    int maxdepth;
+
+    FILECONTENTS *f = i_read_data (pop, pop_num);
 
     // find the biggest fronts
     maxn = maxm = 0;

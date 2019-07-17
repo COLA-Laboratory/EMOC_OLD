@@ -9,4 +9,5 @@ extern int allocate_memory_for_reference_point (REFERENCE_POINT *point);
 
 extern int destroy_memory_for_reference_point (REFERENCE_POINT *point);
 extern int destroy_memory_for_pop (SMRT_individual **pop, int population_size);
+extern int destroy_memory_for_ind (SMRT_individual *ind);
 #endif

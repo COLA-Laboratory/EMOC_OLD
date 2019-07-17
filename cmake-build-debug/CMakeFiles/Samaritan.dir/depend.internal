@@ -42,20 +42,23 @@ CMakeFiles/Samaritan.dir/crossover/crossover_operator.c.o
 CMakeFiles/Samaritan.dir/crossover/crossover_real.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/crossover/crossover_real.c
  /home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/dominance_relation.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/mating.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/memory.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/population.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
+CMakeFiles/Samaritan.dir/externals/MY_WFG/Iwfg.c.o
+ /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/Iwfg.c
+ /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/Iwfg.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
 CMakeFiles/Samaritan.dir/externals/MY_WFG/read.c.o
+ /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/Iwfg.h
  /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/read.c
- /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/wfg.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
 CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.c
  /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-CMakeFiles/Samaritan.dir/externals/MY_WFG/wfg.c.o
- /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/wfg.c
- /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/wfg.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
 CMakeFiles/Samaritan.dir/indicators/GD.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
@@ -66,8 +69,8 @@ CMakeFiles/Samaritan.dir/indicators/IGD.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
  /home/maopl/CLionProjects/my_work/Samaritan/indicators/IGD.c
 CMakeFiles/Samaritan.dir/indicators/hv.c.o
+ /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/Iwfg.h
  /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.h
- /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/wfg.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/indicator.h
  /home/maopl/CLionProjects/my_work/Samaritan/indicators/hv.c
@@ -84,6 +87,7 @@ CMakeFiles/Samaritan.dir/lib/random.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
  /home/maopl/CLionProjects/my_work/Samaritan/lib/random.c
 CMakeFiles/Samaritan.dir/lib/sort.c.o
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/dominance_relation.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
  /home/maopl/CLionProjects/my_work/Samaritan/lib/sort.c
@@ -152,18 +156,24 @@ CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/population.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
  /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA2.c
-CMakeFiles/Samaritan.dir/metaheuristics/SMS_EMOA.c.o
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o
+ /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/Iwfg.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/dominance_relation.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/initialize.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/memory.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/metaheuristics.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/mutation.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/population.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
- /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SMS_EMOA.c
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
+ /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SMSEMOA.c
 CMakeFiles/Samaritan.dir/mutation/mutation_operator.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/mutation.h

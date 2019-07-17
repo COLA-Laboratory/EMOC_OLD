@@ -1,5 +1,5 @@
-algorithm_name:MOEAD_DRA
-test_problem:DTLZ
+algorithm_name:SMSEMOA
+test_problem:DTLZ1
 problem_param:
 number_variable:10
 number_objective:3

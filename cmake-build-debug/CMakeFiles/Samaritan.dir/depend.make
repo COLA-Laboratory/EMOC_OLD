@@ -41,21 +41,24 @@ CMakeFiles/Samaritan.dir/crossover/crossover_operator.c.o: ../headers/random.h
 
 CMakeFiles/Samaritan.dir/crossover/crossover_real.c.o: ../crossover/crossover_real.c
 CMakeFiles/Samaritan.dir/crossover/crossover_real.c.o: ../headers/crossover.h
+CMakeFiles/Samaritan.dir/crossover/crossover_real.c.o: ../headers/dominance_relation.h
 CMakeFiles/Samaritan.dir/crossover/crossover_real.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/crossover/crossover_real.c.o: ../headers/mating.h
+CMakeFiles/Samaritan.dir/crossover/crossover_real.c.o: ../headers/memory.h
+CMakeFiles/Samaritan.dir/crossover/crossover_real.c.o: ../headers/population.h
 CMakeFiles/Samaritan.dir/crossover/crossover_real.c.o: ../headers/random.h
 
+CMakeFiles/Samaritan.dir/externals/MY_WFG/Iwfg.c.o: ../externals/MY_WFG/Iwfg.c
+CMakeFiles/Samaritan.dir/externals/MY_WFG/Iwfg.c.o: ../externals/MY_WFG/Iwfg.h
+CMakeFiles/Samaritan.dir/externals/MY_WFG/Iwfg.c.o: ../headers/global.h
+
+CMakeFiles/Samaritan.dir/externals/MY_WFG/read.c.o: ../externals/MY_WFG/Iwfg.h
 CMakeFiles/Samaritan.dir/externals/MY_WFG/read.c.o: ../externals/MY_WFG/read.c
-CMakeFiles/Samaritan.dir/externals/MY_WFG/read.c.o: ../externals/MY_WFG/wfg.h
 CMakeFiles/Samaritan.dir/externals/MY_WFG/read.c.o: ../headers/global.h
 
 CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.o: ../externals/MY_WFG/vector.c
 CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.o: ../externals/MY_WFG/vector.h
 CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.o: ../headers/global.h
-
-CMakeFiles/Samaritan.dir/externals/MY_WFG/wfg.c.o: ../externals/MY_WFG/wfg.c
-CMakeFiles/Samaritan.dir/externals/MY_WFG/wfg.c.o: ../externals/MY_WFG/wfg.h
-CMakeFiles/Samaritan.dir/externals/MY_WFG/wfg.c.o: ../headers/global.h
 
 CMakeFiles/Samaritan.dir/indicators/GD.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/indicators/GD.c.o: ../headers/utility.h
@@ -65,8 +68,8 @@ CMakeFiles/Samaritan.dir/indicators/IGD.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/indicators/IGD.c.o: ../headers/utility.h
 CMakeFiles/Samaritan.dir/indicators/IGD.c.o: ../indicators/IGD.c
 
+CMakeFiles/Samaritan.dir/indicators/hv.c.o: ../externals/MY_WFG/Iwfg.h
 CMakeFiles/Samaritan.dir/indicators/hv.c.o: ../externals/MY_WFG/vector.h
-CMakeFiles/Samaritan.dir/indicators/hv.c.o: ../externals/MY_WFG/wfg.h
 CMakeFiles/Samaritan.dir/indicators/hv.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/indicators/hv.c.o: ../headers/indicator.h
 CMakeFiles/Samaritan.dir/indicators/hv.c.o: ../indicators/hv.c
@@ -83,6 +86,7 @@ CMakeFiles/Samaritan.dir/lib/random.c.o: ../headers/print.h
 CMakeFiles/Samaritan.dir/lib/random.c.o: ../headers/random.h
 CMakeFiles/Samaritan.dir/lib/random.c.o: ../lib/random.c
 
+CMakeFiles/Samaritan.dir/lib/sort.c.o: ../headers/dominance_relation.h
 CMakeFiles/Samaritan.dir/lib/sort.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/lib/sort.c.o: ../headers/sort.h
 CMakeFiles/Samaritan.dir/lib/sort.c.o: ../lib/sort.c
@@ -151,18 +155,24 @@ CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o: ../headers/mutation.h
 CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o: ../headers/population.h
 CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o: ../headers/print.h
 CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o: ../headers/sort.h
 CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o: ../metaheuristics/NSGA2.c
 
-CMakeFiles/Samaritan.dir/metaheuristics/SMS_EMOA.c.o: ../headers/crossover.h
-CMakeFiles/Samaritan.dir/metaheuristics/SMS_EMOA.c.o: ../headers/dominance_relation.h
-CMakeFiles/Samaritan.dir/metaheuristics/SMS_EMOA.c.o: ../headers/global.h
-CMakeFiles/Samaritan.dir/metaheuristics/SMS_EMOA.c.o: ../headers/initialize.h
-CMakeFiles/Samaritan.dir/metaheuristics/SMS_EMOA.c.o: ../headers/metaheuristics.h
-CMakeFiles/Samaritan.dir/metaheuristics/SMS_EMOA.c.o: ../headers/mutation.h
-CMakeFiles/Samaritan.dir/metaheuristics/SMS_EMOA.c.o: ../headers/population.h
-CMakeFiles/Samaritan.dir/metaheuristics/SMS_EMOA.c.o: ../headers/print.h
-CMakeFiles/Samaritan.dir/metaheuristics/SMS_EMOA.c.o: ../headers/problem.h
-CMakeFiles/Samaritan.dir/metaheuristics/SMS_EMOA.c.o: ../metaheuristics/SMS_EMOA.c
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../externals/MY_WFG/Iwfg.h
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/analysis.h
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/crossover.h
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/dominance_relation.h
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/global.h
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/initialize.h
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/memory.h
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/metaheuristics.h
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/mutation.h
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/population.h
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/print.h
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/sort.h
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/utility.h
+CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../metaheuristics/SMSEMOA.c
 
 CMakeFiles/Samaritan.dir/mutation/mutation_operator.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/mutation/mutation_operator.c.o: ../headers/mutation.h

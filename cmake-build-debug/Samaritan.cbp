@@ -105,6 +105,12 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/crossover/crossover_real.c">
 			<Option target="Samaritan"/>
 		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/Iwfg.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/Iwfg.h">
+			<Option target="Samaritan"/>
+		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/read.c">
 			<Option target="Samaritan"/>
 		</Unit>
@@ -112,12 +118,6 @@
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.h">
-			<Option target="Samaritan"/>
-		</Unit>
-		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/wfg.c">
-			<Option target="Samaritan"/>
-		</Unit>
-		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/wfg.h">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/indicators/GD.c">
@@ -159,7 +159,7 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA2.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SMS_EMOA.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SMSEMOA.c">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/mutation/mutation_operator.c">

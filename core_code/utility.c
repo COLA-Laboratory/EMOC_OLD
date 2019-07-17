@@ -148,11 +148,40 @@ extern void update_nadir_point(SMRT_individual *pop_table, int pop_num)
     {
         for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
         {
-            if (pop_table[i].obj[j] > g_algorithm_entity.ideal_point.obj[j])
+            if (pop_table[i].obj[j] > g_algorithm_entity.nadir_point.obj[j])
             {
-                g_algorithm_entity.ideal_point.obj[j] = pop_table[i].obj[j];
+                g_algorithm_entity.nadir_point.obj[j] = pop_table[i].obj[j];
             }
         }
     }
+    return;
+}
+
+
+extern void update_ideal_point_by_ind(SMRT_individual *ind)
+{
+    int i = 0;
+
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+    {
+        if (ind->obj[i] < g_algorithm_entity.ideal_point.obj[i])
+        {
+            g_algorithm_entity.ideal_point.obj[i] = ind->obj[i];
+        }
+    }
+    return;
+}
+
+extern void update_nadir_point_by_ind(SMRT_individual *ind)
+{
+    int i = 0;
+
+        for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+        {
+            if (ind->obj[i] > g_algorithm_entity.nadir_point.obj[i])
+            {
+                g_algorithm_entity.nadir_point.obj[i] = ind->obj[i];
+            }
+        }
     return;
 }
