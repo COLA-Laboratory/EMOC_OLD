@@ -29,7 +29,7 @@
 # include <sys/time.h>
 # include <sys/resource.h>
 # include "wfg.h"
-# include "../../header/global.h"
+# include "../../headers/global.h"
 #define BEATS(x,y)   (x > y) 
 #define WORSE(x,y)   (BEATS(y,x) ? (x) : (y)) 
 
@@ -566,13 +566,14 @@ double hv(FRONT ps)
 	}
 }
 
-double hv_wfg (void *ptr)
+double hv_wfg (SMRT_individual *pop, int pop_num)
 // processes each front from the file 
 {
 	int i, j, k;
     int maxdepth;
+    double hv_value;
 
-	FILECONTENTS *f = read_data (ptr);
+	FILECONTENTS *f = read_data (pop, pop_num);
 
 	// find the biggest fronts
 	maxn = maxm = 0;
@@ -586,7 +587,7 @@ double hv_wfg (void *ptr)
 
 	// memory allocation
 	maxdepth = maxn - 2;
-	fs 		 = malloc (sizeof (FRONT) * maxdepth);
+	fs 		 = malloc (sizeof (FRONT) * (maxdepth));
 	for (i = 0; i < maxdepth; i++)
 	{
 		fs[i].points = malloc (sizeof (POINT) * maxm);
@@ -595,7 +596,7 @@ double hv_wfg (void *ptr)
 	}
 	nextp = malloc (sizeof (int *) * maxdepth);
 	for (i = 0; i < maxdepth; i++)
-		nextp[i] = malloc (sizeof (int) * maxm);
+		nextp[i] = malloc (sizeof (int) * (maxm + 10240));
 	prevp = malloc (sizeof (int *) * maxdepth);
 	for (i = 0; i < maxdepth; i++)
 		prevp[i] = malloc(sizeof (int) * maxm);
@@ -608,7 +609,7 @@ double hv_wfg (void *ptr)
 
 	// setting ref point
 	for (i = 0; i < maxn; i++)
-        ref.objectives[i] = ref_point[i];
+        ref.objectives[i] = g_algorithm_entity.nadir_point.obj[i];
 
 	// modify the objective values relative to the reference point
 	for (i = 0; i < f->nFronts; i++)
@@ -624,6 +625,7 @@ double hv_wfg (void *ptr)
 
 		n = f->fronts[i].n;
 		safe = 0;
+		fr = 0;
 		//printf("hv(%d) = %1.10f\n", i+1, hv(f->fronts[i]));
 
 		getrusage (RUSAGE_SELF, &ru_after);
@@ -631,5 +633,30 @@ double hv_wfg (void *ptr)
 		tv2 = ru_after.ru_utime;
 	}
 
-	return  hv(f->fronts[0]);
+	hv_value = hv(f->fronts[0]);
+
+
+    for (i = 0; i < maxdepth; i++)
+    {
+        for (j = 0; j < maxm; j++)
+            free(fs[i].points[j].objectives);
+        free(fs[i].points);
+    }
+    free(fs);
+
+    for (i = 0; i < maxdepth; i++)
+    {
+        free(nextp[i]);
+    }
+
+    free(nextp);
+    for (i = 0; i < maxdepth; i++)
+        free(prevp[i]);
+    free(prevp);
+    free(firstp);
+    free(lastp);
+    free(psize);
+    free(ref.objectives);
+
+	return  hv_value;
 }

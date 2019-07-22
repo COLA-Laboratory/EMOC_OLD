@@ -46,6 +46,8 @@ add_executable(Samaritan main.c
         externals/MY_WFG/read.c
         externals/MY_WFG/vector.c
         externals/MY_WFG/Iwfg.c
+        externals/WFG_1.15/wfg.c
+        externals/WFG_1.15/read.c
 
         indicators/hv.c
         indicators/IGD.c
@@ -56,7 +58,8 @@ add_executable(Samaritan main.c
         metaheuristics/IBEA.c
         metaheuristics/MOEAD.c
         metaheuristics/MOEAD-dra.c
-        metaheuristics/SMSEMOA.c)
+        metaheuristics/SMSEMOA.c
+        metaheuristics/HypE.c)
 
 
 target_link_libraries(Samaritan m)

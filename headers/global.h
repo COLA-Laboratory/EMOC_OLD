@@ -68,7 +68,8 @@ typedef enum{
     NSGA2,
     MOEAD,
     MOEAD_DAR,
-    SMS_EMOA
+    SMS_EMOA,
+    HypE
 }ALGORITHM_NAME;
 
 

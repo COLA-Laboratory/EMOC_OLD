@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../../header/population.h"
+#include "../../headers/global.h"
 typedef double OBJECTIVE;
 
 typedef struct
@@ -25,9 +25,9 @@ typedef struct
 	FRONT *fronts;
 } FILECONTENTS;
 
-FILECONTENTS *read_data(void *ptr);
+FILECONTENTS *read_data(SMRT_individual *pop, int pop_num);
 
-double hv_wfg(void *ptr);
+double hv_wfg(SMRT_individual *pop, int pop_num);
 
 extern void printContents(FILECONTENTS *);
 

@@ -120,6 +120,15 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.h">
 			<Option target="Samaritan"/>
 		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/WFG_1.15/read.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/WFG_1.15/wfg.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/WFG_1.15/wfg.h">
+			<Option target="Samaritan"/>
+		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/indicators/GD.c">
 			<Option target="Samaritan"/>
 		</Unit>
@@ -145,6 +154,9 @@
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/mating/selection_mating.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/HypE.c">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/IBEA.c">

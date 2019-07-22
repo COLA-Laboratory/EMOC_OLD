@@ -1,162 +1,87 @@
+# include "Iwfg.h"
 
-#include "Iwfg.h"
-
-static void trimLine(char line[])
+void i_printContents (FILECONTENTS *f)
 {
-	int i = 0;
-
-	while(line[i] != '\0')
-	{
-		if (line[i] == '\r' || line[i] == '\n')
-		{
-			line[i] = '\0';
-			break;
-		}
-		i++;
-	}
+    int i , j, k;
+    for (i = 0; i < f->nFronts; i++)
+    {
+        printf ("Front %d:\n", i+1);
+        for (j = 0; j < f->fronts[i].nPoints; j++)
+        {
+            printf ("[%d]\t",j);
+            for ( k = 0; k < f->fronts[i].n; k++)
+            {
+                printf ("%f ", f->fronts[i].points[j].objectives[k]);
+            }
+            printf ("\n");
+        }
+        printf ("\n");
+    }
 }
 
-void printContents(FILECONTENTS *f)
+
+void cola_read_data (FILECONTENTS *fc, SMRT_individual *pop_table, int pop_size)
 {
-	for (int i = 0; i < f->nFronts; i++)
-	{
-		printf("Front %d:\n", i+1);
-		for (int j = 0; j < f->fronts[i].nPoints; j++)
-		{
-			printf("\t");
-			for (int k = 0; k < f->fronts[i].n; k++)
-			{
-				printf("%f ", f->fronts[i].points[j].objectives[k]);
-			}
-			printf("\n");
-		}
-		printf("\n");
-	}
-}
+    int i, j, k;
+    int front, point, objective;
 
-FILECONTENTS *readFile(char filename[])
-{
-	FILE *fp;
-	char line[BUFSIZ];
-	int front = 0, point = 0, objective = 0;
-
-	FILECONTENTS *fc = malloc(sizeof(FILECONTENTS));
-	fc->nFronts = 0;
-	fc->fronts = NULL;
-
-	fp = fopen(filename, "r");
-	if (fp == NULL)
-	{
-		fprintf(stderr, "File %s could not be opened\n", filename);
-		exit(EXIT_FAILURE);
-	}
-
-	while(fgets(line, sizeof line, fp) != NULL)
-	{
-		trimLine(line);
-		if (strcmp(line, "#") == 0)
-		{
-			front = fc->nFronts;
-			fc->nFronts++;
-			fc->fronts = realloc(fc->fronts, sizeof(FRONT) * fc->nFronts);
-			fc->fronts[front].nPoints = 0;
-			fc->fronts[front].points = NULL;
-		}
-		else
-		{
-			FRONT *f = &fc->fronts[front];
-			point = f->nPoints;
-			f->nPoints++;
-			f->points = realloc(f->points, sizeof(POINT) * f->nPoints);
-			f->n = 0;
-			f->points[point].objectives = NULL;
-			char *tok = strtok(line, " \t\n");
-			do
-			{
-				POINT *p = &f->points[point];
-				objective = f->n;
-				f->n++;
-				p->objectives = realloc(p->objectives, sizeof(OBJECTIVE) * f->n);
-				p->objectives[objective] = atof(tok);
-			} while ((tok = strtok(NULL, " \t\n")) != NULL);
-		}
-	}
-
-	fc->nFronts--;
-	// for (int i = 0; i < fc->nFronts; i++) fc->fronts[i].n = fc->fronts[i].points[0].nObjectives;
-        fclose(fp);
-	/* printf("Read %d fronts\n", fc->nFronts);
-	   printContents(fc); */
-	return fc;
-}
-
-FILECONTENTS *read_data()
-{
-    int front = 0, point = 0, objective = 0;
     // init the struct
-    FILECONTENTS *fc = malloc(sizeof(FILECONTENTS));
     fc->nFronts = 0;
-    fc->fronts = NULL;
-    front = fc->nFronts;
+    fc->fronts  = NULL;
+    front       = fc->nFronts;
     fc->nFronts++;
     fc->fronts = realloc(fc->fronts, sizeof(FRONT) * fc->nFronts);
     fc->fronts[front].nPoints = 0;
-    fc->fronts[front].points = NULL;
+    fc->fronts[front].points  = NULL;
+
     // read the data
-
-    int i, j;
-
-    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++) {
+    for (i = 0; i < pop_size; i++)
+    {
         FRONT *f = &fc->fronts[front];
-        point = f->nPoints;
+        point    = f->nPoints;
         f->nPoints++;
-        f->points = realloc(f->points, sizeof(POINT) * f->nPoints);
+        f->points = realloc (f->points, sizeof(POINT) * f->nPoints);
         f->n = 0;
         f->points[point].objectives = NULL;
 
-        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++) {
-            POINT *p = &f->points[point];
+        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
+        {
+            POINT *p  = &f->points[point];
             objective = f->n;
             f->n++;
             p->objectives = realloc(p->objectives, sizeof(OBJECTIVE) * f->n);
-            p->objectives[objective] = g_algorithm_entity.parent_population[i].obj[j];
+            p->objectives[objective] = pop_table[i].obj[j];
         }
     }
-    return fc;
+
+    /*normalize*/
+    for (i = 0; i < fc->nFronts; i++)
+    {
+        for (j = 0; j < fc->fronts[i].nPoints; j++)
+        {
+            for (k = 0; k < fc->fronts[i].n; k++)
+            {
+                fc->fronts[i].points[j].objectives[k] = g_algorithm_entity.nadir_point.obj[k] - fc->fronts[i].points[j].objectives[k];
+                if (fc->fronts[i].points[j].objectives[k] < 0)
+                    fc->fronts[i].points[j].objectives[k] = 0;
+            }
+        }
+    }
 }
 
 
-FILECONTENTS *i_read_data(SMRT_individual *pop, int pop_num)
+void free_file_content (FILECONTENTS *fc)
 {
-    int front = 0, point = 0, objective = 0;
-    // init the struct
-    FILECONTENTS *fc = malloc(sizeof(FILECONTENTS));
-    fc->nFronts = 0;
-    fc->fronts = NULL;
-    front = fc->nFronts;
-    fc->nFronts++;
-    fc->fronts = realloc(fc->fronts, sizeof(FRONT) * fc->nFronts);
-    fc->fronts[front].nPoints = 0;
-    fc->fronts[front].points = NULL;
-    // read the data
-
     int i, j;
-
-    for (i = 0; i < pop_num; i++) {
-        FRONT *f = &fc->fronts[front];
-        point = f->nPoints;
-        f->nPoints++;
-        f->points = realloc(f->points, sizeof(POINT) * f->nPoints);
-        f->n = 0;
-        f->points[point].objectives = NULL;
-
-        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++) {
-            POINT *p = &f->points[point];
-            objective = f->n;
-            f->n++;
-            p->objectives = realloc(p->objectives, sizeof(OBJECTIVE) * f->n);
-            p->objectives[objective] = pop[i].obj[j];
+    for (i = 0; i < fc->nFronts; i++)
+    {
+        FRONT *f = &fc->fronts[i];
+        for (j = 0; j < fc->fronts[i].nPoints; j++)
+        {
+            POINT *p = &f->points[j];
+            free (p->objectives);
         }
+        free (f->points);
     }
-    return fc;
+    free (fc->fronts);
 }

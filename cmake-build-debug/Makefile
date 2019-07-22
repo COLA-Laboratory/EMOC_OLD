@@ -447,6 +447,60 @@ externals/MY_WFG/vector.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.s
 .PHONY : externals/MY_WFG/vector.c.s
 
+externals/WFG_1.15/read.o: externals/WFG_1.15/read.c.o
+
+.PHONY : externals/WFG_1.15/read.o
+
+# target to build an object file
+externals/WFG_1.15/read.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/externals/WFG_1.15/read.c.o
+.PHONY : externals/WFG_1.15/read.c.o
+
+externals/WFG_1.15/read.i: externals/WFG_1.15/read.c.i
+
+.PHONY : externals/WFG_1.15/read.i
+
+# target to preprocess a source file
+externals/WFG_1.15/read.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/externals/WFG_1.15/read.c.i
+.PHONY : externals/WFG_1.15/read.c.i
+
+externals/WFG_1.15/read.s: externals/WFG_1.15/read.c.s
+
+.PHONY : externals/WFG_1.15/read.s
+
+# target to generate assembly for a file
+externals/WFG_1.15/read.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/externals/WFG_1.15/read.c.s
+.PHONY : externals/WFG_1.15/read.c.s
+
+externals/WFG_1.15/wfg.o: externals/WFG_1.15/wfg.c.o
+
+.PHONY : externals/WFG_1.15/wfg.o
+
+# target to build an object file
+externals/WFG_1.15/wfg.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/externals/WFG_1.15/wfg.c.o
+.PHONY : externals/WFG_1.15/wfg.c.o
+
+externals/WFG_1.15/wfg.i: externals/WFG_1.15/wfg.c.i
+
+.PHONY : externals/WFG_1.15/wfg.i
+
+# target to preprocess a source file
+externals/WFG_1.15/wfg.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/externals/WFG_1.15/wfg.c.i
+.PHONY : externals/WFG_1.15/wfg.c.i
+
+externals/WFG_1.15/wfg.s: externals/WFG_1.15/wfg.c.s
+
+.PHONY : externals/WFG_1.15/wfg.s
+
+# target to generate assembly for a file
+externals/WFG_1.15/wfg.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/externals/WFG_1.15/wfg.c.s
+.PHONY : externals/WFG_1.15/wfg.c.s
+
 indicators/GD.o: indicators/GD.c.o
 
 .PHONY : indicators/GD.o
@@ -689,6 +743,33 @@ mating/selection_mating.s: mating/selection_mating.c.s
 mating/selection_mating.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/mating/selection_mating.c.s
 .PHONY : mating/selection_mating.c.s
+
+metaheuristics/HypE.o: metaheuristics/HypE.c.o
+
+.PHONY : metaheuristics/HypE.o
+
+# target to build an object file
+metaheuristics/HypE.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o
+.PHONY : metaheuristics/HypE.c.o
+
+metaheuristics/HypE.i: metaheuristics/HypE.c.i
+
+.PHONY : metaheuristics/HypE.i
+
+# target to preprocess a source file
+metaheuristics/HypE.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.i
+.PHONY : metaheuristics/HypE.c.i
+
+metaheuristics/HypE.s: metaheuristics/HypE.c.s
+
+.PHONY : metaheuristics/HypE.s
+
+# target to generate assembly for a file
+metaheuristics/HypE.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.s
+.PHONY : metaheuristics/HypE.c.s
 
 metaheuristics/IBEA.o: metaheuristics/IBEA.c.o
 
@@ -1059,6 +1140,12 @@ help:
 	@echo "... externals/MY_WFG/vector.o"
 	@echo "... externals/MY_WFG/vector.i"
 	@echo "... externals/MY_WFG/vector.s"
+	@echo "... externals/WFG_1.15/read.o"
+	@echo "... externals/WFG_1.15/read.i"
+	@echo "... externals/WFG_1.15/read.s"
+	@echo "... externals/WFG_1.15/wfg.o"
+	@echo "... externals/WFG_1.15/wfg.i"
+	@echo "... externals/WFG_1.15/wfg.s"
 	@echo "... indicators/GD.o"
 	@echo "... indicators/GD.i"
 	@echo "... indicators/GD.s"
@@ -1086,6 +1173,9 @@ help:
 	@echo "... mating/selection_mating.o"
 	@echo "... mating/selection_mating.i"
 	@echo "... mating/selection_mating.s"
+	@echo "... metaheuristics/HypE.o"
+	@echo "... metaheuristics/HypE.i"
+	@echo "... metaheuristics/HypE.s"
 	@echo "... metaheuristics/IBEA.o"
 	@echo "... metaheuristics/IBEA.i"
 	@echo "... metaheuristics/IBEA.s"

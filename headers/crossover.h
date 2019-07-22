@@ -12,4 +12,5 @@ extern void crossover_IBEA(SMRT_individual *parent_pop_table, SMRT_individual *o
 extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table);
 extern void crossover_MOEAD_dra(SMRT_individual *parent_pop_table, SMRT_individual *parent, int parent_index, SMRT_individual *offspring, NeighborType type);
 extern void crossover_SMSEMOA(SMRT_individual *parent_pop_table, SMRT_individual *offspring);
+extern void crossover_HypE(SMRT_individual *parent_pop_table, SMRT_individual *offspring1, SMRT_individual *offspring2);
 #endif

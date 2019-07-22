@@ -30,6 +30,8 @@ int main(int argc, char** argv) {
             case SMS_EMOA:
                 SMSEMOA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
+            case HypE:
+                HypE_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
             default:
                 break;
         }

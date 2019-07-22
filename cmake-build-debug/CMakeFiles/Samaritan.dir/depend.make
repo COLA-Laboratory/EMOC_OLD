@@ -60,6 +60,14 @@ CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.o: ../externals/MY_WFG/vector
 CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.o: ../externals/MY_WFG/vector.h
 CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.o: ../headers/global.h
 
+CMakeFiles/Samaritan.dir/externals/WFG_1.15/read.c.o: ../externals/WFG_1.15/read.c
+CMakeFiles/Samaritan.dir/externals/WFG_1.15/read.c.o: ../externals/WFG_1.15/wfg.h
+CMakeFiles/Samaritan.dir/externals/WFG_1.15/read.c.o: ../headers/global.h
+
+CMakeFiles/Samaritan.dir/externals/WFG_1.15/wfg.c.o: ../externals/WFG_1.15/wfg.c
+CMakeFiles/Samaritan.dir/externals/WFG_1.15/wfg.c.o: ../externals/WFG_1.15/wfg.h
+CMakeFiles/Samaritan.dir/externals/WFG_1.15/wfg.c.o: ../headers/global.h
+
 CMakeFiles/Samaritan.dir/indicators/GD.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/indicators/GD.c.o: ../headers/utility.h
 CMakeFiles/Samaritan.dir/indicators/GD.c.o: ../indicators/GD.c
@@ -68,8 +76,8 @@ CMakeFiles/Samaritan.dir/indicators/IGD.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/indicators/IGD.c.o: ../headers/utility.h
 CMakeFiles/Samaritan.dir/indicators/IGD.c.o: ../indicators/IGD.c
 
-CMakeFiles/Samaritan.dir/indicators/hv.c.o: ../externals/MY_WFG/Iwfg.h
 CMakeFiles/Samaritan.dir/indicators/hv.c.o: ../externals/MY_WFG/vector.h
+CMakeFiles/Samaritan.dir/indicators/hv.c.o: ../externals/WFG_1.15/wfg.h
 CMakeFiles/Samaritan.dir/indicators/hv.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/indicators/hv.c.o: ../headers/indicator.h
 CMakeFiles/Samaritan.dir/indicators/hv.c.o: ../indicators/hv.c
@@ -102,6 +110,22 @@ CMakeFiles/Samaritan.dir/mating/selection_mating.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/mating/selection_mating.c.o: ../headers/mating.h
 CMakeFiles/Samaritan.dir/mating/selection_mating.c.o: ../headers/random.h
 CMakeFiles/Samaritan.dir/mating/selection_mating.c.o: ../mating/selection_mating.c
+
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../externals/MY_WFG/Iwfg.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/analysis.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/crossover.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/dominance_relation.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/global.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/initialize.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/memory.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/metaheuristics.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/mutation.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/population.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/print.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/sort.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/utility.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../metaheuristics/HypE.c
 
 CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o: ../headers/analysis.h
 CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o: ../headers/crossover.h

@@ -24,6 +24,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Samaritan.dir/externals/MY_WFG/read.c.o"
   "CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.o"
   "CMakeFiles/Samaritan.dir/externals/MY_WFG/Iwfg.c.o"
+  "CMakeFiles/Samaritan.dir/externals/WFG_1.15/wfg.c.o"
+  "CMakeFiles/Samaritan.dir/externals/WFG_1.15/read.c.o"
   "CMakeFiles/Samaritan.dir/indicators/hv.c.o"
   "CMakeFiles/Samaritan.dir/indicators/IGD.c.o"
   "CMakeFiles/Samaritan.dir/indicators/GD.c.o"
@@ -32,6 +34,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o"
+  "CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o"
   "Samaritan.pdb"
   "Samaritan"
 )

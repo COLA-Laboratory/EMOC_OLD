@@ -17,14 +17,13 @@ static void trimLine(char line[])
 
 void printContents(FILECONTENTS *f)
 {
-	int i , j, k;
-	for (i = 0; i < f->nFronts; i++)
+	for (int i = 0; i < f->nFronts; i++)
 	{
 		printf("Front %d:\n", i+1);
-		for (j = 0; j < f->fronts[i].nPoints; j++)
+		for (int j = 0; j < f->fronts[i].nPoints; j++)
 		{
 			printf("\t");
-			for ( k = 0; k < f->fronts[i].n; k++)
+			for (int k = 0; k < f->fronts[i].n; k++)
 			{
 				printf("%f ", f->fronts[i].points[j].objectives[k]);
 			}
@@ -34,42 +33,23 @@ void printContents(FILECONTENTS *f)
 	}
 }
 
-FILECONTENTS *read_data(SMRT_individual *pop, int pop_num)
+FILECONTENTS *readFile(char filename[])
 {
+	FILE *fp;
+	char line[BUFSIZ];
 	int front = 0, point = 0, objective = 0;
-	// init the struct
+
 	FILECONTENTS *fc = malloc(sizeof(FILECONTENTS));
 	fc->nFronts = 0;
 	fc->fronts = NULL;
-	front = fc->nFronts;
-	fc->nFronts++;
-	fc->fronts = realloc(fc->fronts, sizeof(FRONT) * fc->nFronts);
-	fc->fronts[front].nPoints = 0;
-	fc->fronts[front].points = NULL;
-	// read the data
 
-	int i,j;
-
-	for ( i = 0; i < pop_num; i++)
+	fp = fopen(filename, "r");
+	if (fp == NULL)
 	{
-		FRONT *f = &fc->fronts[front];
-		point = f->nPoints;
-		f->nPoints++;
-		f->points = realloc(f->points, sizeof(POINT) * f->nPoints);
-		f->n = 0;
-		f->points[point].objectives = NULL;
-
-		for ( j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
-		{
-			POINT *p = &f->points[point];
-			objective = f->n;
-			f->n++;
-			p->objectives = realloc(p->objectives, sizeof(OBJECTIVE) * f->n);
-			p->objectives[objective] = pop[i].obj[j];
-		}
+		fprintf(stderr, "File %s could not be opened\n", filename);
+		exit(EXIT_FAILURE);
 	}
 
-/*
 	while(fgets(line, sizeof line, fp) != NULL)
 	{
 		trimLine(line);
@@ -101,11 +81,10 @@ FILECONTENTS *read_data(SMRT_individual *pop, int pop_num)
 		}
 	}
 
-*/
-	//fc->nFronts--;
+	fc->nFronts--;
 	// for (int i = 0; i < fc->nFronts; i++) fc->fronts[i].n = fc->fronts[i].points[0].nObjectives;
-
-	//printf("Read %d fronts\n", fc->nFronts);
-	//printContents(fc);
+        fclose(fp);
+	/* printf("Read %d fronts\n", fc->nFronts);
+	   printContents(fc); */
 	return fc;
 }

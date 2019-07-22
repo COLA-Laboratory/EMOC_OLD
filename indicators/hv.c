@@ -23,14 +23,14 @@
 */
 #include "../headers/global.h"
 #include "../headers/indicator.h"
-#include "../externals/MY_WFG/Iwfg.h"
+#include "../externals/WFG_1.15/wfg.h"
 #include "../externals/MY_WFG/vector.h"
 
-double calculate_hv (void *ptr);
 
 static struct double_vector *record = NULL;
 
 /* Calculate the hv value of a population */
+/*
 void record_hv (void *ptr, int id)
 {
     double value;
@@ -49,17 +49,18 @@ void record_hv (void *ptr, int id)
 }
 
 /* Calculate HV value */
-double calculate_hv (void *ptr)
+double calculate_hv (SMRT_individual *pop, int pop_num)
 {
     double hv_value;
 
     // call wfg's hv calculation method
-    hv_value = hv_wfg (ptr);
+    hv_value = hv_wfg (pop, pop_num);
 
     return hv_value;
 }
 
 /* Print the HV value into a specified file */
+/*
 extern void print_hv (char *file_name)
 {
     int i;
@@ -83,5 +84,5 @@ extern void print_hv (char *file_name)
 
     return;
 }
-
+*/
 
