@@ -51,7 +51,7 @@ extern void HypE_framework (SMRT_individual *parent_pop, SMRT_individual *offspr
     {
         print_progress ();
 
-        crossover_HypE(parent_pop, offspring_pop);
+        //crossover_HypE(parent_pop, offspring_pop);
         mutation_pop(offspring_pop);
 
         evaluate_population(offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
@@ -60,7 +60,7 @@ extern void HypE_framework (SMRT_individual *parent_pop, SMRT_individual *offspr
 
         update_ideal_point(offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
 
-        HypE_select(parent_pop, offspring1, offspring2);
+//        HypE_select(parent_pop, offspring1, offspring2);
         //SMSEMOA_select(parent_pop, offspring);
 
 

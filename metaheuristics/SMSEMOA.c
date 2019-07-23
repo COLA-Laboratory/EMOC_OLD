@@ -10,8 +10,8 @@
 #include "../headers/utility.h"
 #include "../headers/analysis.h"
 #include "../headers/sort.h"
+//#include "../externals/IWFG_1.01/iwfg.h"
 #include "../externals/MY_WFG/Iwfg.h"
-
 /* Fill the population according to the non-domination levels and remove the individual with the least Hypervolume contribution */
 
 
@@ -24,12 +24,14 @@ static int SMS_find_min_volume_Index(SMRT_individual *pop_table, int pop_num)
 
     min = (double *)malloc(sizeof(double) * (g_algorithm_entity.algorithm_para.objective_number + 2));
 
+    i_n = g_algorithm_entity.algorithm_para.objective_number;
     cola_read_data(&f, pop_table, pop_num);
 
 
     if (g_algorithm_entity.algorithm_para.objective_number == 2)
     {
         i_ihv2(f.fronts[0], min);
+
     }
     else
     {
@@ -37,31 +39,13 @@ static int SMS_find_min_volume_Index(SMRT_individual *pop_table, int pop_num)
     }
 
 
-    for (int i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
-    {
-        printf("solution[%d]  \n    ", i);
-
-        for (int j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
-        {
-            printf("  obj[%d]:%f", j, pop_table[i].obj[j]);
-        }
-        printf("\n");
-    }
-
-
-    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
-    {
-        printf("min_objctive[%d]:%f", i, min[i]);
-        printf("nadir_Point:%f, different:%f\n",g_algorithm_entity.nadir_point.obj[i], (g_algorithm_entity.nadir_point.obj[i] - min[i]));
-    }
-    printf("min_hy:%f\n", min[g_algorithm_entity.algorithm_para.objective_number]);
 
     for (j = 0; j < pop_num; j++)
     {
         num_same = 0;
         for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
         {
-            if (fabs (min[i] - pop_table[index].obj[i]) < 1e-4)
+            if ((fabs ((g_algorithm_entity.nadir_point.obj[i] - min[i]) - pop_table[j].obj[i]) < 1e-4))
                 num_same++;
         }
         if (num_same == g_algorithm_entity.algorithm_para.objective_number)
@@ -79,8 +63,6 @@ static void SMSEMOA_select(SMRT_individual *parent_pop, SMRT_individual *offspri
     int current_rank = 0, front_num = 0;
     SMRT_individual *merge_pop = NULL, *temp_pop = NULL;
 
-
-    printf("come into SMSEMOA_select\n\n\n\n");
 
     allocate_memory_for_pop(&merge_pop, g_algorithm_entity.algorithm_para.pop_size + 1);
     allocate_memory_for_pop(&temp_pop, g_algorithm_entity.algorithm_para.pop_size + 1);
@@ -156,19 +138,8 @@ static void SMSEMOA_select(SMRT_individual *parent_pop, SMRT_individual *offspri
         temp_num++;
     }
 
-    for (int i = 0; i < g_algorithm_entity.algorithm_para.pop_size + 1; i++)
-    {
-        printf("solution[%d]  \n    ", i);
-
-        for (int j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
-        {
-            printf("  obj[%d]:%f", j, merge_pop[i].obj[j]);
-        }
-        printf("\n");
-    }
 
     min_hv_index = SMS_find_min_volume_Index(temp_pop, temp_num);
-    printf("i:%d, archive:%d, fronti:%d, temp_num:%d, min_index:%d\n", i, archive_num, front_size[i], temp_num, min_hv_index);
 
 
     for (i = 0; i < temp_num; i++)
@@ -256,7 +227,6 @@ extern void SMSEMOA_framework (SMRT_individual *parent_pop, SMRT_individual *off
         torder[i] = malloc (sizeof(int) * i_maxn);
     for (i = 0; i < i_maxm; i++)
         tcompare[i] = malloc (sizeof(int) * i_maxn);
-
 
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
     while(g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)

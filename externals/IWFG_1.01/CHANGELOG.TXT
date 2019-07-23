@@ -1,2 +1,0 @@
-1.01 
-* 2D data with dominated points now returns the first dominated point the algorithm finds, and zero hypervolume 

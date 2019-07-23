@@ -49,6 +49,7 @@ add_executable(Samaritan main.c
         externals/WFG_1.15/wfg.c
         externals/WFG_1.15/read.c
 
+
         indicators/hv.c
         indicators/IGD.c
         indicators/GD.c

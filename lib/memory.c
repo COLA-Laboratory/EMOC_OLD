@@ -98,7 +98,6 @@ extern int destroy_memory_for_pop (SMRT_individual **pop, int population_size)
 
     for (i = 0; i < population_size; i++)
     {
-        printf("index:%d\n", i);
         /*free variable space*/
         if (NULL != (*pop)[i].variable)
         {

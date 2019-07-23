@@ -30,8 +30,8 @@
 static struct double_vector *record = NULL;
 
 /* Calculate the hv value of a population */
-/*
-void record_hv (void *ptr, int id)
+
+void record_hv (SMRT_individual *pop, int pop_num)
 {
     double value;
     if (record == NULL)
@@ -42,7 +42,7 @@ void record_hv (void *ptr, int id)
     }
 
     // calculate hv
-    value = calculate_hv (ptr);
+    value = calculate_hv (pop, pop_num);
     double_vector_pushback (record, value);
 
     return;
@@ -60,7 +60,7 @@ double calculate_hv (SMRT_individual *pop, int pop_num)
 }
 
 /* Print the HV value into a specified file */
-/*
+
 extern void print_hv (char *file_name)
 {
     int i;
@@ -84,5 +84,5 @@ extern void print_hv (char *file_name)
 
     return;
 }
-*/
+
 
