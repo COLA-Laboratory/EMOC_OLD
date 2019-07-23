@@ -1,5 +1,10 @@
 #include "../headers/global.h"
 #include "../headers/utility.h"
+#include "../externals/MY_WFG/vector.h"
+
+static struct double_vector *record = NULL;
+
+
 
 extern double cal_GD(SMRT_individual *pop_table, int pop_num)
 {
@@ -47,6 +52,25 @@ extern double cal_GD(SMRT_individual *pop_table, int pop_num)
 
 }
 
+/* Calculate the GD value of a population */
+void record_GD (SMRT_individual *pop, int generation)
+{
+    double value;
+
+    if (record == NULL)
+    {
+        record = (struct double_vector *) malloc (sizeof(struct double_vector));
+        record->value = nan("1");
+        record->next  = NULL;
+    }
+
+    // calculate GD
+    value = cal_GD (pop,g_algorithm_entity.algorithm_para.pop_size);
+    double_vector_pushback (record, value);
+
+    return;
+}
+
 
 extern void print_GD (char *file_name)
 {
@@ -57,12 +81,15 @@ extern void print_GD (char *file_name)
     fpt = fopen (file_name, "w");
 
     i = 0;
-    /*
+
     while (1)
     {
         value = double_vector_get (record->next, i++);
         if (!isnan(value))
+        {
             fprintf (fpt, "%lf\n", value);
+
+        }
         else
             break;
     }
@@ -70,6 +97,6 @@ extern void print_GD (char *file_name)
     fclose (fpt);
     double_vector_free (record);
     record = NULL;
-*/
+
     return;
 }

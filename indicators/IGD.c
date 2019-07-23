@@ -1,7 +1,7 @@
 #include "../headers/global.h"
 #include "../headers/utility.h"
-
-
+#include "../externals/MY_WFG/vector.h"
+static struct double_vector *record = NULL;
 
 extern double cal_IGD(SMRT_individual *pop_table, int pop_num)
 {
@@ -49,6 +49,25 @@ extern double cal_IGD(SMRT_individual *pop_table, int pop_num)
 }
 
 
+void record_IGD (SMRT_individual *pop, int generation)
+{
+    double value;
+
+    if (record == NULL)
+    {
+        record = (struct double_vector *) malloc (sizeof(struct double_vector));
+        record->value = nan("1");
+        record->next  = NULL;
+    }
+
+    // calculate IGD
+    value = cal_IGD (pop,g_algorithm_entity.algorithm_para.pop_size);
+    value = 0;//此处为了调整格式而为value值设置的0
+    double_vector_pushback (record, value);
+
+    return;
+}
+
 void print_IGD (char *file_name)
 {
     int i;
@@ -56,7 +75,7 @@ void print_IGD (char *file_name)
     FILE *fpt;
 
     fpt = fopen (file_name, "w");
-/*
+
     i = 0;
     while (1)
     {
@@ -70,6 +89,6 @@ void print_IGD (char *file_name)
     fclose (fpt);
     double_vector_free (record);
     record = NULL;
-*/
+
     return;
 }

@@ -31,7 +31,7 @@ static struct double_vector *record = NULL;
 
 /* Calculate the hv value of a population */
 
-void record_hv (SMRT_individual *pop, int pop_num)
+void record_HV (SMRT_individual *pop, int generation)
 {
     double value;
     if (record == NULL)
@@ -42,7 +42,7 @@ void record_hv (SMRT_individual *pop, int pop_num)
     }
 
     // calculate hv
-    value = calculate_hv (pop, pop_num);
+    value = calculate_hv (pop, g_algorithm_entity.algorithm_para.pop_size);
     double_vector_pushback (record, value);
 
     return;

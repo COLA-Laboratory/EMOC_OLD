@@ -1,7 +1,7 @@
 #include "../headers/global.h"
 #include "../headers/indicator.h"
-
-
+#include "../headers/print.h"
+#include "errno.h"
 /* Build up multi-level directories */
 void _mkdir (const char *dir)
 {
@@ -22,36 +22,31 @@ void _mkdir (const char *dir)
             *p = '/';
         }
     }
-    mkdir (tmp, S_IRWXU);
+   mkdir (tmp, S_IRWXU);
 }
-
 
 
 extern void track_evolution (SMRT_individual *pop, int generation, int end)
 {
-    int i, j;
-    int read_ptr;
-
-    char name[20];
     char id_char[10];
-
     char output_dir_level1[BUFSIZE_L];    // upper level directory
     char output_dir_level2[BUFSIZE_L];    // lower level directory
     char output_file[BUFSIZE_L];
-
+    int n = 0;
     sprintf (id_char, "%d", generation);
     // set the output directory
-    sprintf (output_dir_level1, "./out/%s_M%d_D%d/%s/",
+    sprintf (output_dir_level1, "../out/%s_M%d_D%d/%s/",
              g_problem_name_str[g_algorithm_entity.testProblem],
              g_algorithm_entity.algorithm_para.objective_number,
              g_algorithm_entity.algorithm_para.variable_number,
              g_algorithm_name_str[g_algorithm_entity.algorithm_Name]
     );
-    sprintf (output_dir_level2, "./out/%s_M%d_D%d/%s/%d/",
+    sprintf (output_dir_level2, "../out/%s_M%d_D%d/%s/%d/",
              g_problem_name_str[g_algorithm_entity.testProblem],
              g_algorithm_entity.algorithm_para.objective_number,
              g_algorithm_entity.algorithm_para.variable_number,
-             g_algorithm_name_str[g_algorithm_entity.algorithm_Name]
+             g_algorithm_name_str[g_algorithm_entity.algorithm_Name],
+             g_algorithm_entity.run_index_current
     );
 
     _mkdir (output_dir_level2);
@@ -112,23 +107,23 @@ extern void track_evolution (SMRT_individual *pop, int generation, int end)
         {
             case VAR:
                 sprintf (output_file, "%smedium_VAR_%s.out", output_dir_level2, id_char);
-                //print_variable (output_file, ptr);
+                print_variable (output_file, pop);
                 break;
             case FUN:
                 sprintf (output_file, "%smedium_FUN_%s.out", output_dir_level2, id_char);
-                //print_objective (output_file, ptr);
+                print_objective (output_file, pop);
                 break;
             case GD:
-                record_gd (ptr, id);
+                record_GD (pop, generation);
                 break;
             case IGD:
-                record_igd (ptr, id);
+                record_IGD (pop, generation);
                 break;
             case HV:
-                record_hv (ptr,id);
+                record_HV (pop,generation);
                 break;
             case PLOT:
-                py_plot(ptr,id);
+                //py_plot(ptr,id);
                 break;
             default:
                 printf("unknown setting for analyse \n");
@@ -142,11 +137,11 @@ extern void track_evolution (SMRT_individual *pop, int generation, int end)
         {
             case VAR:
                 sprintf (output_file, "%sVAR%d.out", output_dir_level1, g_algorithm_entity.run_index_current);
-                print_VAR(output_file);
+                print_variable (output_file, pop);
                 break;
             case FUN:
                 sprintf (output_file, "%sFUN%d.out", output_dir_level1, g_algorithm_entity.run_index_current);
-                print_FUN(output_file);
+                print_objective (output_file, pop);
                 break;
             case GD:
                 sprintf (output_file, "%sGD_%d.txt", output_dir_level2, g_algorithm_entity.run_index_current);
@@ -161,9 +156,9 @@ extern void track_evolution (SMRT_individual *pop, int generation, int end)
                 print_hv(output_file);
                 break;
             case PLOT:
-                py_plot(NULL,0);
+               // py_plot(NULL,0);
                 sprintf (output_file, "%sFUN%d.out", output_dir_level1, g_algorithm_entity.run_index_current);
-                gnu_plot(output_file, "FUN");
+                //gnu_plot(output_file, "FUN");
                 break;
             default:
                 break;

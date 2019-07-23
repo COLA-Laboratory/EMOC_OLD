@@ -30,6 +30,7 @@ void print_objective (char *file_name, SMRT_individual * pop_table)
 
     fpt = fopen (file_name, "w");
 
+
     for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
     {
         pop = pop_table + i;
