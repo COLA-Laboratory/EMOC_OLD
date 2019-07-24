@@ -12,180 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0455c3f2-7ea3-4729-98b6-7f6942349db5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_1.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_10.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_100.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_110.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_120.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_130.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_140.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_150.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_160.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_170.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_180.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_190.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_20.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_200.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_30.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_40.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_50.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_60.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_70.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_80.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/1/medium_FUN_90.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/IBEA/FUN1.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_1.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_10.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_100.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_110.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_120.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_130.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_140.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_150.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_160.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_170.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_180.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_190.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_20.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_200.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_30.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_40.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_50.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_60.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_70.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_80.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/1/medium_FUN_90.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD/FUN1.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_1.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_10.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_100.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_110.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_120.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_130.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_140.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_150.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_160.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_170.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_180.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_190.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_20.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_200.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_210.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_220.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_230.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_240.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_250.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_260.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_270.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_280.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_290.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_30.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_300.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_310.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_320.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_330.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_340.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_350.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_360.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_370.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_380.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_390.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_40.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_400.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_410.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_420.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_430.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_440.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_450.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_460.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_470.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_480.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_490.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_50.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_500.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_510.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_520.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_530.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_540.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_550.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_560.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_570.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_580.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_590.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_60.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_600.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_610.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_620.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_630.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_640.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_650.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_660.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_670.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_680.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_690.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_70.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_700.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_710.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_720.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_730.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_740.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_750.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_760.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_770.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_780.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_790.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_80.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_800.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_810.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_820.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_830.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_840.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_850.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_860.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_870.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_880.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_890.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_90.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_900.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_910.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_920.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_930.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_940.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_950.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_960.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_970.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_980.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_990.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/1/medium_FUN_996.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/MOEAD_DRA/FUN1.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/GD_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/HV_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/IGD_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_1.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_10.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_100.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_110.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_120.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_130.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_140.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_150.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_160.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_170.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_180.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_190.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_20.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_200.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_30.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_40.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_50.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_60.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_70.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_80.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_90.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/FUN1.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/SMSEMOA/1/medium_FUN_1.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/SMSEMOA/FUN1.out" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Samaritan.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core_code/global.c" beforeDir="false" afterPath="$PROJECT_DIR$/core_code/global.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -200,14 +32,41 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/metaheuristics/SMSEMOA.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="180" column="47" lean-forward="true" selection-start-line="180" selection-start-column="47" selection-end-line="180" selection-end-column="47" />
+            <state relative-caret-position="109">
+              <caret line="164" selection-start-line="164" selection-end-line="164" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="19" selection-start-column="19" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core_code/initialize.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-144">
+              <caret line="219" column="46" selection-start-line="219" selection-start-column="31" selection-end-line="219" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core_code/global.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -234,7 +93,6 @@
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/headers/list.h" />
         <option value="$PROJECT_DIR$/headers/selection.h" />
-        <option value="$PROJECT_DIR$/core_code/global.c" />
         <option value="$PROJECT_DIR$/selection/MOEAD/update.c" />
         <option value="$PROJECT_DIR$/metaheuristics/MOEAD.c" />
         <option value="$PROJECT_DIR$/lib/memory.c" />
@@ -258,6 +116,7 @@
         <option value="$PROJECT_DIR$/indicators/GD.c" />
         <option value="$PROJECT_DIR$/indicators/IGD.c" />
         <option value="$PROJECT_DIR$/config.txt" />
+        <option value="$PROJECT_DIR$/core_code/global.c" />
       </list>
     </option>
   </component>
@@ -269,22 +128,27 @@
     <option name="height" value="1513" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
+      <pane id="ProjectPane" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
             <path>
-              <item name="Samaritan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Samaritan" type="462c0819:PsiDirectoryNode" />
+              <item name="Samaritan" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/CLionProjects/my_work/Samaritan" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
             <path>
-              <item name="Samaritan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Samaritan" type="462c0819:PsiDirectoryNode" />
-              <item name="metaheuristics" type="462c0819:PsiDirectoryNode" />
+              <item name="Samaritan" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/CLionProjects/my_work/Samaritan" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="core_code" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="Samaritan" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/CLionProjects/my_work/Samaritan" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="metaheuristics" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -336,12 +200,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97668000" />
+    <option name="totallyTimeSpent" value="97714000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1256" y="461" width="2358" height="1513" extended-state="0" />
+    <frame x="67" y="25" width="3773" height="2135" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25432527" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1591092" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -378,17 +243,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/crossover/crossover_real.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="161" column="25" lean-forward="true" selection-start-line="161" selection-start-column="25" selection-end-line="161" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-            <element signature="e#130#2108#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/headers/crossover.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -461,16 +315,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/metaheuristics/SMS_EMOA.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-          <folding>
-            <element signature="e#39#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/metaheuristics/SMS_EMOA.c" />
     <entry file="file:///usr/include/x86_64-linux-gnu/bits/mathcalls.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -541,49 +386,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M3_D10/NSGA2/0/medium_FUN_20.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M3_D10/NSGA2/0/medium_FUN_60.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M3_D10/NSGA2/0/medium_FUN_240.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M3_D10/NSGA2/FUN1.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="61" column="36" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M3_D10/NSGA2/0/medium_FUN_1.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/0/medium_FUN_1.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/0/medium_FUN_30.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/0/medium_FUN_90.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/0/medium_FUN_140.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/0/medium_FUN_180.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/0/medium_FUN_190.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/FUN1.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_200.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M3_D10/NSGA2/0/medium_FUN_20.out" />
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M3_D10/NSGA2/0/medium_FUN_60.out" />
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M3_D10/NSGA2/0/medium_FUN_240.out" />
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M3_D10/NSGA2/FUN1.out" />
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M3_D10/NSGA2/0/medium_FUN_1.out" />
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/0/medium_FUN_1.out" />
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/0/medium_FUN_30.out" />
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/0/medium_FUN_90.out" />
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/0/medium_FUN_140.out" />
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/0/medium_FUN_180.out" />
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/0/medium_FUN_190.out" />
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/FUN1.out" />
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/medium_FUN_200.out" />
     <entry file="file://$PROJECT_DIR$/headers/initialize.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -626,13 +441,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core_code/initialize.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="219" column="46" selection-start-line="219" selection-start-column="31" selection-end-line="219" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/headers/global.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
@@ -640,9 +448,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/IGD_1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/IGD_1.txt" />
     <entry file="file://$PROJECT_DIR$/indicators/IGD.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-9">
@@ -653,20 +459,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="11" lean-forward="true" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/HV_1.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/HV_1.txt" />
     <entry file="file:///usr/include/math.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -674,13 +467,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/GD_1.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/out/DTLZ1_M2_D10/NSGA2/1/GD_1.txt" />
     <entry file="file://$PROJECT_DIR$/indicators/GD.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="445">
@@ -703,11 +490,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/metaheuristics/SMSEMOA.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="180" column="47" lean-forward="true" selection-start-line="180" selection-start-column="47" selection-end-line="180" selection-end-column="47" />
+        <state relative-caret-position="109">
+          <caret line="164" selection-start-line="164" selection-end-line="164" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core_code/initialize.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-144">
+          <caret line="219" column="46" selection-start-line="219" selection-start-column="31" selection-end-line="219" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core_code/global.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="19" selection-start-column="19" selection-end-column="19" />
         </state>
       </provider>
     </entry>
