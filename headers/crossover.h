@@ -8,6 +8,7 @@ extern void de_crossover (SMRT_individual *parent1, SMRT_individual *parent2, SM
 
 
 extern void crossover_nsga2(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table);
+extern void crossover_spea2(SMRT_individual *elite_pop_table, SMRT_individual *offspring_pop_table);
 extern void crossover_IBEA(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table);
 extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table);
 extern void crossover_MOEAD_dra(SMRT_individual *parent_pop_table, SMRT_individual *parent, int parent_index, SMRT_individual *offspring, NeighborType type);

@@ -32,6 +32,8 @@ int main(int argc, char** argv) {
                 break;
             case HypE:
                 HypE_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+            case SPEA2:
+                SPEA2_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
             default:
                 break;
         }

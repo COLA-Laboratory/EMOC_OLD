@@ -1,15 +1,11 @@
 #include "../headers/global.h"
 #include "../headers/metaheuristics.h"
-#include "../headers/crossover.h"
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/dominance_relation.h"
 #include "../headers/initialize.h"
-#include "../headers/memory.h"
 #include "../headers/utility.h"
 #include "../headers/analysis.h"
-#include "../headers/sort.h"
 #include "../externals/MY_WFG/Iwfg.h"
 
 

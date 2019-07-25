@@ -1,4 +1,4 @@
-# Install script for directory: /home/dragon/CLionProjects/Samaritan
+# Install script for directory: /home/maopl/CLionProjects/my_work/Samaritan
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/dragon/CLionProjects/Samaritan/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

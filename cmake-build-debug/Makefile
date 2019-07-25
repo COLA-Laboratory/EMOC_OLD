@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/dragon/Documents/workspace/clion-2019.1.4/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/81/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/dragon/Documents/workspace/clion-2019.1.4/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/81/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dragon/CLionProjects/Samaritan
+CMAKE_SOURCE_DIR = /home/maopl/CLionProjects/my_work/Samaritan
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dragon/CLionProjects/Samaritan/cmake-build-debug
+CMAKE_BINARY_DIR = /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/dragon/CLionProjects/Samaritan/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/dragon/Documents/workspace/clion-2019.1.4/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/81/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/dragon/Documents/workspace/clion-2019.1.4/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/81/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dragon/CLionProjects/Samaritan/cmake-build-debug/CMakeFiles /home/dragon/CLionProjects/Samaritan/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dragon/CLionProjects/Samaritan/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -906,6 +906,33 @@ metaheuristics/SMSEMOA.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.s
 .PHONY : metaheuristics/SMSEMOA.c.s
 
+metaheuristics/SPEA2.o: metaheuristics/SPEA2.c.o
+
+.PHONY : metaheuristics/SPEA2.o
+
+# target to build an object file
+metaheuristics/SPEA2.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.o
+.PHONY : metaheuristics/SPEA2.c.o
+
+metaheuristics/SPEA2.i: metaheuristics/SPEA2.c.i
+
+.PHONY : metaheuristics/SPEA2.i
+
+# target to preprocess a source file
+metaheuristics/SPEA2.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.i
+.PHONY : metaheuristics/SPEA2.c.i
+
+metaheuristics/SPEA2.s: metaheuristics/SPEA2.c.s
+
+.PHONY : metaheuristics/SPEA2.s
+
+# target to generate assembly for a file
+metaheuristics/SPEA2.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.s
+.PHONY : metaheuristics/SPEA2.c.s
+
 mutation/mutation_operator.o: mutation/mutation_operator.c.o
 
 .PHONY : mutation/mutation_operator.o
@@ -1191,6 +1218,9 @@ help:
 	@echo "... metaheuristics/SMSEMOA.o"
 	@echo "... metaheuristics/SMSEMOA.i"
 	@echo "... metaheuristics/SMSEMOA.s"
+	@echo "... metaheuristics/SPEA2.o"
+	@echo "... metaheuristics/SPEA2.i"
+	@echo "... metaheuristics/SPEA2.s"
 	@echo "... mutation/mutation_operator.o"
 	@echo "... mutation/mutation_operator.i"
 	@echo "... mutation/mutation_operator.s"

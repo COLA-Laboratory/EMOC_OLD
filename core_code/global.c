@@ -5,7 +5,8 @@ char *g_algorithm_name_str[ALGORITHM_NAME_NUM] = {
         "MOEAD",
         "MOEAD_DRA",
         "SMSEMOA",
-        "HYPE"
+        "HYPE",
+        "SPEA2"
 };
 
 

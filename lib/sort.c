@@ -139,3 +139,43 @@ extern void non_dominated_sort(SMRT_individual *pop_table, int pop_num)
     free(dominate_num);
     return;
 }
+
+static int partition_by_fit(Fitness_info_t *fitnessInfo, int left, int right)
+{
+    double temp_fit = fitnessInfo[left].fitness;
+    int temp_index = fitnessInfo[left].idx;
+    while(left < right)
+    {
+        while ((left < right) && (fitnessInfo[right].fitness >= temp_fit))right--;
+        if (left < right)
+        {
+            fitnessInfo[left].idx = fitnessInfo[right].idx;
+            fitnessInfo[left].fitness = fitnessInfo[right].fitness;
+            left++;
+        }
+        while ((left < right) && (fitnessInfo[right].fitness < temp_fit))left++;
+        if (left < right)
+        {
+            fitnessInfo[right].idx = fitnessInfo[left].idx;
+            fitnessInfo[right].fitness = fitnessInfo[left].fitness;
+            right--;
+        }
+    }
+    fitnessInfo[left].fitness = temp_fit;
+    fitnessInfo[left].idx = temp_index;
+    return left;
+}
+
+
+extern void fitness_quicksort(Fitness_info_t *fitnessInfo, int left, int right)
+{
+    int pos = 0;
+
+    if (left < right)
+    {
+        pos = partition_by_fit(fitnessInfo, left, right);
+        fitness_quicksort(fitnessInfo, pos + 1, right);
+        fitness_quicksort(fitnessInfo, left, right - 1);
+    }
+    return;
+}

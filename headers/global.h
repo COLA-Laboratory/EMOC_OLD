@@ -69,7 +69,8 @@ typedef enum{
     MOEAD,
     MOEAD_DAR,
     SMS_EMOA,
-    HypE
+    HypE,
+    SPEA2
 }ALGORITHM_NAME;
 
 
@@ -116,6 +117,11 @@ typedef enum {
     GLOBAL_PARENT
 }NeighborType;
 
+typedef enum {
+    GREATER,
+    LESSER
+}Compare_type;
+
 typedef struct {
     int idx;
     int *neighbor;
@@ -141,6 +147,8 @@ typedef struct {
     MOEAD_NEIGHBOR *neighbor_table;
     double *pai;
 }MOEAD_DAR_PARA;
+
+
 
 /*mutation parameter*/
 typedef struct {
@@ -226,7 +234,6 @@ typedef struct Evolution_algorithm_entity{
     SBX_PARA sbxPara;
     DE_PARA  dePara;
     MOEAD_PARA MOEAD_para;
-
 }SMRT_entity;
 
 typedef struct lists

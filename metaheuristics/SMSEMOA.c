@@ -4,15 +4,13 @@
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/dominance_relation.h"
 #include "../headers/initialize.h"
 #include "../headers/memory.h"
 #include "../headers/utility.h"
 #include "../headers/analysis.h"
 #include "../headers/sort.h"
-//#include "../externals/IWFG_1.01/iwfg.h"
 #include "../externals/MY_WFG/Iwfg.h"
-/* Fill the population according to the non-domination levels and remove the individual with the least Hypervolume contribution */
+
 
 
 static int SMS_find_min_volume_Index(SMRT_individual *pop_table, int pop_num)

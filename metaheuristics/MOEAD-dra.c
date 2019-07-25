@@ -4,14 +4,11 @@
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/dominance_relation.h"
 #include "../headers/initialize.h"
 #include "../headers/utility.h"
 #include "../headers/sort.h"
-#include "../headers/memory.h"
 #include "../headers/selection.h"
 #include "../headers/random.h"
-#include "../headers/list.h"
 #include "../headers/analysis.h"
 
 
