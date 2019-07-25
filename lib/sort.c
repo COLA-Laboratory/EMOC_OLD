@@ -2,7 +2,7 @@
 #include "../headers/sort.h"
 #include "../headers/dominance_relation.h"
 
-extern void bublesort_weight(Weight_distance_info_t* distanceInfo, int size)
+extern void Distance_buble_sort(Distance_info_t *distanceInfo, int size)
 {
     int i = 0, j = 0;
     int temp_index = 0;
@@ -176,6 +176,47 @@ extern void fitness_quicksort(Fitness_info_t *fitnessInfo, int left, int right)
         pos = partition_by_fit(fitnessInfo, left, right);
         fitness_quicksort(fitnessInfo, pos + 1, right);
         fitness_quicksort(fitnessInfo, left, right - 1);
+    }
+    return;
+}
+
+
+static int partition_by_distance(Distance_info_t *distanceInfo, int left, int right)
+{
+    double temp_fit = distanceInfo[left].E_distance;
+    int temp_index = distanceInfo[left].idx;
+    while(left < right)
+    {
+        while ((left < right) && (distanceInfo[right].E_distance >= temp_fit))right--;
+        if (left < right)
+        {
+            distanceInfo[left].idx = distanceInfo[right].idx;
+            distanceInfo[left].E_distance = distanceInfo[right].E_distance;
+            left++;
+        }
+        while ((left < right) && (distanceInfo[right].E_distance < temp_fit))left++;
+        if (left < right)
+        {
+            distanceInfo[right].idx = distanceInfo[left].idx;
+            distanceInfo[right].E_distance = distanceInfo[left].E_distance;
+            right--;
+        }
+    }
+    distanceInfo[left].E_distance = temp_fit;
+    distanceInfo[left].idx = temp_index;
+    return left;
+}
+
+
+extern void distance_quick_sort(Distance_info_t *distanceInfo, int left, int right)
+{
+    int pos = 0;
+
+    if (left < right)
+    {
+        pos = partition_by_distance(distanceInfo, left, right);
+        fitness_quicksort(distanceInfo, pos + 1, right);
+        fitness_quicksort(distanceInfo, left, right - 1);
     }
     return;
 }

@@ -100,7 +100,7 @@ static void ini_MOEAD_dra(SMRT_individual *pop_table, int weight_num)
 {
     int i = 0, j = 0, k = 0;
     double difference = 0, distance_temp = 0, Euc_distance = 0;
-    Weight_distance_info_t sort_list[MAX_SIZE];
+    Distance_info_t sort_list[MAX_SIZE];
 
     g_algorithm_entity.MOEAD_para.neighbor_table = (MOEAD_NEIGHBOR*)malloc(sizeof(MOEAD_NEIGHBOR) * weight_num);
     if(NULL == g_algorithm_entity.MOEAD_para.neighbor_table)
@@ -152,7 +152,7 @@ static void ini_MOEAD_dra(SMRT_individual *pop_table, int weight_num)
             sort_list[j].E_distance = Euc_distance;
             sort_list[j].idx = j;
         }
-        bublesort_weight(sort_list, weight_num);
+        Distance_buble_sort(sort_list, weight_num);
 
         for (j = 0; j < g_algorithm_entity.MOEAD_para.neighbor_size; j++)
         {

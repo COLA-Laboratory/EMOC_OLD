@@ -4,7 +4,7 @@
 typedef struct {
     double E_distance;
     int idx;
-}Weight_distance_info_t;
+}Distance_info_t;
 
 typedef struct {
     double fitness;
@@ -12,7 +12,8 @@ typedef struct {
 }Fitness_info_t;
 
 
-extern void bublesort_weight(Weight_distance_info_t* distanceInfo, int size);
+extern void Distance_buble_sort(Distance_info_t *distanceInfo, int size);
 extern void non_dominated_sort(SMRT_individual *pop_table, int pop_num);
-extern void fitness_sort(Fitness_info_t *fitnessInfo, int size);
+extern void fitness_quicksort(Fitness_info_t *fitnessInfo, int left, int right);
+extern void distance_quick_sort(Distance_info_t *distanceInfo, int left, int right);
 #endif
