@@ -183,6 +183,10 @@ static void SPEA2_environmental_slelct(SMRT_individual *parent_pop, SMRT_individ
     SMRT_individual *merge_pop = NULL;
     int merge_pop_num = 0, candidate_Num = 0, elite_num = 0;
     Fitness_info_t *fitnessInfo = NULL;
+    Distance_info_t *distanceInfo = NULL;
+    double **distance_arr = NULL;
+
+
 
     merge_pop_num = g_algorithm_entity.algorithm_para.pop_size + g_algorithm_entity.algorithm_para.elite_pop_size;
     allocate_memory_for_pop(&merge_pop, merge_pop_num);
@@ -191,6 +195,30 @@ static void SPEA2_environmental_slelct(SMRT_individual *parent_pop, SMRT_individ
     {
         printf("in the non_dominated_sort, malloc distance_arr[i] Failed\n");
         return;
+    }
+
+    distanceInfo = (Distance_info_t *)malloc(sizeof(Distance_info_t) * merge_pop_num);
+    if (NULL == distanceInfo)
+    {
+        printf("in the non_dominated_sort, malloc distanceInfo Failed\n");
+        return;
+    }
+
+    distance_arr = (double **)malloc(sizeof(double *) * merge_pop_num);
+    if (NULL == distance_arr)
+    {
+        printf("in the non_dominated_sort, malloc distance_arr Failed\n");
+        return;
+    }
+    for (i = 0; i < merge_pop_num; i++)
+    {
+        distance_arr[i] = (double *)malloc(sizeof(double) * merge_pop_num);
+        if (NULL == distance_arr[i])
+        {
+            printf("in the non_dominated_sort, malloc distance_arr[i] Failed\n");
+            return;
+        }
+        memset(distance_arr[i], 0, sizeof(double) * merge_pop_num);
     }
 
     for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
@@ -224,13 +252,25 @@ static void SPEA2_environmental_slelct(SMRT_individual *parent_pop, SMRT_individ
             elite_num++;
         }
     }
+    /*这里做了一些cheat，没有按照论文中的描述去实现*/
     else if (candidate_Num > g_algorithm_entity.algorithm_para.elite_pop_size)
     {
-        while(candidate_Num == g_algorithm_entity.algorithm_para.elite_pop_size)
-        {
+        SPEA2_set_distance(merge_pop, merge_pop_num, distance_arr);
 
+        //对与大于N的情况，迭代每一次减少一个
+        for (i = 0; i < candidate_Num; i++)
+        {
+            distanceInfo[i].idx = fitnessInfo[i].idx;
+            distanceInfo[i].E_distance = distance_arr[distanceInfo[i].idx][0];
         }
-        
+        distance_quick_sort(distanceInfo, 0, candidate_Num - 1);
+
+        for (i = 0; i < g_algorithm_entity.algorithm_para.elite_pop_size; i++)
+        {
+            copy_individual(merge_pop + distanceInfo[i].idx, parent_pop + elite_num);
+            elite_num++;
+        }
+
     }
     else
     {
@@ -246,6 +286,11 @@ static void SPEA2_environmental_slelct(SMRT_individual *parent_pop, SMRT_individ
 
     destroy_memory_for_pop(&merge_pop, merge_pop_num);
     free(fitnessInfo);
+    for (i = 0; i < merge_pop_num; i++)
+    {
+        free(distance_arr[i]);
+    }
+    free(distance_arr);
 
     return;
 }
