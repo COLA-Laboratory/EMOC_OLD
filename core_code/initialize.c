@@ -203,6 +203,10 @@ int initialization_real_para (int argc, char** argv)
         {
             g_algorithm_entity.algorithm_para.pop_size = atoi(buff + pmatch.rm_eo);
         }
+        else if (!strcmp(buff, "eliteSize"))
+        {
+            g_algorithm_entity.algorithm_para.elite_pop_size = atoi(buff + pmatch.rm_eo);
+        }
         else if (!strcmp(buff, "max_evaluation"))
         {
             g_algorithm_entity.algorithm_para.max_evaluation = atoi(buff + pmatch.rm_eo);

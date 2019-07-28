@@ -26,6 +26,7 @@ extern void Distance_buble_sort(Distance_info_t *distanceInfo, int size)
 
 }
 
+
 extern void non_dominated_sort(SMRT_individual *pop_table, int pop_num)
 {
     int i = 0; int j = 0, k = 0;
@@ -175,9 +176,33 @@ extern void fitness_quicksort(Fitness_info_t *fitnessInfo, int left, int right)
     {
         pos = partition_by_fit(fitnessInfo, left, right);
         fitness_quicksort(fitnessInfo, pos + 1, right);
-        fitness_quicksort(fitnessInfo, left, right - 1);
+        fitness_quicksort(fitnessInfo, left, pos - 1);
     }
     return;
+}
+
+extern void Fitness_buble_sort(Fitness_info_t *fitnessInfo, int size)
+{
+    int i = 0, j = 0;
+    int temp_index = 0;
+    double temp_distance;
+
+    for(i=0;i<size;i++) //进行10次循环
+    {
+        for (j = i + 1; j < size; j++) //循环比较剩余的变量
+        {
+            if (fitnessInfo[i].fitness > fitnessInfo[j].fitness) //如果前面一个数比后面数大，交换两个数的值
+            {
+                temp_distance = fitnessInfo[i].fitness;
+                temp_index = fitnessInfo[i].idx;
+                fitnessInfo[i].fitness = fitnessInfo[j].fitness;
+                fitnessInfo[i].idx = fitnessInfo[j].idx;
+                fitnessInfo[j].idx = temp_index;
+                fitnessInfo[j].fitness = temp_distance;
+            }
+        }
+    }
+
 }
 
 
@@ -215,8 +240,8 @@ extern void distance_quick_sort(Distance_info_t *distanceInfo, int left, int rig
     if (left < right)
     {
         pos = partition_by_distance(distanceInfo, left, right);
-        fitness_quicksort(distanceInfo, pos + 1, right);
-        fitness_quicksort(distanceInfo, left, right - 1);
+        distance_quick_sort(distanceInfo, pos + 1, right);
+        distance_quick_sort(distanceInfo, left, pos - 1);
     }
     return;
 }

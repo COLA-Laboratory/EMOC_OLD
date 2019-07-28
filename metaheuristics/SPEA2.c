@@ -17,7 +17,7 @@ static void SPEA2_set_distance(SMRT_individual *pop_table, int  pop_num, double 
     SMRT_individual *temp_i = NULL, *temp_j = NULL;
     Distance_info_t *distanceInfo = NULL;
 
-    distanceInfo = (Distance_info_t *)malloc(sizeof(Distance_info_t *) * pop_num);
+    distanceInfo = (Distance_info_t *)malloc(sizeof(Distance_info_t) * pop_num);
     if (NULL == distanceInfo)
     {
         printf("in the non_dominated_sort, malloc si Failed\n");
@@ -38,9 +38,14 @@ static void SPEA2_set_distance(SMRT_individual *pop_table, int  pop_num, double 
             }
             distance_arr[i][j] = euclidian_distance(temp_i->obj, temp_j->obj, g_algorithm_entity.algorithm_para.objective_number);
             distanceInfo[j].E_distance = distance_arr[i][j];
+            distanceInfo[j].idx = j;
         }
         //distance 排序
-        distance_quick_sort(distanceInfo, 0, j - 1);
+        Distance_buble_sort(distanceInfo, pop_num);
+        //distance_quick_sort(distanceInfo, 0, j - 1);
+        for (int l = 0; l < j; ++l) {
+            printf("index:%d,distance:%f\n", l, distanceInfo[l].E_distance);
+        }
 
         for (j = 0; j < pop_num; j ++)
         {
@@ -84,7 +89,7 @@ static void SPEA2_set_fitness(SMRT_individual *pop_table, int  pop_num, int para
         printf("in the non_dominated_sort, malloc si_size Failed\n");
         goto SPEA2_SET_FIT_TERMINATE;
     }
-    memset(Q, 0, sizeof(int) * pop_num);
+    memset(si_size, 0, sizeof(int) * pop_num);
 
     Q = (int *)malloc(sizeof(int) * pop_num);
     if (NULL == Q)
@@ -135,7 +140,6 @@ static void SPEA2_set_fitness(SMRT_individual *pop_table, int  pop_num, int para
 
         }
     }
-
     for (i = 0; i < pop_num; i++)
     {
         if (0 == si_size[i])
@@ -151,7 +155,6 @@ static void SPEA2_set_fitness(SMRT_individual *pop_table, int  pop_num, int para
             }
         }
     }
-
     SPEA2_set_distance(pop_table, pop_num, distance_arr);
 
     for (i = 0; i < pop_num; i++)
@@ -159,6 +162,7 @@ static void SPEA2_set_fitness(SMRT_individual *pop_table, int  pop_num, int para
         temp_i = pop_table + i;
 
         temp_i->fitness += 1/(distance_arr[i][para_k] + 2);
+        //printf("si_size:%d, index%d,fitness%f\n",si_size[i], i, temp_i->fitness);
     }
 
 SPEA2_SET_FIT_TERMINATE:
@@ -177,7 +181,7 @@ SPEA2_SET_FIT_TERMINATE:
     return;
 }
 
-static void SPEA2_environmental_slelct(SMRT_individual *parent_pop, SMRT_individual *elite_pop, SMRT_individual *offspring_pop, int para_k)
+static void SPEA2_environmental_slelct(SMRT_individual *elite_pop, SMRT_individual *offspring_pop, int para_k)
 {
     int i = 0, j = 0;
     SMRT_individual *merge_pop = NULL;
@@ -231,7 +235,8 @@ static void SPEA2_environmental_slelct(SMRT_individual *parent_pop, SMRT_individ
         copy_individual(elite_pop + j, merge_pop + i);
     }
 
-    SPEA2_set_fitness(merge_pop, g_algorithm_entity.algorithm_para.pop_size + g_algorithm_entity.algorithm_para.elite_pop_size, para_k);
+
+    SPEA2_set_fitness(merge_pop, merge_pop_num, para_k);
 
     for (i = 0; i < merge_pop_num; i++)
     {
@@ -243,18 +248,33 @@ static void SPEA2_environmental_slelct(SMRT_individual *parent_pop, SMRT_individ
         fitnessInfo[i].idx = i;
     }
 
+    printf("nondominated_num:%d\n", candidate_Num);
+
+    Fitness_buble_sort(fitnessInfo, merge_pop_num);
+    //fitness_quicksort(fitnessInfo, 0, merge_pop_num - 1);
+    for (i = 0; i < g_algorithm_entity.algorithm_para.elite_pop_size; i++)
+    {
+        printf("fitness:%f\n", (merge_pop + fitnessInfo[i].idx)->fitness);
+        copy_individual(merge_pop + fitnessInfo[i].idx, elite_pop + elite_num);
+        elite_num++;
+    }
+
+    /*
     if (candidate_Num < g_algorithm_entity.algorithm_para.elite_pop_size)
     {
+        printf("11111111111\n");
         fitness_quicksort(fitnessInfo, 0, merge_pop_num - 1);
         for (i = 0; i < g_algorithm_entity.algorithm_para.elite_pop_size; i++)
         {
-            copy_individual(merge_pop + fitnessInfo[i].idx, parent_pop + elite_num);
+            printf("fitness:%f\n", (merge_pop + fitnessInfo[i].idx)->fitness);
+            copy_individual(merge_pop + fitnessInfo[i].idx, elite_pop + elite_num);
             elite_num++;
         }
     }
-    /*这里做了一些cheat，没有按照论文中的描述去实现*/
     else if (candidate_Num > g_algorithm_entity.algorithm_para.elite_pop_size)
     {
+        printf("222222222222\n");
+
         SPEA2_set_distance(merge_pop, merge_pop_num, distance_arr);
 
         //对与大于N的情况，迭代每一次减少一个
@@ -271,19 +291,26 @@ static void SPEA2_environmental_slelct(SMRT_individual *parent_pop, SMRT_individ
             elite_num++;
         }
 
+        for (i = 0; i < g_algorithm_entity.algorithm_para.elite_pop_size; i++)
+        {
+            copy_individual(merge_pop + fitnessInfo[i].idx, elite_pop + elite_num);
+            elite_num++;
+        }
+
     }
     else
     {
+        printf("333333333333\n");
         for (i = 0; i < g_algorithm_entity.algorithm_para.elite_pop_size; i++)
         {
             if (merge_pop[i].fitness <= 1)
             {
-                copy_individual(merge_pop + i, g_algorithm_entity.elit_population + elite_num);
+                copy_individual(merge_pop + i, elite_pop + elite_num);
                 elite_num++;
             }
         }
     }
-
+*/
     destroy_memory_for_pop(&merge_pop, merge_pop_num);
     free(fitnessInfo);
     for (i = 0; i < merge_pop_num; i++)
@@ -318,7 +345,7 @@ extern void SPEA2_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
         g_algorithm_entity.iteration_number++;
         print_progress ();
 
-        if (1 == g_algorithm_entity.iteration_number)
+        if (2 == g_algorithm_entity.iteration_number)
         {
             SPEA2_set_fitness(parent_pop, g_algorithm_entity.algorithm_para.pop_size, para_k);
             for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
@@ -327,13 +354,14 @@ extern void SPEA2_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
             }
         }
 
+        SPEA2_set_fitness(g_algorithm_entity.elit_population, g_algorithm_entity.algorithm_para.elite_pop_size, para_k);
         // reproduction (crossover and mutation)
         crossover_spea2 (g_algorithm_entity.elit_population, offspring_pop);
         mutation_pop(offspring_pop);
         evaluate_population (offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
 
         // environment selection
-        SPEA2_environmental_slelct(parent_pop, g_algorithm_entity.elit_population, g_algorithm_entity.offspring_population, para_k);
+        SPEA2_environmental_slelct(g_algorithm_entity.elit_population, g_algorithm_entity.offspring_population, para_k);
 
         // track the current evolutionary progress, including population and metrics
         track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
