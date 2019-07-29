@@ -13,43 +13,16 @@
   <component name="ChangeListManager">
     <list default="true" id="f8ebbcce-5df0-4797-80dd-90bf04881b38" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/lib/sort.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/lib/sort.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Samaritan" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Samaritan" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/sort.c" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sort.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaheuristics/NSGA2.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/NSGA2.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metaheuristics/SPEA2.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/SPEA2.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_1.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_1.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_10.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_10.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_100.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_100.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_110.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_110.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_120.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_120.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_130.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_130.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_140.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_140.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_150.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_150.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_160.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_160.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_170.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_170.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_180.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_180.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_190.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_190.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_20.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_20.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_200.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_200.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_210.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_210.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_220.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_220.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_230.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_230.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_240.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_240.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_250.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_250.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_3.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_3.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_30.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_30.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_40.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_40.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_50.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_50.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_60.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_60.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_70.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_70.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_80.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_80.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_90.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/1/medium_FUN_90.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/FUN1.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/SPEA2/FUN1.out" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

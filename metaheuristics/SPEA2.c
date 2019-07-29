@@ -178,7 +178,7 @@ SPEA2_SET_FIT_TERMINATE:
 
 static void SPEA2_environmental_slelct(SMRT_individual *elite_pop, SMRT_individual *offspring_pop, int para_k)
 {
-    int i = 0, j = 0;
+    int i = 0, j = 0, k = 0;
     SMRT_individual *merge_pop = NULL;
     int merge_pop_num = 0, candidate_Num = 0, elite_num = 0, current_dimension = 0, temp_idx = 0;
     Fitness_info_t *fitnessInfo = NULL;
@@ -231,7 +231,6 @@ static void SPEA2_environmental_slelct(SMRT_individual *elite_pop, SMRT_individu
         copy_individual(elite_pop + j, merge_pop + i);
     }
 
-
     SPEA2_set_fitness(merge_pop, merge_pop_num, para_k);
 
     for (i = 0; i < merge_pop_num; i++)
@@ -244,7 +243,7 @@ static void SPEA2_environmental_slelct(SMRT_individual *elite_pop, SMRT_individu
         fitnessInfo[i].idx = i;
     }
 
-    printf("nondominated_num:%d\n", candidate_Num);
+    //printf("nondominated_num:%d\n", candidate_Num);
 
     fitness_quicksort(fitnessInfo, 0, merge_pop_num - 1);
 
@@ -259,6 +258,7 @@ static void SPEA2_environmental_slelct(SMRT_individual *elite_pop, SMRT_individu
     }
     else
     {
+        SPEA2_set_distance(merge_pop, merge_pop_num, distance_arr);
         //truncate operator
         while(candidate_Num != g_algorithm_entity.algorithm_para.elite_pop_size)  //in every iteration,remove a solution
         {
@@ -273,18 +273,39 @@ static void SPEA2_environmental_slelct(SMRT_individual *elite_pop, SMRT_individu
             /*下面这个do-while主要的任务就是依据维度找到最小的distance的解，进入函数后，首先对第0维度的排序，对前n个值相同的解，进行第二维度排序，直到没有相同的解为止，输出最小的距离的idx*/
             do{
                 same_distance_num = 0;
-                while(distanceInfo[same_distance_num].E_distance == distanceInfo[same_distance_num + 1].E_distance)
+                while(fabs(distanceInfo[same_distance_num].E_distance - distanceInfo[same_distance_num + 1].E_distance) < 1e-4)
                 {
+                    //printf("distance1:%f, distance2:%f\n", distanceInfo[same_distance_num].E_distance, distanceInfo[same_distance_num+1].E_distance);
                     same_distance_num++;
                 }
+                //printf("\n\n\n\n");
                 current_dimension++;
+                if ((current_dimension) == g_algorithm_entity.algorithm_para.objective_number)
+                {
+                    break;
+                }
                 for (j = 0; j <= same_distance_num; j++)
                 {
                     distanceInfo[j].E_distance = distance_arr[fitnessInfo[distanceInfo[j].idx].idx][current_dimension];
                 }
                 distance_quick_sort(distanceInfo, 0, same_distance_num);
 
-            }while(same_distance_num == 0);
+            }while(same_distance_num != 0);
+
+
+            //这里是为了删除被remove点的所有的相关的distance
+            for (j = 0; j < candidate_Num; j++)
+            {
+                if (j == distanceInfo[0].idx)
+                {
+                    continue;
+                }
+                for (k = fitnessInfo[distanceInfo[0].idx].idx; k < merge_pop_num; k++)
+                {
+                    distance_arr[fitnessInfo[j].idx][k] = distance_arr[fitnessInfo[j].idx][k+1];
+                }
+            }
+            //到这里结束
 
             fitnessInfo[distanceInfo[0].idx].fitness = fitnessInfo[candidate_Num-1].fitness;
             fitnessInfo[distanceInfo[0].idx].idx = fitnessInfo[candidate_Num-1].idx;
