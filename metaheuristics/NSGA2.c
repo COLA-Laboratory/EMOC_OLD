@@ -87,42 +87,6 @@ extern void setDistance_by_index(DISTANCE_INFO_T *distance_arr, int index, int p
 }
 
 
-static int partition_by_distance(DISTANCE_INFO_T *distance_arr, int left, int right)
-{
-    double temp_distance = distance_arr[left].distance;
-    int temp_index = distance_arr[left].index;
-    while(left < right)
-    {
-        while ((left < right) && (distance_arr[right].distance >= temp_distance))right--;
-        if (left < right)
-        {
-            memcpy(distance_arr + left, distance_arr + right, sizeof(DISTANCE_INFO_T));
-            left++;
-        }
-        while ((left < right) && (distance_arr[left].distance < temp_distance))left++;
-        if (left < right)
-        {
-            memcpy(distance_arr + right, distance_arr + left, sizeof(DISTANCE_INFO_T));
-            right--;
-        }
-    }
-    distance_arr[left].distance = temp_distance;
-    distance_arr[left].index = temp_index;
-    return left;
-}
-
-
-extern void sort_by_distance(DISTANCE_INFO_T *distance_arr, int left, int right)
-{
-    int pos = 0;
-    if (left < right)
-    {
-        pos = partition_by_distance(distance_arr, left, right);
-        sort_by_distance(distance_arr, pos+1, right);
-        sort_by_distance(distance_arr, left, pos-1);
-    }
-    return;
-}
 
 
 /*这个函数写的复杂了*/
@@ -189,7 +153,7 @@ extern int crowding_distance_assign(SMRT_individual *pop_table, int pop_sort[], 
         }
     }
 
-    sort_by_distance(distance_arr, 0, pop_num_in_rank - 1);
+    distance_quick_sort(distance_arr, 0, pop_num_in_rank - 1);
     for (i = 0; i < pop_num_in_rank; i++)
     {
         pop_sort[i] = distance_arr[i].index;

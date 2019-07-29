@@ -154,7 +154,7 @@ static int partition_by_fit(Fitness_info_t *fitnessInfo, int left, int right)
             fitnessInfo[left].fitness = fitnessInfo[right].fitness;
             left++;
         }
-        while ((left < right) && (fitnessInfo[right].fitness < temp_fit))left++;
+        while ((left < right) && (fitnessInfo[left].fitness < temp_fit))left++;
         if (left < right)
         {
             fitnessInfo[right].idx = fitnessInfo[left].idx;
@@ -219,7 +219,7 @@ static int partition_by_distance(Distance_info_t *distanceInfo, int left, int ri
             distanceInfo[left].E_distance = distanceInfo[right].E_distance;
             left++;
         }
-        while ((left < right) && (distanceInfo[right].E_distance < temp_fit))left++;
+        while ((left < right) && (distanceInfo[left].E_distance < temp_fit))left++;
         if (left < right)
         {
             distanceInfo[right].idx = distanceInfo[left].idx;

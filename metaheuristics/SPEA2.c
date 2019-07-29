@@ -41,11 +41,7 @@ static void SPEA2_set_distance(SMRT_individual *pop_table, int  pop_num, double 
             distanceInfo[j].idx = j;
         }
         //distance 排序
-        Distance_buble_sort(distanceInfo, pop_num);
-        //distance_quick_sort(distanceInfo, 0, j - 1);
-        for (int l = 0; l < j; ++l) {
-            printf("index:%d,distance:%f\n", l, distanceInfo[l].E_distance);
-        }
+        distance_quick_sort(distanceInfo, 0, j - 1);
 
         for (j = 0; j < pop_num; j ++)
         {
@@ -162,7 +158,6 @@ static void SPEA2_set_fitness(SMRT_individual *pop_table, int  pop_num, int para
         temp_i = pop_table + i;
 
         temp_i->fitness += 1/(distance_arr[i][para_k] + 2);
-        //printf("si_size:%d, index%d,fitness%f\n",si_size[i], i, temp_i->fitness);
     }
 
 SPEA2_SET_FIT_TERMINATE:
@@ -185,10 +180,11 @@ static void SPEA2_environmental_slelct(SMRT_individual *elite_pop, SMRT_individu
 {
     int i = 0, j = 0;
     SMRT_individual *merge_pop = NULL;
-    int merge_pop_num = 0, candidate_Num = 0, elite_num = 0;
+    int merge_pop_num = 0, candidate_Num = 0, elite_num = 0, current_dimension = 0, temp_idx = 0;
     Fitness_info_t *fitnessInfo = NULL;
     Distance_info_t *distanceInfo = NULL;
-    double **distance_arr = NULL;
+    double **distance_arr = NULL, temp_fit = 0;
+    int same_distance_num = 0;
 
 
 
@@ -250,67 +246,60 @@ static void SPEA2_environmental_slelct(SMRT_individual *elite_pop, SMRT_individu
 
     printf("nondominated_num:%d\n", candidate_Num);
 
-    Fitness_buble_sort(fitnessInfo, merge_pop_num);
-    //fitness_quicksort(fitnessInfo, 0, merge_pop_num - 1);
-    for (i = 0; i < g_algorithm_entity.algorithm_para.elite_pop_size; i++)
+    fitness_quicksort(fitnessInfo, 0, merge_pop_num - 1);
+
+    if (candidate_Num <= g_algorithm_entity.algorithm_para.elite_pop_size)
     {
-        printf("fitness:%f\n", (merge_pop + fitnessInfo[i].idx)->fitness);
-        copy_individual(merge_pop + fitnessInfo[i].idx, elite_pop + elite_num);
-        elite_num++;
-    }
-
-    /*
-    if (candidate_Num < g_algorithm_entity.algorithm_para.elite_pop_size)
-    {
-        printf("11111111111\n");
-        fitness_quicksort(fitnessInfo, 0, merge_pop_num - 1);
-        for (i = 0; i < g_algorithm_entity.algorithm_para.elite_pop_size; i++)
-        {
-            printf("fitness:%f\n", (merge_pop + fitnessInfo[i].idx)->fitness);
-            copy_individual(merge_pop + fitnessInfo[i].idx, elite_pop + elite_num);
-            elite_num++;
-        }
-    }
-    else if (candidate_Num > g_algorithm_entity.algorithm_para.elite_pop_size)
-    {
-        printf("222222222222\n");
-
-        SPEA2_set_distance(merge_pop, merge_pop_num, distance_arr);
-
-        //对与大于N的情况，迭代每一次减少一个
-        for (i = 0; i < candidate_Num; i++)
-        {
-            distanceInfo[i].idx = fitnessInfo[i].idx;
-            distanceInfo[i].E_distance = distance_arr[distanceInfo[i].idx][0];
-        }
-        distance_quick_sort(distanceInfo, 0, candidate_Num - 1);
-
-        for (i = 0; i < g_algorithm_entity.algorithm_para.elite_pop_size; i++)
-        {
-            copy_individual(merge_pop + distanceInfo[i].idx, parent_pop + elite_num);
-            elite_num++;
-        }
 
         for (i = 0; i < g_algorithm_entity.algorithm_para.elite_pop_size; i++)
         {
             copy_individual(merge_pop + fitnessInfo[i].idx, elite_pop + elite_num);
             elite_num++;
         }
-
     }
     else
     {
-        printf("333333333333\n");
+        //truncate operator
+        while(candidate_Num != g_algorithm_entity.algorithm_para.elite_pop_size)  //in every iteration,remove a solution
+        {
+            current_dimension = 0;
+            for (i = 0; i < candidate_Num; i++)
+            {
+                distanceInfo[i].E_distance = distance_arr[fitnessInfo[i].idx][current_dimension];
+                distanceInfo[i].idx = i;
+            }
+            distance_quick_sort(distanceInfo, 0, candidate_Num - 1); //对0维度进行排序
+
+            /*下面这个do-while主要的任务就是依据维度找到最小的distance的解，进入函数后，首先对第0维度的排序，对前n个值相同的解，进行第二维度排序，直到没有相同的解为止，输出最小的距离的idx*/
+            do{
+                same_distance_num = 0;
+                while(distanceInfo[same_distance_num].E_distance == distanceInfo[same_distance_num + 1].E_distance)
+                {
+                    same_distance_num++;
+                }
+                current_dimension++;
+                for (j = 0; j <= same_distance_num; j++)
+                {
+                    distanceInfo[j].E_distance = distance_arr[fitnessInfo[distanceInfo[j].idx].idx][current_dimension];
+                }
+                distance_quick_sort(distanceInfo, 0, same_distance_num);
+
+            }while(same_distance_num == 0);
+
+            fitnessInfo[distanceInfo[0].idx].fitness = fitnessInfo[candidate_Num-1].fitness;
+            fitnessInfo[distanceInfo[0].idx].idx = fitnessInfo[candidate_Num-1].idx;
+
+            candidate_Num--;
+        }
+
         for (i = 0; i < g_algorithm_entity.algorithm_para.elite_pop_size; i++)
         {
-            if (merge_pop[i].fitness <= 1)
-            {
-                copy_individual(merge_pop + i, elite_pop + elite_num);
-                elite_num++;
-            }
+            copy_individual(merge_pop + fitnessInfo[i].idx, elite_pop + elite_num);
+            elite_num++;
         }
+
     }
-*/
+
     destroy_memory_for_pop(&merge_pop, merge_pop_num);
     free(fitnessInfo);
     for (i = 0; i < merge_pop_num; i++)
@@ -367,5 +356,9 @@ extern void SPEA2_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
         track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
     }
 
+    for (i = 0; i < g_algorithm_entity.algorithm_para.elite_pop_size; i++)
+    {
+        copy_individual(g_algorithm_entity.elit_population + i, g_algorithm_entity.parent_population + i);
+    }
     return;
 }
