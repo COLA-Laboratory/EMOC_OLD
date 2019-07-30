@@ -114,15 +114,17 @@ CMakeFiles/Samaritan.dir/mating/selection_mating.c.o: ../headers/mating.h
 CMakeFiles/Samaritan.dir/mating/selection_mating.c.o: ../headers/random.h
 CMakeFiles/Samaritan.dir/mating/selection_mating.c.o: ../mating/selection_mating.c
 
-CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../externals/MY_WFG/Iwfg.h
 CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/analysis.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/crossover.h
 CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/initialize.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/memory.h
 CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/metaheuristics.h
 CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/mutation.h
 CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/population.h
 CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/print.h
 CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/sort.h
 CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../headers/utility.h
 CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../metaheuristics/HypE.c
 
@@ -176,6 +178,18 @@ CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o: ../headers/print.h
 CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o: ../headers/problem.h
 CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o: ../headers/sort.h
 CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o: ../metaheuristics/NSGA2.c
+
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: ../headers/analysis.h
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: ../headers/crossover.h
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: ../headers/dominance_relation.h
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: ../headers/global.h
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: ../headers/metaheuristics.h
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: ../headers/mutation.h
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: ../headers/population.h
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: ../headers/print.h
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: ../headers/sort.h
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: ../metaheuristics/NSGA3.c
 
 CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../externals/MY_WFG/Iwfg.h
 CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/analysis.h

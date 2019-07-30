@@ -10,8 +10,6 @@
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
 
-/home/maopl/CLionProjects/my_work/Samaritan/headers/dominance_relation.h
-
 /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
 pthread.h
 -
@@ -68,13 +66,11 @@ global.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
 
-/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SPEA2.c
+/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/HypE.c
 ../headers/global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
 ../headers/metaheuristics.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/metaheuristics.h
-../headers/crossover.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
 ../headers/mutation.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/mutation.h
 ../headers/problem.h
@@ -83,14 +79,14 @@ global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
 ../headers/initialize.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/initialize.h
-../headers/memory.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/memory.h
 ../headers/utility.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
 ../headers/analysis.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
+../headers/crossover.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
 ../headers/sort.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
-../headers/dominance_relation.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/dominance_relation.h
+../headers/memory.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/memory.h
 

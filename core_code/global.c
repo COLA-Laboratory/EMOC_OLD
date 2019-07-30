@@ -2,6 +2,7 @@
 char *g_algorithm_name_str[ALGORITHM_NAME_NUM] = {
         "IBEA",
         "NSGA2",
+        "NSGA3",
         "MOEAD",
         "MOEAD_DRA",
         "SMSEMOA",

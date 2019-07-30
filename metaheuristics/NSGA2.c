@@ -9,11 +9,6 @@
 #include "../headers/sort.h"
 
 
-typedef struct distance_info_t{
-    int index;
-    double distance;
-}DISTANCE_INFO_T;
-
 
 static int partition_by_obj(SMRT_individual * pop_table, int pop_sort[], int left, int right, int obj_index)
 {
@@ -73,14 +68,14 @@ static int sort_by_obj_rank(SMRT_individual *pop_table, int sort_arr[], int obj_
 
 
 
-extern void setDistance_by_index(DISTANCE_INFO_T *distance_arr, int index, int pop_num, double distance)
+extern void setDistance_by_index(Distance_info_t *distance_arr, int index, int pop_num, double distance)
 {
     int k = 0;
     for (k = 0; k < pop_num; k++)
     {
-        if (distance_arr[k].index == index)
+        if (distance_arr[k].idx == index)
         {
-            distance_arr[k].distance += distance;
+            distance_arr[k].E_distance += distance;
         }
     }
     return;
@@ -95,10 +90,10 @@ extern int crowding_distance_assign(SMRT_individual *pop_table, int pop_sort[], 
     int i = 0, j = 0, k = 0;
     int pop_num_in_rank = 0;
     int *sort_arr = NULL;
-    DISTANCE_INFO_T *distance_arr;
+    Distance_info_t *distance_arr;
 
 
-    distance_arr  = (struct distance_info_t*) malloc(sizeof(struct distance_info_t) * pop_num);
+    distance_arr  = (struct distance_info_t*) malloc(sizeof(Distance_info_t) * pop_num);
     if (NULL == distance_arr)
     {
         goto CROWDING_DISTANCE_FAIL_HANDLE;
@@ -114,7 +109,7 @@ extern int crowding_distance_assign(SMRT_individual *pop_table, int pop_sort[], 
     {
         if (pop_table[i].rank == rank_index)
         {
-            distance_arr[pop_num_in_rank++].index = i;
+            distance_arr[pop_num_in_rank++].idx = i;
         }
     }
 
@@ -156,7 +151,7 @@ extern int crowding_distance_assign(SMRT_individual *pop_table, int pop_sort[], 
     distance_quick_sort(distance_arr, 0, pop_num_in_rank - 1);
     for (i = 0; i < pop_num_in_rank; i++)
     {
-        pop_sort[i] = distance_arr[i].index;
+        pop_sort[i] = distance_arr[i].idx;
     }
     for (i = 0; i < pop_num_in_rank; i ++)
     {

@@ -460,9 +460,22 @@ CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA2.c -o CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.s
 
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: CMakeFiles/Samaritan.dir/flags.make
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: ../metaheuristics/NSGA3.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o   -c /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA3.c
+
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA3.c > CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.i
+
+CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA3.c -o CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.s
+
 CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o: CMakeFiles/Samaritan.dir/flags.make
 CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o: ../metaheuristics/IBEA.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o   -c /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/IBEA.c
 
 CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.i: cmake_force
@@ -475,7 +488,7 @@ CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.s: cmake_force
 
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o: CMakeFiles/Samaritan.dir/flags.make
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o: ../metaheuristics/MOEAD.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o   -c /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD.c
 
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.i: cmake_force
@@ -488,7 +501,7 @@ CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.s: cmake_force
 
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o: CMakeFiles/Samaritan.dir/flags.make
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o: ../metaheuristics/MOEAD-dra.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o   -c /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD-dra.c
 
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.i: cmake_force
@@ -501,7 +514,7 @@ CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.s: cmake_force
 
 CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: CMakeFiles/Samaritan.dir/flags.make
 CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../metaheuristics/SMSEMOA.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o   -c /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SMSEMOA.c
 
 CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.i: cmake_force
@@ -514,7 +527,7 @@ CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.s: cmake_force
 
 CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: CMakeFiles/Samaritan.dir/flags.make
 CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o: ../metaheuristics/HypE.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o   -c /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/HypE.c
 
 CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.i: cmake_force
@@ -527,7 +540,7 @@ CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.s: cmake_force
 
 CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.o: CMakeFiles/Samaritan.dir/flags.make
 CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.o: ../metaheuristics/SPEA2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.o   -c /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SPEA2.c
 
 CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.i: cmake_force
@@ -571,6 +584,7 @@ Samaritan_OBJECTS = \
 "CMakeFiles/Samaritan.dir/indicators/IGD.c.o" \
 "CMakeFiles/Samaritan.dir/indicators/GD.c.o" \
 "CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o" \
+"CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o" \
 "CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o" \
 "CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o" \
 "CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o" \
@@ -612,6 +626,7 @@ Samaritan: CMakeFiles/Samaritan.dir/indicators/hv.c.o
 Samaritan: CMakeFiles/Samaritan.dir/indicators/IGD.c.o
 Samaritan: CMakeFiles/Samaritan.dir/indicators/GD.c.o
 Samaritan: CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o
+Samaritan: CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o
 Samaritan: CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o
 Samaritan: CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o
 Samaritan: CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o
@@ -620,7 +635,7 @@ Samaritan: CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o
 Samaritan: CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.o
 Samaritan: CMakeFiles/Samaritan.dir/build.make
 Samaritan: CMakeFiles/Samaritan.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Linking C executable Samaritan"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Linking C executable Samaritan"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Samaritan.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -18,6 +18,9 @@ int main(int argc, char** argv) {
             case NSGA2:
                 NSGA2_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
+            case NSGA3:
+                NSGA3_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
             case IBEA:
                 IBEA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
@@ -32,8 +35,10 @@ int main(int argc, char** argv) {
                 break;
             case HypE:
                 HypE_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
             case SPEA2:
                 SPEA2_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
             default:
                 break;
         }

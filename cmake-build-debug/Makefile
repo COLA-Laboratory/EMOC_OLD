@@ -879,6 +879,33 @@ metaheuristics/NSGA2.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.s
 .PHONY : metaheuristics/NSGA2.c.s
 
+metaheuristics/NSGA3.o: metaheuristics/NSGA3.c.o
+
+.PHONY : metaheuristics/NSGA3.o
+
+# target to build an object file
+metaheuristics/NSGA3.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o
+.PHONY : metaheuristics/NSGA3.c.o
+
+metaheuristics/NSGA3.i: metaheuristics/NSGA3.c.i
+
+.PHONY : metaheuristics/NSGA3.i
+
+# target to preprocess a source file
+metaheuristics/NSGA3.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.i
+.PHONY : metaheuristics/NSGA3.c.i
+
+metaheuristics/NSGA3.s: metaheuristics/NSGA3.c.s
+
+.PHONY : metaheuristics/NSGA3.s
+
+# target to generate assembly for a file
+metaheuristics/NSGA3.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.s
+.PHONY : metaheuristics/NSGA3.c.s
+
 metaheuristics/SMSEMOA.o: metaheuristics/SMSEMOA.c.o
 
 .PHONY : metaheuristics/SMSEMOA.o
@@ -1215,6 +1242,9 @@ help:
 	@echo "... metaheuristics/NSGA2.o"
 	@echo "... metaheuristics/NSGA2.i"
 	@echo "... metaheuristics/NSGA2.s"
+	@echo "... metaheuristics/NSGA3.o"
+	@echo "... metaheuristics/NSGA3.i"
+	@echo "... metaheuristics/NSGA3.s"
 	@echo "... metaheuristics/SMSEMOA.o"
 	@echo "... metaheuristics/SMSEMOA.i"
 	@echo "... metaheuristics/SMSEMOA.s"

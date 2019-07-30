@@ -66,6 +66,7 @@ typedef enum test_problem{
 typedef enum{
     IBEA,
     NSGA2,
+    NSGA3,
     MOEAD,
     MOEAD_DAR,
     SMS_EMOA,

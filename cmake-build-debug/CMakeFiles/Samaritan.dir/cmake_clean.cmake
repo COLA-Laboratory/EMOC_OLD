@@ -30,6 +30,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Samaritan.dir/indicators/IGD.c.o"
   "CMakeFiles/Samaritan.dir/indicators/GD.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o"
+  "CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o"
