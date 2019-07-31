@@ -1,7 +1,22 @@
 #include "../headers/global.h"
 #include "../headers/dominance_relation.h"
 
+/* check weakly dominate */
+extern int weaklyDominates (double *point1, double *point2, int no_objectives)
+{
+    int i;
+    int better;
 
+    i      = 0;
+    better = 1;
+    while (i < no_objectives && better)
+    {
+        better = point1[i] <= point2[i];
+        i++;
+    }
+
+    return better;
+}
 
 
 

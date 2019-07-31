@@ -32,7 +32,7 @@
 # define PI  M_PI
 # define INF 1.0e14
 # define EPS 1.0e-7
-# define rho 1.1
+# define rho_value 1.1
 # define kappa 0.05
 
 

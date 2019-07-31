@@ -11,7 +11,7 @@ typedef enum{
 
 
 extern DOMINATE_RELATION check_dominance(SMRT_individual *ind1, SMRT_individual *ind2);
-
+extern int weaklyDominates (double *point1, double *point2, int no_objectives);
 
 
 #endif

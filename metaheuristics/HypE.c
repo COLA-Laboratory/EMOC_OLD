@@ -9,19 +9,143 @@
 #include "../headers/crossover.h"
 #include "../headers/sort.h"
 #include "../headers/memory.h"
+#include "../headers/dominance_relation.h"
+#include "../headers/random.h"
 
-static void HypE_set_fitness(SMRT_individual *pop_table, int pop_num)
+
+
+
+/* HypE sampling procedure for Hypervolume approximation */
+double hypeSampling (Fitness_info_t *fitnessInfo, int nrOfSamples, int param_k, double *rho, SMRT_individual *pop_table, int pop_num)
+{
+    int i, s, k;
+    int domCount, counter;
+    int *hitstat;
+    double *sample;
+
+    hitstat = malloc (sizeof(int) * pop_num);
+    sample  = malloc (sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
+
+    for (i = 0; i < pop_num; i++)
+        fitnessInfo[i].fitness = 0.0;
+    for (s = 0; s < nrOfSamples; s++)
+    {
+        for(k = 0; k < g_algorithm_entity.algorithm_para.objective_number; k++)
+            sample[k] = rndreal (g_algorithm_entity.ideal_point.obj[k], g_algorithm_entity.nadir_point.obj[k]);
+
+        domCount = 0;
+        counter  = 0;
+
+        for (i = 0; i < pop_num; ++i)
+        {
+            if (weaklyDominates (pop_table[i].obj, sample, g_algorithm_entity.algorithm_para.objective_number))
+            {
+                domCount++;
+                if(domCount > param_k)
+                    break;
+                hitstat[counter] = 1;
+            }
+            else
+                hitstat[counter] = 0;
+            counter++;
+        }
+
+
+        if (domCount > 0 && domCount <= param_k)
+        {
+            counter = 0;
+            for (i = 0; i < pop_num; ++i)
+            {
+                if (hitstat[counter] == 1)
+                    fitnessInfo[counter].fitness += rho[domCount];
+                counter++;
+            }
+        }
+    }
+    counter = 0;
+
+    for (i = 0; i < pop_num; ++i)
+    {
+        fitnessInfo[counter].idx = i;
+        fitnessInfo[counter].fitness = fitnessInfo[counter].fitness  / (double) nrOfSamples;
+        for (k = 0; k < g_algorithm_entity.algorithm_para.objective_number; k++)
+            fitnessInfo[counter].fitness *= (g_algorithm_entity.nadir_point.obj[k] - g_algorithm_entity.ideal_point.obj[k]);
+        counter++;
+    }
+
+    free (hitstat);
+    free (sample);
+}
+
+
+void HypE_hypeIndicator(Fitness_info_t *fitnessInfo, int nrOfSamples, int param_k, SMRT_individual *pop_table, int pop_num)
+/**
+ * Determine the hypeIndicator
+ * \f[ \sum_{i=1}^k \left( \prod_{j=1}^{i-1} \frac{k-j}{|P|-j} \right) \frac{ Leb( H_i(a) ) }{ i } \f]
+ *
+ * if nrOfSamples < 0, then do exact calculation, else sample the indicator
+ *
+ * @param[out] val vector of all indicator values
+ * @param[in] popsize size of the population \f$ |P| \f$
+ * @param[in] lowerbound scalar denoting the lower vertex of the sampling box
+ * @param[in] upperbound scalar denoting the upper vertex of the sampling box
+ * @param[in] nrOfSamples the total number of samples or, if negative, flag
+ * 		that exact calculation should be used.
+ * @param[in] param_k the variable \f$ k \f$
+ * @param[in] points matrix of all objective values dim*popsize entries
+ * @param[in] rho weight coefficients
+ */
 {
     int i = 0, j = 0;
+    double rho[param_k];
+
+    /** Set alpha */
+    rho[0] = 0;
+    for( i = 1; i <= param_k; i++ )
+    {
+        rho[i] = 1.0 / (double)i;
+        for( j = 1; j <= i-1; j++ )
+            rho[i] *= (double)(param_k - j ) / (double)( pop_num - j );
+    }
+    for( i = 0; i < pop_num; i++ )
+        fitnessInfo[i].fitness = 0.0;
+
+    if( nrOfSamples < 0 )
+        ;//hypeExact( val, popsize, lowerbound, upperbound, param_k, points, rho);
+    else
+        hypeSampling(fitnessInfo, nrOfSamples, param_k, rho, pop_table, pop_num);
+
+}
+
+
+
+
+static void HypE_set_fitness(SMRT_individual *pop_table, int pop_num, int param_k)
+{
+    int i = 0, j = 0;
+    Fitness_info_t *fitnessInfo = NULL;
+
+    fitnessInfo = (Fitness_info_t *)malloc(sizeof(Fitness_info_t) * pop_num);
+    if (NULL == fitnessInfo)
+    {
+        printf("in the non_dominated_sort, malloc distance_arr[i] Failed\n");
+        return;
+    }
 
     if (g_algorithm_entity.algorithm_para.objective_number <= 3)
     {
-;
+        HypE_hypeIndicator(fitnessInfo, 10000, param_k, pop_table, pop_num);
     }
     else
     {
-
+        HypE_hypeIndicator(fitnessInfo, 20000, param_k, pop_table, pop_num);
     }
+
+    for (i = 0; i < pop_num; ++i)
+    {
+        pop_table[i].fitness = fitnessInfo[i].fitness;
+    }
+    free(fitnessInfo);
     return;
 }
 
@@ -88,7 +212,7 @@ static void HypE_select(SMRT_individual *parent_pop, SMRT_individual *mix_pop, i
 
         while (temp_number != g_algorithm_entity.algorithm_para.pop_size - current_pop_num)
         {
-            HypE_set_fitness(temp_pop, temp_number);
+            HypE_set_fitness(temp_pop, temp_number, current_pop_num + temp_number - g_algorithm_entity.algorithm_para.pop_size);
 
             for (i = 0; i < temp_number; ++i)
             {
@@ -142,7 +266,7 @@ extern void HypE_framework (SMRT_individual *parent_pop, SMRT_individual *offspr
     {
         print_progress ();
 
-        HypE_set_fitness(parent_pop, g_algorithm_entity.algorithm_para.pop_size);
+        HypE_set_fitness(parent_pop, g_algorithm_entity.algorithm_para.pop_size, g_algorithm_entity.algorithm_para.pop_size);
         crossover_HypE(parent_pop, offspring_pop);
         mutation_pop(offspring_pop);
 
