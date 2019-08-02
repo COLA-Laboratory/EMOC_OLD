@@ -13,18 +13,18 @@
   <component name="ChangeListManager">
     <list default="true" id="f8ebbcce-5df0-4797-80dd-90bf04881b38" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/dominance_relation.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/dominance_relation.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/population.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/population.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Samaritan" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Samaritan" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_code/dominance_relation.c" beforeDir="false" afterPath="$PROJECT_DIR$/core_code/dominance_relation.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/dominance_relation.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/dominance_relation.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/global.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/global.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core_code/population.c" beforeDir="false" afterPath="$PROJECT_DIR$/core_code/population.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/population.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/population.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metaheuristics.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/metaheuristics/HypE.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/HypE.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/HYPE/1/medium_FUN_1.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M2_D10/HYPE/1/medium_FUN_1.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/HYPE/FUN1.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M2_D10/HYPE/FUN1.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/HYPE/1/medium_FUN_1.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/HYPE/1/medium_FUN_1.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/HYPE/FUN1.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/HYPE/FUN1.out" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +49,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../PLVF_pairwise (1)" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/workspace/samaritan/Archive" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />

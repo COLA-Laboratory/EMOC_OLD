@@ -131,7 +131,7 @@ void hypeExact( Fitness_info_t * fitnessInfo, int param_k, double* rho, SMRT_ind
     }
 
     for( i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++ )
-        boundsVec[i] = g_algorithm_entity.variable_higher_bound[i];
+        boundsVec[i] = g_algorithm_entity.nadir_point.obj[i];
     for( i = 0; i < pop_num; i++  )
         indices[i] = i;
 
@@ -210,22 +210,6 @@ double hypeSampling (Fitness_info_t *fitnessInfo, int nrOfSamples, int param_k, 
 
 
 void HypE_hypeIndicator(Fitness_info_t *fitnessInfo, int nrOfSamples, int param_k, SMRT_individual *pop_table, int pop_num)
-/**
- * Determine the hypeIndicator
- * \f[ \sum_{i=1}^k \left( \prod_{j=1}^{i-1} \frac{k-j}{|P|-j} \right) \frac{ Leb( H_i(a) ) }{ i } \f]
- *
- * if nrOfSamples < 0, then do exact calculation, else sample the indicator
- *
- * @param[out] val vector of all indicator values
- * @param[in] popsize size of the population \f$ |P| \f$
- * @param[in] lowerbound scalar denoting the lower vertex of the sampling box
- * @param[in] upperbound scalar denoting the upper vertex of the sampling box
- * @param[in] nrOfSamples the total number of samples or, if negative, flag
- * 		that exact calculation should be used.
- * @param[in] param_k the variable \f$ k \f$
- * @param[in] points matrix of all objective values dim*popsize entries
- * @param[in] rho weight coefficients
- */
 {
     int i = 0, j = 0;
     double rho[param_k];
@@ -245,12 +229,12 @@ void HypE_hypeIndicator(Fitness_info_t *fitnessInfo, int nrOfSamples, int param_
         hypeExact( fitnessInfo, param_k, rho, pop_table, pop_num);
     else
         hypeSampling(fitnessInfo, nrOfSamples, param_k, rho, pop_table, pop_num);
-
+/*
     for (i = 0; i < pop_num; i++)
     {
         printf("index:%d, fit:%f\n", i, fitnessInfo[i].fitness);
     }
-
+*/
 }
 
 
@@ -391,11 +375,12 @@ extern void HypE_framework (SMRT_individual *parent_pop, SMRT_individual *offspr
 
     // initialize process
     initialize_population_real (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
+    //initialize_population_real_DIY (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
 
     evaluate_population (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
 
     initialize_nadirpoint (parent_pop, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.nadir_point);
-    initialize_idealpoint (parent_pop, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.nadir_point);
+    initialize_idealpoint (parent_pop, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.ideal_point);
 
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
     while(g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)

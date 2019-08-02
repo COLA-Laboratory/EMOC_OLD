@@ -24,6 +24,18 @@ extern void initialize_population_real (SMRT_individual *pop, int pop_nm)
     return;
 }
 
+extern void initialize_population_real_DIY (SMRT_individual *pop, int pop_nm)
+{
+    int i = 0;
+
+    for (i = 0; i < pop_nm; ++i)
+    {
+        pop[i].obj[0] = i+ 1;
+        pop[i].obj[1] = 100 - i -1;
+    }
+
+    return;
+}
 
 extern void copy_individual(SMRT_individual *individualSrc, SMRT_individual *individualDest)
 {
