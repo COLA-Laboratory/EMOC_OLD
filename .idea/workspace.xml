@@ -13,18 +13,21 @@
   <component name="ChangeListManager">
     <list default="true" id="f8ebbcce-5df0-4797-80dd-90bf04881b38" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/population.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/population.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/utility.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/utility.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Samaritan" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Samaritan" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_code/population.c" beforeDir="false" afterPath="$PROJECT_DIR$/core_code/population.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/population.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/population.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaheuristics.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaheuristics/HypE.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/HypE.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/HYPE/1/medium_FUN_1.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M2_D10/HYPE/1/medium_FUN_1.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M2_D10/HYPE/FUN1.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M2_D10/HYPE/FUN1.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/HYPE/1/medium_FUN_1.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/HYPE/1/medium_FUN_1.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/DTLZ1_M3_D10/HYPE/FUN1.out" beforeDir="false" afterPath="$PROJECT_DIR$/out/DTLZ1_M3_D10/HYPE/FUN1.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core_code/initialize.c" beforeDir="false" afterPath="$PROJECT_DIR$/core_code/initialize.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core_code/utility.c" beforeDir="false" afterPath="$PROJECT_DIR$/core_code/utility.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/list.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/list.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/utility.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/utility.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metaheuristics/NSGA3.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/NSGA3.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +52,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/workspace/samaritan/Archive" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -78,7 +81,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0455c3f2-7ea3-4729-98b6-7f6942349db5" name="Default Changelist" comment="" />
+      <changelist id="f8ebbcce-5df0-4797-80dd-90bf04881b38" name="Default Changelist" comment="" />
       <created>1562574321642</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -88,6 +91,7 @@
       <workItem from="1563869276047" duration="13657000" />
       <workItem from="1564022096777" duration="14778000" />
       <workItem from="1564070234343" duration="10580000" />
+      <workItem from="1564967044666" duration="40588000" />
     </task>
     <servers />
   </component>

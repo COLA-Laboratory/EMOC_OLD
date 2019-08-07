@@ -283,7 +283,7 @@ int initialization_real_para (int argc, char** argv)
         g_algorithm_entity.reference_point.obj[i] = 4.0;
 
     // calculate the number of points in the PF data
-    sprintf (PF_name, "PF/%s.%dD.pf", g_problem_name_str[g_algorithm_entity.testProblem], g_algorithm_entity.algorithm_para.objective_number);
+    sprintf (PF_name, "../PF/%s.%dD.pf", g_problem_name_str[g_algorithm_entity.testProblem], g_algorithm_entity.algorithm_para.objective_number);
     PF = fopen (PF_name, "r");
     //print_error (PF == NULL, 2, "Fail to open PF: ", PF_name);
     if(PF != NULL){

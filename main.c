@@ -1,7 +1,7 @@
 #include "headers/global.h"
 #include "headers/initialize.h"
 #include "headers/metaheuristics.h"
-
+#include "headers/indicator.h"
 
 int main(int argc, char** argv) {
     if (FAIL == initialization_real_para(argc, argv))
@@ -44,6 +44,8 @@ int main(int argc, char** argv) {
         }
     }
 
+    initialize_nadirpoint(g_algorithm_entity.parent_population, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.nadir_point);
+
     printf("The output as follows:\n");
     for (int i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
     {
@@ -58,6 +60,7 @@ int main(int argc, char** argv) {
         }
         printf("\n");
     }
+    printf("indicator:%f\n", cal_IGD(g_algorithm_entity.parent_population, g_algorithm_entity.algorithm_para.pop_size));
 
 
     destroy_real_para (argc, argv);
