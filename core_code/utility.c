@@ -189,6 +189,10 @@ extern void update_ideal_point(SMRT_individual *pop_table, int pop_num)
 {
     int i = 0, j = 0;
 
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+    {
+        g_algorithm_entity.ideal_point.obj[j] = INF;
+    }
     for (i = 0; i < pop_num; i++)
     {
         for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
@@ -205,6 +209,11 @@ extern void update_ideal_point(SMRT_individual *pop_table, int pop_num)
 extern void update_nadir_point(SMRT_individual *pop_table, int pop_num)
 {
     int i = 0, j = 0;
+
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+    {
+        g_algorithm_entity.nadir_point.obj[j] = -INF;
+    }
 
     for (i = 0; i < pop_num; i++)
     {

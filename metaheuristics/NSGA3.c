@@ -165,7 +165,7 @@ static void NSGA3_getExtremePoints (SMRT_individual *candidate_pop, SMRT_individ
             }
         }
 
-        copy_individual(candidate_pop + j, extreme_pop + i);
+        copy_individual(candidate_pop + min_idx, extreme_pop + i);
     }
 
     free(max_value);

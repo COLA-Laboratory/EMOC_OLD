@@ -10,6 +10,8 @@
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
 
+/home/maopl/CLionProjects/my_work/Samaritan/headers/dominance_relation.h
+
 /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
 pthread.h
 -
@@ -37,6 +39,8 @@ limits.h
 -
 regex.h
 -
+
+/home/maopl/CLionProjects/my_work/Samaritan/headers/initialize.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/memory.h
 ../headers/global.h
@@ -66,27 +70,31 @@ global.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
 
-/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA3.c
+/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/HypE.c
 ../headers/global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
 ../headers/metaheuristics.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/metaheuristics.h
-../headers/crossover.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
 ../headers/mutation.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/mutation.h
 ../headers/problem.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
 ../headers/print.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
-../headers/analysis.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
-../headers/sort.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
+../headers/initialize.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/initialize.h
 ../headers/utility.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
+../headers/analysis.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
+../headers/crossover.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
+../headers/sort.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
 ../headers/memory.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/memory.h
+../headers/dominance_relation.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/dominance_relation.h
 ../headers/random.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
 

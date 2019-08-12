@@ -1,4 +1,4 @@
-algorithm_name:NSGA3
+algorithm_name:IBEA
 test_problem:DTLZ1
 problem_param:
 number_variable:10

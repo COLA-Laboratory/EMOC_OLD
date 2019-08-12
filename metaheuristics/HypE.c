@@ -252,7 +252,7 @@ static void HypE_set_fitness(SMRT_individual *pop_table, int pop_num, int param_
         return;
     }
 
-    if (g_algorithm_entity.algorithm_para.objective_number <= 3)
+    if (g_algorithm_entity.algorithm_para.objective_number <= 2)
     {
         HypE_hypeIndicator(fitnessInfo, -1, param_k, pop_table, pop_num);
     }
