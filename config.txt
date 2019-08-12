@@ -3,7 +3,7 @@ test_problem:DTLZ1
 problem_param:
 number_variable:10
 number_objective:3
-popSize:240
+popSize:300
 eliteSize:300
 max_evaluation:75000
 runtime_output:1

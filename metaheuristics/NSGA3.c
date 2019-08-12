@@ -8,10 +8,12 @@
 #include "../headers/sort.h"
 #include "../headers/utility.h"
 #include "../headers/memory.h"
+#include "../headers/random.h"
 
-//association_matrix[refpoint][population]
-int **association_matrix = NULL, **association_matrix_without_fl = NULL;
-int *association_num = NULL, *association_num_without_fl = NULL;
+
+//association_matrix_without_fl[refpoint][population]
+int **association_matrix_without_fl = NULL, **association_matrix_in_fl = NULL;
+int *association_num_without_fl = NULL, *association_num_in_fl = NULL;
 
 
 static void NSGA3_clear_mem(int ref_point_num, double **distance)
@@ -26,16 +28,16 @@ static void NSGA3_clear_mem(int ref_point_num, double **distance)
 
     for (i = 0; i < ref_point_num; ++i)
     {
-        memset(association_matrix[i], 0, sizeof(int) * g_algorithm_entity.algorithm_para.pop_size*2);
+        memset(association_matrix_without_fl[i], 0, sizeof(int) * g_algorithm_entity.algorithm_para.pop_size * 2);
     }
 
     for (i = 0; i < ref_point_num; ++i)
     {
-        memset(association_matrix_without_fl[i], 0, sizeof(int) * g_algorithm_entity.algorithm_para.pop_size*2);
+        memset(association_matrix_in_fl[i], 0, sizeof(int) * g_algorithm_entity.algorithm_para.pop_size * 2);
     }
 
-    memset(association_num, 0, sizeof(int) * ref_point_num);
     memset(association_num_without_fl, 0, sizeof(int) * ref_point_num);
+    memset(association_num_in_fl, 0, sizeof(int) * ref_point_num);
     return;
 }
 
@@ -77,20 +79,7 @@ static void NSGA3_fill_nd_pop(SMRT_individual *old_pop, int old_pop_num, SMRT_in
             break;
     }
 
-    /*
-    while (current_pop_num < g_algorithm_entity.algorithm_para.pop_size)
-    {
-        for (i = 0; i < old_pop_num; i++)
-        {
-            if (old_pop[i].rank == rank_index && current_pop_num < g_algorithm_entity.algorithm_para.pop_size)
-            {
-                copy_individual(old_pop + i, new_pop + current_pop_num);
-                current_pop_num++;
-            }
-        }
-        rank_index++;
-    }
-     */
+
     *last_rank = rank_index;
     *selected_num = current_pop_num;
 
@@ -341,11 +330,12 @@ static void NSGA3_getIntercepts (SMRT_individual *extreme_pop, SMRT_individual *
         }
     }
 
+
     free(u);
     free(max_obj_value);
     for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
     {
-        arg[i];
+        free(arg[i]);
     }
     free(arg);
     return;
@@ -390,14 +380,19 @@ static void NSGA3_association (SMRT_individual *candidate_pop, int num_candidate
         min_idx = 0;
         for (j = 1; j < point_num; j++)
         {
-            if (min_distance < distance[i][j])
+            if (min_distance > distance[i][j])
             {
+                min_distance = distance[i][j];
                 min_idx = j;
             }
         }
 
-        association_matrix[min_idx][association_num[min_idx]++] = i;
-        if(i < selected_num)
+
+        if(i >= selected_num)
+        {
+            association_matrix_in_fl[min_idx][association_num_in_fl[min_idx]++] = i;
+        }
+        else
         {
             association_matrix_without_fl[min_idx][association_num_without_fl[min_idx]++] = i;
         }
@@ -412,68 +407,74 @@ static void NSGA3_association (SMRT_individual *candidate_pop, int num_candidate
 
 static void NSGA3_niching (SMRT_individual *candidate_pop, int candidate_num, int selected_num, SMRT_individual *new_pop, int ref_pop_num,  double **distance)
 {
-    int i = 0;
-    int min_num = 0, min_ref_id = 0, min_distance_id = 0;
+    int i = 0, j = 0;
+    int min_num = 0, min_ref_id = 0, min_distance_id = 0, break_flag = 0;
+    int selected_num_origin = 0;
     double min_distance = 0;
+    int *select_flag = NULL;
+    int *ref_exausted_flag = NULL;
 
 
+    select_flag = (int *)malloc(sizeof(int) * candidate_num);
+    if (NULL == select_flag)
+    {
+        printf("in the NSGA3_niching, malloc select_flag Failed\n");
+        return;
+    }
+    memset(select_flag, 0, sizeof(int) * candidate_num);
+
+
+    ref_exausted_flag = (int *)malloc(sizeof(int) * ref_pop_num);
+    if (NULL == ref_exausted_flag)
+    {
+        printf("in the NSGA3_niching, malloc association_count1 Failed\n");
+        return;
+    }
+    memset(ref_exausted_flag, 0, sizeof(int) * ref_pop_num);
+
+    selected_num_origin = selected_num;
 
     while (selected_num != g_algorithm_entity.algorithm_para.pop_size)
     {
-
-        min_num = association_num_without_fl[0];
-        for (i = 1; i < ref_pop_num; i++)
+        min_num = INF;
+        min_ref_id = 0;
+        for (i = 0; i < ref_pop_num; i++)
         {
-            if(min_num > association_num_without_fl[i])
+            if(min_num > association_num_without_fl[i] && (ref_exausted_flag[i] == 0))
             {
                 min_num = association_num_without_fl[i];
                 min_ref_id = i;
             }
         }
 
-        if (min_num)
+        if (association_num_in_fl[min_ref_id])
         {
 
             min_distance = INF;
-            for (i = 0; i < candidate_num; i++)
+            for (i = selected_num_origin; i < candidate_num; i++)
             {
-                if (i >= selected_num && min_distance > distance[i][min_ref_id])
+                if ((min_distance > distance[i][min_ref_id]) && (select_flag[i] == 0))
                 {
                     min_distance = distance[i][min_ref_id];
                     min_distance_id = i;
                 }
             }
-
-            copy_individual(candidate_pop + min_distance_id, new_pop + selected_num);
-            selected_num++;
-
         }
         else
         {
-            if (association_num[min_ref_id] == 0)
-            {
-                association_num_without_fl[min_ref_id] = INF;
-                association_num[min_ref_id] = INF;
-                continue;
-            }
-            else
-            {
-                for (i = 0; i < candidate_num; i++)
-                {
-                    if (i >= selected_num && min_distance > distance[i][min_ref_id])
-                    {
-                        min_distance = distance[i][min_ref_id];
-                        min_distance_id = i;
-                    }
-                }
-                copy_individual(candidate_pop + min_distance_id, new_pop + selected_num);
-                selected_num++;
-            }
-
+            ref_exausted_flag[min_ref_id] = 1;
+            continue;
         }
+
+        copy_individual(candidate_pop + min_distance_id, new_pop + selected_num);
+        select_flag[min_distance_id] = 1;
+        association_num_without_fl[min_ref_id]++;
+        association_num_in_fl[min_ref_id]--;
+        selected_num++;
     }
 
-
+    free(select_flag);
+    free(ref_exausted_flag);
     return;
 }
 
@@ -524,30 +525,6 @@ extern void NSGA3_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
         }
     }
 
-    association_matrix = (int **)malloc(sizeof(int *) * ref_point_num);
-    if (NULL == association_matrix)
-    {
-        printf("in the NSGA3_select, malloc association_matrix Failed\n");
-        return;
-    }
-
-    for (i = 0; i < ref_point_num; i++)
-    {
-        association_matrix[i] = (int *)malloc(sizeof(int) * g_algorithm_entity.algorithm_para.pop_size * 2);
-        if (NULL == association_matrix[i])
-        {
-            printf("in the NSGA3_select, malloc association_matrix[i] Failed\n");
-            return;
-        }
-    }
-
-    association_num = (int *)malloc(sizeof(int) * ref_point_num);
-    if (NULL == association_num)
-    {
-        printf("in the NSGA3_select, malloc association_num Failed\n");
-        return;
-    }
-
     association_matrix_without_fl = (int **)malloc(sizeof(int *) * ref_point_num);
     if (NULL == association_matrix_without_fl)
     {
@@ -569,6 +546,30 @@ extern void NSGA3_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
     if (NULL == association_num_without_fl)
     {
         printf("in the NSGA3_select, malloc association_num_without_fl Failed\n");
+        return;
+    }
+
+    association_matrix_in_fl = (int **)malloc(sizeof(int *) * ref_point_num);
+    if (NULL == association_matrix_in_fl)
+    {
+        printf("in the NSGA3_select, malloc association_matrix_in_fl Failed\n");
+        return;
+    }
+
+    for (i = 0; i < ref_point_num; i++)
+    {
+        association_matrix_in_fl[i] = (int *)malloc(sizeof(int) * g_algorithm_entity.algorithm_para.pop_size * 2);
+        if (NULL == association_matrix_in_fl[i])
+        {
+            printf("in the NSGA3_select, malloc association_matrix_in_fl[i] Failed\n");
+            return;
+        }
+    }
+
+    association_num_in_fl = (int *)malloc(sizeof(int) * ref_point_num);
+    if (NULL == association_num_in_fl)
+    {
+        printf("in the NSGA3_select, malloc association_num_in_fl Failed\n");
         return;
     }
 
@@ -615,13 +616,13 @@ extern void NSGA3_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
     for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size*2; i++)
         free (distance[i]);
     for (i = 0; i < ref_point_num; ++i)
-        free(association_matrix[i]);
-    free(association_matrix);
-    free(association_num);
-    for (i = 0; i < ref_point_num; ++i)
         free(association_matrix_without_fl[i]);
     free(association_matrix_without_fl);
     free(association_num_without_fl);
+    for (i = 0; i < ref_point_num; ++i)
+        free(association_matrix_in_fl[i]);
+    free(association_matrix_in_fl);
+    free(association_num_in_fl);
     free (distance);
     free(intercept);
     destroy_memory_for_pop(&candidate_pop, g_algorithm_entity.algorithm_para.pop_size * 2);
