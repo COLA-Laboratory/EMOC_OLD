@@ -1,4 +1,4 @@
-algorithm_name:IBEA
+algorithm_name:MOEAD
 test_problem:DTLZ1
 problem_param:
 number_variable:10

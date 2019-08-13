@@ -235,12 +235,12 @@ extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring
             }
 
             // crossover and mutation
-            crossover_MOEAD_dra (pop, parent, j, offspring, type);
+            crossover_MOEAD (pop, parent, j, offspring, type);
             mutation_ind(offspring);
             evaluate_individual (offspring);
 
             // update the subproblem
-            update_subproblem_dra(offspring, j, type);
+            update_subproblem(offspring, j, type);
 
         }
 

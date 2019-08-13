@@ -9,7 +9,7 @@
 #include "../headers/selection.h"
 #include "../headers/sort.h"
 #include "../headers/analysis.h"
-
+#include "../headers/random.h"
 
 
 static void ini_MOEAD(SMRT_individual *pop_table, int weight_num)
@@ -52,11 +52,18 @@ static void ini_MOEAD(SMRT_individual *pop_table, int weight_num)
 }
 
 
+
+
 extern void MOEAD_framework (SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int  i = 0;
+    NeighborType type;
+    double rand = 0;
     g_algorithm_entity.iteration_number          = 1;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;
+    SMRT_individual *offspring = g_algorithm_entity.offspring_population;
+
+
     printf ("|\tThe %d run\t|\t1%%\t|", g_algorithm_entity.run_index_current);
 
     // initialization process
@@ -81,15 +88,28 @@ extern void MOEAD_framework (SMRT_individual *pop, SMRT_individual *offspring_po
     {
         print_progress ();
         // crossover and mutation
-        crossover_MOEAD (pop, offspring_pop);
-        mutation_pop(offspring_pop);
-        evaluate_population (offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
+        for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
+        {
+            rand = randomperc();
+            if (rand < g_algorithm_entity.MOEAD_para.neighborhood_selection_probability)
+            {
+                type = NEIGHBOR;
+            }
+            else
+            {
+                type = GLOBAL_PARENT;
+            }
 
-        // update ideal point
-        update_ideal_point (offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
+            crossover_MOEAD (pop, pop + i, i, offspring, type);
+            mutation_ind(offspring);
+            evaluate_individual (offspring);
 
-        // update subproblem
-        update_subproblem (pop, offspring_pop);
+            // update ideal point
+            update_ideal_point_by_ind (offspring_pop);
+
+            // update subproblem
+            update_subproblem(offspring, i, type);
+        }
 
         g_algorithm_entity.iteration_number++;
 

@@ -272,7 +272,7 @@ int initialization_real_para (int argc, char** argv)
 
     // intrisic parameters used in MOEA/D variants
     g_algorithm_entity.MOEAD_para.neighbor_size = 20;
-    g_algorithm_entity.MOEAD_para.function_type = TCH;
+    g_algorithm_entity.MOEAD_para.function_type = ITCH;
     g_algorithm_entity.MOEAD_para.neighborhood_selection_probability = 0.9;
     g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions = 2;
 
@@ -382,7 +382,6 @@ extern void initialize_nadirpoint (SMRT_individual *pop_table, int pop_num, REFE
             if (ind->obj[j] > nadir_point->obj[j])
                 nadir_point->obj[j] = ind->obj[j];
         }
-
     }
 
     return;
