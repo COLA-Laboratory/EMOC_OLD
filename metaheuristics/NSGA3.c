@@ -12,8 +12,8 @@
 
 
 //association_matrix_without_fl[refpoint][population]
-int **association_matrix_without_fl = NULL, **association_matrix_in_fl = NULL;
-int *association_num_without_fl = NULL, *association_num_in_fl = NULL;
+static int **association_matrix_without_fl = NULL, **association_matrix_in_fl = NULL;
+static int *association_num_without_fl = NULL, *association_num_in_fl = NULL;
 
 
 static void NSGA3_clear_mem(int ref_point_num, double **distance)

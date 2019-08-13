@@ -60,6 +60,7 @@ add_executable(Samaritan main.c
         metaheuristics/IBEA.c
         metaheuristics/MOEAD.c
         metaheuristics/MOEAD-dra.c
+        metaheuristics/MOEADD.c
         metaheuristics/SMSEMOA.c
         metaheuristics/HypE.c
         metaheuristics/SPEA2.c)

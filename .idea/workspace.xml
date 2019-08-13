@@ -12,26 +12,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8ebbcce-5df0-4797-80dd-90bf04881b38" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/metaheuristics/MOEADD.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/initialize.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/initialize.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/crossover/crossover_real.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/crossover/crossover_real.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/selection/MOEAD/fitness.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/selection/MOEAD/fitness.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Samaritan" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Samaritan" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_code/initialize.c" beforeDir="false" afterPath="$PROJECT_DIR$/core_code/initialize.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Samaritan.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Samaritan.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core_code/utility.c" beforeDir="false" afterPath="$PROJECT_DIR$/core_code/utility.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crossover/crossover_real.c" beforeDir="false" afterPath="$PROJECT_DIR$/crossover/crossover_real.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headers/crossover.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/crossover.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/selection.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/selection.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/global.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/global.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/metaheuristics.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/metaheuristics.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/utility.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/utility.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metaheuristics/MOEAD-dra.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/MOEAD-dra.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metaheuristics/MOEAD.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/MOEAD.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/selection/MOEAD/fitness.c" beforeDir="false" afterPath="$PROJECT_DIR$/selection/MOEAD/fitness.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/selection/MOEAD/update.c" beforeDir="false" afterPath="$PROJECT_DIR$/selection/MOEAD/update.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metaheuristics/NSGA3.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/NSGA3.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +97,7 @@
       <workItem from="1563869276047" duration="13657000" />
       <workItem from="1564022096777" duration="14778000" />
       <workItem from="1564070234343" duration="10580000" />
-      <workItem from="1564967044666" duration="87191000" />
+      <workItem from="1564967044666" duration="98378000" />
     </task>
     <servers />
   </component>

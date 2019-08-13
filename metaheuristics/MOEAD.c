@@ -24,7 +24,7 @@ static void ini_MOEAD(SMRT_individual *pop_table, int weight_num)
         printf("In the state of initiate parameter malloc G_MOEAD_weighted Fail\n");
         return;
     }
-    initialize_uniform_weight();
+    initialize_weight();
 
     for (i = 0; i < weight_num; i++)
     {

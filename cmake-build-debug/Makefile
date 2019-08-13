@@ -852,6 +852,33 @@ metaheuristics/MOEAD.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.s
 .PHONY : metaheuristics/MOEAD.c.s
 
+metaheuristics/MOEADD.o: metaheuristics/MOEADD.c.o
+
+.PHONY : metaheuristics/MOEADD.o
+
+# target to build an object file
+metaheuristics/MOEADD.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o
+.PHONY : metaheuristics/MOEADD.c.o
+
+metaheuristics/MOEADD.i: metaheuristics/MOEADD.c.i
+
+.PHONY : metaheuristics/MOEADD.i
+
+# target to preprocess a source file
+metaheuristics/MOEADD.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.i
+.PHONY : metaheuristics/MOEADD.c.i
+
+metaheuristics/MOEADD.s: metaheuristics/MOEADD.c.s
+
+.PHONY : metaheuristics/MOEADD.s
+
+# target to generate assembly for a file
+metaheuristics/MOEADD.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.s
+.PHONY : metaheuristics/MOEADD.c.s
+
 metaheuristics/NSGA2.o: metaheuristics/NSGA2.c.o
 
 .PHONY : metaheuristics/NSGA2.o
@@ -1239,6 +1266,9 @@ help:
 	@echo "... metaheuristics/MOEAD.o"
 	@echo "... metaheuristics/MOEAD.i"
 	@echo "... metaheuristics/MOEAD.s"
+	@echo "... metaheuristics/MOEADD.o"
+	@echo "... metaheuristics/MOEADD.i"
+	@echo "... metaheuristics/MOEADD.s"
 	@echo "... metaheuristics/NSGA2.o"
 	@echo "... metaheuristics/NSGA2.i"
 	@echo "... metaheuristics/NSGA2.s"

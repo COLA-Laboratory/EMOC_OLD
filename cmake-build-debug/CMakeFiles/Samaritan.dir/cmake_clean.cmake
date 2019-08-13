@@ -34,6 +34,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o"
+  "CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.o"

@@ -150,6 +150,18 @@ typedef struct {
 }MOEAD_DAR_PARA;
 
 
+typedef struct {
+    int neighbor_size;
+    MoeadFunction function_type;
+    double neighborhood_selection_probability;
+    int maximumNumberOfReplacedSolutions;
+    MOEAD_NEIGHBOR *neighbor_table;
+    double *utility;
+    double *old_function;
+    double *delta;
+    int *frequency;
+}MOEADD_PARA;
+
 
 /*mutation parameter*/
 typedef struct {
@@ -235,6 +247,7 @@ typedef struct Evolution_algorithm_entity{
     SBX_PARA sbxPara;
     DE_PARA  dePara;
     MOEAD_PARA MOEAD_para;
+    MOEADD_PARA MOEADD_para;
 }SMRT_entity;
 
 typedef struct lists

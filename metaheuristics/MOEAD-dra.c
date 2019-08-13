@@ -135,7 +135,7 @@ static void ini_MOEAD_dra(SMRT_individual *pop_table, int weight_num)
         return;
     }
 
-    initialize_uniform_weight();
+    initialize_weight();
 
     for (i = 0; i < weight_num; i++)
     {

@@ -262,3 +262,49 @@ extern void crossover_HypE(SMRT_individual *parent_pop_table, SMRT_individual *o
     free(a2);
     return;
 }
+
+extern void crossover_MOEADD(SMRT_individual *parent_pop_table, SMRT_individual *parent1, int pop_id, SMRT_individual *offspring)
+{
+    int rand_i;
+    double rand_d;
+    SMRT_individual *parent2 = NULL, *offspring1 = NULL, *offspring2 = NULL;
+    DOMINATE_RELATION dominateRelation;
+
+    allocate_memory_for_ind (&offspring1);
+    allocate_memory_for_ind (&offspring2);
+
+    rand_d = randomperc();
+    if (rand_d < g_algorithm_entity.MOEAD_para.neighborhood_selection_probability)
+    {
+        rand_i = rnd(0, g_algorithm_entity.MOEADD_para.neighbor_size);
+    }
+    else
+    {
+        while (parent1 != parent2)
+        {
+            parent2 = parent_pop_table + rnd(0, g_algorithm_entity.algorithm_para.pop_size -1);
+        }
+    }
+
+    sbx_crossover (parent1, parent2, offspring1, offspring2);
+
+    dominateRelation = check_dominance(offspring1, offspring2);
+
+    if (DOMINATED == dominateRelation)
+    {
+        copy_individual(offspring1, offspring);
+    }
+    else if (DOMINATE == dominateRelation)
+    {
+        copy_individual(offspring2, offspring);
+    }
+    else
+    {
+        copy_individual(offspring1, offspring);
+    }
+
+    destroy_memory_for_ind(offspring1);
+    destroy_memory_for_ind(offspring2);
+
+    return;
+}

@@ -31,6 +31,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/IBEA.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD-dra.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o"
+  "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEADD.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA2.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA3.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SMSEMOA.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o"
