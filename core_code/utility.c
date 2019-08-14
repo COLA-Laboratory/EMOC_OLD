@@ -153,7 +153,7 @@ extern double **initialize_uniform_point (int *number_weight)
     return lambda;
 }
 
-extern void initialize_uniform_weight (int obj_number, int H)
+extern double **initialize_uniform_weight_by_layer (int layer, int *number_weight)
 {
     int i, j;
 
@@ -163,20 +163,18 @@ extern void initialize_uniform_weight (int obj_number, int H)
     double *Vec;
     double **lambda = NULL;
 
-    int number_weight = 0;
 
     int gaps = 1;
-    while(1)
+    while(layer != gaps)
     {
         layer_size  = combination (g_algorithm_entity.algorithm_para.objective_number + gaps - 1, gaps);
         //printf("[%d]%d\n",gaps,layer_size);
-        if(layer_size > g_algorithm_entity.algorithm_para.pop_size) break;
         gaps = gaps + 1;
-        number_weight = layer_size;
+        *number_weight = layer_size;
     }
     gaps = gaps - 1;
-    lambda = (double **) malloc (number_weight * sizeof(double *));
-    for (i = 0; i < number_weight; i++)
+    lambda = (double **) malloc ((*number_weight) * sizeof(double *));
+    for (i = 0; i < *number_weight; i++)
     {
         lambda[i] = (double *) malloc(g_algorithm_entity.algorithm_para.objective_number  * sizeof(double));
     }
@@ -187,7 +185,7 @@ extern void initialize_uniform_weight (int obj_number, int H)
         Vec[i] = 0;
     set_weight (Vec, gaps, 0, g_algorithm_entity.algorithm_para.objective_number, &column, lambda);
 
-    for (i = 0; i < number_weight; i++)
+    for (i = 0; i < *number_weight; i++)
         for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++) {
             lambda[i][j] = lambda[i][j] / gaps;
         }
@@ -206,11 +204,9 @@ extern void initialize_uniform_weight (int obj_number, int H)
         }
     }
     free (Vec);
-    for (i = 0; i < number_weight; i++)
-        free (lambda[i]);
-    free (lambda);
 
-    return;
+
+    return lambda;
 }
 
 extern void normalize_obj(SMRT_individual *pop_table, int pop_num)

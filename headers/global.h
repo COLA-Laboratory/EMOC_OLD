@@ -69,6 +69,7 @@ typedef enum{
     NSGA3,
     MOEAD,
     MOEAD_DAR,
+    MOEADD,
     SMS_EMOA,
     HypE,
     SPEA2
@@ -156,10 +157,7 @@ typedef struct {
     double neighborhood_selection_probability;
     int maximumNumberOfReplacedSolutions;
     MOEAD_NEIGHBOR *neighbor_table;
-    double *utility;
-    double *old_function;
-    double *delta;
-    int *frequency;
+    double theta;
 }MOEADD_PARA;
 
 

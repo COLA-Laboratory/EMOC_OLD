@@ -53,6 +53,7 @@ add_executable(Samaritan main.c
         indicators/hv.c
         indicators/IGD.c
         indicators/GD.c
+        indicators/PBI.c
 
 
         metaheuristics/NSGA2.c

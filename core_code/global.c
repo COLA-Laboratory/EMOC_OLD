@@ -5,6 +5,7 @@ char *g_algorithm_name_str[ALGORITHM_NAME_NUM] = {
         "NSGA3",
         "MOEAD",
         "MOEAD_DRA",
+        "MOEADD",
         "SMSEMOA",
         "HYPE",
         "SPEA2"
