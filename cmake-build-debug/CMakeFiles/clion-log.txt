@@ -1,4 +1,4 @@
-"E:\CLion 2019.1.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" E:\workspace\12\Samaritan
+/snap/clion/81/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/maopl/CLionProjects/my_work/Samaritan
 -- Configuring done
 -- Generating done
--- Build files have been written to: E:/workspace/12/Samaritan/cmake-build-debug
+-- Build files have been written to: /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug

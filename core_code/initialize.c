@@ -270,6 +270,9 @@ int initialization_real_para (int argc, char** argv)
     g_algorithm_entity.dePara.F  = 0.5;
     g_algorithm_entity.dePara.K  = 0.5;
 
+    //PBI parameter setting
+    g_algorithm_entity.pbi_para.theta = 5.0;
+
     // intrisic parameters used in MOEA/D variants
     g_algorithm_entity.MOEAD_para.neighbor_size = 20;
     g_algorithm_entity.MOEAD_para.function_type = ITCH;

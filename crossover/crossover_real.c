@@ -88,11 +88,11 @@ extern void crossover_nsga2(SMRT_individual *parent_pop_table, SMRT_individual *
 
     for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size ; i += 4)
     {
-        parent1 = tournament_NSGA2(&parent_pop_table[a1[i]], &parent_pop_table[a1[i + 1]]);
-        parent2 = tournament_NSGA2(&parent_pop_table[a1[i + 2]], &parent_pop_table[a1[i + 3]]);
+        parent1 = tournament_by_rank(&parent_pop_table[a1[i]], &parent_pop_table[a1[i + 1]]);
+        parent2 = tournament_by_rank(&parent_pop_table[a1[i + 2]], &parent_pop_table[a1[i + 3]]);
         sbx_crossover (parent1, parent2, offspring_pop_table + i, offspring_pop_table + i + 1);
-        parent1 = tournament_NSGA2 (&parent_pop_table[a2[i]], &parent_pop_table[a2[i + 1]]);
-        parent2 = tournament_NSGA2 (&parent_pop_table[a2[i + 2]], &parent_pop_table[a2[i + 3]]);
+        parent1 = tournament_by_rank(&parent_pop_table[a2[i]], &parent_pop_table[a2[i + 1]]);
+        parent2 = tournament_by_rank(&parent_pop_table[a2[i + 2]], &parent_pop_table[a2[i + 3]]);
         sbx_crossover (parent1, parent2, &offspring_pop_table[i + 2], &offspring_pop_table[i + 3]);
     }
 
@@ -197,8 +197,8 @@ extern void crossover_SMSEMOA(SMRT_individual *parent_pop_table, SMRT_individual
         a2[i]    = temp;
     }
 
-    parent1 = tournament_NSGA2(&parent_pop_table[a1[0]], &parent_pop_table[a1[1]]);
-    parent2 = tournament_NSGA2(&parent_pop_table[a1[2]], &parent_pop_table[a1[3]]);
+    parent1 = tournament_by_rank(&parent_pop_table[a1[0]], &parent_pop_table[a1[1]]);
+    parent2 = tournament_by_rank(&parent_pop_table[a1[2]], &parent_pop_table[a1[3]]);
     sbx_crossover (parent1, parent2, offspring1, offspring2);
 
     dominateRelation = check_dominance(offspring1, offspring2);

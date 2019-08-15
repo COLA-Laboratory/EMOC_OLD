@@ -180,6 +180,9 @@ typedef struct{
     double K;
 }DE_PARA;
 
+typedef struct{
+    double theta;
+}PBI_PARA;
 
 typedef struct
 {
@@ -244,6 +247,7 @@ typedef struct Evolution_algorithm_entity{
     POLYNOMIAL_PARA polynomialPara;
     SBX_PARA sbxPara;
     DE_PARA  dePara;
+    PBI_PARA pbi_para;
     MOEAD_PARA MOEAD_para;
     MOEADD_PARA MOEADD_para;
 }SMRT_entity;

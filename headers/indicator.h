@@ -10,4 +10,5 @@ extern void record_GD (SMRT_individual *pop, int generation);
 extern double cal_IGD(SMRT_individual *pop_table, int pop_num);
 extern void print_IGD (char *file_name);
 extern void record_IGD (SMRT_individual *pop, int generation);
+extern double cal_PBI(SMRT_individual *ind, double *weight, double theta);
 #endif

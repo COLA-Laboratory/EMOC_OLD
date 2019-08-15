@@ -8,202 +8,206 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="E:/workspace/12/Samaritan/cmake-build-debug"/>
+				<Option working_dir="/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="E:/workspace/12/Samaritan/cmake-build-debug"/>
+				<Option working_dir="/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Samaritan">
-				<Option output="E:/workspace/12/Samaritan/cmake-build-debug/Samaritan.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/workspace/12/Samaritan/cmake-build-debug"/>
+				<Option output="/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Samaritan" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="E:/mingw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
-					<Add directory="E:/mingw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="E:/mingw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 Samaritan"/>
-					<CompileFile command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 Samaritan"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Samaritan/fast">
-				<Option output="E:/workspace/12/Samaritan/cmake-build-debug/Samaritan.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="E:/workspace/12/Samaritan/cmake-build-debug"/>
+				<Option output="/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Samaritan" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="E:/mingw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
-					<Add directory="E:/mingw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="E:/mingw/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 Samaritan/fast"/>
-					<CompileFile command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 Samaritan/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="E:/workspace/12/Samaritan/cmake-build-debug"/>
+				<Option working_dir="/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/mingw/mingw64/bin/mingw32-make.exe -f &quot;E:/workspace/12/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="E:/workspace/12/Samaritan/analysis/analysis.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/analysis/analysis.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/core_code/dominance_relation.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/core_code/dominance_relation.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/core_code/global.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/core_code/global.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/core_code/initialize.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/core_code/initialize.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/core_code/population.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/core_code/population.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/core_code/print.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/core_code/print.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/core_code/utility.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/core_code/utility.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/crossover/crossover_operator.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/crossover/crossover_operator.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/crossover/crossover_real.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/crossover/crossover_real.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/externals/MY_WFG/Iwfg.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/Iwfg.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/externals/MY_WFG/Iwfg.h">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/Iwfg.h">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/externals/MY_WFG/read.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/read.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/externals/MY_WFG/vector.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/externals/MY_WFG/vector.h">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.h">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/externals/WFG_1.15/read.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/WFG_1.15/read.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/externals/WFG_1.15/wfg.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/WFG_1.15/wfg.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/externals/WFG_1.15/wfg.h">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/externals/WFG_1.15/wfg.h">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/indicators/GD.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/indicators/GD.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/indicators/IGD.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/indicators/IGD.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/indicators/PBI.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/indicators/PBI.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/indicators/hv.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/indicators/hv.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/lib/list.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/lib/list.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/lib/memory.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/lib/memory.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/lib/random.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/lib/random.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/lib/sort.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/lib/sort.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/main.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/main.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/mating/selection_mating.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/mating/selection_mating.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/metaheuristics/HypE.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/HypE.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/metaheuristics/IBEA.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/IBEA.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/metaheuristics/MOEAD-dra.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD-dra.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/metaheuristics/MOEAD.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/metaheuristics/MOEADD.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEADD.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/metaheuristics/NSGA2.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA2.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/metaheuristics/NSGA3.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA3.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/metaheuristics/SMSEMOA.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SMSEMOA.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/metaheuristics/SPEA2.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SPEA2.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/mutation/mutation_operator.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/mutation/mutation_operator.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/mutation/mutation_real.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/mutation/mutation_real.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/selection/MOEAD/fitness.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/fitness.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/selection/MOEAD/update.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/update.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/test_problem/DTLZ.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/DTLZ.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/test_problem/ZDT.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/ZDT.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/test_problem/evaluation.c">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/evaluation.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="E:/workspace/12/Samaritan/CMakeLists.txt">
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

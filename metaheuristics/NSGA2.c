@@ -4,7 +4,6 @@
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/dominance_relation.h"
 #include "../headers/analysis.h"
 #include "../headers/sort.h"
 
@@ -113,24 +112,17 @@ extern int crowding_distance_assign(SMRT_individual *pop_table, int pop_sort[], 
         }
     }
 
+
     for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
     {
         memset(sort_arr, 0, sizeof(int) * pop_num);
         sort_by_obj_rank(pop_table, sort_arr, i, rank_index, pop_num);
-        /*第一个和最后一个赋值为无穷大，为了使其能够保存下来*/
-        if(pop_num_in_rank == 1)
-        {
-            pop_table[sort_arr[0]].fitness = INF;
-            setDistance_by_index(distance_arr, sort_arr[0], pop_num_in_rank, INF);
-            pop_table[sort_arr[pop_num_in_rank - 1]].fitness = INF;
-            setDistance_by_index(distance_arr, sort_arr[pop_num_in_rank - 1], pop_num_in_rank, INF);
-        }
-        else
-        {
-            pop_table[sort_arr[0]].fitness = INF;
-            setDistance_by_index(distance_arr, sort_arr[0], pop_num_in_rank, INF);
-        }
 
+        /*第一个和最后一个赋值为无穷大，为了使其能够保存下来*/
+        pop_table[sort_arr[0]].fitness = INF;
+        setDistance_by_index(distance_arr, sort_arr[0], pop_num_in_rank, INF);
+        pop_table[sort_arr[pop_num_in_rank - 1]].fitness = INF;
+        setDistance_by_index(distance_arr, sort_arr[pop_num_in_rank - 1], pop_num_in_rank, INF);
         for (j = 1; j < pop_num_in_rank - 1; j++)
         {
             if (INF != pop_table[sort_arr[j]].fitness)
@@ -153,10 +145,7 @@ extern int crowding_distance_assign(SMRT_individual *pop_table, int pop_sort[], 
     {
         pop_sort[i] = distance_arr[i].idx;
     }
-    for (i = 0; i < pop_num_in_rank; i ++)
-    {
-        pop_table[pop_sort[i]].fitness = pop_table[pop_sort[i]].fitness / g_algorithm_entity.algorithm_para.objective_number;
-    }
+
 
     CROWDING_DISTANCE_FAIL_HANDLE:
     free(distance_arr);
@@ -182,9 +171,7 @@ static void NSGA2_select(SMRT_individual *parent_pop, SMRT_individual *merge_pop
         goto NSGA2_SELECT_TERMINATE_HANDLE;
     }
 
-
     non_dominated_sort(merge_pop, merge_pop_number);
-
 
     while (1)
     {
@@ -233,6 +220,10 @@ static void NSGA2_select(SMRT_individual *parent_pop, SMRT_individual *merge_pop
             }
         }
     }
+    for(i = 0;i<g_algorithm_entity.algorithm_para.pop_size;i++)
+    {
+        parent_pop[i].fitness = 0;
+    }
 
 NSGA2_SELECT_TERMINATE_HANDLE:
     free(pop_sort);
@@ -250,10 +241,13 @@ extern void NSGA2_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
     initialize_population_real (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
     evaluate_population (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
 
+
     // track the current evolutionary progress, including population and metrics
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
+
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
+
         g_algorithm_entity.iteration_number++;
         print_progress ();
 

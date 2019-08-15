@@ -6,11 +6,10 @@
 #include "../headers/print.h"
 #include "../headers/initialize.h"
 #include "../headers/utility.h"
-#include "../headers/selection.h"
 #include "../headers/analysis.h"
-#include "../headers/random.h"
 #include "../headers/sort.h"
 #include "../headers/memory.h"
+#include "../headers/indicator.h"
 
 //association[weight][point_id]   association_num[weight] = associationnum
 static int **association_matrix = NULL, *association_num = NULL;
@@ -190,10 +189,96 @@ static void MOEADD_free()
     return;
 }
 
+
+
+static int MOEADD_locate_worst_solution(SMRT_individual *pop_table, int pop_num)
+{
+    int i = 0, j = 0;
+    int max_num = 0, temp_num = 0, delete_id = 0, max_subreg_id = 0, current_subregion_id = 0;
+    double temp_value = 0, max_value = 0;
+    int *max_crowded_subregion = NULL;
+
+    max_crowded_subregion = (int *)malloc(sizeof(int) * pop_num);
+    if (NULL == max_crowded_subregion)
+    {
+        printf("in the MOEADD, malloc max_crowded_subregion Failed\n");
+        return 0;
+    }
+
+    //find the most density subregion by pbi, and the largest solution
+    temp_num = association_num[0];
+    for (i = 0; i < weight_num; i++)
+    {
+        if (temp_num < association_num[i])
+        {
+            temp_num = association_num[i];
+            max_num = 0;
+        }
+        if (temp_num == association_num[i])
+        {
+            max_crowded_subregion[max_num++] = i;
+        }
+    }
+
+    if (max_num == 1)
+    {
+        max_subreg_id = max_crowded_subregion[0];
+        for (i = 0; i < association_num[max_subreg_id]; i++)
+        {
+            if (max_value < cal_PBI(pop_table + association_matrix[max_subreg_id][i], lambda[max_subreg_id], g_algorithm_entity.pbi_para.theta))
+            {
+                delete_id = i;
+            }
+        }
+    }
+    else
+    {
+        for (i = 0; i < max_num; i++)
+        {
+            temp_value = 0;
+            current_subregion_id = max_crowded_subregion[i];
+            for (j = 0; j < association_num[current_subregion_id]; j++)
+            {
+                temp_value += cal_PBI(pop_table + association_matrix[current_subregion_id][j], lambda[current_subregion_id], g_algorithm_entity.pbi_para.theta);
+            }
+            if (max_value < temp_value)
+            {
+                max_value = temp_value;
+                max_subreg_id = current_subregion_id;
+            }
+        }
+
+        max_value = 0;
+        for (i = 0; i < association_num[max_subreg_id]; i++)
+        {
+            temp_value = cal_PBI(pop_table + association_matrix[max_subreg_id][i], lambda[max_subreg_id], g_algorithm_entity.pbi_para.theta);
+            if(max_value < temp_value)
+            {
+                max_value = temp_value;
+                delete_id = association_matrix[max_subreg_id][i];
+            }
+        }
+
+    }
+
+
+    return delete_id;
+}
+
+
 static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
 {
-    int i = 0, current_rank = 0, flag = 0;
+    int i = 0, j = 0;
+    int flag = 0, delete_id = 0, terminate_flag = 0;
+    int *last_front = NULL, last_front_num = 0, last_rank = 0;
 
+
+    last_front = (int *)malloc(sizeof(int) * merge_num);
+    if (NULL == last_front)
+    {
+        printf("in the MOEADD, malloc last_front Failed\n");
+        return;
+    }
 
     non_dominated_sort(merge_pop, merge_num);
 
@@ -208,13 +293,61 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
 
     if (flag)
     {
+        for (i = 0; i < merge_num; i++)
+        {
+            if (last_rank > merge_pop[i].rank)
+            {
+                last_front_num = 0;
+                last_rank = merge_pop[i].rank;
+            }
 
+            if(last_rank == merge_pop[i].rank)
+            {
+                last_front[last_front_num++] = i;
+            }
+        }
+
+        if (last_front_num == 1)
+        {
+            for (i = 0; i < weight_num; i++)
+            {
+                if (association_num[i] <= 1)
+                    continue;
+                for (j = 0; j < association_num[i]; j++)
+                {
+                    if (last_front[0] == association_matrix[i][j])
+                    {
+                        delete_id = last_front[0];
+                        terminate_flag = 1;
+                        break;
+                    }
+                }
+            }
+
+            //if terminate flag = 0,means the subregion which associated with the last front point has only one point
+            if (terminate_flag)
+            {
+                delete_id = MOEADD_locate_worst_solution(merge_pop, merge_num);
+                goto MOEADD_ELIMINATE;
+            }
+        }
+        else
+        {
+
+        }
     }
     else
     {
-
+        delete_id = MOEADD_locate_worst_solution(merge_pop, merge_num);
     }
 
+MOEADD_ELIMINATE:
+    if (delete_id == merge_num - 1)
+        return;
+    else
+    {
+        copy_individual(merge_pop - 1, g_algorithm_entity.parent_population + delete_id);
+    }
 
     return;
 }
