@@ -20,6 +20,16 @@ static void MOEADD_calculate_layer_by_obj(int * layer, int *layer_inner, int *la
 {
     int i = 0;
 
+    switch (g_algorithm_entity.algorithm_para.objective_number)
+    {
+        case 2:
+            break;
+        case 3:
+            break;
+
+        default:
+            break;
+    }
 
     return;
 }
@@ -261,7 +271,7 @@ static int MOEADD_locate_worst_solution(SMRT_individual *pop_table, int pop_num)
 
     }
 
-
+    free(max_crowded_subregion);
     return delete_id;
 }
 
@@ -269,9 +279,10 @@ static int MOEADD_locate_worst_solution(SMRT_individual *pop_table, int pop_num)
 static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
 {
     int i = 0, j = 0;
-    int flag = 0, delete_id = 0, terminate_flag = 0;
+    int flag = 0, delete_id = 0, terminate_flag = 0, max_num = 0, max_subregion_num = 0, delete_subregion_id = 0;
     int *last_front = NULL, last_front_num = 0, last_rank = 0;
-
+    int **fl_association_matrix = NULL, *fl_association_num = NULL, *max_subregion_id = NULL;
+    double max_value = 0, temp_value = 0;
 
     last_front = (int *)malloc(sizeof(int) * merge_num);
     if (NULL == last_front)
@@ -279,6 +290,38 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
         printf("in the MOEADD, malloc last_front Failed\n");
         return;
     }
+
+    fl_association_num = (int *)malloc(sizeof(int) * weight_num);
+    if (NULL == fl_association_num)
+    {
+        printf("in the MOEADD, malloc fl_association_num Failed\n");
+        return;
+    }
+
+    max_subregion_id = (int *)malloc(sizeof(int) * weight_num);
+    if (NULL == max_subregion_id)
+    {
+        printf("in the MOEADD, malloc max_subregion_id Failed\n");
+        return;
+    }
+
+    fl_association_matrix = (int **)malloc(sizeof(int *) * weight_num);
+    if (NULL == fl_association_matrix)
+    {
+        printf("in the MOEADD, malloc association_matrix Failed\n");
+        return;
+    }
+
+    for (i = 0; i < weight_num; i++)
+    {
+        fl_association_matrix[i] = (int *)malloc(sizeof(int) * (weight_num + 1));
+        if (NULL == fl_association_matrix[i])
+        {
+            printf("in the MOEADD, malloc fl_association_matrix[i] Failed\n");
+            return;
+        }
+    }
+
 
     non_dominated_sort(merge_pop, merge_num);
 
@@ -333,6 +376,78 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
         }
         else
         {
+            for (i = 0; i < weight_num; i++)
+            {
+                for (j = 0; j < association_num[i]; j++)
+                {
+                    if (merge_pop[association_matrix[i][j]].rank == last_rank)
+                    {
+                        fl_association_matrix[i][fl_association_num[i]++] = association_matrix[i][j];
+                    }
+                }
+
+            }
+
+            for (i = 0; i < weight_num; i++)
+            {
+                if (max_num < fl_association_num[i])
+                {
+                    max_num = fl_association_num[i];
+                    max_subregion_num = 0;
+                }
+                if (max_num == fl_association_num[i])
+                {
+                    max_subregion_id[max_subregion_num++] = i;
+                }
+            }
+
+
+            if (max_num == 1)
+            {
+                delete_id = MOEADD_locate_worst_solution(merge_pop, merge_num);
+            }
+            else
+            {
+                if (max_subregion_num == 1)
+                {
+                    for (i = 0; i < fl_association_num[max_subregion_id[0]]; i++)
+                    {
+                        temp_value = cal_PBI(merge_pop + fl_association_matrix[max_subregion_id[0]][i], lambda[max_subregion_id[0]], g_algorithm_entity.pbi_para.theta);
+                        if (max_value < temp_value)
+                        {
+                            max_value = temp_value;
+                            delete_id = fl_association_matrix[max_subregion_id[0]][i];
+                        }
+                    }
+                }
+                else
+                {
+                    for (i = 0; i < max_subregion_num; i++)
+                    {
+                        temp_value = 0;
+                        for (j = 0; j < fl_association_num[max_subregion_id[i]]; j++)
+                        {
+                            temp_value += cal_PBI(merge_pop + fl_association_matrix[max_subregion_id[i]][j], lambda[max_subregion_id[i]], g_algorithm_entity.pbi_para.theta);
+                        }
+                        if (max_value < temp_value)
+                        {
+                            max_value = temp_value;
+                            delete_subregion_id = max_subregion_id[i];
+                        }
+                    }
+
+                    max_value = 0;
+                    for (i = 0; i < fl_association_num[delete_subregion_id]; i++)
+                    {
+                        temp_value = cal_PBI(merge_pop + fl_association_matrix[delete_subregion_id][i], lambda[delete_subregion_id], g_algorithm_entity.pbi_para.theta);
+                        if (max_value < temp_value)
+                        {
+                            max_value = temp_value;
+                            delete_id = fl_association_matrix[max_subregion_id[0]][i];
+                        }
+                    }
+                }
+            }
 
         }
     }
@@ -348,6 +463,13 @@ MOEADD_ELIMINATE:
     {
         copy_individual(merge_pop - 1, g_algorithm_entity.parent_population + delete_id);
     }
+
+
+    for (i = 0; i < weight_num; i++)
+        free (fl_association_matrix[i]);
+    free (fl_association_matrix);
+    free(fl_association_num);
+    free(last_front);
 
     return;
 }
