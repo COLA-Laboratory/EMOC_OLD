@@ -274,7 +274,7 @@ extern void crossover_MOEADD(SMRT_individual *parent_pop_table, int weight_id, S
     allocate_memory_for_ind (&offspring2);
 
     rand_d = randomperc();
-    rand_i = rnd(0, g_algorithm_entity.MOEADD_para.neighbor_size);
+    rand_i = rnd(0, g_algorithm_entity.MOEADD_para.neighbor_size) - 1;
     neighbor_id = g_algorithm_entity.MOEADD_para.neighbor_table[weight_id].neighbor[rand_i];
 
     if (association_num[neighbor_id] < 2 || rand_d < g_algorithm_entity.MOEAD_para.neighborhood_selection_probability)

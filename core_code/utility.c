@@ -164,14 +164,12 @@ extern double **initialize_uniform_weight_by_layer (int layer, int *number_weigh
     double **lambda = NULL;
 
 
-    int gaps = 1;
-    while(layer != gaps)
-    {
-        layer_size  = combination (g_algorithm_entity.algorithm_para.objective_number + gaps - 1, gaps);
-        //printf("[%d]%d\n",gaps,layer_size);
-        gaps = gaps + 1;
-        *number_weight = layer_size;
-    }
+    int gaps = layer;
+
+    layer_size  = combination (g_algorithm_entity.algorithm_para.objective_number + layer - 1, layer);
+    //printf("[%d]%d\n",gaps,layer_size);
+    *number_weight = layer_size;
+
     gaps = gaps - 1;
     lambda = (double **) malloc ((*number_weight) * sizeof(double *));
     for (i = 0; i < *number_weight; i++)
@@ -189,41 +187,14 @@ extern double **initialize_uniform_weight_by_layer (int layer, int *number_weigh
         for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++) {
             lambda[i][j] = lambda[i][j] / gaps;
         }
-    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
-    {
-        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
-        {
-            g_algorithm_entity.parent_population[i].weight[j] = lambda[i][j];
-        }
-        g_algorithm_entity.MOEAD_para.neighbor_table[i].idx = i;
-        g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor = (int *)malloc(sizeof(int) * g_algorithm_entity.MOEAD_para.neighbor_size);
-        if(NULL == g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor)
-        {
-            printf("In the state of initiate parameter malloc weight neighbor Fail\n");
-            return ;
-        }
-    }
+
     free (Vec);
 
 
     return lambda;
 }
 
-extern void normalize_obj(SMRT_individual *pop_table, int pop_num)
-{
-    int i = 0, j = 0;
 
-    for (i = 0; i < pop_num; i++)
-    {
-        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
-        {
-
-
-        }
-    }
-
-    return;
-}
 
 
 /* Calculate the Euclidean distance between two points */

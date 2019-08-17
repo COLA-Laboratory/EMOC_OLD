@@ -1,10 +1,10 @@
-algorithm_name:NSGA2
+algorithm_name:MOEADD
 test_problem:DTLZ1
 problem_param:
 number_variable:10
 number_objective:3
-popSize:300
-eliteSize:300
+popSize:100
+eliteSize:100
 max_evaluation:75000
 runtime_output:1
 output_interval:10

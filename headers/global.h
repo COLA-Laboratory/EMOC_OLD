@@ -153,9 +153,7 @@ typedef struct {
 
 typedef struct {
     int neighbor_size;
-    MoeadFunction function_type;
     double neighborhood_selection_probability;
-    int maximumNumberOfReplacedSolutions;
     MOEAD_NEIGHBOR *neighbor_table;
     double theta;
 }MOEADD_PARA;

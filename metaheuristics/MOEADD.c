@@ -23,10 +23,26 @@ static void MOEADD_calculate_layer_by_obj(int * layer, int *layer_inner, int *la
     switch (g_algorithm_entity.algorithm_para.objective_number)
     {
         case 2:
+            *layer = 13;
             break;
         case 3:
+            *layer = 12;
             break;
-
+        case 5:
+            *layer = 6;
+            break;
+        case 8:
+            *layer_inner = 2;
+            *layer_out = 3;
+            break;
+        case 10:
+            *layer_inner = 2;
+            *layer_out = 3;
+            break;
+        case 15:
+            *layer_inner = 1;
+            *layer_out = 2;
+            break;
         default:
             break;
     }
@@ -41,25 +57,27 @@ static void MOEADD_association(SMRT_individual *pop_table, int pop_num, double *
 {
     int i = 0, j = 0, k = 0;
     int min_idx;
-    double d1 = 0, lam = 0, min_distance = 0;
-    double **distance = NULL;
+    double d1 = 0, lam = 0, beita = 0, theta = 0, min_distance = 0;
+    double **angle = NULL;
 
-    distance = (double **)malloc(sizeof(double *) * weight_num);
-    if (NULL == distance)
+    angle = (double **)malloc(sizeof(double *) * pop_num);
+    if (NULL == angle)
     {
         printf("in the MOEADD, malloc association_matrix Failed\n");
         return;
     }
 
-    for (i = 0; i < weight_num; i++)
+    for (i = 0; i < pop_num; i++)
     {
-        distance[i] = (double *)malloc(sizeof(double) * (g_algorithm_entity.algorithm_para.pop_size + 1));
-        if (NULL == distance[i])
+        angle[i] = (double *)malloc(sizeof(double) * (weight_num));
+        if (NULL == angle[i])
         {
-            printf("in the MOEADD, malloc distance[i] Failed\n");
+            printf("in the MOEADD, malloc angle[i] Failed\n");
             return;
         }
     }
+
+    memset(association_num, 0, sizeof(int) * weight_num);
 
 
     // calculate perpendicular distances towards each weight vector
@@ -73,24 +91,30 @@ static void MOEADD_association(SMRT_individual *pop_table, int pop_num, double *
             {
                 d1 += (pop_table[j].obj[k]) * weight_vector[i][k];
                 lam += weight_vector[i][k] * weight_vector[i][k];
+                beita +=  pop_table[j].obj[k] * pop_table[j].obj[k];
             }
             lam = sqrt(lam);
-            d1  = d1 / lam;
+            beita = sqrt(beita);
+            theta  = d1 / (lam * beita);
 
-            // Store the distance in the matrix and in the individual object
-            distance[j][i] = sqrt(d1);
+            //tansform to sin
+            theta = sqrt(1 - theta * theta);
+
+
+            // Store the angle in the matrix and in the individual object
+            angle[j][i] = theta;
         }
     }
 
     for (i = 0; i < pop_num; i++)
     {
-        min_distance = distance[i][0];
+        min_distance = angle[i][0];
         min_idx = 0;
         for (j = 1; j < weight_num; j++)
         {
-            if (min_distance > distance[i][j])
+            if (min_distance > angle[i][j])
             {
-                min_distance = distance[i][j];
+                min_distance = angle[i][j];
                 min_idx = j;
             }
         }
@@ -139,11 +163,6 @@ static void ini_MOEADD()
 
     }
 
-    destroy_memory_for_pop(&g_algorithm_entity.parent_population, g_algorithm_entity.algorithm_para.pop_size);
-    destroy_memory_for_pop(&g_algorithm_entity.mix_population, g_algorithm_entity.algorithm_para.pop_size * 2);
-    g_algorithm_entity.algorithm_para.pop_size = weight_num;
-    allocate_memory_for_pop(&g_algorithm_entity.parent_population, g_algorithm_entity.algorithm_para.pop_size);
-    allocate_memory_for_pop(&g_algorithm_entity.mix_population, g_algorithm_entity.algorithm_para.pop_size * 2);
 
     g_algorithm_entity.MOEADD_para.neighbor_table = (MOEAD_NEIGHBOR*)malloc(sizeof(MOEAD_NEIGHBOR) * weight_num);
     if(NULL == g_algorithm_entity.MOEADD_para.neighbor_table)
@@ -151,6 +170,10 @@ static void ini_MOEADD()
         printf("In the state of initiate parameter malloc MOEADD_neighbor_table Fail\n");
         return;
     }
+
+    g_algorithm_entity.MOEADD_para.theta = 0.5;
+    g_algorithm_entity.MOEADD_para.neighbor_size = 20;
+    g_algorithm_entity.MOEADD_para.neighborhood_selection_probability = 0.9;
 
     for (i = 0; i < weight_num; i++)
     {
@@ -169,11 +192,21 @@ static void ini_MOEADD()
         }
         Distance_buble_sort(sort_list, weight_num);
 
+        g_algorithm_entity.MOEADD_para.neighbor_table[i].neighbor = (int *)malloc(sizeof(int) * g_algorithm_entity.MOEADD_para.neighbor_size);
+        if(NULL == g_algorithm_entity.MOEADD_para.neighbor_table[i].neighbor)
+        {
+            printf("In the state of initiate parameter malloc weight neighbor Fail\n");
+            return ;
+        }
+
         for (j = 0; j < g_algorithm_entity.MOEADD_para.neighbor_size; j++)
         {
+
             g_algorithm_entity.MOEADD_para.neighbor_table[i].neighbor[j] = sort_list[j].idx;
         }
     }
+
+
 
     for (i = 0; i < weight_num_inner; i++)
         free (lambda_inner[i]);
@@ -297,6 +330,7 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
         printf("in the MOEADD, malloc fl_association_num Failed\n");
         return;
     }
+    memset(fl_association_num, 0, sizeof(int) * weight_num);
 
     max_subregion_id = (int *)malloc(sizeof(int) * weight_num);
     if (NULL == max_subregion_id)
@@ -314,7 +348,7 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
 
     for (i = 0; i < weight_num; i++)
     {
-        fl_association_matrix[i] = (int *)malloc(sizeof(int) * (weight_num + 1));
+        fl_association_matrix[i] = (int *)malloc(sizeof(int) * (merge_num));
         if (NULL == fl_association_matrix[i])
         {
             printf("in the MOEADD, malloc fl_association_matrix[i] Failed\n");
@@ -336,9 +370,10 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
 
     if (flag)
     {
+        printf("22222\n");
         for (i = 0; i < merge_num; i++)
         {
-            if (last_rank > merge_pop[i].rank)
+            if (last_rank < merge_pop[i].rank)
             {
                 last_front_num = 0;
                 last_rank = merge_pop[i].rank;
@@ -349,6 +384,11 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
                 last_front[last_front_num++] = i;
             }
         }
+        printf("last_front_num:%d\n", last_front_num);
+        for (int k = 0; k < last_front_num; ++k) {
+            printf("last_id:%d\n", last_front[k]);
+        }
+        printf("\n");
 
         if (last_front_num == 1)
         {
@@ -368,7 +408,7 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
             }
 
             //if terminate flag = 0,means the subregion which associated with the last front point has only one point
-            if (terminate_flag)
+            if (!terminate_flag)
             {
                 delete_id = MOEADD_locate_worst_solution(merge_pop, merge_num);
                 goto MOEADD_ELIMINATE;
@@ -376,6 +416,7 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
         }
         else
         {
+
             for (i = 0; i < weight_num; i++)
             {
                 for (j = 0; j < association_num[i]; j++)
@@ -387,6 +428,7 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
                 }
 
             }
+
 
             for (i = 0; i < weight_num; i++)
             {
@@ -404,6 +446,7 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
 
             if (max_num == 1)
             {
+                printf("333\n");
                 delete_id = MOEADD_locate_worst_solution(merge_pop, merge_num);
             }
             else
@@ -413,6 +456,7 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
                     for (i = 0; i < fl_association_num[max_subregion_id[0]]; i++)
                     {
                         temp_value = cal_PBI(merge_pop + fl_association_matrix[max_subregion_id[0]][i], lambda[max_subregion_id[0]], g_algorithm_entity.pbi_para.theta);
+                        printf("temp_value:%f\n",temp_value);
                         if (max_value < temp_value)
                         {
                             max_value = temp_value;
@@ -428,7 +472,9 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
                         for (j = 0; j < fl_association_num[max_subregion_id[i]]; j++)
                         {
                             temp_value += cal_PBI(merge_pop + fl_association_matrix[max_subregion_id[i]][j], lambda[max_subregion_id[i]], g_algorithm_entity.pbi_para.theta);
+
                         }
+                        printf("temp_value:%f\n",temp_value);
                         if (max_value < temp_value)
                         {
                             max_value = temp_value;
@@ -453,22 +499,25 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
     }
     else
     {
+        printf("111111\n");
         delete_id = MOEADD_locate_worst_solution(merge_pop, merge_num);
     }
+
+    printf("delete_id:%d\n", delete_id);
 
 MOEADD_ELIMINATE:
     if (delete_id == merge_num - 1)
         return;
     else
     {
-        copy_individual(merge_pop - 1, g_algorithm_entity.parent_population + delete_id);
+        copy_individual(merge_pop + merge_num - 1, g_algorithm_entity.parent_population + delete_id);
     }
 
 
     for (i = 0; i < weight_num; i++)
         free (fl_association_matrix[i]);
     free (fl_association_matrix);
-    free(fl_association_num);
+    free(fl_association_num); 
     free(last_front);
 
     return;
@@ -487,16 +536,16 @@ extern void MOEADD_framework (SMRT_individual *pop, SMRT_individual *offspring_p
     // initialization process
     ini_MOEADD();
 
-    association_matrix = (int **)malloc(sizeof(int *) * g_algorithm_entity.algorithm_para.pop_size );
+    association_matrix = (int **)malloc(sizeof(int *) * weight_num);
     if (NULL == association_matrix)
     {
         printf("in the MOEADD, malloc association_matrix Failed\n");
         return;
     }
 
-    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
+    for (i = 0; i < weight_num; i++)
     {
-        association_matrix[i] = (int *)malloc(sizeof(int) * (g_algorithm_entity.algorithm_para.pop_size + 1));
+        association_matrix[i] = (int *)malloc(sizeof(int) * (weight_num + 1));
         if (NULL == association_matrix[i])
         {
             printf("in the MOEADD, malloc association_matrix[i] Failed\n");
@@ -504,24 +553,25 @@ extern void MOEADD_framework (SMRT_individual *pop, SMRT_individual *offspring_p
         }
     }
 
-    association_num = (int *)malloc(sizeof(int) * g_algorithm_entity.algorithm_para.pop_size);
+    association_num = (int *)malloc(sizeof(int) * weight_num);
     if (NULL == association_num)
     {
         printf("in the MOEADD, malloc association_num Failed\n");
         return;
     }
+    memset(association_num, 0, sizeof(int) * weight_num);
 
 
     //print_error (number_weight != popsize, 1, "Number of weight vectors must be equal to the population size!");
-    initialize_population_real (pop, g_algorithm_entity.algorithm_para.pop_size);
+    initialize_population_real (pop, weight_num);
 
-    evaluate_population (pop, g_algorithm_entity.algorithm_para.pop_size);
+    evaluate_population (pop, weight_num);
 
-    initialize_idealpoint (pop, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.ideal_point);
+    initialize_idealpoint (pop, weight_num, &g_algorithm_entity.ideal_point);
 
     track_evolution (pop, g_algorithm_entity.iteration_number, 0);
 
-    MOEADD_association(pop, g_algorithm_entity.algorithm_para.pop_size, lambda, weight_num);
+    MOEADD_association(pop, weight_num, lambda, weight_num);
 
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
@@ -534,15 +584,15 @@ extern void MOEADD_framework (SMRT_individual *pop, SMRT_individual *offspring_p
             evaluate_individual (offspring);
 
             // update ideal point
-            update_ideal_point_by_ind (offspring_pop);
+            update_ideal_point_by_ind (offspring);
 
             //merge offspring and population
-            merge_population(mixed_pop, pop, g_algorithm_entity.algorithm_para.pop_size, offspring, 1);
+            merge_population(mixed_pop, pop, weight_num, offspring, 1);
 
-            MOEADD_association(mixed_pop, g_algorithm_entity.algorithm_para.pop_size + 1, lambda, weight_num);
+            MOEADD_association(mixed_pop, weight_num + 1, lambda, weight_num);
 
             // update subproblem
-            MOEADD_update(mixed_pop, g_algorithm_entity.algorithm_para.pop_size);
+            MOEADD_update(mixed_pop, weight_num + 1);
         }
 
         g_algorithm_entity.iteration_number++;
