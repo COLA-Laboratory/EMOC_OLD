@@ -266,11 +266,12 @@ static int MOEADD_locate_worst_solution(SMRT_individual *pop_table, int pop_num)
     if (max_num == 1)
     {
         max_subreg_id = max_crowded_subregion[0];
+        printf("max_subreg_id:%d \n", max_subreg_id);
         for (i = 0; i < association_num[max_subreg_id]; i++)
         {
             if (max_value < cal_PBI(pop_table + association_matrix[max_subreg_id][i], lambda[max_subreg_id], g_algorithm_entity.pbi_para.theta))
             {
-                delete_id = i;
+                delete_id = association_matrix[max_subreg_id][i];
             }
         }
     }
@@ -356,6 +357,13 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
         }
     }
 
+    for (int l = 0; l < weight_num; ++l) {
+        printf("id:%d, association_num:%d\n", l,association_num[l]);
+        for (int k = 0; k < association_num[l]; ++k) {
+            printf("asso_id:%d     ", association_matrix[l][k]);
+        }
+        printf("\n");
+    }
 
     non_dominated_sort(merge_pop, merge_num);
 
@@ -370,7 +378,6 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
 
     if (flag)
     {
-        printf("22222\n");
         for (i = 0; i < merge_num; i++)
         {
             if (last_rank < merge_pop[i].rank)
@@ -489,7 +496,7 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
                         if (max_value < temp_value)
                         {
                             max_value = temp_value;
-                            delete_id = fl_association_matrix[max_subregion_id[0]][i];
+                            delete_id = fl_association_matrix[delete_subregion_id][i];
                         }
                     }
                 }
