@@ -156,6 +156,7 @@ typedef struct {
     double neighborhood_selection_probability;
     MOEAD_NEIGHBOR *neighbor_table;
     double theta;
+    double tau;
 }MOEADD_PARA;
 
 

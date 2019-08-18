@@ -152,7 +152,7 @@ static void ini_MOEAD_dra(SMRT_individual *pop_table, int weight_num)
             sort_list[j].E_distance = Euc_distance;
             sort_list[j].idx = j;
         }
-        Distance_buble_sort(sort_list, weight_num);
+        distance_quick_sort(sort_list, 0, weight_num - 1);
 
         for (j = 0; j < g_algorithm_entity.MOEAD_para.neighbor_size; j++)
         {

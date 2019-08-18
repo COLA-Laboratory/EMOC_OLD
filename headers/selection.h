@@ -5,5 +5,4 @@
 
 extern double cal_moead_fitness(SMRT_individual *ind, double *weight, MoeadFunction function_type);
 extern int update_subproblem(SMRT_individual *offspring, int pop_index, NeighborType type);
-
 #endif

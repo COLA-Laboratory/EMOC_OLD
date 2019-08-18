@@ -185,6 +185,7 @@ CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o: ../headers/mutation.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o: ../headers/population.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o: ../headers/print.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o: ../headers/selection.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o: ../headers/sort.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o: ../headers/utility.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o: ../metaheuristics/MOEADD.c

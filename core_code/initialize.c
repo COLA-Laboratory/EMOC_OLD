@@ -333,6 +333,7 @@ int initialization_real_para (int argc, char** argv)
 
 extern int destroy_real_para (int argc, char** argv)
 {
+    int i = 0;
     destroy_memory_for_pop(&g_algorithm_entity.parent_population, g_algorithm_entity.algorithm_para.pop_size);
     destroy_memory_for_pop(&g_algorithm_entity.offspring_population, g_algorithm_entity.algorithm_para.pop_size);
     destroy_memory_for_pop(&g_algorithm_entity.elit_population, g_algorithm_entity.algorithm_para.elite_pop_size);
@@ -344,6 +345,10 @@ extern int destroy_real_para (int argc, char** argv)
     free(g_algorithm_entity.variable_lower_bound);
     free(g_algorithm_entity.variable_higher_bound);
 
+    for (i = 0; i < g_algorithm_entity.PF_size; i++)
+    {
+        free(g_algorithm_entity.PF_Data[i].obj);
+    }
     free(g_algorithm_entity.PF_Data);
     return SUCCESS;
 }

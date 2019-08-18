@@ -61,3 +61,4 @@ extern int update_subproblem(SMRT_individual *offspring, int pop_index, Neighbor
 
     return SUCCESS;
 }
+

@@ -3,31 +3,21 @@
 extern double cal_PBI(SMRT_individual *ind, double *weight, double theta)
 {
     int i = 0;
-    double PBI_value = 0, distance1 = 0, distance2 = 0, lam = 0, beita = 0, weight_dis = 0;
+    double d1, d2, nl;
+
+    d1 = d2 = nl = 0.0;
 
     for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
     {
-        lam = (ind->obj[i] - g_algorithm_entity.ideal_point.obj[i]) * weight[i];
-        lam *= lam;
-        distance1 += lam;
-        beita = weight[i];
-        beita *= beita;
-        weight_dis += beita;
+        d1 += (ind->obj[i] - g_algorithm_entity.ideal_point.obj[i]) * weight[i];
+        nl += pow (weight[i], 2.0);
     }
-    distance1 = sqrt(distance1);
-    weight_dis = sqrt(weight_dis);
-    distance1 = distance1 / weight_dis;
+    nl = sqrt (nl);
+    d1 = fabs (d1) / nl;
 
     for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
-    {
-        lam = (g_algorithm_entity.ideal_point.obj[i] + (distance1 / weight_dis) * weight[i]);
-        lam = ind->obj[i] - lam;
-        lam *= lam;
-    }
+        d2 += pow ((ind->obj[i] - g_algorithm_entity.ideal_point.obj[i]) - d1 * (weight[i] / nl), 2.0);
+    d2 = sqrt (d2);
 
-    distance2 = sqrt(lam);
-
-    PBI_value = distance1 + theta * distance2;
-
-    return PBI_value;
+    return  (d1 + theta * d2);
 }
