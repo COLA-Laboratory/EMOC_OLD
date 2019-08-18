@@ -13,58 +13,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f8ebbcce-5df0-4797-80dd-90bf04881b38" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/analysis/analysis.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/analysis/analysis.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/dominance_relation.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/dominance_relation.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/global.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/global.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/initialize.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/initialize.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/population.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/population.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/print.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/print.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/utility.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/core_code/utility.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/crossover/crossover_operator.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/crossover/crossover_operator.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/crossover/crossover_real.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/crossover/crossover_real.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/externals/MY_WFG/Iwfg.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/externals/MY_WFG/Iwfg.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/externals/MY_WFG/read.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/externals/MY_WFG/read.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/externals/WFG_1.15/read.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/externals/WFG_1.15/read.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/externals/WFG_1.15/wfg.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/externals/WFG_1.15/wfg.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/indicators/GD.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/indicators/GD.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/indicators/IGD.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/indicators/IGD.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/indicators/PBI.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/indicators/PBI.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/indicators/hv.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/indicators/hv.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/lib/memory.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/lib/memory.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/lib/random.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/lib/random.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/lib/sort.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/lib/sort.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/mating/selection_mating.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/mating/selection_mating.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/mutation/mutation_operator.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/mutation/mutation_operator.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/mutation/mutation_real.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/mutation/mutation_real.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/selection/MOEAD/fitness.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/selection/MOEAD/fitness.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/DTLZ.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/DTLZ.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/ZDT.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/ZDT.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/evaluation.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/evaluation.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Samaritan" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Samaritan" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core_code/initialize.c" beforeDir="false" afterPath="$PROJECT_DIR$/core_code/initialize.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/global.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/global.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/selection.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/selection.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/indicators/PBI.c" beforeDir="false" afterPath="$PROJECT_DIR$/indicators/PBI.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/sort.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/sort.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/sort.c" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sort.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaheuristics/MOEAD-dra.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/MOEAD-dra.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaheuristics/MOEAD.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/MOEAD.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metaheuristics/MOEADD.c" beforeDir="false" afterPath="$PROJECT_DIR$/metaheuristics/MOEADD.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/selection/MOEAD/update.c" beforeDir="false" afterPath="$PROJECT_DIR$/selection/MOEAD/update.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -186,32 +137,32 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/metaheuristics/MOEADD.c</url>
-          <line>429</line>
+          <line>430</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/metaheuristics/MOEADD.c</url>
-          <line>439</line>
+          <line>440</line>
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/metaheuristics/MOEADD.c</url>
-          <line>466</line>
+          <line>467</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/metaheuristics/MOEADD.c</url>
-          <line>504</line>
+          <line>505</line>
           <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/metaheuristics/MOEADD.c</url>
-          <line>489</line>
+          <line>490</line>
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/metaheuristics/MOEADD.c</url>
-          <line>483</line>
+          <line>484</line>
           <option name="timeStamp" value="53" />
         </line-breakpoint>
       </breakpoints>

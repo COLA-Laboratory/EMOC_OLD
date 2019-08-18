@@ -287,6 +287,7 @@ static int MOEADD_locate_worst_solution(SMRT_individual *pop_table, int pop_num)
     }
     else
     {
+        max_value = 0;
         for (i = 0; i < max_num; i++)
         {
             temp_value = 0;
@@ -386,8 +387,8 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
         }
     }
 
-    delete_id = MOEADD_locate_worst_solution(merge_pop, merge_num);
-/*
+    //delete_id = MOEADD_locate_worst_solution(merge_pop, merge_num);
+
     if (flag)
     {
         for (i = 0; i < merge_num; i++)
@@ -522,7 +523,7 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
     {
         delete_id = MOEADD_locate_worst_solution(merge_pop, merge_num);
     }
-*/
+
     printf("delete_id:%d\n", delete_id);
 
 MOEADD_ELIMINATE:
