@@ -11,11 +11,14 @@
 #include "../headers/memory.h"
 #include "../headers/indicator.h"
 #include "../headers/selection.h"
+#include "../headers/random.h"
+
 
 //association[weight][point_id]   association_num[weight] = associationnum
 static int **association_matrix = NULL, *association_num = NULL;
 static double **lambda = NULL;
 static int weight_num = 0;
+
 
 static void MOEADD_calculate_layer_by_obj(int * layer, int *layer_inner, int *layer_out)
 {
@@ -88,6 +91,7 @@ static void MOEADD_association(SMRT_individual *pop_table, int pop_num, double *
         {
             d1  = 0.0;
             lam = 0.0;
+            beita = 0.0;
             for (k = 0; k < g_algorithm_entity.algorithm_para.objective_number; k++)
             {
                 d1 += (pop_table[j].obj[k]) * weight_vector[i][k];
@@ -124,8 +128,98 @@ static void MOEADD_association(SMRT_individual *pop_table, int pop_num, double *
 
     }
 
+    for (i = 0; i < pop_num; i++)
+    {
+        free(angle[i]);
+    }
+    free(angle);
     return;
 }
+
+static void MOEADD_association_add_by_ind(SMRT_individual *ind, int ind_id, double **weight_vector, int weight_num)
+{
+    int i = 0, j = 0, k = 0;
+    int min_idx;
+    double d1 = 0, lam = 0, beita = 0, theta = 0, min_distance = 0;
+    double *angle = NULL;
+
+
+    angle = (double *)malloc(sizeof(double ) * weight_num);
+    if (NULL == angle)
+    {
+        printf("in the MOEADD, malloc association_matrix Failed\n");
+        return;
+    }
+
+
+    // calculate perpendicular distances towards each weight vector
+    for (i = 0; i < weight_num; i++)
+    {
+        d1  = 0.0;
+        lam = 0.0;
+        beita = 0.0;
+        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
+        {
+            d1 += (ind->obj[j]) * weight_vector[i][j];
+            lam += weight_vector[i][j] * weight_vector[i][j];
+            beita += ind->obj[j] * ind->obj[j];
+        }
+        lam = sqrt(lam);
+        beita = sqrt(beita);
+        theta  = d1 / (lam * beita);
+
+        //tansform to sin
+        theta = sqrt(1 - theta * theta);
+
+        // Store the angle in the matrix and in the individual object
+        angle[i] = theta;
+    }
+
+    min_distance = angle[0];
+    min_idx = 0;
+    for (i = 1; i < weight_num; i++)
+    {
+        if (min_distance > angle[i])
+        {
+            min_distance = angle[i];
+            min_idx = i;
+        }
+    }
+
+    association_matrix[min_idx][association_num[min_idx]++] = ind_id;
+
+    free(angle);
+    return;
+}
+
+static void MOEADD_association_del_by_ind(int ind_id, int weight_num)
+{
+    int i = 0, j = 0, k = 0;
+    int flag = 0;
+    for (i = 0; i < weight_num; i++)
+    {
+        for (j = 0; j < association_num[i]; j++)
+        {
+            if (ind_id == association_matrix[i][j])
+            {
+                flag = 1;
+                break;
+            }
+        }
+        if(flag == 1)
+            break;
+    }
+
+    for (k = j; k < association_num[i] - 1; k++)
+    {
+        association_matrix[i][k] = association_matrix[i][k+1];
+    }
+    association_num[i]--;
+
+    return;
+}
+
+
 
 static void ini_MOEADD()
 {
@@ -167,7 +261,7 @@ static void ini_MOEADD()
             else
             {
                 memcpy(lambda[i], lambda_out [i - weight_num_inner], g_algorithm_entity.algorithm_para.objective_number *
-                        sizeof(double));
+                                                                     sizeof(double));
             }
         }
         weight_num = weight_num_inner + weight_num_out;
@@ -205,15 +299,11 @@ static void ini_MOEADD()
             printf("In the state of initiate parameter malloc weight neighbor Fail\n");
             return ;
         }
-
         for (j = 0; j < g_algorithm_entity.MOEADD_para.neighbor_size; j++)
         {
-
             g_algorithm_entity.MOEADD_para.neighbor_table[i].neighbor[j] = sort_list[j].idx;
         }
     }
-
-
 
     for (i = 0; i < weight_num_inner; i++)
         free (lambda_inner[i]);
@@ -223,6 +313,10 @@ static void ini_MOEADD()
     free (lambda_out);
     return ;
 }
+
+
+
+
 
 static void MOEADD_free()
 {
@@ -236,6 +330,12 @@ static void MOEADD_free()
         free (association_matrix[i]);
     free (association_matrix);
     free(association_num);
+
+    for (i = 0; i < weight_num; ++i)
+    {
+        free(g_algorithm_entity.MOEADD_para.neighbor_table[i].neighbor);
+    }
+    free(g_algorithm_entity.MOEADD_para.neighbor_table);
     return;
 }
 
@@ -273,7 +373,6 @@ static int MOEADD_locate_worst_solution(SMRT_individual *pop_table, int pop_num)
     if (max_num == 1)
     {
         max_subreg_id = max_crowded_subregion[0];
-        printf("max_subreg_id:%d \n", max_subreg_id);
         max_value = 0;
         for (i = 0; i < association_num[max_subreg_id]; i++)
         {
@@ -367,15 +466,7 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
             return;
         }
     }
-/*
-    for (int l = 0; l < weight_num; ++l) {
-        printf("id:%d, association_num:%d\n", l,association_num[l]);
-        for (int k = 0; k < association_num[l]; ++k) {
-            printf("asso_id:%d     ", association_matrix[l][k]);
-        }
-        printf("\n");
-    }
-*/
+
     non_dominated_sort(merge_pop, merge_num);
 
     for (i = 0; i < merge_num; i++)
@@ -387,7 +478,6 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
         }
     }
 
-    //delete_id = MOEADD_locate_worst_solution(merge_pop, merge_num);
 
     if (flag)
     {
@@ -404,13 +494,6 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
                 last_front[last_front_num++] = i;
             }
         }
-
-        printf("last_front_num:%d\n", last_front_num);
-        for (int k = 0; k < last_front_num; ++k) {
-            printf("last_id:%d\n", last_front[k]);
-        }
-        printf("\n");
-
 
         if (last_front_num == 1)
         {
@@ -468,7 +551,6 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
 
             if (max_num == 1)
             {
-                printf("333\n");
                 delete_id = MOEADD_locate_worst_solution(merge_pop, merge_num);
             }
             else
@@ -478,7 +560,6 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
                     for (i = 0; i < fl_association_num[max_subregion_id[0]]; i++)
                     {
                         temp_value = cal_PBI(merge_pop + fl_association_matrix[max_subregion_id[0]][i], lambda[max_subregion_id[0]], g_algorithm_entity.pbi_para.theta);
-                        printf("temp_value:%f\n",temp_value);
                         if (max_value < temp_value)
                         {
                             max_value = temp_value;
@@ -496,7 +577,6 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
                             temp_value += cal_PBI(merge_pop + fl_association_matrix[max_subregion_id[i]][j], lambda[max_subregion_id[i]], g_algorithm_entity.pbi_para.theta);
 
                         }
-                        printf("temp_value:%f\n",temp_value);
                         if (max_value < temp_value)
                         {
                             max_value = temp_value;
@@ -524,22 +604,27 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
         delete_id = MOEADD_locate_worst_solution(merge_pop, merge_num);
     }
 
-    printf("delete_id:%d\n", delete_id);
 
-MOEADD_ELIMINATE:
-    if (delete_id == merge_num - 1)
-        return;
+    MOEADD_ELIMINATE:
+    if (delete_id == (merge_num - 1))
+    {
+        MOEADD_association_del_by_ind(merge_num - 1, weight_num);
+    }
     else
     {
+        MOEADD_association_del_by_ind(merge_num - 1, weight_num);
+        MOEADD_association_del_by_ind(delete_id, weight_num);
         copy_individual(merge_pop + merge_num - 1, g_algorithm_entity.parent_population + delete_id);
+        MOEADD_association_add_by_ind(g_algorithm_entity.parent_population + delete_id, delete_id, lambda, weight_num);
     }
 
 
     for (i = 0; i < weight_num; i++)
         free (fl_association_matrix[i]);
     free (fl_association_matrix);
-    free(fl_association_num); 
+    free(fl_association_num);
     free(last_front);
+    free(max_subregion_id);
 
     return;
 }
@@ -550,6 +635,7 @@ extern void MOEADD_framework (SMRT_individual *pop, SMRT_individual *offspring_p
     g_algorithm_entity.iteration_number          = 1;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;
     SMRT_individual *offspring = g_algorithm_entity.offspring_population;
+    int **association_matrix_tmp, *association_num_tmp;
 
 
     printf ("|\tThe %d run\t|\t1%%\t|", g_algorithm_entity.run_index_current);
@@ -582,7 +668,6 @@ extern void MOEADD_framework (SMRT_individual *pop, SMRT_individual *offspring_p
     }
     memset(association_num, 0, sizeof(int) * weight_num);
 
-
     //print_error (number_weight != popsize, 1, "Number of weight vectors must be equal to the population size!");
     initialize_population_real (pop, weight_num);
 
@@ -594,18 +679,13 @@ extern void MOEADD_framework (SMRT_individual *pop, SMRT_individual *offspring_p
 
     MOEADD_association(pop, weight_num, lambda, weight_num);
 
-    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
-    {
-        cal_moead_fitness(pop + i, pop[i].weight, ITCH);
-    }
-
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
         print_progress ();
         // crossover and mutation
         for (i = 0; i < weight_num; i++)
         {
-            crossover_MOEADD (pop, i, offspring, association_matrix, association_num);
+            crossover_MOEADD (pop, i, offspring, association_matrix, association_num, weight_num);
             mutation_ind(offspring);
             evaluate_individual (offspring);
 
@@ -615,9 +695,8 @@ extern void MOEADD_framework (SMRT_individual *pop, SMRT_individual *offspring_p
             //merge offspring and population
             merge_population(mixed_pop, pop, weight_num, offspring, 1);
 
-            MOEADD_association(mixed_pop, weight_num + 1, lambda, weight_num);
+            MOEADD_association_add_by_ind(offspring, weight_num, lambda, weight_num);
 
-            // update subproblem
             MOEADD_update(mixed_pop, weight_num + 1);
         }
 

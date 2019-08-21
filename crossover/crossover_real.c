@@ -206,10 +206,6 @@ extern void crossover_SMSEMOA(SMRT_individual *parent_pop_table, SMRT_individual
 
     if (DOMINATED == dominateRelation)
     {
-        copy_individual(offspring1, offspring);
-    }
-    else if (DOMINATE == dominateRelation)
-    {
         copy_individual(offspring2, offspring);
     }
     else
@@ -263,9 +259,10 @@ extern void crossover_HypE(SMRT_individual *parent_pop_table, SMRT_individual *o
     return;
 }
 
-extern void crossover_MOEADD(SMRT_individual *parent_pop_table, int weight_id, SMRT_individual *offspring, int **association_matrix, int *association_num)
+extern void crossover_MOEADD(SMRT_individual *parent_pop_table, int weight_id, SMRT_individual *offspring, int **association_matrix, int *association_num, int weight_num)
 {
-    int rand_i, neighbor_id = 0;
+    int i = 0, a, b = 0;
+    int rand_i, neighbor_id[2] = {0};
     double rand_d;
     SMRT_individual *parent1 = NULL, *parent2 = NULL, *offspring1 = NULL, *offspring2 = NULL;
     DOMINATE_RELATION dominateRelation;
@@ -274,26 +271,46 @@ extern void crossover_MOEADD(SMRT_individual *parent_pop_table, int weight_id, S
     allocate_memory_for_ind (&offspring2);
 
     rand_d = randomperc();
-    rand_i = rnd(0, g_algorithm_entity.MOEADD_para.neighbor_size) - 1;
-    neighbor_id = g_algorithm_entity.MOEADD_para.neighbor_table[weight_id].neighbor[rand_i];
 
-    if (association_num[neighbor_id] < 2 || rand_d < g_algorithm_entity.MOEAD_para.neighborhood_selection_probability)
+    rand_i = rnd(0, g_algorithm_entity.MOEADD_para.neighbor_size - 1);
+    neighbor_id[0] = g_algorithm_entity.MOEADD_para.neighbor_table[weight_id].neighbor[rand_i];
+    do
     {
-        rand_i = rnd(0, association_num[neighbor_id] - 1);
-        parent1 = parent_pop_table + rand_i;
-        while (parent1 != parent2)
+        rand_i = rnd(0, g_algorithm_entity.MOEADD_para.neighbor_size - 1);
+        neighbor_id[1] = g_algorithm_entity.MOEADD_para.neighbor_table[weight_id].neighbor[rand_i];
+    }while (neighbor_id[0] == neighbor_id[1]);
+
+    if (association_num[neighbor_id[0]] + association_num[neighbor_id[1]] >=2 && rand_d < g_algorithm_entity.MOEADD_para.neighborhood_selection_probability)
+    {
+        rand_i = rnd(0, association_num[neighbor_id[0]] + association_num[neighbor_id[1]] - 1);
+        if (rand_i >= association_num[neighbor_id[0]])
         {
-            rand_i = rnd(0, association_num[neighbor_id] - 1);
-            parent2 = parent_pop_table + rand_i;
+            parent1 = parent_pop_table + association_matrix[neighbor_id[1]][rand_i - association_num[neighbor_id[0]]];
         }
+        else
+        {
+            parent1 = parent_pop_table + association_matrix[neighbor_id[0]][rand_i];
+        }
+        do
+        {
+            rand_i = rnd(0, association_num[neighbor_id[0]] + association_num[neighbor_id[1]] - 1);
+            if (rand_i >= association_num[neighbor_id[0]])
+            {
+                parent2 = parent_pop_table + association_matrix[neighbor_id[1]][rand_i - association_num[neighbor_id[0]]];
+            }
+            else
+            {
+                parent2 = parent_pop_table + association_matrix[neighbor_id[0]][rand_i];
+            }
+        }while(parent1 == parent2);
     }
     else
     {
-        parent1 = parent_pop_table + rnd(0, g_algorithm_entity.algorithm_para.pop_size - 1);
-        while (parent1 != parent2)
+        parent1 = parent_pop_table + rnd(0, weight_num - 1);
+        do
         {
-            parent2 = parent_pop_table + rnd(0, g_algorithm_entity.algorithm_para.pop_size -1);
-        }
+            parent2 = parent_pop_table + rnd(0,  weight_num - 1);
+        }while (parent1 == parent2);
     }
 
     sbx_crossover (parent1, parent2, offspring1, offspring2);
@@ -301,10 +318,6 @@ extern void crossover_MOEADD(SMRT_individual *parent_pop_table, int weight_id, S
     dominateRelation = check_dominance(offspring1, offspring2);
 
     if (DOMINATED == dominateRelation)
-    {
-        copy_individual(offspring1, offspring);
-    }
-    else if (DOMINATE == dominateRelation)
     {
         copy_individual(offspring2, offspring);
     }

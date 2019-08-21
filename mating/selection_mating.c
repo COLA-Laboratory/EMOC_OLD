@@ -10,9 +10,9 @@ extern SMRT_individual *tournament_by_dominate_relation(SMRT_individual *ind1, S
     int flag;
 
     flag = check_dominance (ind1, ind2);
-    if (flag == 1)
+    if (flag == DOMINATE)
         return (ind1);
-    else if (flag == -1)
+    else if (flag == DOMINATED)
         return (ind2);
     else
     {
