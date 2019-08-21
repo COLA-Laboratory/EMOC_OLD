@@ -64,9 +64,10 @@ extern void initialize_weight ()
     {
         layer_size  = combination (g_algorithm_entity.algorithm_para.objective_number + gaps - 1, gaps);
         //printf("[%d]%d\n",gaps,layer_size);
+        number_weight = layer_size;
         if(layer_size > g_algorithm_entity.algorithm_para.pop_size) break;
         gaps = gaps + 1;
-        number_weight = layer_size;
+
     }
     gaps = gaps - 1;
     lambda = (double **) malloc (number_weight * sizeof(double *));
@@ -125,9 +126,10 @@ extern double **initialize_uniform_point (int *number_weight)
     {
         layer_size  = combination (g_algorithm_entity.algorithm_para.objective_number + gaps - 1, gaps);
         //printf("[%d]%d\n",gaps,layer_size);
+        *number_weight = layer_size;
         if(layer_size > g_algorithm_entity.algorithm_para.pop_size) break;
         gaps = gaps + 1;
-        *number_weight = layer_size;
+
     }
     gaps = gaps - 1;
     lambda = (double **) malloc ((*number_weight) * sizeof(double *));

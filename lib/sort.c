@@ -119,6 +119,292 @@ extern void non_dominated_sort(SMRT_individual *pop_table, int pop_num)
     return;
 }
 
+
+
+
+extern void nondominated_sort_add_by_ind(SMRT_individual *pop_table, int pop_num, SMRT_individual *individual)
+{
+    int i =0, j = 0, k = 0, l = 0;
+    int current_rank = 0, last_rank = 0;
+    int *Fi = NULL, Fi_num = 0, dominate_num = 0, *dominated_set = NULL, dominated_num = 0, *T_set = NULL, T_set_num = 0;
+    DOMINATE_RELATION relation;
+    SMRT_individual *ind_temp = NULL;
+
+    Fi = (int*)malloc(sizeof(int) * pop_num);
+    if (NULL == Fi)
+    {
+        printf("in the non_dominated_sort, malloc Fi Failed\n");
+    }
+
+    dominated_set = (int*)malloc(sizeof(int) * pop_num);
+    if (NULL == dominated_set)
+    {
+        printf("in the non_dominated_sort, malloc dominated_set Failed\n");
+    }
+
+    T_set = (int*)malloc(sizeof(int) * pop_num);
+    if (NULL == T_set)
+    {
+        printf("in the non_dominated_sort, malloc T_set Failed\n");
+    }
+
+    //初始化的时候新加入的点
+    T_set[0] = pop_num;
+    T_set_num++;
+
+    for (i = 0; i < pop_num; ++i)
+    {
+        if (last_rank < pop_table[i].rank)
+        {
+            last_rank = pop_table[i].rank;
+        }
+    }
+
+
+    for (i = 0; i <= last_rank; i++)
+    {
+        Fi_num = 0;
+        current_rank = i;
+        for (j = 0; j < pop_num; j++)
+        {
+            if (pop_table[j].rank == current_rank)
+            {
+                Fi[Fi_num++] = j;
+            }
+        }
+
+        for (j = 0; j < T_set_num; j++)
+        {
+            if (T_set[j] == pop_num)
+            {
+                ind_temp = individual;
+            }
+            else
+            {
+                ind_temp = pop_table + T_set[j];
+            }
+            dominate_num = 0;
+            dominated_num = 0;
+            for (k = 0; k < Fi_num; k++)
+            {
+                relation = check_dominance(ind_temp, pop_table + Fi[k]);
+                if (DOMINATE == relation)
+                {
+                    dominate_num++;
+                }
+                else if (DOMINATED == relation)
+                {
+                    dominated_set[dominated_num++] = Fi[k];
+                }
+                else
+                {
+                    ;
+                }
+            }
+
+            if (dominated_num > 0)
+            {
+                continue;
+            }
+                //case 2
+            else if (dominate_num == 0 && dominated_num == 0)
+            {
+                ind_temp->rank = current_rank;
+                for (l = j; l < T_set_num; ++l)
+                {
+                    T_set[j] = T_set[j+1];
+                }
+                T_set_num--;
+                j--;
+            }
+                //case 3
+            else if (dominate_num == Fi_num)
+            {
+                ind_temp->rank = current_rank;
+                for (l = 0; l < pop_num; ++l)
+                {
+                    if (pop_table[l].rank >= current_rank)
+                    {
+                        pop_table[l].rank = current_rank + 1;
+                    }
+                }
+
+
+            }
+            //case 4
+
+            else
+            {
+                ind_temp->rank = current_rank;
+                for (l = j; l < T_set_num; ++l)
+                {
+                    T_set[j] = T_set[j+1];
+                }
+                T_set_num--;
+                j--;
+
+                for (k = 0; k < dominated_num; k++)
+                {
+                    T_set[T_set_num++] = dominated_set[k];
+                }
+
+            }
+
+        }
+
+        if (T_set_num == 0)
+        {
+            break;
+        }
+
+    }
+
+    if (i == last_rank + 1)
+    {
+        for (i = 0; i < T_set_num; i++)
+        {
+            pop_table[T_set[i]].rank = last_rank +1;
+        }
+    }
+
+    free(Fi);
+    free(dominated_set);
+    free(T_set);
+    return;
+}
+
+
+
+
+
+extern void nondominated_sort_delete_by_ind(SMRT_individual *pop_table, int pop_num, SMRT_individual *individual)
+{
+    int i = 0, j = 0;
+    int current_rank = 0, last_rank = 0, flag = 0;
+    int *S_set = NULL, S_num = 0, *D_set = NULL, D_num = 0, *rest_set = NULL, rest_set_num = 0;
+
+    S_set = (int*)malloc(sizeof(int) * pop_num);
+    if (NULL == S_set)
+    {
+        printf("in the non_dominated_sort, malloc S_set Failed\n");
+    }
+
+    D_set = (int*)malloc(sizeof(int) * pop_num);
+    if (NULL == D_set)
+    {
+        printf("in the non_dominated_sort, malloc D_set Failed\n");
+    }
+
+    rest_set = (int*)malloc(sizeof(int) * pop_num);
+    if (NULL == rest_set)
+    {
+        printf("in the non_dominated_sort, malloc rest_set Failed\n");
+    }
+
+
+    current_rank = individual->rank;
+    for (i = 0; i < pop_num; ++i)
+    {
+        if (last_rank < pop_table[i].rank)
+        {
+            last_rank = pop_table[i].rank;
+        }
+    }
+
+    while (current_rank <= last_rank)
+    {
+        S_num = 0;
+        rest_set_num = 0;
+        D_num = 0;
+
+        for (i = 0; i < pop_num; ++i)
+        {
+            if ((pop_table + i) == individual)
+                continue;
+
+            if (pop_table[i].rank == (current_rank + 1))
+            {
+                if (DOMINATE == check_dominance(individual, pop_table + i))
+                {
+                    S_set[S_num++] = i;
+                }
+                else
+                {
+                    rest_set[rest_set_num++] = i;
+                }
+            }
+
+            if (last_rank < pop_table[i].rank)
+            {
+                last_rank = pop_table[i].rank;
+            }
+        }
+
+
+        if (S_num != 0)
+        {
+            for (i = 0; i < S_num; i++)
+            {
+                for (j = 0; j < rest_set_num; ++j)
+                {
+                    if (DOMINATED == check_dominance(pop_table + rest_set[j], pop_table + S_set[i]))
+                    {
+                        D_set[D_num++] = i;
+                    }
+                }
+            }
+            if (D_num == S_num)
+            {
+                break;
+            }
+            else
+            {
+                for (i = 0; i < S_num; ++i)
+                {
+                    flag = 0;
+                    for (j = 0; j < D_num; ++j)
+                    {
+                        if (S_set[i] == D_set[j])
+                        {
+                            flag = 1;
+                        }
+                    }
+
+                    if (flag == 0)
+                    {
+                        pop_table[S_set[i]].rank = current_rank;
+                    }
+                    else
+                    {
+                        pop_table[S_set[i]].rank = current_rank + 1;
+                    }
+                }
+            }
+        }
+        current_rank++;
+
+    }
+
+    free(D_set);
+    free(S_set);
+    free(rest_set);
+
+    return;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 static int partition_by_fit(Fitness_info_t *fitnessInfo, int left, int right)
 {
     double temp_fit = fitnessInfo[left].fitness;

@@ -619,6 +619,8 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
     }
 
 
+    //nondominated_sort_delete_by_ind(merge_pop, merge_num, merge_pop + delete_id);
+
     for (i = 0; i < weight_num; i++)
         free (fl_association_matrix[i]);
     free (fl_association_matrix);
@@ -677,6 +679,8 @@ extern void MOEADD_framework (SMRT_individual *pop, SMRT_individual *offspring_p
 
     track_evolution (pop, g_algorithm_entity.iteration_number, 0);
 
+    non_dominated_sort(pop, weight_num);
+
     MOEADD_association(pop, weight_num, lambda, weight_num);
 
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
@@ -696,6 +700,8 @@ extern void MOEADD_framework (SMRT_individual *pop, SMRT_individual *offspring_p
             merge_population(mixed_pop, pop, weight_num, offspring, 1);
 
             MOEADD_association_add_by_ind(offspring, weight_num, lambda, weight_num);
+
+            //nondominated_sort_add_by_ind(pop, weight_num, offspring);
 
             MOEADD_update(mixed_pop, weight_num + 1);
         }
