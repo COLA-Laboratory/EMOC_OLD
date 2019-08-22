@@ -26,7 +26,6 @@ add_executable(Samaritan main.c
         mating/selection_mating.c
 
 
-
         lib/random.c
         lib/memory.c
         lib/sort.c
@@ -36,10 +35,12 @@ add_executable(Samaritan main.c
 
         selection/MOEAD/fitness.c
         selection/MOEAD/update.c
+        selection/MOEAD/subproblem_selection.c
 
 
         test_problem/DTLZ.c
         test_problem/ZDT.c
+        test_problem/UF.c
         test_problem/evaluation.c
 
 
@@ -60,7 +61,8 @@ add_executable(Samaritan main.c
         metaheuristics/NSGA3.c
         metaheuristics/IBEA.c
         metaheuristics/MOEAD.c
-        metaheuristics/MOEAD-dra.c
+        metaheuristics/MOEAD_DRA.c
+        metaheuristics/MOEAD_STM.c
         metaheuristics/MOEADD.c
         metaheuristics/SMSEMOA.c
         metaheuristics/HypE.c

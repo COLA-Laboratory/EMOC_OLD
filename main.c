@@ -27,8 +27,11 @@ int main(int argc, char** argv) {
             case MOEAD:
                 MOEAD_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
-            case MOEAD_DAR:
+            case MOEAD_DRA:
                 MOEAD_dra_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
+            case MOEAD_STM:
+                MOEAD_STM_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
             case MOEADD:
                 MOEADD_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);

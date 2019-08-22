@@ -144,21 +144,6 @@ CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
  /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/IBEA.c
-CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o
- /home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/initialize.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/metaheuristics.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/mutation.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/population.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/selection.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
- /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD-dra.c
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
@@ -191,6 +176,36 @@ CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
  /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEADD.c
+CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_DRA.c.o
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/initialize.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/metaheuristics.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/mutation.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/population.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/selection.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
+ /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD_DRA.c
+CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_STM.c.o
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/initialize.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/metaheuristics.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/mutation.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/population.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/selection.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
+ /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD_STM.c
 CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
@@ -259,6 +274,11 @@ CMakeFiles/Samaritan.dir/selection/MOEAD/fitness.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/selection.h
  /home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/fitness.c
+CMakeFiles/Samaritan.dir/selection/MOEAD/subproblem_selection.c.o
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/selection.h
+ /home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/subproblem_selection.c
 CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/selection.h
@@ -266,6 +286,9 @@ CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.o
 CMakeFiles/Samaritan.dir/test_problem/DTLZ.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
  /home/maopl/CLionProjects/my_work/Samaritan/test_problem/DTLZ.c
+CMakeFiles/Samaritan.dir/test_problem/UF.c.o
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
+ /home/maopl/CLionProjects/my_work/Samaritan/test_problem/UF.c
 CMakeFiles/Samaritan.dir/test_problem/ZDT.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
  /home/maopl/CLionProjects/my_work/Samaritan/test_problem/ZDT.c

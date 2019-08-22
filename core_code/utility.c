@@ -2,6 +2,35 @@
 #include "../headers/utility.h"
 
 
+
+
+
+//calculate euclidian_distance between the solution and weight,solution need to be normalized
+extern double calculateDistance_sol_weight (SMRT_individual *solution, double *lambda)
+{
+    int i;
+    double sum, distance;
+    double *vecInd;
+    double *normalized_obj;
+
+    vecInd         = malloc (sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
+    normalized_obj = malloc (sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
+
+    sum = 0.0;
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+        sum += solution->obj[i];
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+        normalized_obj[i] = solution->obj[i] / sum;
+    distance = euclidian_distance (normalized_obj, lambda, g_algorithm_entity.algorithm_para.objective_number);
+
+    free (vecInd);
+    free (normalized_obj);
+
+    return distance;
+}
+
+
+
 /*initialize weight*/
 static void set_weight (double *weight, double unit, double sum, int dim, int *column, double **lambda)
 {

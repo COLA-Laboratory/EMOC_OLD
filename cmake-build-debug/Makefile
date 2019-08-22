@@ -825,33 +825,6 @@ metaheuristics/IBEA.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.s
 .PHONY : metaheuristics/IBEA.c.s
 
-metaheuristics/MOEAD-dra.o: metaheuristics/MOEAD-dra.c.o
-
-.PHONY : metaheuristics/MOEAD-dra.o
-
-# target to build an object file
-metaheuristics/MOEAD-dra.c.o:
-	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.o
-.PHONY : metaheuristics/MOEAD-dra.c.o
-
-metaheuristics/MOEAD-dra.i: metaheuristics/MOEAD-dra.c.i
-
-.PHONY : metaheuristics/MOEAD-dra.i
-
-# target to preprocess a source file
-metaheuristics/MOEAD-dra.c.i:
-	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.i
-.PHONY : metaheuristics/MOEAD-dra.c.i
-
-metaheuristics/MOEAD-dra.s: metaheuristics/MOEAD-dra.c.s
-
-.PHONY : metaheuristics/MOEAD-dra.s
-
-# target to generate assembly for a file
-metaheuristics/MOEAD-dra.c.s:
-	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEAD-dra.c.s
-.PHONY : metaheuristics/MOEAD-dra.c.s
-
 metaheuristics/MOEAD.o: metaheuristics/MOEAD.c.o
 
 .PHONY : metaheuristics/MOEAD.o
@@ -905,6 +878,60 @@ metaheuristics/MOEADD.s: metaheuristics/MOEADD.c.s
 metaheuristics/MOEADD.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.s
 .PHONY : metaheuristics/MOEADD.c.s
+
+metaheuristics/MOEAD_DRA.o: metaheuristics/MOEAD_DRA.c.o
+
+.PHONY : metaheuristics/MOEAD_DRA.o
+
+# target to build an object file
+metaheuristics/MOEAD_DRA.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_DRA.c.o
+.PHONY : metaheuristics/MOEAD_DRA.c.o
+
+metaheuristics/MOEAD_DRA.i: metaheuristics/MOEAD_DRA.c.i
+
+.PHONY : metaheuristics/MOEAD_DRA.i
+
+# target to preprocess a source file
+metaheuristics/MOEAD_DRA.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_DRA.c.i
+.PHONY : metaheuristics/MOEAD_DRA.c.i
+
+metaheuristics/MOEAD_DRA.s: metaheuristics/MOEAD_DRA.c.s
+
+.PHONY : metaheuristics/MOEAD_DRA.s
+
+# target to generate assembly for a file
+metaheuristics/MOEAD_DRA.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_DRA.c.s
+.PHONY : metaheuristics/MOEAD_DRA.c.s
+
+metaheuristics/MOEAD_STM.o: metaheuristics/MOEAD_STM.c.o
+
+.PHONY : metaheuristics/MOEAD_STM.o
+
+# target to build an object file
+metaheuristics/MOEAD_STM.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_STM.c.o
+.PHONY : metaheuristics/MOEAD_STM.c.o
+
+metaheuristics/MOEAD_STM.i: metaheuristics/MOEAD_STM.c.i
+
+.PHONY : metaheuristics/MOEAD_STM.i
+
+# target to preprocess a source file
+metaheuristics/MOEAD_STM.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_STM.c.i
+.PHONY : metaheuristics/MOEAD_STM.c.i
+
+metaheuristics/MOEAD_STM.s: metaheuristics/MOEAD_STM.c.s
+
+.PHONY : metaheuristics/MOEAD_STM.s
+
+# target to generate assembly for a file
+metaheuristics/MOEAD_STM.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_STM.c.s
+.PHONY : metaheuristics/MOEAD_STM.c.s
 
 metaheuristics/NSGA2.o: metaheuristics/NSGA2.c.o
 
@@ -1095,6 +1122,33 @@ selection/MOEAD/fitness.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/selection/MOEAD/fitness.c.s
 .PHONY : selection/MOEAD/fitness.c.s
 
+selection/MOEAD/subproblem_selection.o: selection/MOEAD/subproblem_selection.c.o
+
+.PHONY : selection/MOEAD/subproblem_selection.o
+
+# target to build an object file
+selection/MOEAD/subproblem_selection.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/selection/MOEAD/subproblem_selection.c.o
+.PHONY : selection/MOEAD/subproblem_selection.c.o
+
+selection/MOEAD/subproblem_selection.i: selection/MOEAD/subproblem_selection.c.i
+
+.PHONY : selection/MOEAD/subproblem_selection.i
+
+# target to preprocess a source file
+selection/MOEAD/subproblem_selection.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/selection/MOEAD/subproblem_selection.c.i
+.PHONY : selection/MOEAD/subproblem_selection.c.i
+
+selection/MOEAD/subproblem_selection.s: selection/MOEAD/subproblem_selection.c.s
+
+.PHONY : selection/MOEAD/subproblem_selection.s
+
+# target to generate assembly for a file
+selection/MOEAD/subproblem_selection.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/selection/MOEAD/subproblem_selection.c.s
+.PHONY : selection/MOEAD/subproblem_selection.c.s
+
 selection/MOEAD/update.o: selection/MOEAD/update.c.o
 
 .PHONY : selection/MOEAD/update.o
@@ -1148,6 +1202,33 @@ test_problem/DTLZ.s: test_problem/DTLZ.c.s
 test_problem/DTLZ.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/DTLZ.c.s
 .PHONY : test_problem/DTLZ.c.s
+
+test_problem/UF.o: test_problem/UF.c.o
+
+.PHONY : test_problem/UF.o
+
+# target to build an object file
+test_problem/UF.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/UF.c.o
+.PHONY : test_problem/UF.c.o
+
+test_problem/UF.i: test_problem/UF.c.i
+
+.PHONY : test_problem/UF.i
+
+# target to preprocess a source file
+test_problem/UF.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/UF.c.i
+.PHONY : test_problem/UF.c.i
+
+test_problem/UF.s: test_problem/UF.c.s
+
+.PHONY : test_problem/UF.s
+
+# target to generate assembly for a file
+test_problem/UF.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/UF.c.s
+.PHONY : test_problem/UF.c.s
 
 test_problem/ZDT.o: test_problem/ZDT.c.o
 
@@ -1290,15 +1371,18 @@ help:
 	@echo "... metaheuristics/IBEA.o"
 	@echo "... metaheuristics/IBEA.i"
 	@echo "... metaheuristics/IBEA.s"
-	@echo "... metaheuristics/MOEAD-dra.o"
-	@echo "... metaheuristics/MOEAD-dra.i"
-	@echo "... metaheuristics/MOEAD-dra.s"
 	@echo "... metaheuristics/MOEAD.o"
 	@echo "... metaheuristics/MOEAD.i"
 	@echo "... metaheuristics/MOEAD.s"
 	@echo "... metaheuristics/MOEADD.o"
 	@echo "... metaheuristics/MOEADD.i"
 	@echo "... metaheuristics/MOEADD.s"
+	@echo "... metaheuristics/MOEAD_DRA.o"
+	@echo "... metaheuristics/MOEAD_DRA.i"
+	@echo "... metaheuristics/MOEAD_DRA.s"
+	@echo "... metaheuristics/MOEAD_STM.o"
+	@echo "... metaheuristics/MOEAD_STM.i"
+	@echo "... metaheuristics/MOEAD_STM.s"
 	@echo "... metaheuristics/NSGA2.o"
 	@echo "... metaheuristics/NSGA2.i"
 	@echo "... metaheuristics/NSGA2.s"
@@ -1320,12 +1404,18 @@ help:
 	@echo "... selection/MOEAD/fitness.o"
 	@echo "... selection/MOEAD/fitness.i"
 	@echo "... selection/MOEAD/fitness.s"
+	@echo "... selection/MOEAD/subproblem_selection.o"
+	@echo "... selection/MOEAD/subproblem_selection.i"
+	@echo "... selection/MOEAD/subproblem_selection.s"
 	@echo "... selection/MOEAD/update.o"
 	@echo "... selection/MOEAD/update.i"
 	@echo "... selection/MOEAD/update.s"
 	@echo "... test_problem/DTLZ.o"
 	@echo "... test_problem/DTLZ.i"
 	@echo "... test_problem/DTLZ.s"
+	@echo "... test_problem/UF.o"
+	@echo "... test_problem/UF.i"
+	@echo "... test_problem/UF.s"
 	@echo "... test_problem/ZDT.o"
 	@echo "... test_problem/ZDT.i"
 	@echo "... test_problem/ZDT.s"

@@ -165,13 +165,16 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/IBEA.c">
 			<Option target="Samaritan"/>
 		</Unit>
-		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD-dra.c">
-			<Option target="Samaritan"/>
-		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD.c">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEADD.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD_DRA.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD_STM.c">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA2.c">
@@ -195,10 +198,16 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/fitness.c">
 			<Option target="Samaritan"/>
 		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/subproblem_selection.c">
+			<Option target="Samaritan"/>
+		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/update.c">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/DTLZ.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/UF.c">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/ZDT.c">
