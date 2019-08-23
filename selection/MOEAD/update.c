@@ -20,7 +20,7 @@ extern int update_subproblem(SMRT_individual *offspring, int pop_index, Neighbor
                 break;
             }
             index = g_algorithm_entity.MOEAD_para.neighbor_table[pop_index].neighbor[i];
-            temp = cal_moead_fitness(offspring, g_algorithm_entity.parent_population[index].weight, g_algorithm_entity.MOEAD_para.function_type);
+            temp = cal_moead_fitness(offspring, lambda[index], g_algorithm_entity.MOEAD_para.function_type);
             if (temp < g_algorithm_entity.parent_population[index].fitness)
             {
                 memcpy(g_algorithm_entity.parent_population[index].variable,offspring->variable,
@@ -34,13 +34,13 @@ extern int update_subproblem(SMRT_individual *offspring, int pop_index, Neighbor
     }
     else
     {
-        for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
+        for (i = 0; i < weight_num; i++)
         {
             if (replace_num >= g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions)
             {
                 break;
             }
-            temp = cal_moead_fitness(offspring, g_algorithm_entity.parent_population[i].weight, g_algorithm_entity.MOEAD_para.function_type);
+            temp = cal_moead_fitness(offspring, lambda[i], g_algorithm_entity.MOEAD_para.function_type);
             if (temp < g_algorithm_entity.parent_population[i].fitness)
             {
                 memcpy(g_algorithm_entity.parent_population[i].variable, offspring->variable,

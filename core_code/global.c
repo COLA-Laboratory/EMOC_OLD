@@ -58,3 +58,6 @@ char *g_analyse_name_str[ANALYSE_NAME_NUM] = {
 };
 
 SMRT_entity g_algorithm_entity = {0};
+
+extern double **lambda = NULL;
+extern int weight_num = 0;

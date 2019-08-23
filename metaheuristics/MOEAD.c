@@ -12,9 +12,14 @@
 #include "../headers/random.h"
 
 
-static void ini_MOEAD(SMRT_individual *pop_table, int weight_num)
+
+
+
+
+static void ini_MOEAD()
 {
     int i = 0, j = 0, k = 0;
+    int layer = 0;
     double difference = 0, distance_temp = 0, Euc_distance = 0;
     Distance_info_t sort_list[MAX_SIZE];
 
@@ -24,7 +29,9 @@ static void ini_MOEAD(SMRT_individual *pop_table, int weight_num)
         printf("In the state of initiate parameter malloc G_MOEAD_weighted Fail\n");
         return;
     }
-    initialize_weight();
+
+    layer = initialize_layer();
+    lambda = initialize_uniform_weight_by_layer (layer, &weight_num);
 
     for (i = 0; i < weight_num; i++)
     {
@@ -33,7 +40,7 @@ static void ini_MOEAD(SMRT_individual *pop_table, int weight_num)
             distance_temp = 0;
             for (k = 0; k < g_algorithm_entity.algorithm_para.objective_number; k++)
             {
-                difference = fabs(pop_table[i].weight[k] -  pop_table[j].weight[k]);
+                difference = fabs(lambda[i][k] -  lambda[j][k]);
                 distance_temp += (double)difference * difference;
             }
 
@@ -42,6 +49,14 @@ static void ini_MOEAD(SMRT_individual *pop_table, int weight_num)
             sort_list[j].idx = j;
         }
         distance_quick_sort(sort_list, 0, weight_num - 1);
+
+        g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor = (int *)malloc(sizeof(int) * g_algorithm_entity.MOEAD_para.neighbor_size);
+        if(NULL == g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor)
+        {
+            printf("In the state of initiate parameter malloc weight neighbor Fail\n");
+            return ;
+        }
+
 
         for (j = 0; j < g_algorithm_entity.MOEAD_para.neighbor_size; j++)
         {
@@ -67,28 +82,28 @@ extern void MOEAD_framework (SMRT_individual *pop, SMRT_individual *offspring_po
     printf ("|\tThe %d run\t|\t1%%\t|", g_algorithm_entity.run_index_current);
 
     // initialization process
-    ini_MOEAD(pop, g_algorithm_entity.algorithm_para.pop_size);
+    ini_MOEAD();
 
 
     //print_error (number_weight != popsize, 1, "Number of weight vectors must be equal to the population size!");
-    initialize_population_real (pop, g_algorithm_entity.algorithm_para.pop_size);
+    initialize_population_real (pop, weight_num);
 
 
-    evaluate_population (pop, g_algorithm_entity.algorithm_para.pop_size);
+    evaluate_population (pop, weight_num);
 
-    initialize_idealpoint (pop, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.ideal_point);
+    initialize_idealpoint (pop, weight_num, &g_algorithm_entity.ideal_point);
 
     track_evolution (pop, g_algorithm_entity.iteration_number, 0);
-    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
+    for (i = 0; i < weight_num; i++)
     {
-        cal_moead_fitness(pop + i, pop[i].weight, g_algorithm_entity.MOEAD_para.function_type);
+        cal_moead_fitness(pop + i, lambda[i], g_algorithm_entity.MOEAD_para.function_type);
     }
 
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
         print_progress ();
         // crossover and mutation
-        for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
+        for (i = 0; i < weight_num; i++)
         {
             rand = randomperc();
             if (rand < g_algorithm_entity.MOEAD_para.neighborhood_selection_probability)

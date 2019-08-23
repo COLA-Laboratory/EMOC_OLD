@@ -11,27 +11,12 @@
 #include "../headers/random.h"
 #include "../headers/analysis.h"
 
-static double **lambda = NULL;
-int weight_num;
 static double **distMatrix;
 static double **fitnessMatrix;
 static Fitness_info_t **subpMatrix;
 static Fitness_info_t **solMatrix;
 
-static int initialize_layer()
-{
-    switch (g_algorithm_entity.algorithm_para.objective_number)
-    {
-        case 2:
-            return 13;
-        case 3:
-            return 12;
-        case 5:
-            return  6;
-        default:
-            break;
-    }
-}
+
 
 
 
@@ -199,7 +184,7 @@ static void ini_MOEAD_STM()
         return;
     }
     g_algorithm_entity.MOEAD_para.frequency = (int *)malloc(sizeof(int) * weight_num);
-    if (NULL == g_algorithm_entity.MOEAD_para.old_function)
+    if (NULL == g_algorithm_entity.MOEAD_para.frequency)
     {
         printf("In the state of initiate parameter malloc frequency Fail\n");
         return;
@@ -371,7 +356,7 @@ extern void MOEAD_STM_framework(SMRT_individual *pop, SMRT_individual *offspring
     // initialization process
     ini_MOEAD_STM();
 
-    if (g_algorithm_entity.algorithm_para.pop_size < weight_num)
+    if (g_algorithm_entity.algorithm_para.pop_size < weight_num || selected_size > weight_num)
     {
         printf("must set pop size bigger than weightnum,current weight num is :%d\n", weight_num);
         return;
@@ -423,7 +408,7 @@ extern void MOEAD_STM_framework(SMRT_individual *pop, SMRT_individual *offspring
         print_progress ();
 
         // select the current most active subproblems to evolve (based on utility)
-        tour_selection_subproblem (selected);
+        tour_selection_subproblem (selected, weight_num);
 
         for (i = 0; i < selected_size; i++)
         {
@@ -465,7 +450,7 @@ extern void MOEAD_STM_framework(SMRT_individual *pop, SMRT_individual *offspring
         {
             comp_utility ();
 
-            for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; ++i)
+            for (i = 0; i < weight_num; ++i)
             {
                 g_algorithm_entity.MOEAD_para.delta[i] = fabs(g_algorithm_entity.parent_population[i].fitness - g_algorithm_entity.MOEAD_para.old_function[i]) / g_algorithm_entity.MOEAD_para.old_function[i];
                 g_algorithm_entity.MOEAD_para.old_function[i] = g_algorithm_entity.parent_population[i].fitness;

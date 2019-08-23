@@ -8,16 +8,11 @@
 #include "../headers/utility.h"
 #include "../headers/analysis.h"
 #include "../headers/sort.h"
-#include "../headers/memory.h"
 #include "../headers/indicator.h"
-#include "../headers/selection.h"
-#include "../headers/random.h"
 
 
 //association[weight][point_id]   association_num[weight] = associationnum
 static int **association_matrix = NULL, *association_num = NULL;
-static double **lambda = NULL;
-static int weight_num = 0;
 
 
 static void MOEADD_calculate_layer_by_obj(int * layer, int *layer_inner, int *layer_out)

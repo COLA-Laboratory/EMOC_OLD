@@ -13,9 +13,9 @@
 
 
 
-
 static void free_MOEAD_dra()
 {
+    int i = 0;
     if (NULL != g_algorithm_entity.MOEAD_para.delta)
     {
         free(g_algorithm_entity.MOEAD_para.delta);
@@ -33,7 +33,7 @@ static void free_MOEAD_dra()
         free(g_algorithm_entity.MOEAD_para.frequency);
     }
 
-    for (int i = 0; i < g_algorithm_entity.algorithm_para.pop_size; ++i)
+    for (int i = 0; i < weight_num; ++i)
     {
         if (NULL != g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor)
         {
@@ -45,6 +45,11 @@ static void free_MOEAD_dra()
         free(g_algorithm_entity.MOEAD_para.neighbor_table);
     }
 
+
+    for (i = 0; i < weight_num; i++)
+        free (lambda[i]);
+    free (lambda);
+
     return;
 
 }
@@ -52,11 +57,17 @@ static void free_MOEAD_dra()
 
 
 
-static void ini_MOEAD_dra(SMRT_individual *pop_table, int weight_num)
+static void ini_MOEAD_dra()
 {
     int i = 0, j = 0, k = 0;
+    int layer = 0;
     double difference = 0, distance_temp = 0, Euc_distance = 0;
     Distance_info_t sort_list[MAX_SIZE];
+
+
+    layer = initialize_layer();
+    lambda = initialize_uniform_weight_by_layer (layer, &weight_num);
+
 
     g_algorithm_entity.MOEAD_para.neighbor_table = (MOEAD_NEIGHBOR*)malloc(sizeof(MOEAD_NEIGHBOR) * weight_num);
     if(NULL == g_algorithm_entity.MOEAD_para.neighbor_table)
@@ -91,7 +102,7 @@ static void ini_MOEAD_dra(SMRT_individual *pop_table, int weight_num)
         return;
     }
 
-    initialize_weight();
+
 
     for (i = 0; i < weight_num; i++)
     {
@@ -100,7 +111,7 @@ static void ini_MOEAD_dra(SMRT_individual *pop_table, int weight_num)
             distance_temp = 0;
             for (k = 0; k < g_algorithm_entity.algorithm_para.objective_number; k++)
             {
-                difference = fabs(pop_table[i].weight[k] -  pop_table[j].weight[k]);
+                difference = fabs(lambda[i][k] -  lambda[j][k]);
                 distance_temp += (double)difference * difference;
             }
 
@@ -109,6 +120,13 @@ static void ini_MOEAD_dra(SMRT_individual *pop_table, int weight_num)
             sort_list[j].idx = j;
         }
         distance_quick_sort(sort_list, 0, weight_num - 1);
+
+        g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor = (int *)malloc(sizeof(int) * g_algorithm_entity.MOEAD_para.neighbor_size);
+        if(NULL == g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor)
+        {
+            printf("In the state of initiate parameter malloc weight neighbor Fail\n");
+            return ;
+        }
 
         for (j = 0; j < g_algorithm_entity.MOEAD_para.neighbor_size; j++)
         {
@@ -141,15 +159,20 @@ extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring
     printf("|\tThe %d run\t|\t1%%\t|", g_algorithm_entity.run_index_current);
 
     // initialization process
-    ini_MOEAD_dra(pop, g_algorithm_entity.algorithm_para.pop_size);
-    initialize_population_real(pop, g_algorithm_entity.algorithm_para.pop_size);
-    evaluate_population(pop, g_algorithm_entity.algorithm_para.pop_size);
+    ini_MOEAD_dra();
 
+    if (g_algorithm_entity.algorithm_para.pop_size < weight_num || selected_size > weight_num)
+    {
+        printf("must set pop size bigger than weightnum,current weight num is :%d\n", weight_num);
+        return;
+    }
+    initialize_population_real(pop, weight_num);
 
-    initialize_idealpoint(pop, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.ideal_point);
+    evaluate_population(pop, weight_num);
 
+    initialize_idealpoint(pop, weight_num, &g_algorithm_entity.ideal_point);
 
-    selected = (double *) malloc(sizeof(double) * g_algorithm_entity.algorithm_para.pop_size);
+    selected = (double *) malloc(sizeof(double) * weight_num);
     if (NULL == selected)
     {
         printf("In the MOEAD_dra_framework malloc candidate\n");
@@ -157,9 +180,9 @@ extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring
     }
 
 
-    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; ++i)
+    for (i = 0; i < weight_num; ++i)
     {
-        g_algorithm_entity.MOEAD_para.old_function[i] = cal_moead_fitness(pop + i, pop[i].weight, g_algorithm_entity.MOEAD_para.function_type);
+        g_algorithm_entity.MOEAD_para.old_function[i] = cal_moead_fitness(pop + i, lambda[i], g_algorithm_entity.MOEAD_para.function_type);
     }
 
     track_evolution (pop, g_algorithm_entity.iteration_number, 0);
@@ -171,7 +194,7 @@ extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring
         print_progress ();
 
         // select the current most active subproblems to evolve (based on utility)
-        tour_selection_subproblem (selected);
+        tour_selection_subproblem (selected, weight_num);
 
         for (i = 0; i < selected_size; i++)
         {
@@ -201,8 +224,7 @@ extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring
         }
 
         // update the ideal point
-        update_ideal_point (pop, g_algorithm_entity.algorithm_para.pop_size);
-
+        update_ideal_point (pop, weight_num);
 
         g_algorithm_entity.iteration_number++;
 
@@ -211,7 +233,7 @@ extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring
         {
             comp_utility ();
 
-            for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; ++i)
+            for (i = 0; i < weight_num; ++i)
             {
                 g_algorithm_entity.MOEAD_para.delta[i] = fabs(g_algorithm_entity.parent_population[i].fitness - g_algorithm_entity.MOEAD_para.old_function[i]) / g_algorithm_entity.MOEAD_para.old_function[i];
                 g_algorithm_entity.MOEAD_para.old_function[i] = g_algorithm_entity.parent_population[i].fitness;

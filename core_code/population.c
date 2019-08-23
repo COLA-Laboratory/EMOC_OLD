@@ -45,7 +45,6 @@ extern void copy_individual(SMRT_individual *individualSrc, SMRT_individual *ind
 
     memcpy(individualDest->variable, individualSrc->variable, sizeof(double) * g_algorithm_entity.algorithm_para.variable_number);
     memcpy(individualDest->obj, individualSrc->obj, sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
-    memcpy(individualDest->weight, individualSrc->weight, sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
     return;
 }
 

@@ -211,7 +211,7 @@ typedef struct
     int rank;
     double *variable;
     double *obj;
-    double *weight;
+    //double *weight;
     double fitness;
     double cv;
 }SMRT_individual;
@@ -274,5 +274,8 @@ extern SMRT_entity g_algorithm_entity;
 char *g_algorithm_name_str[ALGORITHM_NAME_NUM];
 char *g_problem_name_str[PROBLEM_NAME_NUM];
 char *g_analyse_name_str[ANALYSE_NAME_NUM];
+
+extern double **lambda;
+extern int weight_num;
 
 #endif

@@ -158,11 +158,13 @@ extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *
         }
         else
         {
-            rand = rnd(0, g_algorithm_entity.algorithm_para.pop_size - 1);
+            rand = rnd(0, weight_num - 1);
             select_id[i] = rand;
         }
-
+        if (select_id[i] > 90)
+            printf("selected[%d]:%d\n", i,select_id[i]);
     }
+
     de_crossover(parent, parent_pop_table + select_id[0],
                  parent_pop_table + select_id[1], offspring);
 
@@ -170,6 +172,7 @@ extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *
 
     return;
 }
+
 
 extern void crossover_SMSEMOA(SMRT_individual *parent_pop_table, SMRT_individual *offspring)
 {
@@ -332,31 +335,3 @@ extern void crossover_MOEADD(SMRT_individual *parent_pop_table, int weight_id, S
     return;
 }
 
-extern void crossover_MOEAD_STM(SMRT_individual *parent_pop_table, SMRT_individual *parent, int parent_index, SMRT_individual *offspring, NeighborType type)
-{
-    int i = 0;
-    int rand = 0;
-    int select_id[2] = {0};
-
-
-    for (i = 0; i < 2; i++)
-    {
-        if (NEIGHBOR == type)
-        {
-            rand = rnd (0, g_algorithm_entity.MOEAD_para.neighbor_size - 1);
-            select_id[i] = g_algorithm_entity.MOEAD_para.neighbor_table[parent_index].neighbor[rand];
-        }
-        else
-        {
-            rand = rnd(0, g_algorithm_entity.algorithm_para.pop_size - 1);
-            select_id[i] = rand;
-        }
-
-    }
-    de_crossover(parent, parent_pop_table + select_id[0],
-                 parent_pop_table + select_id[1], offspring);
-
-
-
-    return;
-}

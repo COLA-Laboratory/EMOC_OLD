@@ -76,66 +76,7 @@ static int combination (int n, int k)
 }
 
 
-extern void initialize_weight ()
-{
-    int i, j;
 
-    int layer_size;
-    int column = 0;
-
-    double *Vec;
-    double **lambda = NULL;
-
-    int number_weight = 0;
-
-    int gaps = 1;
-    while(1)
-    {
-        layer_size  = combination (g_algorithm_entity.algorithm_para.objective_number + gaps - 1, gaps);
-        //printf("[%d]%d\n",gaps,layer_size);
-        number_weight = layer_size;
-        if(layer_size > g_algorithm_entity.algorithm_para.pop_size) break;
-        gaps = gaps + 1;
-
-    }
-    gaps = gaps - 1;
-    lambda = (double **) malloc (number_weight * sizeof(double *));
-    for (i = 0; i < number_weight; i++)
-    {
-        lambda[i] = (double *) malloc(g_algorithm_entity.algorithm_para.objective_number  * sizeof(double));
-    }
-
-
-    Vec = (double *) malloc (g_algorithm_entity.algorithm_para.objective_number  * sizeof(double));
-    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number ; i++)
-        Vec[i] = 0;
-    set_weight (Vec, gaps, 0, g_algorithm_entity.algorithm_para.objective_number, &column, lambda);
-
-    for (i = 0; i < number_weight; i++)
-        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++) {
-            lambda[i][j] = lambda[i][j] / gaps;
-        }
-    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
-    {
-        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
-        {
-            g_algorithm_entity.parent_population[i].weight[j] = lambda[i][j];
-        }
-        g_algorithm_entity.MOEAD_para.neighbor_table[i].idx = i;
-        g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor = (int *)malloc(sizeof(int) * g_algorithm_entity.MOEAD_para.neighbor_size);
-        if(NULL == g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor)
-        {
-            printf("In the state of initiate parameter malloc weight neighbor Fail\n");
-            return ;
-        }
-    }
-    free (Vec);
-    for (i = 0; i < number_weight; i++)
-        free (lambda[i]);
-    free (lambda);
-
-    return;
-}
 
 
 extern double **initialize_uniform_point (int *number_weight)
@@ -312,4 +253,20 @@ extern void update_nadir_point_by_ind(SMRT_individual *ind)
             }
         }
     return;
+}
+
+
+extern int initialize_layer()
+{
+    switch (g_algorithm_entity.algorithm_para.objective_number)
+    {
+        case 2:
+            return 13;
+        case 3:
+            return 12;
+        case 5:
+            return  6;
+        default:
+            break;
+    }
 }

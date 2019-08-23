@@ -23,7 +23,7 @@ extern void comp_utility()
 }
 
 
-extern void tour_selection_subproblem(int *selected)
+extern void tour_selection_subproblem(int *selected, int weight_num)
 {
     int i = 0, j = 0;
     int rand[10] = {0}, current_max_index = 0;
@@ -38,7 +38,7 @@ extern void tour_selection_subproblem(int *selected)
     {
         for (int j = 0; j < 10; ++j)
         {
-            rand[j] = rnd(g_algorithm_entity.algorithm_para.objective_number, g_algorithm_entity.algorithm_para.pop_size - 1);
+            rand[j] = rnd(g_algorithm_entity.algorithm_para.objective_number, weight_num - 1);
         }
 
         temp_num = 0;
@@ -51,6 +51,7 @@ extern void tour_selection_subproblem(int *selected)
             }
         }
         selected[i] = current_max_index;
+
 
     }
     return;

@@ -30,12 +30,6 @@ extern int allocate_memory_for_pop (SMRT_individual **pop, int population_size)
             return  FAIL;
         }
 
-        //malloc individual weight
-        (*pop)[i].weight = (double*)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
-        if (NULL == (*pop)[i].weight)
-        {
-            return  FAIL;
-        }
     }
 
     return SUCCESS;
@@ -65,12 +59,6 @@ extern int allocate_memory_for_ind (SMRT_individual **ind)
         return  FAIL;
     }
 
-    /*malloc individual weight*/
-    (*ind)->weight = (double*)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
-    if (NULL == (*ind)->weight)
-    {
-        return  FAIL;
-    }
     return SUCCESS;
 }
 
@@ -113,12 +101,6 @@ extern int destroy_memory_for_pop (SMRT_individual **pop, int population_size)
             (*pop)[i].obj = NULL;
         }
 
-        /*malloc individual weight*/
-        if (NULL != (*pop)[i].weight)
-        {
-            free((*pop)[i].weight);
-            (*pop)[i].weight = NULL;
-        }
     }
 
     free(*pop);
@@ -142,12 +124,6 @@ extern int destroy_memory_for_ind (SMRT_individual *ind)
         ind->obj = NULL;
     }
 
-    /*malloc individual weight*/
-    if (NULL != ind->weight)
-    {
-        free(ind->weight);
-        ind->weight = NULL;
-    }
 
     free(ind);
     return SUCCESS;
