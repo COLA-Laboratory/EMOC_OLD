@@ -66,7 +66,7 @@ global.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
 
-/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD_STM.c
+/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD_DRA.c
 ../headers/global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
 ../headers/metaheuristics.h

@@ -193,7 +193,7 @@ extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring
 
         print_progress ();
 
-        // select the current most active subproblems to evolve (based on utility)
+        //select the current most active subproblems to evolve (based on utility)
         tour_selection_subproblem (selected, weight_num);
 
         for (i = 0; i < selected_size; i++)
@@ -216,12 +216,15 @@ extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring
             // crossover and mutation
             crossover_MOEAD (pop, parent, j, offspring, type);
             mutation_ind(offspring);
-            evaluate_individual (offspring);
+              evaluate_individual (offspring);
 
             // update the subproblem
             update_subproblem(offspring, j, type);
 
         }
+
+
+
 
         // update the ideal point
         update_ideal_point (pop, weight_num);

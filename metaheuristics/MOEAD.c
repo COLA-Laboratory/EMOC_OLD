@@ -23,15 +23,17 @@ static void ini_MOEAD()
     double difference = 0, distance_temp = 0, Euc_distance = 0;
     Distance_info_t sort_list[MAX_SIZE];
 
+
+
+    layer = initialize_layer();
+    lambda = initialize_uniform_weight_by_layer (layer, &weight_num);
+
     g_algorithm_entity.MOEAD_para.neighbor_table = (MOEAD_NEIGHBOR*)malloc(sizeof(MOEAD_NEIGHBOR) * weight_num);
     if(NULL == g_algorithm_entity.MOEAD_para.neighbor_table)
     {
         printf("In the state of initiate parameter malloc G_MOEAD_weighted Fail\n");
         return;
     }
-
-    layer = initialize_layer();
-    lambda = initialize_uniform_weight_by_layer (layer, &weight_num);
 
     for (i = 0; i < weight_num; i++)
     {

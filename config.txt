@@ -1,4 +1,4 @@
-algorithm_name:MOEAD_STM
+algorithm_name:HYPE
 test_problem:DTLZ1
 problem_param:
 number_variable:10

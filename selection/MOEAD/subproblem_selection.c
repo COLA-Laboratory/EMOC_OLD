@@ -7,7 +7,7 @@ extern void comp_utility()
 {
     int i = 0;
 
-    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; ++i)
+    for (i = 0; i < weight_num; ++i)
     {
         if (g_algorithm_entity.MOEAD_para.delta[i] > 0.001)
         {
