@@ -440,8 +440,8 @@ extern void MOEAD_STM_framework(SMRT_individual *pop, SMRT_individual *offspring
         MOEAD_STM_update(mixed_pop, weight_num + selected_size);
 
         // update the ideal point
-        update_ideal_point (pop, g_algorithm_entity.algorithm_para.pop_size);
-        update_nadir_point (pop, g_algorithm_entity.algorithm_para.pop_size);
+        update_ideal_point (pop, weight_num);
+        update_nadir_point (pop, weight_num);
 
 
         g_algorithm_entity.iteration_number++;
