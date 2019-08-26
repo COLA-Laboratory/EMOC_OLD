@@ -173,6 +173,20 @@ CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
  /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEADD.c
+CMakeFiles/Samaritan.dir/metaheuristics/MOEADM2M.c.o
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/initialize.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/memory.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/mutation.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/population.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
+ /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEADM2M.c
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_DRA.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
@@ -224,7 +238,6 @@ CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/population.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
  /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA3.c
@@ -283,9 +296,15 @@ CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.o
 CMakeFiles/Samaritan.dir/test_problem/DTLZ.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
  /home/maopl/CLionProjects/my_work/Samaritan/test_problem/DTLZ.c
+CMakeFiles/Samaritan.dir/test_problem/MOP.c.o
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
+ /home/maopl/CLionProjects/my_work/Samaritan/test_problem/MOP.c
 CMakeFiles/Samaritan.dir/test_problem/UF.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
  /home/maopl/CLionProjects/my_work/Samaritan/test_problem/UF.c
+CMakeFiles/Samaritan.dir/test_problem/WFG.c.o
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
+ /home/maopl/CLionProjects/my_work/Samaritan/test_problem/WFG.c
 CMakeFiles/Samaritan.dir/test_problem/ZDT.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
  /home/maopl/CLionProjects/my_work/Samaritan/test_problem/ZDT.c

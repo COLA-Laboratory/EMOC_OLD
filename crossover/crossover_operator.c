@@ -127,3 +127,54 @@ extern void de_crossover (SMRT_individual *parent1, SMRT_individual *parent2, SM
 
     return;
 }
+
+
+extern void MOEADM2M_crossover_operator (SMRT_individual *parent1, SMRT_individual *parent2, SMRT_individual *offspring)
+{
+    int i;
+    double rc = 0;
+    double rand = 0;
+    double yl = 0;double yu = 0;double value = 0;
+    double gen = g_algorithm_entity.iteration_number;
+    int maxgen = g_algorithm_entity.algorithm_para.max_evaluation/g_algorithm_entity.algorithm_para.pop_size;
+    for (i = 0; i < g_algorithm_entity.algorithm_para.variable_number; i++)
+    {
+
+
+        rand = randomperc();
+
+
+        double temp =-pow( 1 - gen / (maxgen), 0.7);
+        //printf("%f\n",pow(2.3,2));
+        rc = 2 * (rand - 0.5) * (1 - pow(rand, temp));
+
+        yl = g_algorithm_entity.variable_lower_bound[i];
+        yu = g_algorithm_entity.variable_higher_bound[i];
+        value = parent1->variable[i] + rc * (parent1->variable[i] - parent2->variable[i]);
+
+        if(randomperc() < g_algorithm_entity.polynomialPara.pmut_real)
+        {
+            double rm = 0.25*(2*randomperc() - 1)*(1-pow(randomperc(),temp));
+            value = value + rm * (yu - yl);
+        }
+
+
+
+        if (value > yu) {
+            //printf("%f\n",rand);
+            rand = randomperc();
+
+            value = yu - 0.5 * rand * (yu - parent1->variable[i]);
+            //printf("%f\n",value);
+        }
+        if (value < yl) {
+            rand = randomperc();
+            value = yl + 0.5 * rand * (parent1->variable[i] - yl);
+            //printf("%f\n",value);
+        }
+
+        offspring->variable[i] = value;
+    }
+
+    return;
+}

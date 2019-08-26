@@ -161,8 +161,7 @@ extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *
             rand = rnd(0, weight_num - 1);
             select_id[i] = rand;
         }
-        if (select_id[i] > 90)
-            printf("selected[%d]:%d\n", i,select_id[i]);
+
     }
 
     de_crossover(parent, parent_pop_table + select_id[0],
@@ -335,3 +334,44 @@ extern void crossover_MOEADD(SMRT_individual *parent_pop_table, int weight_id, S
     return;
 }
 
+
+extern void crossover_MOEADM2M(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table,int K, int S)
+{
+    //todo..
+
+    int i = 0;int j = 0;
+    int index_parent2 = 0;
+    double rand = 0;double selectPro = 0.3;
+    SMRT_individual *parent1 = NULL, *parent2 = NULL;
+    for(i = 0;i < K;i++)
+    {
+        for(j = 0;j < S;j++)
+        {
+            parent1 = parent_pop_table+i*S+j;
+            if(randomperc() < selectPro)
+            {
+                index_parent2 = rnd(i*S,i*S+S-1);
+                parent2 = parent_pop_table+index_parent2;
+                MOEADM2M_crossover_operator(parent1,parent2,offspring_pop_table+i*S+j);
+               //sbx_crossover(parent1,parent2,offspring_pop_table+i*S+j,offspring_pop_table+i*S+j);
+//                for (int m = 0; m < g_algorithm_entity.algorithm_para.variable_number;m++)
+//                {
+//                    printf("variable[%d]:%f  ", m, offspring_pop_table[i*S+j].variable[m]);
+//                }
+//                printf("\n");
+
+
+            }else
+            {
+                index_parent2 = rnd(0,K*S-1);
+                parent2 = parent_pop_table + index_parent2;
+                //sbx_crossover(parent1,parent2,offspring_pop_table+i*S+j,offspring_pop_table+i*S+j);
+                MOEADM2M_crossover_operator(parent1,parent2,offspring_pop_table+i*S+j);
+            }
+        }
+    }
+
+
+
+    return;
+}

@@ -12,6 +12,6 @@ void randomize ();
 double randomperc ();
 int rnd (int low, int high);
 double rndreal (double low, double high);
-void randomize ();
+
 
 #endif

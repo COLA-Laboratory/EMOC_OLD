@@ -41,7 +41,10 @@ add_executable(Samaritan main.c
         test_problem/DTLZ.c
         test_problem/ZDT.c
         test_problem/UF.c
+        test_problem/MOP.c
+        test_problem/WFG.c
         test_problem/evaluation.c
+
 
 
         externals/MY_WFG/read.c
@@ -66,7 +69,8 @@ add_executable(Samaritan main.c
         metaheuristics/MOEADD.c
         metaheuristics/SMSEMOA.c
         metaheuristics/HypE.c
-        metaheuristics/SPEA2.c)
+        metaheuristics/SPEA2.c
+        metaheuristics/MOEADM2M.c)
 
 
 target_link_libraries(Samaritan m)

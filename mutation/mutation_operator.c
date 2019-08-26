@@ -96,3 +96,47 @@ extern void normally_distribute_mut(SMRT_individual *ind)
     }
 
 }
+
+
+extern void MOEADM2M_mutation_operator(SMRT_individual *ind)
+{
+    int i = 0;
+    double rand = 0; double rm = 0;
+    double yl = 0;double yu = 0;double value = 0;
+    double gen = g_algorithm_entity.iteration_number;
+    int maxgen = g_algorithm_entity.algorithm_para.max_evaluation/g_algorithm_entity.algorithm_para.pop_size;
+
+
+
+    for (i = 0; i < g_algorithm_entity.algorithm_para.variable_number; i++)
+    {
+        rand = randomperc();
+        if(rand < g_algorithm_entity.polynomialPara.pmut_real)
+        {
+            rand = randomperc();
+            double temp = 1 - gen/maxgen;
+            rm = 0.5 * (rand-0.5) * (1 - pow(rand,-pow(temp,0.7)));
+            value = ind->variable[i] + rm * (yu - yl);
+
+            if(value > yu){
+                rand = randomperc();
+                value = yu - 0.5 * rand * (yu - ind->variable[i]);
+            }
+            if(value < yl){
+                rand = randomperc();
+                value = yl + 0.5 * rand * (ind->variable[i] - yl);
+            }
+
+            ind->variable[i] = value;
+        }
+
+
+    }
+
+
+
+
+
+    return;
+
+}

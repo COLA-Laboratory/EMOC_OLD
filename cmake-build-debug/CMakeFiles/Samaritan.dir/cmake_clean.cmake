@@ -22,6 +22,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Samaritan.dir/test_problem/DTLZ.c.o"
   "CMakeFiles/Samaritan.dir/test_problem/ZDT.c.o"
   "CMakeFiles/Samaritan.dir/test_problem/UF.c.o"
+  "CMakeFiles/Samaritan.dir/test_problem/MOP.c.o"
+  "CMakeFiles/Samaritan.dir/test_problem/WFG.c.o"
   "CMakeFiles/Samaritan.dir/test_problem/evaluation.c.o"
   "CMakeFiles/Samaritan.dir/externals/MY_WFG/read.c.o"
   "CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.o"
@@ -42,6 +44,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/HypE.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.o"
+  "CMakeFiles/Samaritan.dir/metaheuristics/MOEADM2M.c.o"
   "Samaritan.pdb"
   "Samaritan"
 )

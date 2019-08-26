@@ -395,9 +395,3 @@ extern void initialize_nadirpoint (SMRT_individual *pop_table, int pop_num, REFE
     return;
 }
 
-
-
-extern void destory_algorithm()
-{
-    return;
-}

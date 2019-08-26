@@ -69,7 +69,11 @@ typedef enum test_problem{
     WFG6,
     WFG7,
     WFG8,
-    WFG9
+    WFG9,
+    MOP1,
+    MOP2,
+    MOP3,
+    MOP6
 }Test_problem;
 
 
@@ -83,7 +87,8 @@ typedef enum{
     MOEADD,
     SMS_EMOA,
     HypE,
-    SPEA2
+    SPEA2,
+    MOEADM2M
 }ALGORITHM_NAME;
 
 
@@ -211,7 +216,6 @@ typedef struct
     int rank;
     double *variable;
     double *obj;
-    //double *weight;
     double fitness;
     double cv;
 }SMRT_individual;
@@ -274,6 +278,7 @@ extern SMRT_entity g_algorithm_entity;
 char *g_algorithm_name_str[ALGORITHM_NAME_NUM];
 char *g_problem_name_str[PROBLEM_NAME_NUM];
 char *g_analyse_name_str[ANALYSE_NAME_NUM];
+char problem_param_stream[BUFSIZE_L];
 
 extern double **lambda;
 extern int weight_num;

@@ -879,6 +879,33 @@ metaheuristics/MOEADD.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.s
 .PHONY : metaheuristics/MOEADD.c.s
 
+metaheuristics/MOEADM2M.o: metaheuristics/MOEADM2M.c.o
+
+.PHONY : metaheuristics/MOEADM2M.o
+
+# target to build an object file
+metaheuristics/MOEADM2M.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADM2M.c.o
+.PHONY : metaheuristics/MOEADM2M.c.o
+
+metaheuristics/MOEADM2M.i: metaheuristics/MOEADM2M.c.i
+
+.PHONY : metaheuristics/MOEADM2M.i
+
+# target to preprocess a source file
+metaheuristics/MOEADM2M.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADM2M.c.i
+.PHONY : metaheuristics/MOEADM2M.c.i
+
+metaheuristics/MOEADM2M.s: metaheuristics/MOEADM2M.c.s
+
+.PHONY : metaheuristics/MOEADM2M.s
+
+# target to generate assembly for a file
+metaheuristics/MOEADM2M.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADM2M.c.s
+.PHONY : metaheuristics/MOEADM2M.c.s
+
 metaheuristics/MOEAD_DRA.o: metaheuristics/MOEAD_DRA.c.o
 
 .PHONY : metaheuristics/MOEAD_DRA.o
@@ -1203,6 +1230,33 @@ test_problem/DTLZ.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/DTLZ.c.s
 .PHONY : test_problem/DTLZ.c.s
 
+test_problem/MOP.o: test_problem/MOP.c.o
+
+.PHONY : test_problem/MOP.o
+
+# target to build an object file
+test_problem/MOP.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/MOP.c.o
+.PHONY : test_problem/MOP.c.o
+
+test_problem/MOP.i: test_problem/MOP.c.i
+
+.PHONY : test_problem/MOP.i
+
+# target to preprocess a source file
+test_problem/MOP.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/MOP.c.i
+.PHONY : test_problem/MOP.c.i
+
+test_problem/MOP.s: test_problem/MOP.c.s
+
+.PHONY : test_problem/MOP.s
+
+# target to generate assembly for a file
+test_problem/MOP.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/MOP.c.s
+.PHONY : test_problem/MOP.c.s
+
 test_problem/UF.o: test_problem/UF.c.o
 
 .PHONY : test_problem/UF.o
@@ -1229,6 +1283,33 @@ test_problem/UF.s: test_problem/UF.c.s
 test_problem/UF.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/UF.c.s
 .PHONY : test_problem/UF.c.s
+
+test_problem/WFG.o: test_problem/WFG.c.o
+
+.PHONY : test_problem/WFG.o
+
+# target to build an object file
+test_problem/WFG.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/WFG.c.o
+.PHONY : test_problem/WFG.c.o
+
+test_problem/WFG.i: test_problem/WFG.c.i
+
+.PHONY : test_problem/WFG.i
+
+# target to preprocess a source file
+test_problem/WFG.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/WFG.c.i
+.PHONY : test_problem/WFG.c.i
+
+test_problem/WFG.s: test_problem/WFG.c.s
+
+.PHONY : test_problem/WFG.s
+
+# target to generate assembly for a file
+test_problem/WFG.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/WFG.c.s
+.PHONY : test_problem/WFG.c.s
 
 test_problem/ZDT.o: test_problem/ZDT.c.o
 
@@ -1377,6 +1458,9 @@ help:
 	@echo "... metaheuristics/MOEADD.o"
 	@echo "... metaheuristics/MOEADD.i"
 	@echo "... metaheuristics/MOEADD.s"
+	@echo "... metaheuristics/MOEADM2M.o"
+	@echo "... metaheuristics/MOEADM2M.i"
+	@echo "... metaheuristics/MOEADM2M.s"
 	@echo "... metaheuristics/MOEAD_DRA.o"
 	@echo "... metaheuristics/MOEAD_DRA.i"
 	@echo "... metaheuristics/MOEAD_DRA.s"
@@ -1413,9 +1497,15 @@ help:
 	@echo "... test_problem/DTLZ.o"
 	@echo "... test_problem/DTLZ.i"
 	@echo "... test_problem/DTLZ.s"
+	@echo "... test_problem/MOP.o"
+	@echo "... test_problem/MOP.i"
+	@echo "... test_problem/MOP.s"
 	@echo "... test_problem/UF.o"
 	@echo "... test_problem/UF.i"
 	@echo "... test_problem/UF.s"
+	@echo "... test_problem/WFG.o"
+	@echo "... test_problem/WFG.i"
+	@echo "... test_problem/WFG.s"
 	@echo "... test_problem/ZDT.o"
 	@echo "... test_problem/ZDT.i"
 	@echo "... test_problem/ZDT.s"

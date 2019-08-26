@@ -1,4 +1,4 @@
-algorithm_name:HYPE
+algorithm_name:NSGA3
 test_problem:DTLZ1
 problem_param:
 number_variable:10
@@ -9,5 +9,5 @@ max_evaluation:75000
 runtime_output:1
 output_interval:10
 run_index_begin:1
-run_index_end:1
+run_index_end:2
 analyse:FUN

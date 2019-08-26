@@ -38,7 +38,9 @@ limits.h
 regex.h
 -
 
-/home/maopl/CLionProjects/my_work/Samaritan/headers/initialize.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/memory.h
+../headers/global.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/metaheuristics.h
 global.h
@@ -58,15 +60,11 @@ global.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
 
-/home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/headers/selection.h
-
 /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
 
-/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD_DRA.c
+/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA3.c
 ../headers/global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
 ../headers/metaheuristics.h
@@ -79,16 +77,12 @@ global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
 ../headers/print.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
-../headers/initialize.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/initialize.h
-../headers/utility.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
-../headers/sort.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
-../headers/selection.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/selection.h
-../headers/random.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
 ../headers/analysis.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
+../headers/sort.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
+../headers/utility.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
+../headers/memory.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/memory.h
 

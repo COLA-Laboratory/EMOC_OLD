@@ -32,6 +32,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/IBEA.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEADD.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o"
+  "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEADM2M.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEADM2M.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD_DRA.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_DRA.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD_STM.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_STM.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA2.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o"
@@ -44,7 +45,9 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/subproblem_selection.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/selection/MOEAD/subproblem_selection.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/update.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/test_problem/DTLZ.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/DTLZ.c.o"
+  "/home/maopl/CLionProjects/my_work/Samaritan/test_problem/MOP.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/MOP.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/test_problem/UF.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/UF.c.o"
+  "/home/maopl/CLionProjects/my_work/Samaritan/test_problem/WFG.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/WFG.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/test_problem/ZDT.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/ZDT.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/test_problem/evaluation.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/evaluation.c.o"
   )

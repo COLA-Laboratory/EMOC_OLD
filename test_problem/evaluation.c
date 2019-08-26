@@ -91,6 +91,15 @@ extern void evaluate_individual (SMRT_individual *ind)
             break;
         case UF10:
             uf10 (ind);
+			break;
+		case MOP1:
+            test_MOP1(ind, g_algorithm_entity.algorithm_para.variable_number, g_algorithm_entity.algorithm_para.objective_number);
+            break;
+        case MOP2:
+            test_MOP2(ind, g_algorithm_entity.algorithm_para.variable_number, g_algorithm_entity.algorithm_para.objective_number);
+            break;
+        case MOP6:
+            test_MOP6(ind, g_algorithm_entity.algorithm_para.variable_number, g_algorithm_entity.algorithm_para.objective_number);
             break;
         default:
             print_error (1, 2, "UNKNOWN test problem: ", g_problem_name_str[g_algorithm_entity.testProblem]);

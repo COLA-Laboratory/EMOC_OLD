@@ -4,6 +4,7 @@
 
 extern void sbx_crossover (SMRT_individual *parent1, SMRT_individual *parent2, SMRT_individual *child1, SMRT_individual *child2);
 extern void de_crossover (SMRT_individual *parent1, SMRT_individual *parent2, SMRT_individual *parent3, SMRT_individual*offspring);
+extern void MOEADM2M_crossover_operator (SMRT_individual *parent1, SMRT_individual *parent2, SMRT_individual *offspring);
 
 
 
@@ -14,4 +15,7 @@ extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *
 extern void crossover_MOEADD(SMRT_individual *parent_pop_table, int weight_id, SMRT_individual *offspring, int **association_matrix, int *association_num, int weight_num);
 extern void crossover_SMSEMOA(SMRT_individual *parent_pop_table, SMRT_individual *offspring);
 extern void crossover_HypE(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table);
+extern void crossover_MOEADM2M(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table,int K, int S);
+
+
 #endif

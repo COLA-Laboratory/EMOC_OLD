@@ -171,6 +171,9 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEADD.c">
 			<Option target="Samaritan"/>
 		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEADM2M.c">
+			<Option target="Samaritan"/>
+		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD_DRA.c">
 			<Option target="Samaritan"/>
 		</Unit>
@@ -207,7 +210,13 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/DTLZ.c">
 			<Option target="Samaritan"/>
 		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/MOP.c">
+			<Option target="Samaritan"/>
+		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/UF.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/WFG.c">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/ZDT.c">

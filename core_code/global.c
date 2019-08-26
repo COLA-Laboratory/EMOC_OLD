@@ -9,7 +9,8 @@ char *g_algorithm_name_str[ALGORITHM_NAME_NUM] = {
         "MOEADD",
         "SMSEMOA",
         "HYPE",
-        "SPEA2"
+        "SPEA2",
+        "MOEADM2M"
 };
 
 
@@ -45,7 +46,11 @@ char *g_problem_name_str[PROBLEM_NAME_NUM] = {
         "WFG6",
         "WFG7",
         "WFG8",
-        "WFG9"
+        "WFG9",
+        "MOP1",
+        "MOP2",
+        "MOP3",
+        "MOP6"
 };
 
 char *g_analyse_name_str[ANALYSE_NAME_NUM] = {

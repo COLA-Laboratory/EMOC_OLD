@@ -270,3 +270,59 @@ extern int initialize_layer()
             break;
     }
 }
+
+
+
+extern double **initialize_direction_MOEADM2M (int *number_weight,int N)
+{
+    int i, j;
+
+    int layer_size;
+    int column = 0;
+
+    double *Vec;
+    double **lambda = NULL;
+
+    int gaps = 1;
+
+    *number_weight = 0;
+    while(1)
+    {
+        layer_size  = combination (g_algorithm_entity.algorithm_para.objective_number + gaps - 1, gaps);
+        //printf("[%d]%d\n",gaps,layer_size);
+        if(layer_size > N) break;
+        gaps = gaps + 1;
+        *number_weight = layer_size;
+    }
+    gaps = gaps - 1;
+    lambda = (double **) malloc ((*number_weight) * sizeof(double *));
+    for (i = 0; i < *number_weight; i++)
+    {
+        lambda[i] = (double *) malloc(g_algorithm_entity.algorithm_para.objective_number  * sizeof(double));
+    }
+
+
+    Vec = (double *) malloc (g_algorithm_entity.algorithm_para.objective_number  * sizeof(double));
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number ; i++)
+        Vec[i] = 0;
+    set_weight (Vec, gaps, 0, g_algorithm_entity.algorithm_para.objective_number, &column, lambda);
+
+    for (i = 0; i < *number_weight; i++)
+        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++) {
+            lambda[i][j] = lambda[i][j] / gaps;
+        }
+
+    for(i = 0;i < *number_weight;i++)
+    {
+        for(j = 0;j < g_algorithm_entity.algorithm_para.objective_number;j++)
+        {
+            if((lambda[i][j]-0) < 0.000001)
+                lambda[i][j] = 0.00001;
+        }
+    }
+
+
+    free (Vec);
+
+    return lambda;
+}

@@ -29,7 +29,9 @@ extern void uf7 (SMRT_individual *ind);
 extern void uf8 (SMRT_individual *ind);
 extern void uf9 (SMRT_individual *ind);
 extern void uf10 (SMRT_individual *ind);
-
+extern void test_MOP1(SMRT_individual *individual, int variable_num, int obj_num);
+extern void test_MOP2(SMRT_individual *individual, int variable_num, int obj_num);
+extern void test_MOP6(SMRT_individual *individual, int variable_num, int obj_num);
 
 extern void evaluate_individual (SMRT_individual *ind);
 extern void evaluate_population (SMRT_individual *pop, int pop_num);
