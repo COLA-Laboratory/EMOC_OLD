@@ -214,18 +214,14 @@ extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring
             // crossover and mutation
             crossover_MOEAD (pop, parent, j, offspring, type);
             mutation_ind(offspring);
-              evaluate_individual (offspring);
+            evaluate_individual (offspring);
+
+            update_ideal_point_by_ind (offspring);
 
             // update the subproblem
             update_subproblem(offspring, j, type);
 
         }
-
-
-
-
-        // update the ideal point
-        update_ideal_point (pop, weight_num);
 
         g_algorithm_entity.iteration_number++;
 

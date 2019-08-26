@@ -31,10 +31,14 @@ extern void tour_selection_subproblem(int *selected, int weight_num)
 
     for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
     {
-        selected[i] = i;
+        for(j = 0;j < weight_num; j++)
+        {
+            if(fabs(lambda[j][i] - 1) < EPS)
+                selected[i] = j;
+        }
     }
 
-    for (; i < g_algorithm_entity.algorithm_para.pop_size / 5.0; i++)
+    for (; i < weight_num / 5.0; i++)
     {
         for (int j = 0; j < 10; ++j)
         {

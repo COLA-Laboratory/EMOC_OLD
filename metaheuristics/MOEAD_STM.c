@@ -430,6 +430,9 @@ extern void MOEAD_STM_framework(SMRT_individual *pop, SMRT_individual *offspring
             mutation_ind(offspring);
             evaluate_individual (offspring);
 
+            update_ideal_point_by_ind (offspring);
+            update_nadir_point_by_ind (offspring);
+
         }
         //merge
         merge_population(mixed_pop, pop, weight_num, offspring_pop, selected_size);
@@ -438,8 +441,7 @@ extern void MOEAD_STM_framework(SMRT_individual *pop, SMRT_individual *offspring
         MOEAD_STM_update(mixed_pop, weight_num + selected_size);
 
         // update the ideal point
-        update_ideal_point (pop, weight_num);
-        update_nadir_point (pop, weight_num);
+
 
 
         g_algorithm_entity.iteration_number++;
