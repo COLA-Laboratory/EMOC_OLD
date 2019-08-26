@@ -60,13 +60,11 @@ static void free_MOEAD_dra()
 static void ini_MOEAD_dra()
 {
     int i = 0, j = 0, k = 0;
-    int layer = 0;
     double difference = 0, distance_temp = 0, Euc_distance = 0;
     Distance_info_t sort_list[MAX_SIZE];
 
 
-    layer = initialize_layer();
-    lambda = initialize_uniform_weight_by_layer (layer, &weight_num);
+    lambda = initialize_uniform_point (&weight_num);
 
 
     g_algorithm_entity.MOEAD_para.neighbor_table = (MOEAD_NEIGHBOR*)malloc(sizeof(MOEAD_NEIGHBOR) * weight_num);

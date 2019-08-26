@@ -96,8 +96,9 @@ extern double **initialize_uniform_point (int *number_weight)
     {
         layer_size  = combination (g_algorithm_entity.algorithm_para.objective_number + gaps - 1, gaps);
         //printf("[%d]%d\n",gaps,layer_size);
-        *number_weight = layer_size;
+
         if(layer_size > g_algorithm_entity.algorithm_para.pop_size) break;
+        *number_weight = layer_size;
         gaps = gaps + 1;
 
     }
@@ -256,20 +257,7 @@ extern void update_nadir_point_by_ind(SMRT_individual *ind)
 }
 
 
-extern int initialize_layer()
-{
-    switch (g_algorithm_entity.algorithm_para.objective_number)
-    {
-        case 2:
-            return 13;
-        case 3:
-            return 12;
-        case 5:
-            return  6;
-        default:
-            break;
-    }
-}
+
 
 
 

@@ -12,7 +12,6 @@ extern double euclidian_distance (double *a, double *b, int dimension);
 extern double calculateDistance_sol_weight (SMRT_individual *solution, double *lambda);
 extern double **initialize_direction_MOEADM2M (int *number_weight,int N);
 
-extern int initialize_layer();
 
 
 #endif

@@ -547,6 +547,7 @@ extern void NSGA3_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
         printf("in the NSGA3_select, malloc association_num_without_fl Failed\n");
         return;
     }
+    memset(association_num_without_fl, 0, ref_point_num * sizeof(int));
 
     association_matrix_in_fl = (int **)malloc(sizeof(int *) * ref_point_num);
     if (NULL == association_matrix_in_fl)
@@ -571,9 +572,11 @@ extern void NSGA3_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
         printf("in the NSGA3_select, malloc association_num_in_fl Failed\n");
         return;
     }
+    memset(association_num_in_fl, 0, sizeof(int) * ref_point_num);
 
     // track the current evolutionary progress, including population and metrics
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
+
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
         g_algorithm_entity.iteration_number++;
