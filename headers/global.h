@@ -88,7 +88,8 @@ typedef enum{
     SMS_EMOA,
     HypE,
     SPEA2,
-    MOEADM2M
+    MOEADM2M,
+    ENSMOEAD
 }ALGORITHM_NAME;
 
 

@@ -70,7 +70,8 @@ add_executable(Samaritan main.c
         metaheuristics/SMSEMOA.c
         metaheuristics/HypE.c
         metaheuristics/SPEA2.c
-        metaheuristics/MOEADM2M.c)
+        metaheuristics/MOEADM2M.c
+        metaheuristics/ENS_MOEAD.c)
 
 
 target_link_libraries(Samaritan m)
