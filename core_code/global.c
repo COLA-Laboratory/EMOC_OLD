@@ -11,7 +11,8 @@ char *g_algorithm_name_str[ALGORITHM_NAME_NUM] = {
         "HYPE",
         "SPEA2",
         "MOEADM2M",
-        "ENSMOEAD"
+        "ENSMOEAD",
+		"SPEA2_SDK"
 };
 
 

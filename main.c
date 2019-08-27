@@ -48,6 +48,12 @@ int main(int argc, char** argv) {
             case MOEADM2M:
                 MOEADM2M_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
+			case ENSMOEAD:
+                ENSMOEAD_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
+			case SPEA2_SDK:
+                SPEA2_SDK_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
             default:
                 break;
         }

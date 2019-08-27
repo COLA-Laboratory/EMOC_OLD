@@ -89,7 +89,8 @@ typedef enum{
     HypE,
     SPEA2,
     MOEADM2M,
-    ENSMOEAD
+    ENSMOEAD,
+	SPEA2_SDK
 }ALGORITHM_NAME;
 
 
