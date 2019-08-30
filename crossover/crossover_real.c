@@ -337,7 +337,7 @@ extern void crossover_MOEADD(SMRT_individual *parent_pop_table, int weight_id, S
 
 extern void crossover_MOEADM2M(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table,int K, int S)
 {
-    //todo..
+
 
     int i = 0;int j = 0;
     int index_parent2 = 0;

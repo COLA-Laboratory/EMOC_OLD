@@ -771,6 +771,33 @@ mating/selection_mating.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/mating/selection_mating.c.s
 .PHONY : mating/selection_mating.c.s
 
+metaheuristics/ENS_MOEAD.o: metaheuristics/ENS_MOEAD.c.o
+
+.PHONY : metaheuristics/ENS_MOEAD.o
+
+# target to build an object file
+metaheuristics/ENS_MOEAD.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/ENS_MOEAD.c.o
+.PHONY : metaheuristics/ENS_MOEAD.c.o
+
+metaheuristics/ENS_MOEAD.i: metaheuristics/ENS_MOEAD.c.i
+
+.PHONY : metaheuristics/ENS_MOEAD.i
+
+# target to preprocess a source file
+metaheuristics/ENS_MOEAD.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/ENS_MOEAD.c.i
+.PHONY : metaheuristics/ENS_MOEAD.c.i
+
+metaheuristics/ENS_MOEAD.s: metaheuristics/ENS_MOEAD.c.s
+
+.PHONY : metaheuristics/ENS_MOEAD.s
+
+# target to generate assembly for a file
+metaheuristics/ENS_MOEAD.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/ENS_MOEAD.c.s
+.PHONY : metaheuristics/ENS_MOEAD.c.s
+
 metaheuristics/HypE.o: metaheuristics/HypE.c.o
 
 .PHONY : metaheuristics/HypE.o
@@ -933,6 +960,33 @@ metaheuristics/MOEAD_DRA.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_DRA.c.s
 .PHONY : metaheuristics/MOEAD_DRA.c.s
 
+metaheuristics/MOEAD_PAS.o: metaheuristics/MOEAD_PAS.c.o
+
+.PHONY : metaheuristics/MOEAD_PAS.o
+
+# target to build an object file
+metaheuristics/MOEAD_PAS.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_PAS.c.o
+.PHONY : metaheuristics/MOEAD_PAS.c.o
+
+metaheuristics/MOEAD_PAS.i: metaheuristics/MOEAD_PAS.c.i
+
+.PHONY : metaheuristics/MOEAD_PAS.i
+
+# target to preprocess a source file
+metaheuristics/MOEAD_PAS.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_PAS.c.i
+.PHONY : metaheuristics/MOEAD_PAS.c.i
+
+metaheuristics/MOEAD_PAS.s: metaheuristics/MOEAD_PAS.c.s
+
+.PHONY : metaheuristics/MOEAD_PAS.s
+
+# target to generate assembly for a file
+metaheuristics/MOEAD_PAS.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_PAS.c.s
+.PHONY : metaheuristics/MOEAD_PAS.c.s
+
 metaheuristics/MOEAD_STM.o: metaheuristics/MOEAD_STM.c.o
 
 .PHONY : metaheuristics/MOEAD_STM.o
@@ -1067,6 +1121,33 @@ metaheuristics/SPEA2.s: metaheuristics/SPEA2.c.s
 metaheuristics/SPEA2.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.s
 .PHONY : metaheuristics/SPEA2.c.s
+
+metaheuristics/SPEA2_SDE.o: metaheuristics/SPEA2_SDE.c.o
+
+.PHONY : metaheuristics/SPEA2_SDE.o
+
+# target to build an object file
+metaheuristics/SPEA2_SDE.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_SDE.c.o
+.PHONY : metaheuristics/SPEA2_SDE.c.o
+
+metaheuristics/SPEA2_SDE.i: metaheuristics/SPEA2_SDE.c.i
+
+.PHONY : metaheuristics/SPEA2_SDE.i
+
+# target to preprocess a source file
+metaheuristics/SPEA2_SDE.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_SDE.c.i
+.PHONY : metaheuristics/SPEA2_SDE.c.i
+
+metaheuristics/SPEA2_SDE.s: metaheuristics/SPEA2_SDE.c.s
+
+.PHONY : metaheuristics/SPEA2_SDE.s
+
+# target to generate assembly for a file
+metaheuristics/SPEA2_SDE.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_SDE.c.s
+.PHONY : metaheuristics/SPEA2_SDE.c.s
 
 mutation/mutation_operator.o: mutation/mutation_operator.c.o
 
@@ -1446,6 +1527,9 @@ help:
 	@echo "... mating/selection_mating.o"
 	@echo "... mating/selection_mating.i"
 	@echo "... mating/selection_mating.s"
+	@echo "... metaheuristics/ENS_MOEAD.o"
+	@echo "... metaheuristics/ENS_MOEAD.i"
+	@echo "... metaheuristics/ENS_MOEAD.s"
 	@echo "... metaheuristics/HypE.o"
 	@echo "... metaheuristics/HypE.i"
 	@echo "... metaheuristics/HypE.s"
@@ -1464,6 +1548,9 @@ help:
 	@echo "... metaheuristics/MOEAD_DRA.o"
 	@echo "... metaheuristics/MOEAD_DRA.i"
 	@echo "... metaheuristics/MOEAD_DRA.s"
+	@echo "... metaheuristics/MOEAD_PAS.o"
+	@echo "... metaheuristics/MOEAD_PAS.i"
+	@echo "... metaheuristics/MOEAD_PAS.s"
 	@echo "... metaheuristics/MOEAD_STM.o"
 	@echo "... metaheuristics/MOEAD_STM.i"
 	@echo "... metaheuristics/MOEAD_STM.s"
@@ -1479,6 +1566,9 @@ help:
 	@echo "... metaheuristics/SPEA2.o"
 	@echo "... metaheuristics/SPEA2.i"
 	@echo "... metaheuristics/SPEA2.s"
+	@echo "... metaheuristics/SPEA2_SDE.o"
+	@echo "... metaheuristics/SPEA2_SDE.i"
+	@echo "... metaheuristics/SPEA2_SDE.s"
 	@echo "... mutation/mutation_operator.o"
 	@echo "... mutation/mutation_operator.i"
 	@echo "... mutation/mutation_operator.s"

@@ -41,7 +41,7 @@ static int MOEAD_PAS_update_pi(SMRT_individual *pop, int weight_index, double *w
         return INF_NORM;
     }
 
-    index_table = (int *)malloc(sizeof(int) * candidate_p_num);
+    index_table = (int *)malloc(sizeof(int) *  candidate_p_num);
     if (NULL == index_table)
     {
         printf("in the NSGA3_getExtremePoints, malloc index_table Failed\n");

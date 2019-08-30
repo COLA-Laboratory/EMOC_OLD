@@ -159,6 +159,9 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/mating/selection_mating.c">
 			<Option target="Samaritan"/>
 		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/ENS_MOEAD.c">
+			<Option target="Samaritan"/>
+		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/HypE.c">
 			<Option target="Samaritan"/>
 		</Unit>
@@ -177,6 +180,9 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD_DRA.c">
 			<Option target="Samaritan"/>
 		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD_PAS.c">
+			<Option target="Samaritan"/>
+		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD_STM.c">
 			<Option target="Samaritan"/>
 		</Unit>
@@ -190,6 +196,9 @@
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SPEA2.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SPEA2_SDE.c">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/mutation/mutation_operator.c">
