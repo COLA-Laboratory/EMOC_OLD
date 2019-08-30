@@ -53,6 +53,9 @@ int main(int argc, char** argv) {
                 break;
 			case SPEA2_SDK:
                 SPEA2_SDK_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+				break;
+			case MOEAD_PAS:
+                MOEAD_PAS_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
             default:
                 break;

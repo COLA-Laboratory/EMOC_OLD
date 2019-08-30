@@ -1,10 +1,10 @@
 #include "../../headers/global.h"
 #include "../../headers/selection.h"
-
+#include "../../headers/random.h"
 
 
 /*MOEAD*/
-static double cal_weighted_sum(SMRT_individual *pop, double *weight_vector, int obj_num)
+extern double cal_weighted_sum(SMRT_individual *pop, double *weight_vector, int obj_num)
 {
     int  i = 0;
     double fitness = 0;
@@ -18,7 +18,62 @@ static double cal_weighted_sum(SMRT_individual *pop, double *weight_vector, int 
     return fitness;
 }
 
-static double cal_TCH(SMRT_individual *pop, double *weight_vector, int obj_num)
+
+
+extern double cal_NORM_by_exponent(SMRT_individual *pop, double *weight, int exponent, int dimension)
+{
+    int i;
+    double distance, difference = 0, fitness = 0;
+
+    distance = 0.0;
+    for(i = 0; i < dimension; i++)
+    {
+        difference = fabs(pop->obj[i] - g_algorithm_entity.ideal_point.obj[i]);
+
+        if (weight[i] < EPS)
+        {
+            distance += 0.00001 * pow(difference, (double)exponent);
+        }
+        else
+        {
+            distance += weight[i] * pow(difference, (double)exponent);
+        }
+    }
+
+    fitness = pow(distance, (1/(double)exponent));
+    pop->fitness = fitness;
+
+    return fitness;
+}
+
+extern double cal_N_NORM_by_exponent(SMRT_individual *pop, double *weight, int exponent, int dimension)
+{
+    int i;
+    double distance, difference = 0, fitness = 0;
+
+    distance = 0.0;
+    for(i = 0; i < dimension; i++)
+    {
+        difference = fabs(pop->obj[i] - g_algorithm_entity.ideal_point.obj[i]) / (g_algorithm_entity.nadir_point.obj[i] - g_algorithm_entity.ideal_point.obj[i]);
+
+        if (weight[i] < EPS)
+        {
+            distance += 0.00001 * pow(difference, (double)exponent);
+        }
+        else
+        {
+            distance += weight[i] * pow(difference, (double)exponent);
+        }
+    }
+
+    fitness = pow(distance, (1/(double)exponent));
+    pop->fitness = fitness;
+
+    return fitness;
+}
+
+
+extern double cal_TCH(SMRT_individual *pop, double *weight_vector, int obj_num)
 {
     int i = 0;
     double fitness = 0, diff = 0, maxFit = 0;
@@ -46,8 +101,32 @@ static double cal_TCH(SMRT_individual *pop, double *weight_vector, int obj_num)
     pop->fitness = fitness;
     return fitness;
 }
+
+extern double cal_Normal_TCH(SMRT_individual *pop, double *weight_vector, int obj_num)
+{
+    int i = 0;
+    double fitness = 0, diff = 0, maxFun = -1.0e+30, feval = 0;
+
+    for (i = 0; i < obj_num; i++)
+    {
+        diff = fabs ((pop->obj[i] - g_algorithm_entity.ideal_point.obj[i]) / (g_algorithm_entity.nadir_point.obj[i] - g_algorithm_entity.ideal_point.obj[i]));
+        if (weight_vector[i] < EPS)
+            feval = 0.00001 * diff;
+        else
+            feval = diff * weight_vector[i];
+
+        if (feval > maxFun)
+            maxFun = feval;
+    }
+
+    fitness = maxFun;
+    pop->fitness = fitness;
+    return fitness;
+}
+
+
 /*MOEAD*/
-static double cal_ITCH (SMRT_individual *pop, double *weight_vector, int obj_num)
+extern double cal_ITCH (SMRT_individual *pop, double *weight_vector, int obj_num)
 {
     int i = 0;
     double fitness = 0, diff = 0, maxFit = 0;
@@ -89,3 +168,7 @@ extern double cal_moead_fitness(SMRT_individual *ind, double *weight, MoeadFunct
             break;
     }
 }
+
+
+
+

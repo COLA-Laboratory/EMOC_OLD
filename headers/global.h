@@ -31,6 +31,7 @@
 
 # define PI  M_PI
 # define INF 1.0e14
+#define  INF_NORM  65535
 # define EPS 1.0e-7
 # define rho_value 1.1
 # define kappa 0.05
@@ -90,7 +91,8 @@ typedef enum{
     SPEA2,
     MOEADM2M,
     ENSMOEAD,
-	SPEA2_SDK
+	SPEA2_SDK,
+	MOEAD_PAS
 }ALGORITHM_NAME;
 
 
