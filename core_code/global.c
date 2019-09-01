@@ -13,7 +13,8 @@ char *g_algorithm_name_str[ALGORITHM_NAME_NUM] = {
         "MOEADM2M",
         "ENSMOEAD",
 		"SPEA2_SDK",
-		"MOEAD_PAS"
+		"MOEAD_PAS",
+		"MOEADFRRMAB"
 };
 
 

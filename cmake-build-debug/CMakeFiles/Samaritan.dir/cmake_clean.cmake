@@ -48,6 +48,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Samaritan.dir/metaheuristics/ENS_MOEAD.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_SDE.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_PAS.c.o"
+  "CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o"
   "Samaritan.pdb"
   "Samaritan"
 )

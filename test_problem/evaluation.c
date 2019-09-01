@@ -33,7 +33,7 @@ extern void evaluate_individual (SMRT_individual *ind)
             zdt2(ind);
             break;
         case ZDT3:
-            zdt4(ind);
+            zdt3(ind);
             break;
         case ZDT4:
             zdt4(ind);

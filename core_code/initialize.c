@@ -266,7 +266,7 @@ int initialization_real_para (int argc, char** argv)
     g_algorithm_entity.polynomialPara.eta_m     = 20.0;
 
     // differential evolution parameter settings
-    g_algorithm_entity.dePara.CR = 0.5;
+    g_algorithm_entity.dePara.CR = 1.0;
     g_algorithm_entity.dePara.F  = 0.5;
     g_algorithm_entity.dePara.K  = 0.5;
 

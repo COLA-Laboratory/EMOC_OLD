@@ -187,6 +187,20 @@ CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o: ../headers/sort.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o: ../headers/utility.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o: ../metaheuristics/MOEADD.c
 
+CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/analysis.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/crossover.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/global.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/initialize.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/mutation.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/population.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/print.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/random.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/selection.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/sort.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/utility.h
+CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../metaheuristics/MOEADFRRMAB.c
+
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADM2M.c.o: ../headers/analysis.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADM2M.c.o: ../headers/crossover.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADM2M.c.o: ../headers/global.h

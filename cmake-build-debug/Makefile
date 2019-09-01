@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/82/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/82/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/maopl/CLionProjects/my_work/Samaritan
+CMAKE_SOURCE_DIR = /home/stone/Samaritan/Samaritan
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug
+CMAKE_BINARY_DIR = /home/stone/Samaritan/Samaritan/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/82/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/82/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stone/Samaritan/Samaritan/cmake-build-debug/CMakeFiles /home/stone/Samaritan/Samaritan/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stone/Samaritan/Samaritan/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -906,6 +906,33 @@ metaheuristics/MOEADD.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.s
 .PHONY : metaheuristics/MOEADD.c.s
 
+metaheuristics/MOEADFRRMAB.o: metaheuristics/MOEADFRRMAB.c.o
+
+.PHONY : metaheuristics/MOEADFRRMAB.o
+
+# target to build an object file
+metaheuristics/MOEADFRRMAB.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o
+.PHONY : metaheuristics/MOEADFRRMAB.c.o
+
+metaheuristics/MOEADFRRMAB.i: metaheuristics/MOEADFRRMAB.c.i
+
+.PHONY : metaheuristics/MOEADFRRMAB.i
+
+# target to preprocess a source file
+metaheuristics/MOEADFRRMAB.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.i
+.PHONY : metaheuristics/MOEADFRRMAB.c.i
+
+metaheuristics/MOEADFRRMAB.s: metaheuristics/MOEADFRRMAB.c.s
+
+.PHONY : metaheuristics/MOEADFRRMAB.s
+
+# target to generate assembly for a file
+metaheuristics/MOEADFRRMAB.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.s
+.PHONY : metaheuristics/MOEADFRRMAB.c.s
+
 metaheuristics/MOEADM2M.o: metaheuristics/MOEADM2M.c.o
 
 .PHONY : metaheuristics/MOEADM2M.o
@@ -1542,6 +1569,9 @@ help:
 	@echo "... metaheuristics/MOEADD.o"
 	@echo "... metaheuristics/MOEADD.i"
 	@echo "... metaheuristics/MOEADD.s"
+	@echo "... metaheuristics/MOEADFRRMAB.o"
+	@echo "... metaheuristics/MOEADFRRMAB.i"
+	@echo "... metaheuristics/MOEADFRRMAB.s"
 	@echo "... metaheuristics/MOEADM2M.o"
 	@echo "... metaheuristics/MOEADM2M.i"
 	@echo "... metaheuristics/MOEADM2M.s"
