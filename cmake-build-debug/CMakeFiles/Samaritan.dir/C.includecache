@@ -86,3 +86,9 @@ global.h
 ../headers/print.h
 /home/stone/Samaritan/Samaritan/headers/print.h
 
+/home/stone/Samaritan/Samaritan/selection/MOEAD/update.c
+../../headers/global.h
+/home/stone/Samaritan/Samaritan/headers/global.h
+../../headers/selection.h
+/home/stone/Samaritan/Samaritan/headers/selection.h
+
