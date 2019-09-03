@@ -1,11 +1,11 @@
 algorithm_name:MOEADFRRMAB
 test_problem:DTLZ1
 problem_param:
-number_variable:10
+number_variable:7
 number_objective:3
-popSize:300
-eliteSize:300
-max_evaluation:75000
+popSize:200
+eliteSize:100
+max_evaluation:80000
 runtime_output:1
 output_interval:10
 run_index_begin:1

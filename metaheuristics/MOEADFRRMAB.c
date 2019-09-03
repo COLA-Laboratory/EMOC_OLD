@@ -168,7 +168,7 @@ static void JoinQueue(SlideWindow *SW,int op,double FIR,int *count, int W )
         SW[W-1].FIR = FIR;
     }
 
-    *count= temp + 1;
+    *count = temp + 1;
 
     return;
 }
@@ -236,7 +236,6 @@ static int SelectOP(SlideWindow* SW,double *FRR,int W,int C)
 
     }
 
-    //printf("%d\n",op);
 
 
 

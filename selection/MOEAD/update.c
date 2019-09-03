@@ -187,7 +187,6 @@ extern int update_subproblem_MOEADFRRMAB(SMRT_individual *offspring, int pop_ind
     }
 
 
-    //printf("%.9f   \n",*FIR);
 
     return SUCCESS;
 }
