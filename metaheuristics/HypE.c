@@ -258,7 +258,7 @@ static void HypE_set_fitness(SMRT_individual *pop_table, int pop_num, int param_
     }
     else
     {
-        HypE_hypeIndicator(fitnessInfo, 100000, param_k, pop_table, pop_num);
+        HypE_hypeIndicator(fitnessInfo, 20000, param_k, pop_table, pop_num);
     }
 
     for (i = 0; i < pop_num; ++i)

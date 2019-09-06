@@ -141,6 +141,7 @@ extern void crossover_spea2(SMRT_individual *elite_pop_table, SMRT_individual *o
     return;
 }
 
+
 extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *parent, int parent_index, SMRT_individual *offspring, NeighborType type)
 {
     int i = 0;
@@ -382,6 +383,14 @@ extern void crossover_MOEADM2M(SMRT_individual *parent_pop_table, SMRT_individua
                 index_parent2 = rnd(i*S,i*S+S-1);
                 parent2 = parent_pop_table+index_parent2;
                 MOEADM2M_crossover_operator(parent1,parent2,offspring_pop_table+i*S+j);
+               //sbx_crossover(parent1,parent2,offspring_pop_table+i*S+j,offspring_pop_table+i*S+j);
+//                for (int m = 0; m < g_algorithm_entity.algorithm_para.variable_number;m++)
+//                {
+//                    printf("variable[%d]:%f  ", m, offspring_pop_table[i*S+j].variable[m]);
+//                }
+//                printf("\n");
+
+
             }else
             {
                 index_parent2 = rnd(0,K*S-1);
@@ -396,3 +405,62 @@ extern void crossover_MOEADM2M(SMRT_individual *parent_pop_table, SMRT_individua
 
     return;
 }
+
+extern void crossover_MOEADFRRMAB(int op,SMRT_individual *parent,SMRT_individual *offspring,SMRT_individual *parent1,
+        SMRT_individual *parent2,SMRT_individual *parent3,SMRT_individual *parent4,SMRT_individual *parent5)
+{
+    int i = 0;
+    double value = 0;
+
+    for(i = 0;i < g_algorithm_entity.algorithm_para.variable_number;i++)
+    {
+        switch(op)
+        {
+            case 0:
+                value = parent->variable[i] + g_algorithm_entity.dePara.F * (parent1->variable[i] - parent2->variable[i]);
+
+                break;
+            case 1:
+                value = parent->variable[i] + g_algorithm_entity.dePara.F * (parent1->variable[i] - parent2->variable[i])
+                                             + g_algorithm_entity.dePara.F * (parent3->variable[i] - parent4->variable[i]);
+
+
+                break;
+            case 2:
+                value = parent->variable[i] + g_algorithm_entity.dePara.K * (parent->variable[i] - parent1->variable[i])
+                                              + g_algorithm_entity.dePara.F * (parent2->variable[i] - parent3->variable[i])
+                                                + g_algorithm_entity.dePara.F * (parent4->variable[i] - parent5->variable[i]);
+
+                break;
+            case 3:
+                value = parent->variable[i] + g_algorithm_entity.dePara.K * (parent->variable[i] - parent1->variable[i])
+                                             + g_algorithm_entity.dePara.F * (parent2->variable[i] - parent3->variable[i]);
+
+                break;
+            default:
+                break;
+        }
+
+
+        if(value > g_algorithm_entity.variable_higher_bound[i])
+            value = g_algorithm_entity.variable_higher_bound[i];
+        if(value < g_algorithm_entity.variable_lower_bound[i])
+            value = g_algorithm_entity.variable_lower_bound[i];
+
+
+        if(op < 2)
+        {
+            if(randomperc() < g_algorithm_entity.dePara.CR)
+                offspring->variable[i] = fabs(value);
+            else
+                offspring->variable[i] = fabs(parent->variable[i]);
+        }else
+        {
+            offspring->variable[i] = fabs(value);
+        }
+
+    }
+
+    return;
+}
+

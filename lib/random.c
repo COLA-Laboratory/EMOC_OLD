@@ -116,6 +116,45 @@ int rnd (int low, int high)
     return (res);
 }
 
+void random_permutation (int *perm, int size)
+{
+    int i, num, start;
+    int *index, *flag;
+
+    index = malloc (size * sizeof(int));
+    flag  = malloc (size * sizeof(int));
+    for (i = 0; i < size; i++)
+    {
+        index[i] = i;
+        flag[i]  = 1;
+    }
+
+    num = 0;
+    while (num < size)
+    {
+        start = rnd (0, size - 1);
+        while (1)
+        {
+            if (flag[start])
+            {
+                perm[num] = index[start];
+                flag[start] = 0;
+                num++;
+                break;
+            }
+            if (start == (size - 1))
+                start = 0;
+            else
+                start++;
+        }
+    }
+
+    free (index);
+    free (flag);
+    return;
+}
+
+
 /* Fetch a single random real number between low and high including the bounds */
 double rndreal (double low, double high)
 {

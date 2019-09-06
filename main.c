@@ -57,6 +57,10 @@ int main(int argc, char** argv) {
 			case MOEAD_PAS:
                 MOEAD_PAS_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
+            case MOEADFRRMAB:
+                printf("here!\n");
+                MOEADFRRMAB_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
             default:
                 break;
         }

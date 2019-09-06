@@ -401,8 +401,8 @@ extern void update_nadirpoint_nds (SMRT_individual *pop_table, int pop_num, REFE
 {
     int i = 0, j = 0;
     SMRT_individual *ind = NULL;
-//    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
-//        g_algorithm_entity.nadir_point.obj[i] = -INF;
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+        g_algorithm_entity.nadir_point.obj[i] = -INF;
 
     for (i = 0 ;i < pop_num; i ++)
     {

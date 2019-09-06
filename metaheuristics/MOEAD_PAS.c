@@ -38,11 +38,11 @@ static int MOEAD_PAS_update_pi(SMRT_individual *pop, double *weight, int *candid
 
     for (i = 0; i < candidate_p_num; i++)
     {
-        min_value_table[i] = cal_nnormal_NORM(pop, weight, candidate_p[i]);
+        min_value_table[i] = cal_normal_NORM(pop, weight, candidate_p[i]);
         index_table[i] = 0;
         for (j = 1; j < weight_num; j++)
         {
-            temp_value = cal_nnormal_NORM(pop + j, weight, candidate_p[i]);
+            temp_value = cal_normal_NORM(pop + j, weight, candidate_p[i]);
 
             if (min_value_table[i] > temp_value)
             {
@@ -86,8 +86,8 @@ static int MOEAD_PAS_update_subproblem_pas(SMRT_individual *offspring, int pop_i
                 break;
             }
             index = g_algorithm_entity.MOEAD_para.neighbor_table[pop_index].neighbor[i];
-            temp = cal_nnormal_NORM(offspring, lambda[index], Pi[index]);
-            cal_nnormal_NORM(g_algorithm_entity.parent_population + index, lambda[index], Pi[index]);
+            temp = cal_normal_NORM(offspring, lambda[index], Pi[index]);
+            cal_normal_NORM(g_algorithm_entity.parent_population + index, lambda[index], Pi[index]);
             if (temp < g_algorithm_entity.parent_population[index].fitness)
             {
                 memcpy(g_algorithm_entity.parent_population[index].variable,offspring->variable,
@@ -107,8 +107,8 @@ static int MOEAD_PAS_update_subproblem_pas(SMRT_individual *offspring, int pop_i
             {
                 break;
             }
-            temp = cal_nnormal_NORM(offspring, lambda[i], Pi[i]);
-            cal_nnormal_NORM(g_algorithm_entity.parent_population + i, lambda[i], Pi[i]);
+            temp = cal_normal_NORM(offspring, lambda[i], Pi[i]);
+            cal_normal_NORM(g_algorithm_entity.parent_population + i, lambda[i], Pi[i]);
 
             if (temp < g_algorithm_entity.parent_population[i].fitness)
             {
@@ -221,7 +221,7 @@ extern void MOEAD_PAS_framework (SMRT_individual *pop, SMRT_individual *offsprin
     for (i = 0; i < weight_num; ++i)
     {
         Pi[i] = INF_NORM;
-        cal_nnormal_NORM(pop + i, lambda[i], Pi[i]);
+        cal_normal_NORM(pop + i, lambda[i], Pi[i]);
     }
 
     track_evolution (pop, g_algorithm_entity.iteration_number, 0);
@@ -266,7 +266,7 @@ extern void MOEAD_PAS_framework (SMRT_individual *pop, SMRT_individual *offsprin
             {
                 Pi[i] = MOEAD_PAS_update_pi(pop,lambda[i], candidate_p, candidate_p_num);
 
-                cal_nnormal_NORM(pop + i, lambda[i], Pi[i]);
+                cal_normal_NORM(pop + i, lambda[i], Pi[i]);
             }
         }
 

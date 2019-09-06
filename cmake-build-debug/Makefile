@@ -906,6 +906,33 @@ metaheuristics/MOEADD.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.s
 .PHONY : metaheuristics/MOEADD.c.s
 
+metaheuristics/MOEADFRRMAB.o: metaheuristics/MOEADFRRMAB.c.o
+
+.PHONY : metaheuristics/MOEADFRRMAB.o
+
+# target to build an object file
+metaheuristics/MOEADFRRMAB.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o
+.PHONY : metaheuristics/MOEADFRRMAB.c.o
+
+metaheuristics/MOEADFRRMAB.i: metaheuristics/MOEADFRRMAB.c.i
+
+.PHONY : metaheuristics/MOEADFRRMAB.i
+
+# target to preprocess a source file
+metaheuristics/MOEADFRRMAB.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.i
+.PHONY : metaheuristics/MOEADFRRMAB.c.i
+
+metaheuristics/MOEADFRRMAB.s: metaheuristics/MOEADFRRMAB.c.s
+
+.PHONY : metaheuristics/MOEADFRRMAB.s
+
+# target to generate assembly for a file
+metaheuristics/MOEADFRRMAB.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.s
+.PHONY : metaheuristics/MOEADFRRMAB.c.s
+
 metaheuristics/MOEADM2M.o: metaheuristics/MOEADM2M.c.o
 
 .PHONY : metaheuristics/MOEADM2M.o
@@ -1569,6 +1596,9 @@ help:
 	@echo "... metaheuristics/MOEADD.o"
 	@echo "... metaheuristics/MOEADD.i"
 	@echo "... metaheuristics/MOEADD.s"
+	@echo "... metaheuristics/MOEADFRRMAB.o"
+	@echo "... metaheuristics/MOEADFRRMAB.i"
+	@echo "... metaheuristics/MOEADFRRMAB.s"
 	@echo "... metaheuristics/MOEADM2M.o"
 	@echo "... metaheuristics/MOEADM2M.i"
 	@echo "... metaheuristics/MOEADM2M.s"

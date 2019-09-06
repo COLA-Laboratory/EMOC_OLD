@@ -638,3 +638,46 @@ extern void angle_quick_sort(Angle_info_t *angleInfo, int left, int right)
     }
     return;
 }
+
+static int partition_by_frr(FRR_info_t * frrInfo, int left, int right)
+{
+    double temp_fit = frrInfo[left].FRR_temp;
+    int temp_index = frrInfo[left].op;
+    while(left < right)
+    {
+        while ((left < right) && (frrInfo[right].FRR_temp > temp_fit))right--;
+        if (left < right)
+        {
+            frrInfo[left].op = frrInfo[right].op;
+            frrInfo[left].FRR_temp = frrInfo[right].FRR_temp;
+            left++;
+        }
+        while ((left < right) && (frrInfo[left].FRR_temp < temp_fit))left++;
+        if (left < right)
+        {
+            frrInfo[right].op = frrInfo[left].op;
+            frrInfo[right].FRR_temp = frrInfo[left].FRR_temp;
+            right--;
+        }
+    }
+    frrInfo[left].FRR_temp = temp_fit;
+    frrInfo[left].op = temp_index;
+    return left;
+}
+
+
+extern void frr_quick_sort(FRR_info_t *frrInfo, int left, int right)
+{
+    int pos = 0;
+
+    if (left < right)
+    {
+        pos = partition_by_angle(frrInfo, left, right);
+        partition_by_frr(frrInfo, pos + 1, right);
+        partition_by_frr(frrInfo, left, pos - 1);
+    }
+    return;
+}
+
+
+

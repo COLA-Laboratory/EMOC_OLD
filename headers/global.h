@@ -92,7 +92,8 @@ typedef enum{
     MOEADM2M,
     ENSMOEAD,
 	SPEA2_SDK,
-	MOEAD_PAS
+	MOEAD_PAS,
+	MOEADFRRMAB
 }ALGORITHM_NAME;
 
 
@@ -277,6 +278,11 @@ typedef struct lists
     struct lists *parent;
     struct lists *child;
 } pop_list;
+
+typedef struct {
+    int op;
+    double FIR;
+} SlideWindow;
 
 extern SMRT_entity g_algorithm_entity;
 char *g_algorithm_name_str[ALGORITHM_NAME_NUM];
