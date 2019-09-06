@@ -264,7 +264,7 @@ extern void MOEAD_PAS_framework (SMRT_individual *pop, SMRT_individual *offsprin
         {
             if (randomperc() >= (double)g_algorithm_entity.algorithm_para.current_evaluation / (double)g_algorithm_entity.algorithm_para.max_evaluation)
             {
-                Pi[i] = MOEAD_PAS_update_pi(pop, i,lambda[i], candidate_p, candidate_p_num);
+                Pi[i] = MOEAD_PAS_update_pi(pop,lambda[i], candidate_p, candidate_p_num);
 
                 cal_nnormal_NORM(pop + i, lambda[i], Pi[i]);
             }

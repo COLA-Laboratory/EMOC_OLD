@@ -28,6 +28,20 @@
 ../headers/random.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
 
+/home/maopl/CLionProjects/my_work/Samaritan/core_code/utility.c
+../headers/global.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
+../headers/utility.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
+
+/home/maopl/CLionProjects/my_work/Samaritan/crossover/crossover_operator.c
+../headers/global.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
+../headers/crossover.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
+../headers/random.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
+
 /home/maopl/CLionProjects/my_work/Samaritan/crossover/crossover_real.c
 ../headers/global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
@@ -53,6 +67,8 @@ stdlib.h
 -
 string.h
 -
+
+/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
 
@@ -123,6 +139,22 @@ global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
+
+/home/maopl/CLionProjects/my_work/Samaritan/indicators/GD.c
+../headers/global.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
+../headers/utility.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
+../externals/MY_WFG/vector.h
+/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.h
+
+/home/maopl/CLionProjects/my_work/Samaritan/indicators/IGD.c
+../headers/global.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
+../headers/utility.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
+../externals/MY_WFG/vector.h
+/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/main.c
 headers/global.h
@@ -501,4 +533,10 @@ headers/indicator.h
 /home/maopl/CLionProjects/my_work/Samaritan/test.c
 headers/global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
+
+/home/maopl/CLionProjects/my_work/Samaritan/test_problem/evaluation.c
+../headers/print.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
+../headers/problem.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
 
