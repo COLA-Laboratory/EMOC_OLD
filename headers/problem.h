@@ -36,5 +36,7 @@ extern void test_MOP6(SMRT_individual *individual, int variable_num, int obj_num
 extern void evaluate_individual (SMRT_individual *ind);
 extern void evaluate_population (SMRT_individual *pop, int pop_num);
 
+extern void wfg1 (SMRT_individual *ind);
+
 
 #endif

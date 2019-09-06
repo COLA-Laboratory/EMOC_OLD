@@ -1,4 +1,4 @@
-algorithm_name:MOEAD
+algorithm_name:MOEAD_PAS
 test_problem:DTLZ1
 problem_param:
 number_variable:10
@@ -7,7 +7,7 @@ popSize:300
 eliteSize:100
 max_evaluation:75000
 runtime_output:1
-output_interval:10
+output_interval:1
 run_index_begin:1
-run_index_end:2
+run_index_end:1
 analyse:FUN

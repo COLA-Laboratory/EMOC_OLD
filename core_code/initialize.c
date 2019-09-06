@@ -31,6 +31,7 @@
 #include "../headers/memory.h"
 #include "../headers/metaheuristics.h"
 #include "../headers/random.h"
+#include "../headers/sort.h"
 
 static int parameter_check()
 {
@@ -395,3 +396,25 @@ extern void initialize_nadirpoint (SMRT_individual *pop_table, int pop_num, REFE
     return;
 }
 
+/* Initialize the nadir point */
+extern void update_nadirpoint_nds (SMRT_individual *pop_table, int pop_num, REFERENCE_POINT *nadir_point)
+{
+    int i = 0, j = 0;
+    SMRT_individual *ind = NULL;
+//    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+//        g_algorithm_entity.nadir_point.obj[i] = -INF;
+
+    for (i = 0 ;i < pop_num; i ++)
+    {
+        ind = pop_table + i;
+        if (ind->rank != 0)
+            continue;
+        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
+        {
+            if (ind->obj[j] > nadir_point->obj[j])
+                nadir_point->obj[j] = ind->obj[j];
+        }
+    }
+
+    return;
+}

@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Samaritan.dir/main.c.o"
+  "CMakeFiles/Samaritan.dir/test.c.o"
   "CMakeFiles/Samaritan.dir/analysis/analysis.c.o"
   "CMakeFiles/Samaritan.dir/core_code/initialize.c.o"
   "CMakeFiles/Samaritan.dir/core_code/print.c.o"

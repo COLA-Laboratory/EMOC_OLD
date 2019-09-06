@@ -141,12 +141,41 @@ extern void crossover_spea2(SMRT_individual *elite_pop_table, SMRT_individual *o
     return;
 }
 
-
 extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *parent, int parent_index, SMRT_individual *offspring, NeighborType type)
 {
     int i = 0;
     int rand = 0;
     int select_id[2] = {0};
+
+
+    for (i = 0; i < 2; i++)
+    {
+        if (NEIGHBOR == type)
+        {
+            rand = rnd (0, g_algorithm_entity.MOEAD_para.neighbor_size - 1);
+            select_id[i] = g_algorithm_entity.MOEAD_para.neighbor_table[parent_index].neighbor[rand];
+        }
+        else
+        {
+            rand = rnd(0, weight_num - 1);
+            select_id[i] = rand;
+        }
+
+    }
+    //printf("selected1:%d, selected2:%d, selected3:%d\n",parent_index, select_id[0], select_id[1]);
+
+    de_crossover(parent, parent_pop_table + select_id[0],
+                 parent_pop_table + select_id[1], offspring);
+
+
+
+    return;
+}
+
+extern void crossover_MOEAD_PAS(SMRT_individual *parent_pop_table, SMRT_individual *parent, int parent_index, SMRT_individual *offspring, NeighborType type, int *select_id)
+{
+    int i = 0;
+    int rand = 0;
 
 
     for (i = 0; i < 2; i++)
@@ -353,14 +382,6 @@ extern void crossover_MOEADM2M(SMRT_individual *parent_pop_table, SMRT_individua
                 index_parent2 = rnd(i*S,i*S+S-1);
                 parent2 = parent_pop_table+index_parent2;
                 MOEADM2M_crossover_operator(parent1,parent2,offspring_pop_table+i*S+j);
-               //sbx_crossover(parent1,parent2,offspring_pop_table+i*S+j,offspring_pop_table+i*S+j);
-//                for (int m = 0; m < g_algorithm_entity.algorithm_para.variable_number;m++)
-//                {
-//                    printf("variable[%d]:%f  ", m, offspring_pop_table[i*S+j].variable[m]);
-//                }
-//                printf("\n");
-
-
             }else
             {
                 index_parent2 = rnd(0,K*S-1);

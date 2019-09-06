@@ -5,6 +5,8 @@ set(CMAKE_C_STANDARD 99)
 
 add_executable(Samaritan main.c
 
+		test.c
+
         analysis/analysis.c
 
         core_code/initialize.c

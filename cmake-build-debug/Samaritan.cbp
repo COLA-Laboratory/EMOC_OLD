@@ -216,6 +216,9 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/update.c">
 			<Option target="Samaritan"/>
 		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test.c">
+			<Option target="Samaritan"/>
+		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/DTLZ.c">
 			<Option target="Samaritan"/>
 		</Unit>

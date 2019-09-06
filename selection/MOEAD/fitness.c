@@ -32,11 +32,11 @@ extern double cal_NORM_by_exponent(SMRT_individual *pop, double *weight, int exp
 
         if (weight[i] < EPS)
         {
-            distance += 0.00001 * pow(difference, (double)exponent);
+            distance +=   pow(difference, (double)exponent) / 0.000001;
         }
         else
         {
-            distance += weight[i] * pow(difference, (double)exponent);
+            distance +=  pow(difference, (double)exponent) / weight[i];
         }
     }
 
@@ -54,15 +54,16 @@ extern double cal_N_NORM_by_exponent(SMRT_individual *pop, double *weight, int e
     distance = 0.0;
     for(i = 0; i < dimension; i++)
     {
-        difference = fabs(pop->obj[i] - g_algorithm_entity.ideal_point.obj[i]) / (g_algorithm_entity.nadir_point.obj[i] - g_algorithm_entity.ideal_point.obj[i]);
+
+        difference = (pop->obj[i] - g_algorithm_entity.ideal_point.obj[i]) / (g_algorithm_entity.nadir_point.obj[i] - g_algorithm_entity.ideal_point.obj[i]);
 
         if (weight[i] < EPS)
         {
-            distance += 0.00001 * pow(difference, (double)exponent);
+            distance +=  pow(difference / 0.000001, (double)exponent) ;
         }
         else
         {
-            distance += weight[i] * pow(difference, (double)exponent);
+            distance += pow(difference / weight[i], (double)exponent);
         }
     }
 
@@ -84,7 +85,7 @@ extern double cal_TCH(SMRT_individual *pop, double *weight_vector, int obj_num)
         diff = fabs(pop->obj[i] - g_algorithm_entity.ideal_point.obj[i]);
         if (weight_vector[i] < EPS)
         {
-            fitness = diff * 0.00001;
+            fitness = diff * 0.000001;
         }
         else
         {
@@ -109,11 +110,12 @@ extern double cal_Normal_TCH(SMRT_individual *pop, double *weight_vector, int ob
 
     for (i = 0; i < obj_num; i++)
     {
-        diff = fabs ((pop->obj[i] - g_algorithm_entity.ideal_point.obj[i]) / (g_algorithm_entity.nadir_point.obj[i] - g_algorithm_entity.ideal_point.obj[i]));
+        diff = (pop->obj[i] - g_algorithm_entity.ideal_point.obj[i]) / (g_algorithm_entity.nadir_point.obj[i] - g_algorithm_entity.ideal_point.obj[i]);
+
         if (weight_vector[i] < EPS)
-            feval = 0.00001 * diff;
+            feval =  diff/ 0.000001 ;
         else
-            feval = diff * weight_vector[i];
+            feval = diff / weight_vector[i];
 
         if (feval > maxFun)
             maxFun = feval;
@@ -169,6 +171,19 @@ extern double cal_moead_fitness(SMRT_individual *ind, double *weight, MoeadFunct
     }
 }
 
+
+extern double cal_nnormal_NORM(SMRT_individual *ind, double *weight, int pi)
+{
+
+    if(pi == INF_NORM)
+    {
+        return cal_Normal_TCH(ind, weight, g_algorithm_entity.algorithm_para.objective_number);
+    }
+    else
+    {
+        return cal_N_NORM_by_exponent(ind, weight, pi, g_algorithm_entity.algorithm_para.objective_number);
+    }
+}
 
 
 

@@ -1284,6 +1284,33 @@ selection/MOEAD/update.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.s
 .PHONY : selection/MOEAD/update.c.s
 
+test.o: test.c.o
+
+.PHONY : test.o
+
+# target to build an object file
+test.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test.c.o
+.PHONY : test.c.o
+
+test.i: test.c.i
+
+.PHONY : test.i
+
+# target to preprocess a source file
+test.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test.c.i
+.PHONY : test.c.i
+
+test.s: test.c.s
+
+.PHONY : test.s
+
+# target to generate assembly for a file
+test.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test.c.s
+.PHONY : test.c.s
+
 test_problem/DTLZ.o: test_problem/DTLZ.c.o
 
 .PHONY : test_problem/DTLZ.o
@@ -1584,6 +1611,9 @@ help:
 	@echo "... selection/MOEAD/update.o"
 	@echo "... selection/MOEAD/update.i"
 	@echo "... selection/MOEAD/update.s"
+	@echo "... test.o"
+	@echo "... test.i"
+	@echo "... test.s"
 	@echo "... test_problem/DTLZ.o"
 	@echo "... test_problem/DTLZ.i"
 	@echo "... test_problem/DTLZ.s"

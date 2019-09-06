@@ -6,26 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/maopl/CLionProjects/my_work/Samaritan/analysis/analysis.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-../headers/indicator.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/indicator.h
-../headers/print.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
-errno.h
-/home/maopl/CLionProjects/my_work/Samaritan/analysis/errno.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/core_code/dominance_relation.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-../headers/dominance_relation.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/dominance_relation.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/core_code/global.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-
 /home/maopl/CLionProjects/my_work/Samaritan/core_code/initialize.c
 ../headers/global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
@@ -39,28 +19,12 @@ errno.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/metaheuristics.h
 ../headers/random.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
+../headers/sort.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/core_code/population.c
 ../headers/population.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/population.h
-../headers/random.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/core_code/print.c
-../headers/print.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/core_code/utility.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-../headers/utility.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/crossover/crossover_operator.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-../headers/crossover.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
 ../headers/random.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
 
@@ -80,20 +44,6 @@ errno.h
 ../headers/population.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/population.h
 
-/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/Iwfg.c
-stdio.h
--
-stdbool.h
--
-math.h
--
-sys/time.h
--
-sys/resource.h
--
-Iwfg.h
-/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/Iwfg.h
-
 /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/Iwfg.h
 ../../headers/global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
@@ -103,48 +53,6 @@ stdlib.h
 -
 string.h
 -
-
-/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/read.c
-Iwfg.h
-/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/Iwfg.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.c
-../../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-vector.h
-/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/externals/WFG_1.15/read.c
-wfg.h
-/home/maopl/CLionProjects/my_work/Samaritan/externals/WFG_1.15/wfg.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/externals/WFG_1.15/wfg.c
-stdio.h
--
-stdbool.h
--
-math.h
--
-sys/time.h
--
-sys/resource.h
--
-wfg.h
-/home/maopl/CLionProjects/my_work/Samaritan/externals/WFG_1.15/wfg.h
-../../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/externals/WFG_1.15/wfg.h
-stdio.h
--
-stdlib.h
--
-string.h
--
-../../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
 
@@ -184,8 +92,6 @@ regex.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/initialize.h
 
-/home/maopl/CLionProjects/my_work/Samaritan/headers/list.h
-
 /home/maopl/CLionProjects/my_work/Samaritan/headers/mating.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/memory.h
@@ -218,60 +124,6 @@ global.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
 
-/home/maopl/CLionProjects/my_work/Samaritan/indicators/GD.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-../headers/utility.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
-../externals/MY_WFG/vector.h
-/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/indicators/IGD.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-../headers/utility.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
-../externals/MY_WFG/vector.h
-/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/indicators/PBI.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/indicators/hv.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-../headers/indicator.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/indicator.h
-../externals/WFG_1.15/wfg.h
-/home/maopl/CLionProjects/my_work/Samaritan/externals/WFG_1.15/wfg.h
-../externals/MY_WFG/vector.h
-/home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/vector.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/lib/list.c
-../headers/list.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/list.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/lib/memory.c
-../headers/memory.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/memory.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/lib/random.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-../headers/random.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
-../headers/print.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/lib/sort.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-../headers/sort.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
-../headers/dominance_relation.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/dominance_relation.h
-
 /home/maopl/CLionProjects/my_work/Samaritan/main.c
 headers/global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
@@ -281,16 +133,6 @@ headers/metaheuristics.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/metaheuristics.h
 headers/indicator.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/indicator.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/mating/selection_mating.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-../headers/random.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
-../headers/mating.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/mating.h
-../headers/dominance_relation.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/dominance_relation.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/ENS_MOEAD.c
 ../headers/global.h
@@ -489,8 +331,6 @@ headers/indicator.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
 ../headers/random.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
-../headers/memory.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/memory.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD_STM.c
 ../headers/global.h
@@ -636,20 +476,6 @@ headers/indicator.h
 ../headers/dominance_relation.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/dominance_relation.h
 
-/home/maopl/CLionProjects/my_work/Samaritan/mutation/mutation_operator.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-../headers/mutation.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/mutation.h
-../headers/random.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/mutation/mutation_real.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-../headers/mutation.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/mutation.h
-
 /home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/fitness.c
 ../../headers/global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
@@ -672,29 +498,7 @@ headers/indicator.h
 ../../headers/selection.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/selection.h
 
-/home/maopl/CLionProjects/my_work/Samaritan/test_problem/DTLZ.c
-../headers/global.h
+/home/maopl/CLionProjects/my_work/Samaritan/test.c
+headers/global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/test_problem/MOP.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/test_problem/UF.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/test_problem/WFG.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/test_problem/ZDT.c
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/test_problem/evaluation.c
-../headers/print.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
-../headers/problem.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
 

@@ -11,6 +11,7 @@ extern void MOEADM2M_crossover_operator (SMRT_individual *parent1, SMRT_individu
 extern void crossover_nsga2(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table);
 extern void crossover_spea2(SMRT_individual *elite_pop_table, SMRT_individual *offspring_pop_table);
 extern void crossover_IBEA(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table);
+extern void crossover_MOEAD_PAS(SMRT_individual *parent_pop_table, SMRT_individual *parent, int parent_index, SMRT_individual *offspring, NeighborType type, int *select_id);
 extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *parent, int parent_index, SMRT_individual *offspring, NeighborType type);
 extern void crossover_MOEADD(SMRT_individual *parent_pop_table, int weight_id, SMRT_individual *offspring, int **association_matrix, int *association_num, int weight_num);
 extern void crossover_SMSEMOA(SMRT_individual *parent_pop_table, SMRT_individual *offspring);

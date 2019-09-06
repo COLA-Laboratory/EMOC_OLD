@@ -47,6 +47,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/fitness.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/selection/MOEAD/fitness.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/subproblem_selection.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/selection/MOEAD/subproblem_selection.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/update.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.o"
+  "/home/maopl/CLionProjects/my_work/Samaritan/test.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/test.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/test_problem/DTLZ.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/DTLZ.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/test_problem/MOP.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/MOP.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/test_problem/UF.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/UF.c.o"
