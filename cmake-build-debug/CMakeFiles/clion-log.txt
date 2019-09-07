@@ -1,4 +1,4 @@
-/home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/stone/Samaritan/Samaritan
+/snap/clion/82/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/maopl/CLionProjects/my_work/Samaritan
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/stone/Samaritan/Samaritan/cmake-build-debug
+-- Build files have been written to: /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug

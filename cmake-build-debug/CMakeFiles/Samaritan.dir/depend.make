@@ -21,6 +21,7 @@ CMakeFiles/Samaritan.dir/core_code/initialize.c.o: ../headers/metaheuristics.h
 CMakeFiles/Samaritan.dir/core_code/initialize.c.o: ../headers/population.h
 CMakeFiles/Samaritan.dir/core_code/initialize.c.o: ../headers/print.h
 CMakeFiles/Samaritan.dir/core_code/initialize.c.o: ../headers/random.h
+CMakeFiles/Samaritan.dir/core_code/initialize.c.o: ../headers/sort.h
 
 CMakeFiles/Samaritan.dir/core_code/population.c.o: ../core_code/population.c
 CMakeFiles/Samaritan.dir/core_code/population.c.o: ../headers/global.h
@@ -187,20 +188,6 @@ CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o: ../headers/sort.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o: ../headers/utility.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.o: ../metaheuristics/MOEADD.c
 
-CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/analysis.h
-CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/crossover.h
-CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/global.h
-CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/initialize.h
-CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/mutation.h
-CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/population.h
-CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/print.h
-CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/problem.h
-CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/random.h
-CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/selection.h
-CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/sort.h
-CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../headers/utility.h
-CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o: ../metaheuristics/MOEADFRRMAB.c
-
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADM2M.c.o: ../headers/analysis.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADM2M.c.o: ../headers/crossover.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEADM2M.c.o: ../headers/global.h
@@ -234,7 +221,6 @@ CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_PAS.c.o: ../headers/analysis.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_PAS.c.o: ../headers/crossover.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_PAS.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_PAS.c.o: ../headers/initialize.h
-CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_PAS.c.o: ../headers/memory.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_PAS.c.o: ../headers/metaheuristics.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_PAS.c.o: ../headers/mutation.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_PAS.c.o: ../headers/population.h
@@ -352,6 +338,9 @@ CMakeFiles/Samaritan.dir/selection/MOEAD/subproblem_selection.c.o: ../selection/
 CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.o: ../headers/selection.h
 CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.o: ../selection/MOEAD/update.c
+
+CMakeFiles/Samaritan.dir/test.c.o: ../headers/global.h
+CMakeFiles/Samaritan.dir/test.c.o: ../test.c
 
 CMakeFiles/Samaritan.dir/test_problem/DTLZ.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/test_problem/DTLZ.c.o: ../test_problem/DTLZ.c

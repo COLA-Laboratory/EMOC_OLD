@@ -314,3 +314,61 @@ extern double **initialize_direction_MOEADM2M (int *number_weight,int N)
 
     return lambda;
 }
+
+
+static double CalDotProduct(double *vector1,double *vector2,int dimension)
+{
+    double dotProduct = 0;
+
+    for (int i = 0;i < dimension;i++)
+    {
+        dotProduct += (vector1[i])*vector2[i];
+    }
+
+    return dotProduct;
+}
+
+/* 计算一个向量的模 */
+static double CalNorm(double *vector, int dimension)
+{
+
+    double norm = 0;
+
+    for (int i = 0;i < dimension;i++)
+    {
+        norm += (vector[i]*vector[i]);
+    }
+
+    return sqrt(norm);
+
+}
+
+
+
+static double CalSin(double *point1, double *point2)
+{
+    double sin = 0;
+    double cos = 0;
+    int Dimension = g_algorithm_entity.algorithm_para.objective_number;
+    cos = CalDotProduct(point1,point2,Dimension)/(CalNorm(point1,Dimension) * CalNorm(point2,Dimension));
+    sin = sqrt(1 - pow(cos,2.0));
+    return sin;
+}
+
+extern double Cal_perpendicular_distance(double * point1,double *weight)
+{
+    double d2 = 0;
+    double sin = 0;
+    double temp[3] = {0};
+
+    for(int i = 0;i < g_algorithm_entity.algorithm_para.objective_number;i++)
+    {
+
+        temp[i] = (point1[i] - g_algorithm_entity.ideal_point.obj[i])/(g_algorithm_entity.nadir_point.obj[i] - g_algorithm_entity.ideal_point.obj[i]);
+    }
+    sin = CalSin(temp,weight);
+    d2 = CalNorm(temp,g_algorithm_entity.algorithm_para.objective_number);
+    d2 = d2* sin;
+
+    return d2;
+}

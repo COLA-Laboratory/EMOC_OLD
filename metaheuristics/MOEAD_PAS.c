@@ -10,23 +10,11 @@
 #include "../headers/sort.h"
 #include "../headers/analysis.h"
 #include "../headers/random.h"
-#include "../headers/memory.h"
+
+static int *Pi = NULL;
 
 
-static double MOEAD_PAS_cal_fit(SMRT_individual *ind, double *weight, int pi)
-{
-
-    if(pi == INF_NORM)
-    {
-        return cal_Normal_TCH(ind, weight, g_algorithm_entity.algorithm_para.objective_number);
-    }
-    else
-    {
-        return cal_N_NORM_by_exponent(ind, weight, pi, g_algorithm_entity.algorithm_para.objective_number);
-    }
-}
-
-static int MOEAD_PAS_update_pi(SMRT_individual *pop, int weight_index, double *weight, int *candidate_p, int candidate_p_num)
+static int MOEAD_PAS_update_pi(SMRT_individual *pop, double *weight, int *candidate_p, int candidate_p_num)
 {
     int i = 0, j = 0, k = 0;
     double *min_value_table = NULL, temp_value = 0, min_d2 = INF;
@@ -50,11 +38,12 @@ static int MOEAD_PAS_update_pi(SMRT_individual *pop, int weight_index, double *w
 
     for (i = 0; i < candidate_p_num; i++)
     {
-        min_value_table[i] = MOEAD_PAS_cal_fit(pop, weight, candidate_p[i]);
+        min_value_table[i] = cal_nnormal_NORM(pop, weight, candidate_p[i]);
         index_table[i] = 0;
         for (j = 1; j < weight_num; j++)
         {
-            temp_value = MOEAD_PAS_cal_fit(pop + j, weight, candidate_p[i]);
+            temp_value = cal_nnormal_NORM(pop + j, weight, candidate_p[i]);
+
             if (min_value_table[i] > temp_value)
             {
                 min_value_table[i] = temp_value;
@@ -65,41 +54,15 @@ static int MOEAD_PAS_update_pi(SMRT_individual *pop, int weight_index, double *w
 
     for (i = 0; i < candidate_p_num; i++)
     {
-        nl = 0;
-        d2 = 0;
         index = index_table[i];
-        d1 = 0;
-
-        for (int l = 0; l < g_algorithm_entity.algorithm_para.objective_number; ++l)
-        {
-            printf("obj:%f, weight:%f   ", pop[index].obj[l], weight[l]);
-        }
-
-        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
-        {
-            d1 += ((pop[index].obj[j] - g_algorithm_entity.ideal_point.obj[j]) / (g_algorithm_entity.nadir_point.obj[j] - g_algorithm_entity.ideal_point.obj[j])) * weight[j];
-            nl += pow (weight[j], 2.0);
-        }
-        nl = sqrt (nl);
-        d1 = fabs (d1) / nl;
-
-        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
-        {
-            d2 += pow (((pop[index].obj[j] - g_algorithm_entity.ideal_point.obj[j])/(g_algorithm_entity.nadir_point.obj[j] - g_algorithm_entity.ideal_point.obj[j])) - d1 * (weight[j] / nl), 2.0);
-        }
-        d2 = sqrt (d2);
-        printf("i:%d index:%d,d2:%f       \n", i, index, d2);
+        d2 = Cal_perpendicular_distance(pop[index].obj, weight);
 
         if (min_d2 > d2)
         {
             min_d2 = d2;
             current_pi_index = i;
         }
-
-
     }
-
-    printf("\n\n\n\n");
 
     free(min_value_table);
     free(index_table);
@@ -108,7 +71,7 @@ static int MOEAD_PAS_update_pi(SMRT_individual *pop, int weight_index, double *w
 }
 
 
-extern int MOEAD_PAS_update_subproblem_pas(SMRT_individual *offspring, int pop_index, NeighborType type, int pi)
+static int MOEAD_PAS_update_subproblem_pas(SMRT_individual *offspring, int pop_index, NeighborType type)
 {
     int i = 0;
     int index = 0, replace_num = 0;
@@ -123,8 +86,8 @@ extern int MOEAD_PAS_update_subproblem_pas(SMRT_individual *offspring, int pop_i
                 break;
             }
             index = g_algorithm_entity.MOEAD_para.neighbor_table[pop_index].neighbor[i];
-            temp = MOEAD_PAS_cal_fit(offspring, lambda[index], pi);
-
+            temp = cal_nnormal_NORM(offspring, lambda[index], Pi[index]);
+            cal_nnormal_NORM(g_algorithm_entity.parent_population + index, lambda[index], Pi[index]);
             if (temp < g_algorithm_entity.parent_population[index].fitness)
             {
                 memcpy(g_algorithm_entity.parent_population[index].variable,offspring->variable,
@@ -144,7 +107,8 @@ extern int MOEAD_PAS_update_subproblem_pas(SMRT_individual *offspring, int pop_i
             {
                 break;
             }
-            temp = MOEAD_PAS_cal_fit(offspring, lambda[i], pi);
+            temp = cal_nnormal_NORM(offspring, lambda[i], Pi[i]);
+            cal_nnormal_NORM(g_algorithm_entity.parent_population + i, lambda[i], Pi[i]);
 
             if (temp < g_algorithm_entity.parent_population[i].fitness)
             {
@@ -160,9 +124,6 @@ extern int MOEAD_PAS_update_subproblem_pas(SMRT_individual *offspring, int pop_i
             }
         }
     }
-
-
-
 
     return SUCCESS;
 }
@@ -224,11 +185,11 @@ extern void MOEAD_PAS_framework (SMRT_individual *pop, SMRT_individual *offsprin
     int  i = 0, j = 0;
     NeighborType type;
     double rand = 0;
-    int *Pi = NULL, candidate_p_num = 11;
+    int candidate_p_num = 11;
     int candidate_p[11] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, INF_NORM};
     SMRT_individual *offspring = g_algorithm_entity.offspring_population;
 
-int bb = 0;
+    int bb = 0;
 
     g_algorithm_entity.iteration_number          = 1;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;
@@ -239,17 +200,19 @@ int bb = 0;
     // initialization process
     ini_MOEAD_ENS();
 
-    //print_error (number_weight != popsize, 1, "Number of weight vectors must be equal to the population size!");
     initialize_population_real (pop, weight_num);
 
     evaluate_population (pop, weight_num);
 
     initialize_idealpoint (pop, weight_num, &g_algorithm_entity.ideal_point);
-    initialize_nadirpoint(pop, weight_num, &g_algorithm_entity.nadir_point);
+
+    non_dominated_sort(pop, weight_num);
+    update_nadirpoint_nds(pop, weight_num, &g_algorithm_entity.nadir_point);
 
     Pi = (int *)malloc(sizeof(int) * weight_num);
     if (NULL == Pi)
     {
+
         printf("in the NSGA3_getExtremePoints, malloc Pi Failed\n");
         return;
     }
@@ -257,30 +220,15 @@ int bb = 0;
 
     for (i = 0; i < weight_num; ++i)
     {
-        Pi[i] = 1;
-        MOEAD_PAS_cal_fit(pop + i, lambda[i], Pi[i]);
-
-        for (int k = 0; k < g_algorithm_entity.algorithm_para.objective_number; ++k)
-        {
-            if (lambda[i][k] < EPS)
-            {
-                lambda[i][k] = 0.00001;
-            }
-        }
+        Pi[i] = INF_NORM;
+        cal_nnormal_NORM(pop + i, lambda[i], Pi[i]);
     }
-
-
-
-
 
     track_evolution (pop, g_algorithm_entity.iteration_number, 0);
 
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
         print_progress ();
-
-        printf("bb = %d\n", bb);
-        bb = 0;
 
         // crossover and mutation
         for (i = 0; i < weight_num; i++)
@@ -294,46 +242,35 @@ int bb = 0;
             {
                 type = GLOBAL_PARENT;
             }
-
+            //crossover_SMSEMOA(pop, offspring);
             crossover_MOEAD (pop, pop + i, i, offspring, type);
+
             mutation_ind(offspring);
+
             evaluate_individual (offspring);
 
-
+            update_ideal_point_by_ind(offspring);
 
             // update subproblem
-            MOEAD_PAS_update_subproblem_pas(offspring, i, type, Pi[i]);
+            MOEAD_PAS_update_subproblem_pas(offspring, i, type);
         }
-
-        update_nadir_point(pop, weight_num);
-        update_ideal_point(pop, weight_num);
+        non_dominated_sort(pop, weight_num);
+        update_nadirpoint_nds(pop, weight_num, &g_algorithm_entity.nadir_point);
 
         g_algorithm_entity.iteration_number++;
-
 
 
         for (i = 0; i < weight_num; i++)
         {
             if (randomperc() >= (double)g_algorithm_entity.algorithm_para.current_evaluation / (double)g_algorithm_entity.algorithm_para.max_evaluation)
             {
-                Pi[i] = MOEAD_PAS_update_pi(pop, i,lambda[i], candidate_p, candidate_p_num);
-                //printf("pi：%d\n", Pi[i]);
-                if (Pi[i] == INF_NORM)
-                {
-                    bb++;
-                }
+                Pi[i] = MOEAD_PAS_update_pi(pop,lambda[i], candidate_p, candidate_p_num);
 
-                MOEAD_PAS_cal_fit(pop + i, lambda[i], Pi[i]);
+                cal_nnormal_NORM(pop + i, lambda[i], Pi[i]);
             }
-
         }
 
         track_evolution (pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
-    }
-
-    for (int l = 0; l < weight_num; ++l)
-    {
-        printf("PI[%d]:%d\n", l,Pi[l]);
     }
 
     free(Pi);

@@ -92,6 +92,8 @@ extern void evaluate_individual (SMRT_individual *ind)
         case UF10:
             uf10 (ind);
 			break;
+        case WFG1:
+            wfg1(ind);
 		case MOP1:
             test_MOP1(ind, g_algorithm_entity.algorithm_para.variable_number, g_algorithm_entity.algorithm_para.objective_number);
             break;

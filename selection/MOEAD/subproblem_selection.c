@@ -55,6 +55,8 @@ extern void tour_selection_subproblem(int *selected, int weight_num)
             }
         }
         selected[i] = current_max_index;
+
+
     }
     return;
 }

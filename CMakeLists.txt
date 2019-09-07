@@ -5,6 +5,8 @@ set(CMAKE_C_STANDARD 99)
 
 add_executable(Samaritan main.c
 
+		test.c
+
         analysis/analysis.c
 
         core_code/initialize.c
@@ -72,9 +74,9 @@ add_executable(Samaritan main.c
         metaheuristics/SPEA2.c
         metaheuristics/MOEADM2M.c
         metaheuristics/ENS_MOEAD.c
-		metaheuristics/SPEA2_SDE.c
-		metaheuristics/MOEAD_PAS.c
-		metaheuristics/MOEADFRRMAB.c)
+	metaheuristics/SPEA2_SDE.c
+	metaheuristics/MOEAD_PAS.c)
+	metaheuristics/MOEADFRRMAB.c)
 
 
 target_link_libraries(Samaritan m)
