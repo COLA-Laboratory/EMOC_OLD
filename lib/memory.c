@@ -29,7 +29,6 @@ extern int allocate_memory_for_pop (SMRT_individual **pop, int population_size)
         {
             return  FAIL;
         }
-
     }
 
     return SUCCESS;
@@ -100,7 +99,6 @@ extern int destroy_memory_for_pop (SMRT_individual **pop, int population_size)
             free((*pop)[i].obj);
             (*pop)[i].obj = NULL;
         }
-
     }
 
     free(*pop);
@@ -123,7 +121,6 @@ extern int destroy_memory_for_ind (SMRT_individual *ind)
         free(ind->obj);
         ind->obj = NULL;
     }
-
 
     free(ind);
     return SUCCESS;

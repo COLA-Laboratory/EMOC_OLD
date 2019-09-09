@@ -16,45 +16,10 @@
 
 
 
-static int partition_by_obj(SMRT_individual * pop_table, int sort_pop[], int left, int right, int obj_index)
-{
-    double temp_obj = pop_table[sort_pop[left]].obj[obj_index];
-    int temp_index = sort_pop[left];
-    while(left < right)
-    {
-        while ((left < right) && (pop_table[sort_pop[right]].obj[obj_index] >= temp_obj))right--;
-        if (left < right)
-        {
-            sort_pop[left] = sort_pop[right];
-            left++;
-        }
-        while ((left < right) && (pop_table[sort_pop[left]].obj[obj_index] < temp_obj))left++;
-        if (left < right)
-        {
-            sort_pop[right] = sort_pop[left];
-            right--;
-        }
-    }
-    sort_pop[left] = temp_index;
-    return left;
-}
 
-
-static void quicksort_by_obj(SMRT_individual* pop_table, int sort_arr[], int left, int right, int obj_index)
-{
-    int pos = 0;
-
-    if (left < right)
-    {
-        pos = partition_by_obj(pop_table, sort_arr, left, right, obj_index);
-        quicksort_by_obj(pop_table, sort_arr, pos + 1, right, obj_index);
-        quicksort_by_obj(pop_table, sort_arr, left, pos - 1, obj_index);
-    }
-    return;
-}
 
 /*对某一个rank的solution按照某一objective进行排序，返回当前rank的solution的个数*/
-static int sort_by_obj_rank(SMRT_individual *pop_table, int *pop_index,int sort_arr[], int obj_index, int rank_index, int pop_num)
+static int MOEADM2M_sort_by_obj_rank(SMRT_individual *pop_table, int *pop_index,int sort_arr[], int obj_index, int rank_index, int pop_num)
 {
     int i = 0, j = 0;
     int array_num = 0;
@@ -91,7 +56,7 @@ static void setDistance_by_index(Distance_info_t *distance_arr, int index, int p
 
 
 /*在指定的rank里面计算crowding distance 排序结果丢在pop_sort里面*/
-static int crowding_distance_assign(SMRT_individual *pop_table, int *pop_index,int pop_sort[], int pop_num,  int rank_index)
+static int MOEADM2M_crowding_distance_assign(SMRT_individual *pop_table, int *pop_index,int pop_sort[], int pop_num,  int rank_index)
 {
     int i = 0, j = 0, k = 0;
     int pop_num_in_rank = 0;
@@ -126,7 +91,7 @@ static int crowding_distance_assign(SMRT_individual *pop_table, int *pop_index,i
     for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
     {
         memset(sort_arr, 0, sizeof(int) * pop_num);
-        sort_by_obj_rank(pop_table, pop_index,sort_arr, i, rank_index, pop_num);
+        MOEADM2M_sort_by_obj_rank(pop_table, pop_index,sort_arr, i, rank_index, pop_num);
 
         /*第一个和最后一个赋值为无穷大，为了使其能够保存下来*/
         pop_table[sort_arr[0]].fitness = 1000;
@@ -214,7 +179,7 @@ static void MOEADM2M_select(SMRT_individual *parent_pop, int pop_num,int subpop_
     }
     else
     {
-        sort_num = crowding_distance_assign(parent_pop, pop_index,pop_sort, pop_num, rank_index);
+        sort_num = MOEADM2M_crowding_distance_assign(parent_pop, pop_index,pop_sort, pop_num, rank_index);
         /*这一行有点问题，出现了SIGSEG*/
         while(current_pop_num < subpop_num)
         {

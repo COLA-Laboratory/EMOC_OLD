@@ -6,8 +6,8 @@
 #include "../headers/print.h"
 #include "../headers/initialize.h"
 #include "../headers/utility.h"
+
 #include "../headers/selection.h"
-#include "../headers/sort.h"
 #include "../headers/analysis.h"
 #include "../headers/random.h"
 

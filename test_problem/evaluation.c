@@ -94,6 +94,7 @@ extern void evaluate_individual (SMRT_individual *ind)
 			break;
         case WFG1:
             wfg1(ind);
+            break;
 		case MOP1:
             test_MOP1(ind, g_algorithm_entity.algorithm_para.variable_number, g_algorithm_entity.algorithm_para.objective_number);
             break;
@@ -102,6 +103,29 @@ extern void evaluate_individual (SMRT_individual *ind)
             break;
         case MOP6:
             test_MOP6(ind, g_algorithm_entity.algorithm_para.variable_number, g_algorithm_entity.algorithm_para.objective_number);
+            break;
+		case CTP1:
+            ctp1 (ind);
+            break;
+        case CTP2:
+            ctp2 (ind);
+            break;
+        case CTP3:
+            ctp3 (ind);
+        case CTP4:
+            ctp4 (ind);
+            break;
+        case CTP5:
+            ctp5 (ind);
+            break;
+        case CTP6:
+            ctp6 (ind);
+            break;
+        case CTP7:
+            ctp7 (ind);
+            break;
+        case CTP8:
+            ctp8 (ind);
             break;
         default:
             print_error (1, 2, "UNKNOWN test problem: ", g_problem_name_str[g_algorithm_entity.testProblem]);

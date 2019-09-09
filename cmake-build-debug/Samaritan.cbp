@@ -159,6 +159,12 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/mating/selection_mating.c">
 			<Option target="Samaritan"/>
 		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/CMOEA.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/CNSGA2.c">
+			<Option target="Samaritan"/>
+		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/ENS_MOEAD.c">
 			<Option target="Samaritan"/>
 		</Unit>
@@ -219,7 +225,13 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/update.c">
 			<Option target="Samaritan"/>
 		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/selection/NSGA2/niching.c">
+			<Option target="Samaritan"/>
+		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/CTP.c">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/DTLZ.c">

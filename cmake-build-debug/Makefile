@@ -771,6 +771,60 @@ mating/selection_mating.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/mating/selection_mating.c.s
 .PHONY : mating/selection_mating.c.s
 
+metaheuristics/CMOEA.o: metaheuristics/CMOEA.c.o
+
+.PHONY : metaheuristics/CMOEA.o
+
+# target to build an object file
+metaheuristics/CMOEA.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CMOEA.c.o
+.PHONY : metaheuristics/CMOEA.c.o
+
+metaheuristics/CMOEA.i: metaheuristics/CMOEA.c.i
+
+.PHONY : metaheuristics/CMOEA.i
+
+# target to preprocess a source file
+metaheuristics/CMOEA.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CMOEA.c.i
+.PHONY : metaheuristics/CMOEA.c.i
+
+metaheuristics/CMOEA.s: metaheuristics/CMOEA.c.s
+
+.PHONY : metaheuristics/CMOEA.s
+
+# target to generate assembly for a file
+metaheuristics/CMOEA.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CMOEA.c.s
+.PHONY : metaheuristics/CMOEA.c.s
+
+metaheuristics/CNSGA2.o: metaheuristics/CNSGA2.c.o
+
+.PHONY : metaheuristics/CNSGA2.o
+
+# target to build an object file
+metaheuristics/CNSGA2.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CNSGA2.c.o
+.PHONY : metaheuristics/CNSGA2.c.o
+
+metaheuristics/CNSGA2.i: metaheuristics/CNSGA2.c.i
+
+.PHONY : metaheuristics/CNSGA2.i
+
+# target to preprocess a source file
+metaheuristics/CNSGA2.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CNSGA2.c.i
+.PHONY : metaheuristics/CNSGA2.c.i
+
+metaheuristics/CNSGA2.s: metaheuristics/CNSGA2.c.s
+
+.PHONY : metaheuristics/CNSGA2.s
+
+# target to generate assembly for a file
+metaheuristics/CNSGA2.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CNSGA2.c.s
+.PHONY : metaheuristics/CNSGA2.c.s
+
 metaheuristics/ENS_MOEAD.o: metaheuristics/ENS_MOEAD.c.o
 
 .PHONY : metaheuristics/ENS_MOEAD.o
@@ -1311,6 +1365,33 @@ selection/MOEAD/update.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.s
 .PHONY : selection/MOEAD/update.c.s
 
+selection/NSGA2/niching.o: selection/NSGA2/niching.c.o
+
+.PHONY : selection/NSGA2/niching.o
+
+# target to build an object file
+selection/NSGA2/niching.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/selection/NSGA2/niching.c.o
+.PHONY : selection/NSGA2/niching.c.o
+
+selection/NSGA2/niching.i: selection/NSGA2/niching.c.i
+
+.PHONY : selection/NSGA2/niching.i
+
+# target to preprocess a source file
+selection/NSGA2/niching.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/selection/NSGA2/niching.c.i
+.PHONY : selection/NSGA2/niching.c.i
+
+selection/NSGA2/niching.s: selection/NSGA2/niching.c.s
+
+.PHONY : selection/NSGA2/niching.s
+
+# target to generate assembly for a file
+selection/NSGA2/niching.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/selection/NSGA2/niching.c.s
+.PHONY : selection/NSGA2/niching.c.s
+
 test.o: test.c.o
 
 .PHONY : test.o
@@ -1337,6 +1418,33 @@ test.s: test.c.s
 test.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test.c.s
 .PHONY : test.c.s
+
+test_problem/CTP.o: test_problem/CTP.c.o
+
+.PHONY : test_problem/CTP.o
+
+# target to build an object file
+test_problem/CTP.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/CTP.c.o
+.PHONY : test_problem/CTP.c.o
+
+test_problem/CTP.i: test_problem/CTP.c.i
+
+.PHONY : test_problem/CTP.i
+
+# target to preprocess a source file
+test_problem/CTP.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/CTP.c.i
+.PHONY : test_problem/CTP.c.i
+
+test_problem/CTP.s: test_problem/CTP.c.s
+
+.PHONY : test_problem/CTP.s
+
+# target to generate assembly for a file
+test_problem/CTP.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/CTP.c.s
+.PHONY : test_problem/CTP.c.s
 
 test_problem/DTLZ.o: test_problem/DTLZ.c.o
 
@@ -1581,6 +1689,12 @@ help:
 	@echo "... mating/selection_mating.o"
 	@echo "... mating/selection_mating.i"
 	@echo "... mating/selection_mating.s"
+	@echo "... metaheuristics/CMOEA.o"
+	@echo "... metaheuristics/CMOEA.i"
+	@echo "... metaheuristics/CMOEA.s"
+	@echo "... metaheuristics/CNSGA2.o"
+	@echo "... metaheuristics/CNSGA2.i"
+	@echo "... metaheuristics/CNSGA2.s"
 	@echo "... metaheuristics/ENS_MOEAD.o"
 	@echo "... metaheuristics/ENS_MOEAD.i"
 	@echo "... metaheuristics/ENS_MOEAD.s"
@@ -1641,9 +1755,15 @@ help:
 	@echo "... selection/MOEAD/update.o"
 	@echo "... selection/MOEAD/update.i"
 	@echo "... selection/MOEAD/update.s"
+	@echo "... selection/NSGA2/niching.o"
+	@echo "... selection/NSGA2/niching.i"
+	@echo "... selection/NSGA2/niching.s"
 	@echo "... test.o"
 	@echo "... test.i"
 	@echo "... test.s"
+	@echo "... test_problem/CTP.o"
+	@echo "... test_problem/CTP.i"
+	@echo "... test_problem/CTP.s"
 	@echo "... test_problem/DTLZ.o"
 	@echo "... test_problem/DTLZ.i"
 	@echo "... test_problem/DTLZ.s"

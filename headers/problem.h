@@ -38,5 +38,14 @@ extern void evaluate_population (SMRT_individual *pop, int pop_num);
 
 extern void wfg1 (SMRT_individual *ind);
 
+//constrained test problems
+extern void ctp1(SMRT_individual *ind);
+extern void ctp2(SMRT_individual *ind);
+extern void ctp3(SMRT_individual *ind);
+extern void ctp4(SMRT_individual *ind);
+extern void ctp5(SMRT_individual *ind);
+extern void ctp6(SMRT_individual *ind);
+extern void ctp7(SMRT_individual *ind);
+extern void ctp8(SMRT_individual *ind);
 
 #endif
