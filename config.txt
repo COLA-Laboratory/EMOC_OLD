@@ -3,9 +3,9 @@ test_problem:DTLZ1
 problem_param:
 number_variable:10
 number_objective:3
-popSize:300
+popSize:8
 eliteSize:100
-max_evaluation:75000
+max_evaluation:30
 runtime_output:1
 output_interval:1
 run_index_begin:1

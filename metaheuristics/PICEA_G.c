@@ -13,7 +13,73 @@
 static void PICEA_G_selection(SMRT_individual *new_pop, SMRT_individual *new_goals, int new_goals_num, SMRT_individual *pop_table, int pop_num, SMRT_individual *goals, int goals_number)
 {
     int i = 0;
+    int nd_num = 0;
+    Fitness_info_t *fitnessInfo = NULL;
 
+    fitnessInfo = (Fitness_info_t *)malloc(sizeof(Fitness_info_t) * (goals_number + pop_num));
+    if (NULL == fitnessInfo)
+    {
+        printf("In the state of PICEA_G_selection malloc fitnessInfo Fail\n");
+        return;
+    }
+
+    for (i = 0; i < pop_num; i++)
+    {
+        if (pop_table[i].rank == 0)
+        {
+            nd_num++;
+        }
+    }
+
+    if (nd_num >= g_algorithm_entity.algorithm_para.pop_size)
+    {
+        for (i = 0; i < pop_num; i++)
+        {
+            if (pop_table[i].rank != 0)
+            {
+                pop_table[i].fitness = 0;
+            }
+
+            fitnessInfo[i].fitness = pop_table[i].fitness;
+            fitnessInfo[i].idx = i;
+        }
+    }
+    else
+    {
+        for (i = 0; i < pop_num; i++)
+        {
+            if (pop_table[i].rank == 0)
+            {
+                pop_table[i].fitness = INF;
+            }
+
+            fitnessInfo[i].fitness = pop_table[i].fitness;
+            fitnessInfo[i].idx = i;
+        }
+    }
+
+    fitness_quicksort(fitnessInfo, 0, pop_num - 1);
+
+    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
+    {
+        copy_individual(pop_table + fitnessInfo[g_algorithm_entity.algorithm_para.pop_size - i - 1].idx, new_pop + i);
+    }
+
+    for (i = 0; i < goals_number; i++)
+    {
+        fitnessInfo[i].fitness = goals[i].fitness;
+        fitnessInfo[i].idx = i;
+    }
+
+    fitness_quicksort(fitnessInfo, 0, goals_number - 1);
+
+    for (i = 0; i < new_goals_num; i++)
+    {
+        copy_individual(goals + fitnessInfo[new_goals_num - i - 1].idx, new_goals + i);
+    }
+
+
+    free(fitnessInfo);
     return;
 }
 
@@ -31,7 +97,7 @@ static void PICEA_G_fitness_assign(SMRT_individual *pop_table, int pop_num, SMRT
         printf("In the state of PICEA_G_fitness_assign malloc number_satisfy_goals Fail\n");
         return;
     }
-    memset(number_satisfy_goals, 0, goals_number);
+    memset(number_satisfy_goals, 0, sizeof(int) * goals_number);
 
     number_ind_dominate = (int *)malloc(sizeof(int) * pop_num);
     if (NULL == number_ind_dominate)
@@ -39,7 +105,7 @@ static void PICEA_G_fitness_assign(SMRT_individual *pop_table, int pop_num, SMRT
         printf("In the state of PICEA_G_fitness_assign malloc number_ind_dominate Fail\n");
         return;
     }
-    memset(number_ind_dominate, 0, pop_num);
+    memset(number_ind_dominate, 0, sizeof(int) * pop_num);
 
     ind_dominate_goal = (int **)malloc(sizeof(int*) * pop_num);
     if (NULL == ind_dominate_goal)
@@ -74,6 +140,7 @@ static void PICEA_G_fitness_assign(SMRT_individual *pop_table, int pop_num, SMRT
 
     for (i = 0; i < pop_num; i++)
     {
+        temp_fit = 0;
         if (number_ind_dominate[i] == 0)
         {
             pop_table[i].fitness = 0;
@@ -85,9 +152,9 @@ static void PICEA_G_fitness_assign(SMRT_individual *pop_table, int pop_num, SMRT
                 temp_num = number_satisfy_goals[ind_dominate_goal[i][j]];
                 temp_fit += 1 / (double)temp_num;
             }
+            pop_table[i].fitness = temp_fit;
         }
-        pop_table[i].fitness = temp_fit;
-        temp_fit = 0;
+        printf("pop_table[%d]:%f\n", i, pop_table[i].fitness);
     }
 
     for (i = 0; i < goals_number; i++)
@@ -99,11 +166,10 @@ static void PICEA_G_fitness_assign(SMRT_individual *pop_table, int pop_num, SMRT
         else
         {
             temp_fit = (double)(number_satisfy_goals[i] - 1) / (double)(goals_number - 1);
-            goals->fitness = 1 / (1 + temp_fit);
+            goals[i].fitness = 1 / (1 + temp_fit);
         }
+        printf("goal[%d]:%f\n", i, goals[i].fitness);
     }
-
-
 
     free(number_ind_dominate);
     free(number_satisfy_goals);
@@ -130,7 +196,7 @@ extern void PICEA_G_framework (SMRT_individual *parent_pop, SMRT_individual *off
     evaluate_population (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
 
     //initialize goal
-    goals_number = g_algorithm_entity.algorithm_para.objective_number * g_algorithm_entity.algorithm_para.pop_size;
+    goals_number = g_algorithm_entity.algorithm_para.objective_number * 5;
     allocate_memory_for_pop(&goals, goals_number);
     allocate_memory_for_pop(&goals_off, goals_number);
     allocate_memory_for_pop(&merge_goals, goals_number * 2);
