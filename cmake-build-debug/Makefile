@@ -1149,6 +1149,33 @@ metaheuristics/NSGA3.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.s
 .PHONY : metaheuristics/NSGA3.c.s
 
+metaheuristics/PICEA_G.o: metaheuristics/PICEA_G.c.o
+
+.PHONY : metaheuristics/PICEA_G.o
+
+# target to build an object file
+metaheuristics/PICEA_G.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o
+.PHONY : metaheuristics/PICEA_G.c.o
+
+metaheuristics/PICEA_G.i: metaheuristics/PICEA_G.c.i
+
+.PHONY : metaheuristics/PICEA_G.i
+
+# target to preprocess a source file
+metaheuristics/PICEA_G.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.i
+.PHONY : metaheuristics/PICEA_G.c.i
+
+metaheuristics/PICEA_G.s: metaheuristics/PICEA_G.c.s
+
+.PHONY : metaheuristics/PICEA_G.s
+
+# target to generate assembly for a file
+metaheuristics/PICEA_G.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.s
+.PHONY : metaheuristics/PICEA_G.c.s
+
 metaheuristics/SMSEMOA.o: metaheuristics/SMSEMOA.c.o
 
 .PHONY : metaheuristics/SMSEMOA.o
@@ -1731,6 +1758,9 @@ help:
 	@echo "... metaheuristics/NSGA3.o"
 	@echo "... metaheuristics/NSGA3.i"
 	@echo "... metaheuristics/NSGA3.s"
+	@echo "... metaheuristics/PICEA_G.o"
+	@echo "... metaheuristics/PICEA_G.i"
+	@echo "... metaheuristics/PICEA_G.s"
 	@echo "... metaheuristics/SMSEMOA.o"
 	@echo "... metaheuristics/SMSEMOA.i"
 	@echo "... metaheuristics/SMSEMOA.s"

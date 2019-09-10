@@ -102,6 +102,9 @@ typedef enum{
 	SPEA2_SDK,
 	MOEAD_PAS,
 	MOEADFRRMAB,
+	PICEA_G,
+
+    //constraint
     CMOEA,
 	CNSGA2
 

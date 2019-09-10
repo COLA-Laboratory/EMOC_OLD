@@ -79,6 +79,7 @@ add_executable(Samaritan main.c
 		metaheuristics/SPEA2_SDE.c
 		metaheuristics/MOEAD_PAS.c
 		metaheuristics/MOEADFRRMAB.c
+		metaheuristics/PICEA_G.c
 		metaheuristics/CMOEA.c
 		metaheuristics/CNSGA2.c)
 

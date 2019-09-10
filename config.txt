@@ -1,9 +1,9 @@
-algorithm_name:CMOEA
-test_problem:CTP1
+algorithm_name:PICEA_G
+test_problem:DTLZ1
 problem_param:
 number_variable:10
-number_objective:2
-popSize:100
+number_objective:3
+popSize:300
 eliteSize:100
 max_evaluation:75000
 runtime_output:1

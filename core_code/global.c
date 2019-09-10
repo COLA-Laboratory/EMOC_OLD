@@ -15,6 +15,9 @@ char *g_algorithm_name_str[ALGORITHM_NAME_NUM] = {
 		"SPEA2_SDK",
 		"MOEAD_PAS",
 		"MOEADFRRMAB",
+		"PICEA_G",
+
+        //constraint
 		"CMOEA",
 		"CNSGA2"
 		

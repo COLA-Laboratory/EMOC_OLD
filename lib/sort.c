@@ -641,17 +641,6 @@ extern void non_dominated_sort_MOEADM2M(SMRT_individual *pop_table, int pop_num,
     return;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 static int partition_by_fit(Fitness_info_t *fitnessInfo, int left, int right)
 {
     double temp_fit = fitnessInfo[left].fitness;

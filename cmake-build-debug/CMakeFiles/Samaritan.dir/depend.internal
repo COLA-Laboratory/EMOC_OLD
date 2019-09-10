@@ -313,6 +313,20 @@ CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
  /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA3.c
+CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/dominance_relation.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/memory.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/metaheuristics.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/mutation.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/population.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/selection.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
+ /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/PICEA_G.c
 CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/Iwfg.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h

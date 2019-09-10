@@ -42,6 +42,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/MOEAD_STM.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_STM.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA2.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA3.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o"
+  "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/PICEA_G.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SMSEMOA.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SPEA2.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SPEA2_SDE.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_SDE.c.o"

@@ -313,6 +313,20 @@ CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: ../headers/sort.h
 CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: ../headers/utility.h
 CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o: ../metaheuristics/NSGA3.c
 
+CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o: ../headers/analysis.h
+CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o: ../headers/crossover.h
+CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o: ../headers/dominance_relation.h
+CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o: ../headers/global.h
+CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o: ../headers/memory.h
+CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o: ../headers/metaheuristics.h
+CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o: ../headers/mutation.h
+CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o: ../headers/population.h
+CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o: ../headers/print.h
+CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o: ../headers/selection.h
+CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o: ../headers/sort.h
+CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o: ../metaheuristics/PICEA_G.c
+
 CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../externals/MY_WFG/Iwfg.h
 CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/analysis.h
 CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o: ../headers/crossover.h
