@@ -62,11 +62,15 @@ global.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
 
+/home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
+
 /home/maopl/CLionProjects/my_work/Samaritan/headers/selection.h
 ../headers/sort.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
+
+/home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/PICEA_G.c
 ../headers/global.h
@@ -91,4 +95,8 @@ global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/memory.h
 ../headers/dominance_relation.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/dominance_relation.h
+../headers/utility.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
+../headers/random.h
+/home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
 

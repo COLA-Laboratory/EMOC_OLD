@@ -324,8 +324,10 @@ CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/population.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/selection.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
  /home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/PICEA_G.c
 CMakeFiles/Samaritan.dir/metaheuristics/SMSEMOA.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/externals/MY_WFG/Iwfg.h
