@@ -6,8 +6,8 @@
 #include "../headers/print.h"
 #include "../headers/initialize.h"
 #include "../headers/utility.h"
+
 #include "../headers/selection.h"
-#include "../headers/sort.h"
 #include "../headers/analysis.h"
 #include "../headers/random.h"
 
@@ -120,7 +120,7 @@ extern void MOEAD_framework (SMRT_individual *pop, SMRT_individual *offspring_po
             evaluate_individual (offspring);
 
             // update ideal point
-            update_ideal_point_by_ind (offspring_pop);
+            update_ideal_point_by_ind (offspring);
 
             // update subproblem
             update_subproblem(offspring, i, type);

@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/82/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/82/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/maopl/CLionProjects/my_work/Samaritan
+CMAKE_SOURCE_DIR = /home/stone/Samaritan/Samaritan
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug
+CMAKE_BINARY_DIR = /home/stone/Samaritan/Samaritan/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/82/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/82/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stone/Samaritan/Samaritan/cmake-build-debug/CMakeFiles /home/stone/Samaritan/Samaritan/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stone/Samaritan/Samaritan/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -771,6 +771,60 @@ mating/selection_mating.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/mating/selection_mating.c.s
 .PHONY : mating/selection_mating.c.s
 
+metaheuristics/CMOEA.o: metaheuristics/CMOEA.c.o
+
+.PHONY : metaheuristics/CMOEA.o
+
+# target to build an object file
+metaheuristics/CMOEA.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CMOEA.c.o
+.PHONY : metaheuristics/CMOEA.c.o
+
+metaheuristics/CMOEA.i: metaheuristics/CMOEA.c.i
+
+.PHONY : metaheuristics/CMOEA.i
+
+# target to preprocess a source file
+metaheuristics/CMOEA.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CMOEA.c.i
+.PHONY : metaheuristics/CMOEA.c.i
+
+metaheuristics/CMOEA.s: metaheuristics/CMOEA.c.s
+
+.PHONY : metaheuristics/CMOEA.s
+
+# target to generate assembly for a file
+metaheuristics/CMOEA.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CMOEA.c.s
+.PHONY : metaheuristics/CMOEA.c.s
+
+metaheuristics/CNSGA2.o: metaheuristics/CNSGA2.c.o
+
+.PHONY : metaheuristics/CNSGA2.o
+
+# target to build an object file
+metaheuristics/CNSGA2.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CNSGA2.c.o
+.PHONY : metaheuristics/CNSGA2.c.o
+
+metaheuristics/CNSGA2.i: metaheuristics/CNSGA2.c.i
+
+.PHONY : metaheuristics/CNSGA2.i
+
+# target to preprocess a source file
+metaheuristics/CNSGA2.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CNSGA2.c.i
+.PHONY : metaheuristics/CNSGA2.c.i
+
+metaheuristics/CNSGA2.s: metaheuristics/CNSGA2.c.s
+
+.PHONY : metaheuristics/CNSGA2.s
+
+# target to generate assembly for a file
+metaheuristics/CNSGA2.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CNSGA2.c.s
+.PHONY : metaheuristics/CNSGA2.c.s
+
 metaheuristics/ENS_MOEAD.o: metaheuristics/ENS_MOEAD.c.o
 
 .PHONY : metaheuristics/ENS_MOEAD.o
@@ -905,6 +959,33 @@ metaheuristics/MOEADD.s: metaheuristics/MOEADD.c.s
 metaheuristics/MOEADD.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADD.c.s
 .PHONY : metaheuristics/MOEADD.c.s
+
+metaheuristics/MOEADFRRMAB.o: metaheuristics/MOEADFRRMAB.c.o
+
+.PHONY : metaheuristics/MOEADFRRMAB.o
+
+# target to build an object file
+metaheuristics/MOEADFRRMAB.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.o
+.PHONY : metaheuristics/MOEADFRRMAB.c.o
+
+metaheuristics/MOEADFRRMAB.i: metaheuristics/MOEADFRRMAB.c.i
+
+.PHONY : metaheuristics/MOEADFRRMAB.i
+
+# target to preprocess a source file
+metaheuristics/MOEADFRRMAB.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.i
+.PHONY : metaheuristics/MOEADFRRMAB.c.i
+
+metaheuristics/MOEADFRRMAB.s: metaheuristics/MOEADFRRMAB.c.s
+
+.PHONY : metaheuristics/MOEADFRRMAB.s
+
+# target to generate assembly for a file
+metaheuristics/MOEADFRRMAB.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MOEADFRRMAB.c.s
+.PHONY : metaheuristics/MOEADFRRMAB.c.s
 
 metaheuristics/MOEADM2M.o: metaheuristics/MOEADM2M.c.o
 
@@ -1068,6 +1149,60 @@ metaheuristics/NSGA3.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.s
 .PHONY : metaheuristics/NSGA3.c.s
 
+metaheuristics/PICEA_G.o: metaheuristics/PICEA_G.c.o
+
+.PHONY : metaheuristics/PICEA_G.o
+
+# target to build an object file
+metaheuristics/PICEA_G.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.o
+.PHONY : metaheuristics/PICEA_G.c.o
+
+metaheuristics/PICEA_G.i: metaheuristics/PICEA_G.c.i
+
+.PHONY : metaheuristics/PICEA_G.i
+
+# target to preprocess a source file
+metaheuristics/PICEA_G.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.i
+.PHONY : metaheuristics/PICEA_G.c.i
+
+metaheuristics/PICEA_G.s: metaheuristics/PICEA_G.c.s
+
+.PHONY : metaheuristics/PICEA_G.s
+
+# target to generate assembly for a file
+metaheuristics/PICEA_G.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.s
+.PHONY : metaheuristics/PICEA_G.c.s
+
+metaheuristics/RVEA.o: metaheuristics/RVEA.c.o
+
+.PHONY : metaheuristics/RVEA.o
+
+# target to build an object file
+metaheuristics/RVEA.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/RVEA.c.o
+.PHONY : metaheuristics/RVEA.c.o
+
+metaheuristics/RVEA.i: metaheuristics/RVEA.c.i
+
+.PHONY : metaheuristics/RVEA.i
+
+# target to preprocess a source file
+metaheuristics/RVEA.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/RVEA.c.i
+.PHONY : metaheuristics/RVEA.c.i
+
+metaheuristics/RVEA.s: metaheuristics/RVEA.c.s
+
+.PHONY : metaheuristics/RVEA.s
+
+# target to generate assembly for a file
+metaheuristics/RVEA.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/RVEA.c.s
+.PHONY : metaheuristics/RVEA.c.s
+
 metaheuristics/SMSEMOA.o: metaheuristics/SMSEMOA.c.o
 
 .PHONY : metaheuristics/SMSEMOA.o
@@ -1121,6 +1256,33 @@ metaheuristics/SPEA2.s: metaheuristics/SPEA2.c.s
 metaheuristics/SPEA2.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.s
 .PHONY : metaheuristics/SPEA2.c.s
+
+metaheuristics/SPEA2_R.o: metaheuristics/SPEA2_R.c.o
+
+.PHONY : metaheuristics/SPEA2_R.o
+
+# target to build an object file
+metaheuristics/SPEA2_R.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_R.c.o
+.PHONY : metaheuristics/SPEA2_R.c.o
+
+metaheuristics/SPEA2_R.i: metaheuristics/SPEA2_R.c.i
+
+.PHONY : metaheuristics/SPEA2_R.i
+
+# target to preprocess a source file
+metaheuristics/SPEA2_R.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_R.c.i
+.PHONY : metaheuristics/SPEA2_R.c.i
+
+metaheuristics/SPEA2_R.s: metaheuristics/SPEA2_R.c.s
+
+.PHONY : metaheuristics/SPEA2_R.s
+
+# target to generate assembly for a file
+metaheuristics/SPEA2_R.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_R.c.s
+.PHONY : metaheuristics/SPEA2_R.c.s
 
 metaheuristics/SPEA2_SDE.o: metaheuristics/SPEA2_SDE.c.o
 
@@ -1284,6 +1446,33 @@ selection/MOEAD/update.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.s
 .PHONY : selection/MOEAD/update.c.s
 
+selection/NSGA2/niching.o: selection/NSGA2/niching.c.o
+
+.PHONY : selection/NSGA2/niching.o
+
+# target to build an object file
+selection/NSGA2/niching.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/selection/NSGA2/niching.c.o
+.PHONY : selection/NSGA2/niching.c.o
+
+selection/NSGA2/niching.i: selection/NSGA2/niching.c.i
+
+.PHONY : selection/NSGA2/niching.i
+
+# target to preprocess a source file
+selection/NSGA2/niching.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/selection/NSGA2/niching.c.i
+.PHONY : selection/NSGA2/niching.c.i
+
+selection/NSGA2/niching.s: selection/NSGA2/niching.c.s
+
+.PHONY : selection/NSGA2/niching.s
+
+# target to generate assembly for a file
+selection/NSGA2/niching.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/selection/NSGA2/niching.c.s
+.PHONY : selection/NSGA2/niching.c.s
+
 test.o: test.c.o
 
 .PHONY : test.o
@@ -1310,6 +1499,33 @@ test.s: test.c.s
 test.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test.c.s
 .PHONY : test.c.s
+
+test_problem/CTP.o: test_problem/CTP.c.o
+
+.PHONY : test_problem/CTP.o
+
+# target to build an object file
+test_problem/CTP.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/CTP.c.o
+.PHONY : test_problem/CTP.c.o
+
+test_problem/CTP.i: test_problem/CTP.c.i
+
+.PHONY : test_problem/CTP.i
+
+# target to preprocess a source file
+test_problem/CTP.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/CTP.c.i
+.PHONY : test_problem/CTP.c.i
+
+test_problem/CTP.s: test_problem/CTP.c.s
+
+.PHONY : test_problem/CTP.s
+
+# target to generate assembly for a file
+test_problem/CTP.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/CTP.c.s
+.PHONY : test_problem/CTP.c.s
 
 test_problem/DTLZ.o: test_problem/DTLZ.c.o
 
@@ -1554,6 +1770,12 @@ help:
 	@echo "... mating/selection_mating.o"
 	@echo "... mating/selection_mating.i"
 	@echo "... mating/selection_mating.s"
+	@echo "... metaheuristics/CMOEA.o"
+	@echo "... metaheuristics/CMOEA.i"
+	@echo "... metaheuristics/CMOEA.s"
+	@echo "... metaheuristics/CNSGA2.o"
+	@echo "... metaheuristics/CNSGA2.i"
+	@echo "... metaheuristics/CNSGA2.s"
 	@echo "... metaheuristics/ENS_MOEAD.o"
 	@echo "... metaheuristics/ENS_MOEAD.i"
 	@echo "... metaheuristics/ENS_MOEAD.s"
@@ -1569,6 +1791,9 @@ help:
 	@echo "... metaheuristics/MOEADD.o"
 	@echo "... metaheuristics/MOEADD.i"
 	@echo "... metaheuristics/MOEADD.s"
+	@echo "... metaheuristics/MOEADFRRMAB.o"
+	@echo "... metaheuristics/MOEADFRRMAB.i"
+	@echo "... metaheuristics/MOEADFRRMAB.s"
 	@echo "... metaheuristics/MOEADM2M.o"
 	@echo "... metaheuristics/MOEADM2M.i"
 	@echo "... metaheuristics/MOEADM2M.s"
@@ -1587,12 +1812,21 @@ help:
 	@echo "... metaheuristics/NSGA3.o"
 	@echo "... metaheuristics/NSGA3.i"
 	@echo "... metaheuristics/NSGA3.s"
+	@echo "... metaheuristics/PICEA_G.o"
+	@echo "... metaheuristics/PICEA_G.i"
+	@echo "... metaheuristics/PICEA_G.s"
+	@echo "... metaheuristics/RVEA.o"
+	@echo "... metaheuristics/RVEA.i"
+	@echo "... metaheuristics/RVEA.s"
 	@echo "... metaheuristics/SMSEMOA.o"
 	@echo "... metaheuristics/SMSEMOA.i"
 	@echo "... metaheuristics/SMSEMOA.s"
 	@echo "... metaheuristics/SPEA2.o"
 	@echo "... metaheuristics/SPEA2.i"
 	@echo "... metaheuristics/SPEA2.s"
+	@echo "... metaheuristics/SPEA2_R.o"
+	@echo "... metaheuristics/SPEA2_R.i"
+	@echo "... metaheuristics/SPEA2_R.s"
 	@echo "... metaheuristics/SPEA2_SDE.o"
 	@echo "... metaheuristics/SPEA2_SDE.i"
 	@echo "... metaheuristics/SPEA2_SDE.s"
@@ -1611,9 +1845,15 @@ help:
 	@echo "... selection/MOEAD/update.o"
 	@echo "... selection/MOEAD/update.i"
 	@echo "... selection/MOEAD/update.s"
+	@echo "... selection/NSGA2/niching.o"
+	@echo "... selection/NSGA2/niching.i"
+	@echo "... selection/NSGA2/niching.s"
 	@echo "... test.o"
 	@echo "... test.i"
 	@echo "... test.s"
+	@echo "... test_problem/CTP.o"
+	@echo "... test_problem/CTP.i"
+	@echo "... test_problem/CTP.s"
 	@echo "... test_problem/DTLZ.o"
 	@echo "... test_problem/DTLZ.i"
 	@echo "... test_problem/DTLZ.s"

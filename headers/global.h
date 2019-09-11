@@ -74,7 +74,15 @@ typedef enum test_problem{
     MOP1,
     MOP2,
     MOP3,
-    MOP6
+    MOP6,
+    CTP1,
+    CTP2,
+    CTP3,
+    CTP4,
+    CTP5,
+    CTP6,
+    CTP7,
+    CTP8
 }Test_problem;
 
 
@@ -93,7 +101,16 @@ typedef enum{
     ENSMOEAD,
 	SPEA2_SDK,
 	MOEAD_PAS,
-	MOEADFRRMAB
+	MOEADFRRMAB,
+	PICEA_G,
+	SPEA2_R,
+	RVEA,
+	
+
+    //constraint
+    CMOEA,
+	CNSGA2
+
 }ALGORITHM_NAME;
 
 
@@ -248,21 +265,27 @@ typedef struct Evolution_algorithm_entity{
     int run_index_current;
     int run_index_end;
     int testProblem;
+
     ALGORITHM_NAME algorithm_Name;
     INDICATOR_TYPE analyse_Type;
     SMRT_parameter algorithm_para;
+
     SMRT_individual *parent_population;
     SMRT_individual *offspring_population;
     SMRT_individual *mix_population;
     SMRT_individual *elit_population;
+
     REFERENCE_POINT ideal_point;
     REFERENCE_POINT nadir_point;
     REFERENCE_POINT reference_point;
+
     double *variable_lower_bound;
     double *variable_higher_bound;
     int PF_size;
+
     SMRT_PF_DATA *PF_Data;
     void *extra_parameter;
+
     POLYNOMIAL_PARA polynomialPara;
     SBX_PARA sbxPara;
     DE_PARA  dePara;

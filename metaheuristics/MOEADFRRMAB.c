@@ -12,26 +12,6 @@
 #include "../headers/print.h"
 
 
-
-
-
-//计算两个权重之间的距离
-static double CalDistance(double *weight1, double *weight2,int number)
-{
-    int i = 0;
-    double distance = 0;
-    double temp = 0;
-
-    for(i = 0;i<number;i++)
-    {
-        temp = fabs(weight1[i] - weight2[i]);
-        distance += temp*temp;
-    }
-
-    return sqrt(distance);
-}
-
-
 //weightnum 其实就是种群的个数
 static void InitMOEADFRRMAB()
 {
@@ -84,7 +64,7 @@ static void InitMOEADFRRMAB()
         for(j = 0;j < weight_num;j++)
         {
             distance_sort_list[j].idx = j;
-            distance_sort_list[j].E_distance = CalDistance(lambda[i],lambda[j],g_algorithm_entity.algorithm_para.objective_number);
+            distance_sort_list[j].E_distance = euclidian_distance(lambda[i],lambda[j],g_algorithm_entity.algorithm_para.objective_number);
         }
 
         distance_quick_sort(distance_sort_list,0,weight_num-1);

@@ -371,7 +371,7 @@ extern void crossover_MOEADM2M(SMRT_individual *parent_pop_table, SMRT_individua
 
     int i = 0;int j = 0;
     int index_parent2 = 0;
-    double rand = 0;double selectPro = 0.3;
+    double rand = 0;double selectPro = 0.7;
     SMRT_individual *parent1 = NULL, *parent2 = NULL;
     for(i = 0;i < K;i++)
     {
@@ -406,8 +406,9 @@ extern void crossover_MOEADM2M(SMRT_individual *parent_pop_table, SMRT_individua
     return;
 }
 
+
 extern void crossover_MOEADFRRMAB(int op,SMRT_individual *parent,SMRT_individual *offspring,SMRT_individual *parent1,
-        SMRT_individual *parent2,SMRT_individual *parent3,SMRT_individual *parent4,SMRT_individual *parent5)
+                                  SMRT_individual *parent2,SMRT_individual *parent3,SMRT_individual *parent4,SMRT_individual *parent5)
 {
     int i = 0;
     double value = 0;
@@ -422,19 +423,19 @@ extern void crossover_MOEADFRRMAB(int op,SMRT_individual *parent,SMRT_individual
                 break;
             case 1:
                 value = parent->variable[i] + g_algorithm_entity.dePara.F * (parent1->variable[i] - parent2->variable[i])
-                                             + g_algorithm_entity.dePara.F * (parent3->variable[i] - parent4->variable[i]);
+                        + g_algorithm_entity.dePara.F * (parent3->variable[i] - parent4->variable[i]);
 
 
                 break;
             case 2:
                 value = parent->variable[i] + g_algorithm_entity.dePara.K * (parent->variable[i] - parent1->variable[i])
-                                              + g_algorithm_entity.dePara.F * (parent2->variable[i] - parent3->variable[i])
-                                                + g_algorithm_entity.dePara.F * (parent4->variable[i] - parent5->variable[i]);
+                        + g_algorithm_entity.dePara.F * (parent2->variable[i] - parent3->variable[i])
+                        + g_algorithm_entity.dePara.F * (parent4->variable[i] - parent5->variable[i]);
 
                 break;
             case 3:
                 value = parent->variable[i] + g_algorithm_entity.dePara.K * (parent->variable[i] - parent1->variable[i])
-                                             + g_algorithm_entity.dePara.F * (parent2->variable[i] - parent3->variable[i]);
+                        + g_algorithm_entity.dePara.F * (parent2->variable[i] - parent3->variable[i]);
 
                 break;
             default:
@@ -464,3 +465,77 @@ extern void crossover_MOEADFRRMAB(int op,SMRT_individual *parent,SMRT_individual
     return;
 }
 
+
+/*
+extern void crossover_SPEA2_R(SMRT_individual *parent_pop_table, SMRT_individual *offspring)
+{
+    int i, temp, rand;
+    int *a1, *a2;
+    SMRT_individual *parent1, *parent2, *offspring1, *offspring2;
+    DOMINATE_RELATION dominateRelation;
+
+    allocate_memory_for_ind (&offspring1);
+    allocate_memory_for_ind (&offspring2);
+
+    a1 = (int *) malloc (g_algorithm_entity.algorithm_para.pop_size * sizeof(int));
+    a2 = (int *) malloc (g_algorithm_entity.algorithm_para.pop_size * sizeof(int));
+    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
+        a1[i] = a2[i] = i;
+
+    for (i = 0; i < K; i++)
+    {
+        rand     = rnd (i, g_algorithm_entity.algorithm_para.pop_size - 1);
+        temp     = a1[rand];
+        a1[rand] = a1[i];
+        a1[i]    = temp;
+        temp     = a2[rand];
+        a2[rand] = a2[i];
+        a2[i]    = temp;
+    }
+
+    parent1 = tournament_by_rank(&parent_pop_table[a1[0]], &parent_pop_table[a1[1]]);
+    parent2 = tournament_by_rank(&parent_pop_table[a1[2]], &parent_pop_table[a1[3]]);
+    sbx_crossover (parent1, parent2, offspring1, offspring2);
+
+    dominateRelation = check_dominance(offspring1, offspring2);
+
+
+    if (DOMINATED == dominateRelation)
+    {
+        copy_individual(offspring2, offspring);
+    }
+    else
+    {
+        copy_individual(offspring1, offspring);
+    }
+
+    destroy_memory_for_ind(offspring1);
+    destroy_memory_for_ind(offspring2);
+
+    return;
+}
+ */
+ 
+ extern void RVEA_crossover_operator (SMRT_individual *parent_table, SMRT_individual *offspring_table,int popNum)
+{
+
+    int i = 0;
+    int k = 0, l = 0,index = 0;
+    SMRT_individual *parent1 = NULL, *parent2 = NULL;
+
+    for(i = 0;i < popNum/2;i++)
+    {
+        //随即选两个父代
+        k = rnd(0,popNum-1);
+        l = rnd(0,popNum-1);
+        while(k == l)
+            l = rnd(0,popNum-1);
+
+        parent1 = parent_table + k;
+        parent2 = parent_table + l;
+
+        sbx_crossover(parent1,parent2,offspring_table+index,offspring_table+index+1);
+        index+=2;
+
+    }
+}

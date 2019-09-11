@@ -14,7 +14,15 @@ char *g_algorithm_name_str[ALGORITHM_NAME_NUM] = {
         "ENSMOEAD",
 		"SPEA2_SDK",
 		"MOEAD_PAS",
-		"MOEADFRRMAB"
+		"MOEADFRRMAB",
+		"PICEA_G",
+		"SPEA2_R",
+		"RVEA",
+		
+        //constraint
+		"CMOEA",
+		"CNSGA2"
+		
 };
 
 
@@ -54,7 +62,15 @@ char *g_problem_name_str[PROBLEM_NAME_NUM] = {
         "MOP1",
         "MOP2",
         "MOP3",
-        "MOP6"
+        "MOP6",
+        "CTP1",
+        "CTP2",
+        "CTP3",
+        "CTP4",
+        "CTP5",
+        "CTP6",
+        "CTP7",
+        "CTP8"
 };
 
 char *g_analyse_name_str[ANALYSE_NAME_NUM] = {

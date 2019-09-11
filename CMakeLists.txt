@@ -38,6 +38,7 @@ add_executable(Samaritan main.c
         selection/MOEAD/fitness.c
         selection/MOEAD/update.c
         selection/MOEAD/subproblem_selection.c
+		selection/NSGA2/niching.c
 
 
         test_problem/DTLZ.c
@@ -45,7 +46,8 @@ add_executable(Samaritan main.c
         test_problem/UF.c
         test_problem/MOP.c
         test_problem/WFG.c
-        test_problem/evaluation.c
+		test_problem/CTP.c
+		test_problem/evaluation.c
 
 
 
@@ -74,9 +76,17 @@ add_executable(Samaritan main.c
         metaheuristics/SPEA2.c
         metaheuristics/MOEADM2M.c
         metaheuristics/ENS_MOEAD.c
-	metaheuristics/SPEA2_SDE.c
-	metaheuristics/MOEAD_PAS.c)
-	metaheuristics/MOEADFRRMAB.c)
+		metaheuristics/SPEA2_SDE.c
+		metaheuristics/MOEAD_PAS.c
+		metaheuristics/MOEADFRRMAB.c
+		metaheuristics/PICEA_G.c
+		metaheuristics/SPEA2_R.c
+		metaheuristics/RVEA.c
+
+		metaheuristics/CMOEA.c
+		metaheuristics/CNSGA2.c
+
+		)
 
 
 target_link_libraries(Samaritan m)

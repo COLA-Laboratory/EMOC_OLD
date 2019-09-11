@@ -172,7 +172,7 @@ extern double cal_moead_fitness(SMRT_individual *ind, double *weight, MoeadFunct
 }
 
 
-extern double cal_nnormal_NORM(SMRT_individual *ind, double *weight, int pi)
+extern double cal_normal_NORM(SMRT_individual *ind, double *weight, int pi)
 {
 
     if(pi == INF_NORM)

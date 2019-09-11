@@ -259,8 +259,8 @@ int initialization_real_para (int argc, char** argv)
     if( flag_default )
         printf("All/Other parameters configured based on the defaut file: \'config.txt\'\n");
     // SBX parameter settings
-    g_algorithm_entity.sbxPara.pcross_real = 0.9;
-    g_algorithm_entity.sbxPara.eta_c       = 20.0;
+    g_algorithm_entity.sbxPara.pcross_real = 1.0;
+    g_algorithm_entity.sbxPara.eta_c       = 15.0;
 
     // polynomial mutation parameter settings
     g_algorithm_entity.polynomialPara.pmut_real = 1.0 / g_algorithm_entity.algorithm_para.variable_number;
@@ -401,8 +401,8 @@ extern void update_nadirpoint_nds (SMRT_individual *pop_table, int pop_num, REFE
 {
     int i = 0, j = 0;
     SMRT_individual *ind = NULL;
-//    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
-//        g_algorithm_entity.nadir_point.obj[i] = -INF;
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+        g_algorithm_entity.nadir_point.obj[i] = -INF;
 
     for (i = 0 ;i < pop_num; i ++)
     {

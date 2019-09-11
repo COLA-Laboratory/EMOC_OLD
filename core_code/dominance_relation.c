@@ -48,3 +48,4 @@ extern DOMINATE_RELATION check_dominance(SMRT_individual *ind1, SMRT_individual 
             return (NON_DOMINATED);
     }
 }
+

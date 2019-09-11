@@ -82,7 +82,11 @@ extern int allocate_memory_for_reference_point (REFERENCE_POINT *point)
 
 extern int destroy_memory_for_pop (SMRT_individual **pop, int population_size)
 {
+
+
+
     int i = 0;
+
 
     for (i = 0; i < population_size; i++)
     {

@@ -1,9 +1,9 @@
-algorithm_name:MOEAD_PAS
+algorithm_name:RVEA
 test_problem:DTLZ1
 problem_param:
 number_variable:10
 number_objective:3
-popSize:300
+popSize:100
 eliteSize:100
 max_evaluation:75000
 runtime_output:1
