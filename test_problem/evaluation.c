@@ -95,6 +95,55 @@ extern void evaluate_individual (SMRT_individual *ind)
         case WFG1:
             wfg1(ind);
             break;
+        case WFG2:
+            wfg2(ind);
+            break;
+        case WFG3:
+            wfg3(ind);
+            break;
+        case WFG4:
+            wfg4(ind);
+            break;
+        case WFG41:
+            printf("1111\n");
+            wfg41(ind);
+            break;
+        case WFG42:
+            wfg42(ind);
+            break;
+        case WFG43:
+            wfg43(ind);
+            break;
+        case WFG44:
+            wfg44(ind);
+            break;
+        case WFG45:
+            wfg45(ind);
+            break;
+        case WFG46:
+            wfg46(ind);
+            break;
+        case WFG47:
+            wfg47(ind);
+            break;
+        case WFG48:
+            wfg48(ind);
+            break;
+        case WFG5:
+            wfg5(ind);
+            break;
+        case WFG6:
+            wfg6(ind);
+            break;
+        case WFG7:
+            wfg7(ind);
+            break;
+        case WFG8:
+            wfg8(ind);
+            break;
+        case WFG9:
+            wfg9(ind);
+            break;
 		case MOP1:
             test_MOP1(ind, g_algorithm_entity.algorithm_para.variable_number, g_algorithm_entity.algorithm_para.objective_number);
             break;

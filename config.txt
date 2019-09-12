@@ -1,5 +1,5 @@
-algorithm_name:RVEA
-test_problem:DTLZ1
+algorithm_name:PICEA_G
+test_problem:WFG1
 problem_param:
 number_variable:10
 number_objective:3
