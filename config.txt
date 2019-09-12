@@ -1,11 +1,11 @@
-algorithm_name:PICEA_G
-test_problem:DTLZ2
+algorithm_name:RVEA
+test_problem:DTLZ1
 problem_param:
 number_variable:10
 number_objective:3
-popSize:100
+popSize:300
 eliteSize:100
-max_evaluation:25000
+max_evaluation:75000
 runtime_output:1
 output_interval:1
 run_index_begin:1

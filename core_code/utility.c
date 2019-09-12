@@ -316,7 +316,7 @@ extern double **initialize_direction_MOEADM2M (int *number_weight,int N)
 }
 
 
-static double CalDotProduct(double *vector1,double *vector2,int dimension)
+extern double CalDotProduct(double *vector1,double *vector2,int dimension)
 {
     double dotProduct = 0;
 
@@ -329,7 +329,7 @@ static double CalDotProduct(double *vector1,double *vector2,int dimension)
 }
 
 /* 计算一个向量的模 */
-static double CalNorm(double *vector, int dimension)
+extern double CalNorm(double *vector, int dimension)
 {
 
     double norm = 0;
@@ -345,7 +345,7 @@ static double CalNorm(double *vector, int dimension)
 
 
 
-static double CalSin(double *point1, double *point2)
+extern double CalSin(double *point1, double *point2)
 {
     double sin = 0;
     double cos = 0;

@@ -1176,6 +1176,33 @@ metaheuristics/PICEA_G.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/PICEA_G.c.s
 .PHONY : metaheuristics/PICEA_G.c.s
 
+metaheuristics/RVEA.o: metaheuristics/RVEA.c.o
+
+.PHONY : metaheuristics/RVEA.o
+
+# target to build an object file
+metaheuristics/RVEA.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/RVEA.c.o
+.PHONY : metaheuristics/RVEA.c.o
+
+metaheuristics/RVEA.i: metaheuristics/RVEA.c.i
+
+.PHONY : metaheuristics/RVEA.i
+
+# target to preprocess a source file
+metaheuristics/RVEA.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/RVEA.c.i
+.PHONY : metaheuristics/RVEA.c.i
+
+metaheuristics/RVEA.s: metaheuristics/RVEA.c.s
+
+.PHONY : metaheuristics/RVEA.s
+
+# target to generate assembly for a file
+metaheuristics/RVEA.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/RVEA.c.s
+.PHONY : metaheuristics/RVEA.c.s
+
 metaheuristics/SMSEMOA.o: metaheuristics/SMSEMOA.c.o
 
 .PHONY : metaheuristics/SMSEMOA.o
@@ -1229,6 +1256,33 @@ metaheuristics/SPEA2.s: metaheuristics/SPEA2.c.s
 metaheuristics/SPEA2.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2.c.s
 .PHONY : metaheuristics/SPEA2.c.s
+
+metaheuristics/SPEA2_R.o: metaheuristics/SPEA2_R.c.o
+
+.PHONY : metaheuristics/SPEA2_R.o
+
+# target to build an object file
+metaheuristics/SPEA2_R.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_R.c.o
+.PHONY : metaheuristics/SPEA2_R.c.o
+
+metaheuristics/SPEA2_R.i: metaheuristics/SPEA2_R.c.i
+
+.PHONY : metaheuristics/SPEA2_R.i
+
+# target to preprocess a source file
+metaheuristics/SPEA2_R.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_R.c.i
+.PHONY : metaheuristics/SPEA2_R.c.i
+
+metaheuristics/SPEA2_R.s: metaheuristics/SPEA2_R.c.s
+
+.PHONY : metaheuristics/SPEA2_R.s
+
+# target to generate assembly for a file
+metaheuristics/SPEA2_R.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_R.c.s
+.PHONY : metaheuristics/SPEA2_R.c.s
 
 metaheuristics/SPEA2_SDE.o: metaheuristics/SPEA2_SDE.c.o
 
@@ -1761,12 +1815,18 @@ help:
 	@echo "... metaheuristics/PICEA_G.o"
 	@echo "... metaheuristics/PICEA_G.i"
 	@echo "... metaheuristics/PICEA_G.s"
+	@echo "... metaheuristics/RVEA.o"
+	@echo "... metaheuristics/RVEA.i"
+	@echo "... metaheuristics/RVEA.s"
 	@echo "... metaheuristics/SMSEMOA.o"
 	@echo "... metaheuristics/SMSEMOA.i"
 	@echo "... metaheuristics/SMSEMOA.s"
 	@echo "... metaheuristics/SPEA2.o"
 	@echo "... metaheuristics/SPEA2.i"
 	@echo "... metaheuristics/SPEA2.s"
+	@echo "... metaheuristics/SPEA2_R.o"
+	@echo "... metaheuristics/SPEA2_R.i"
+	@echo "... metaheuristics/SPEA2_R.s"
 	@echo "... metaheuristics/SPEA2_SDE.o"
 	@echo "... metaheuristics/SPEA2_SDE.i"
 	@echo "... metaheuristics/SPEA2_SDE.s"

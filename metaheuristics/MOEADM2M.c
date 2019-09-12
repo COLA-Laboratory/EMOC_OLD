@@ -216,34 +216,6 @@ static void SelectParam(int obj_numm,int *K)
     return;
 }
 
-/* 计算向量之间的点乘 */
-static double CalDotProduct(double *vector1,double *vector2,int dimension)
-{
-    double dotProduct = 0;
-
-    for (int i = 0;i < dimension;i++)
-    {
-        dotProduct += (vector1[i])*vector2[i];
-    }
-
-    return dotProduct;
-}
-
-/* 计算一个向量的模 */
-static double CalNorm(double *vector, int dimension)
-{
-
-    double norm = 0;
-
-    for (int i = 0;i < dimension;i++)
-    {
-        norm += (vector[i]*vector[i]);
-    }
-
-    return sqrt(norm);
-
-}
-
 
 
 /* 分配种群 */

@@ -103,6 +103,9 @@ typedef enum{
 	MOEAD_PAS,
 	MOEADFRRMAB,
 	PICEA_G,
+	SPEA2_R,
+	RVEA,
+	
 
     //constraint
     CMOEA,

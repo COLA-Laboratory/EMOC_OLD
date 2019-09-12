@@ -12,6 +12,9 @@ extern double euclidian_distance (double *a, double *b, int dimension);
 extern double calculateDistance_sol_weight (SMRT_individual *solution, double *lambda);
 extern double **initialize_direction_MOEADM2M (int *number_weight,int N);
 
+extern double CalNorm(double *vector, int dimension);
+extern double CalDotProduct(double *vector1,double *vector2,int dimension);
+extern double CalSin(double *point1, double *point2);
 extern double Cal_perpendicular_distance(double * point1,double *weight);
 
 
