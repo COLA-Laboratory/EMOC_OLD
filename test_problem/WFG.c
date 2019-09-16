@@ -37,7 +37,7 @@ int next_int (char *st, int st_len, int pos)
 
 void WFG_ini ()
 {
-    wfg_K    = next_int (problem_param_stream, 200, 0);
+    wfg_K    = *((int*)g_algorithm_entity.algorithm_para.problem_parameter);
     wfg_w    = malloc (sizeof(double) * g_algorithm_entity.algorithm_para.variable_number + g_algorithm_entity.algorithm_para.objective_number);
     temp     = malloc (sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
     wfg_temp = malloc (sizeof(double) * (g_algorithm_entity.algorithm_para.variable_number + g_algorithm_entity.algorithm_para.objective_number));

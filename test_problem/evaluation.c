@@ -105,7 +105,6 @@ extern void evaluate_individual (SMRT_individual *ind)
             wfg4(ind);
             break;
         case WFG41:
-            printf("1111\n");
             wfg41(ind);
             break;
         case WFG42:

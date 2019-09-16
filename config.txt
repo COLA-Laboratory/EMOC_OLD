@@ -1,8 +1,8 @@
 algorithm_name:PICEA_G
-test_problem:WFG1
-problem_param:
-number_variable:10
-number_objective:3
+test_problem:WFG4
+problem_param:2
+number_variable:22
+number_objective:2
 popSize:300
 eliteSize:100
 max_evaluation:75000

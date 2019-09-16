@@ -109,8 +109,19 @@ static void set_problem_name(const char *problem_name)
     }
 }
 
-static void set_problem_para()
+static void set_problem_para(const char *para_k)
 {
+
+    if (NULL != para_k)
+    {
+        if (g_algorithm_entity.testProblem >= WFG1 && g_algorithm_entity.testProblem <= WFG48)
+        {
+            g_algorithm_entity.algorithm_para.problem_parameter = (int*)malloc(sizeof(int));
+            *((int *)g_algorithm_entity.algorithm_para.problem_parameter) = atoi(para_k);
+            printf("%d\n ", *((int *)g_algorithm_entity.algorithm_para.problem_parameter));
+        }
+    }
+
     return;
 }
 
@@ -190,7 +201,7 @@ int initialization_real_para (int argc, char** argv)
         }
         else if (!strcmp(buff, "problem_param"))
         {
-            set_problem_para();
+            set_problem_para(buff + pmatch.rm_eo);
         }
         else if (!strcmp(buff, "number_variable"))
         {
@@ -351,6 +362,13 @@ extern int destroy_real_para (int argc, char** argv)
         free(g_algorithm_entity.PF_Data[i].obj);
     }
     free(g_algorithm_entity.PF_Data);
+
+    if (NULL != g_algorithm_entity.algorithm_para.problem_parameter && g_algorithm_entity.testProblem >= WFG1 && g_algorithm_entity.testProblem <= WFG48)
+    {
+        free(g_algorithm_entity.algorithm_para.problem_parameter);
+
+    }
+
     return SUCCESS;
 }
 
