@@ -15,13 +15,10 @@ CMakeFiles/Samaritan.dir/core_code/global.c.o: ../headers/global.h
 
 CMakeFiles/Samaritan.dir/core_code/initialize.c.o: ../core_code/initialize.c
 CMakeFiles/Samaritan.dir/core_code/initialize.c.o: ../headers/global.h
-CMakeFiles/Samaritan.dir/core_code/initialize.c.o: ../headers/initialize.h
 CMakeFiles/Samaritan.dir/core_code/initialize.c.o: ../headers/memory.h
-CMakeFiles/Samaritan.dir/core_code/initialize.c.o: ../headers/metaheuristics.h
-CMakeFiles/Samaritan.dir/core_code/initialize.c.o: ../headers/population.h
 CMakeFiles/Samaritan.dir/core_code/initialize.c.o: ../headers/print.h
+CMakeFiles/Samaritan.dir/core_code/initialize.c.o: ../headers/problem.h
 CMakeFiles/Samaritan.dir/core_code/initialize.c.o: ../headers/random.h
-CMakeFiles/Samaritan.dir/core_code/initialize.c.o: ../headers/sort.h
 
 CMakeFiles/Samaritan.dir/core_code/population.c.o: ../core_code/population.c
 CMakeFiles/Samaritan.dir/core_code/population.c.o: ../headers/global.h
@@ -447,6 +444,11 @@ CMakeFiles/Samaritan.dir/test_problem/WFG.c.o: ../test_problem/WFG.c
 
 CMakeFiles/Samaritan.dir/test_problem/ZDT.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/test_problem/ZDT.c.o: ../test_problem/ZDT.c
+
+CMakeFiles/Samaritan.dir/test_problem/cal_pf.c.o: ../headers/global.h
+CMakeFiles/Samaritan.dir/test_problem/cal_pf.c.o: ../headers/print.h
+CMakeFiles/Samaritan.dir/test_problem/cal_pf.c.o: ../headers/utility.h
+CMakeFiles/Samaritan.dir/test_problem/cal_pf.c.o: ../test_problem/cal_pf.c
 
 CMakeFiles/Samaritan.dir/test_problem/evaluation.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/test_problem/evaluation.c.o: ../headers/print.h

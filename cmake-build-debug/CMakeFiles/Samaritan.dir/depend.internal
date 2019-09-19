@@ -16,13 +16,10 @@ CMakeFiles/Samaritan.dir/core_code/global.c.o
 CMakeFiles/Samaritan.dir/core_code/initialize.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/core_code/initialize.c
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/initialize.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/memory.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/metaheuristics.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/population.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
- /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
 CMakeFiles/Samaritan.dir/core_code/population.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/core_code/population.c
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
@@ -448,6 +445,11 @@ CMakeFiles/Samaritan.dir/test_problem/WFG.c.o
 CMakeFiles/Samaritan.dir/test_problem/ZDT.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
  /home/maopl/CLionProjects/my_work/Samaritan/test_problem/ZDT.c
+CMakeFiles/Samaritan.dir/test_problem/cal_pf.c.o
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
+ /home/maopl/CLionProjects/my_work/Samaritan/test_problem/cal_pf.c
 CMakeFiles/Samaritan.dir/test_problem/evaluation.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/print.h

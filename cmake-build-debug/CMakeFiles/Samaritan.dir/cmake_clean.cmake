@@ -28,6 +28,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Samaritan.dir/test_problem/WFG.c.o"
   "CMakeFiles/Samaritan.dir/test_problem/CTP.c.o"
   "CMakeFiles/Samaritan.dir/test_problem/evaluation.c.o"
+  "CMakeFiles/Samaritan.dir/test_problem/cal_pf.c.o"
   "CMakeFiles/Samaritan.dir/externals/MY_WFG/read.c.o"
   "CMakeFiles/Samaritan.dir/externals/MY_WFG/vector.c.o"
   "CMakeFiles/Samaritan.dir/externals/MY_WFG/Iwfg.c.o"

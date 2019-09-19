@@ -237,7 +237,7 @@ extern void RVEA_framework (SMRT_individual *parent_pop, SMRT_individual *offspr
     g_algorithm_entity.algorithm_para.current_evaluation = 0;
 
     //初始化权重与种群
-    lambda = initialize_uniform_point(&weight_num);
+    lambda = initialize_uniform_point(g_algorithm_entity.algorithm_para.pop_size, &weight_num);
     currentPopNum = weight_num;
     maxGen = g_algorithm_entity.algorithm_para.max_evaluation/weight_num;
 

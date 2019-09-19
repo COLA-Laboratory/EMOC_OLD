@@ -1,6 +1,5 @@
 #include "../headers/global.h"
 
-
 void dtlz1(SMRT_individual* ind)
 {
     int i = 0, j = 0, k = 0, temp = 0;
@@ -227,3 +226,6 @@ void dtlz7(SMRT_individual* ind)
 
     obj[g_algorithm_entity.algorithm_para.objective_number - 1] = (1 + gx) * h;
 }
+
+
+

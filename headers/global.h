@@ -231,7 +231,6 @@ typedef struct{
 
 typedef struct
 {
-    double *variable;
     double *obj;
 }SMRT_PF_DATA;
 

@@ -48,6 +48,7 @@ add_executable(Samaritan main.c
         test_problem/WFG.c
 		test_problem/CTP.c
 		test_problem/evaluation.c
+		test_problem/cal_pf.c
 
 
 

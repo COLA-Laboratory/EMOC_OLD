@@ -1,37 +1,8 @@
-/*
- * initialization.c:
- *  This file contains the functions to perform initialization operations, mostly for reading parameters.
- *
- * Authors:
- *  Renzhi Chen <rxc332@cs.bham.ac.uk>
- *  Ke Li <k.li@exeter.ac.uk>
- *
- * Institution:
- *  Computational Optimization and Data Analytics (CODA) Group @ University of Exeter
- *
- * Copyright (c) 2017 Renzhi Chen, Ke Li
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 #include "../headers/global.h"
-#include "../headers/initialize.h"
 #include "../headers/print.h"
 #include "../headers/memory.h"
-#include "../headers/metaheuristics.h"
 #include "../headers/random.h"
-#include "../headers/sort.h"
+#include "../headers/problem.h"
 
 static int parameter_check()
 {
@@ -300,8 +271,12 @@ int initialization_real_para (int argc, char** argv)
     // calculate the number of points in the PF data
     sprintf (PF_name, "../PF/%s.%dD.pf", g_problem_name_str[g_algorithm_entity.testProblem], g_algorithm_entity.algorithm_para.objective_number);
     PF = fopen (PF_name, "r");
-    //print_error (PF == NULL, 2, "Fail to open PF: ", PF_name);
-    if(PF != NULL){
+    if (NULL == PF)
+    {
+        cal_pf(g_algorithm_entity.testProblem);
+    }
+    else
+    {
         g_algorithm_entity.PF_size = 0;
         while (fgets (line, BUFSIZE_L, PF) != NULL)
             g_algorithm_entity.PF_size++;
@@ -315,6 +290,7 @@ int initialization_real_para (int argc, char** argv)
             for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
                 fscanf (PF, "%lf", g_algorithm_entity.PF_Data[i].obj + j);
     }
+
     // boundary settings
     g_algorithm_entity.variable_lower_bound = (double *) malloc (g_algorithm_entity.algorithm_para.variable_number * sizeof(double));
     g_algorithm_entity.variable_higher_bound = (double *) malloc (g_algorithm_entity.algorithm_para.variable_number * sizeof(double));

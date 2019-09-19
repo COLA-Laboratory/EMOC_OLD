@@ -61,6 +61,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/maopl/CLionProjects/my_work/Samaritan/test_problem/UF.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/UF.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/test_problem/WFG.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/WFG.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/test_problem/ZDT.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/ZDT.c.o"
+  "/home/maopl/CLionProjects/my_work/Samaritan/test_problem/cal_pf.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/cal_pf.c.o"
   "/home/maopl/CLionProjects/my_work/Samaritan/test_problem/evaluation.c" "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/Samaritan.dir/test_problem/evaluation.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

@@ -361,7 +361,7 @@ extern void SPEA2_R_framework (SMRT_individual *parent_pop, SMRT_individual *off
 
 
     //initialize W using Das and Dennis's method
-    uniform_ref_point = initialize_uniform_point(&ref_point_num);
+    uniform_ref_point = initialize_uniform_point(g_algorithm_entity.algorithm_para.pop_size, &ref_point_num);
 
     store_angle = (double **)malloc(sizeof(double *) * g_algorithm_entity.algorithm_para.pop_size * 2);
     for (int i = 0; i < g_algorithm_entity.algorithm_para.pop_size*2; i++)

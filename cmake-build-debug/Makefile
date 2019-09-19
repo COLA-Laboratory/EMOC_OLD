@@ -1662,6 +1662,33 @@ test_problem/ZDT.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/ZDT.c.s
 .PHONY : test_problem/ZDT.c.s
 
+test_problem/cal_pf.o: test_problem/cal_pf.c.o
+
+.PHONY : test_problem/cal_pf.o
+
+# target to build an object file
+test_problem/cal_pf.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/cal_pf.c.o
+.PHONY : test_problem/cal_pf.c.o
+
+test_problem/cal_pf.i: test_problem/cal_pf.c.i
+
+.PHONY : test_problem/cal_pf.i
+
+# target to preprocess a source file
+test_problem/cal_pf.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/cal_pf.c.i
+.PHONY : test_problem/cal_pf.c.i
+
+test_problem/cal_pf.s: test_problem/cal_pf.c.s
+
+.PHONY : test_problem/cal_pf.s
+
+# target to generate assembly for a file
+test_problem/cal_pf.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/test_problem/cal_pf.c.s
+.PHONY : test_problem/cal_pf.c.s
+
 test_problem/evaluation.o: test_problem/evaluation.c.o
 
 .PHONY : test_problem/evaluation.o
@@ -1869,6 +1896,9 @@ help:
 	@echo "... test_problem/ZDT.o"
 	@echo "... test_problem/ZDT.i"
 	@echo "... test_problem/ZDT.s"
+	@echo "... test_problem/cal_pf.o"
+	@echo "... test_problem/cal_pf.i"
+	@echo "... test_problem/cal_pf.s"
 	@echo "... test_problem/evaluation.o"
 	@echo "... test_problem/evaluation.i"
 	@echo "... test_problem/evaluation.s"

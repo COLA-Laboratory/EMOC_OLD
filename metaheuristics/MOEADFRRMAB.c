@@ -19,7 +19,7 @@ static void InitMOEADFRRMAB()
     int i = 0;int j = 0;
     Distance_info_t distance_sort_list[MAX_SIZE];
 
-    lambda = initialize_uniform_point(&weight_num);
+    lambda = initialize_uniform_point(g_algorithm_entity.algorithm_para.pop_size, &weight_num);
 
     g_algorithm_entity.MOEAD_para.delta = (double *)malloc(sizeof(double )* weight_num);
     if(NULL == g_algorithm_entity.MOEAD_para.delta)

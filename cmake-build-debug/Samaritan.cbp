@@ -258,6 +258,9 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/ZDT.c">
 			<Option target="Samaritan"/>
 		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/cal_pf.c">
+			<Option target="Samaritan"/>
+		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/test_problem/evaluation.c">
 			<Option target="Samaritan"/>
 		</Unit>

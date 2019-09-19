@@ -64,4 +64,8 @@ extern void ctp6(SMRT_individual *ind);
 extern void ctp7(SMRT_individual *ind);
 extern void ctp8(SMRT_individual *ind);
 
+
+//calculate PF point
+extern void cal_pf (int test_problem);
+
 #endif

@@ -9,7 +9,7 @@ int main(int argc, char** argv) {
         return FAIL;
     }
 
-
+/*
     for (g_algorithm_entity.run_index_current = g_algorithm_entity.run_index_begin;
         g_algorithm_entity.run_index_current <= g_algorithm_entity.run_index_end; g_algorithm_entity.run_index_current++)
     {
@@ -103,6 +103,6 @@ int main(int argc, char** argv) {
 
 
     destroy_real_para (argc, argv);
-
+*/
     return 0;
 }

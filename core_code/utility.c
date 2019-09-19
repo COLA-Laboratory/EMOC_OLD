@@ -79,7 +79,7 @@ static int combination (int n, int k)
 
 
 
-extern double **initialize_uniform_point (int *number_weight)
+extern double **initialize_uniform_point (int num, int *number_weight)
 {
     int i, j;
 
@@ -97,7 +97,7 @@ extern double **initialize_uniform_point (int *number_weight)
         layer_size  = combination (g_algorithm_entity.algorithm_para.objective_number + gaps - 1, gaps);
         //printf("[%d]%d\n",gaps,layer_size);
 
-        if(layer_size > g_algorithm_entity.algorithm_para.pop_size) break;
+        if(layer_size > num) break;
         *number_weight = layer_size;
         gaps = gaps + 1;
 

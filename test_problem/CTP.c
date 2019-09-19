@@ -343,3 +343,4 @@ void ctp8(SMRT_individual *ind)
     else
         ind->cv=m+C2;
 }
+

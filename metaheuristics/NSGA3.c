@@ -505,7 +505,7 @@ extern void NSGA3_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
     // initialize population
     initialize_population_real (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
     evaluate_population (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
-    uniform_ref_point = initialize_uniform_point(&ref_point_num);
+    uniform_ref_point = initialize_uniform_point(g_algorithm_entity.algorithm_para.pop_size, &ref_point_num);
 
     distance = (double **)malloc(sizeof(double *) * g_algorithm_entity.algorithm_para.pop_size * 2);
     if (NULL == distance)

@@ -41,7 +41,7 @@ static void InitENSMOEAD()
 
 
 
-    lambda = initialize_uniform_point(&weight_num);
+    lambda = initialize_uniform_point(g_algorithm_entity.algorithm_para.pop_size, &weight_num);
 
 //    for(i = 0;i < weight_num;i++)
 //    {
