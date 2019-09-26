@@ -31,5 +31,7 @@ extern void nondominated_sort_delete_by_ind(SMRT_individual *pop_table, int pop_
 extern void angle_quick_sort(Angle_info_t *angleInfo, int left, int right);
 extern void frr_quick_sort(FRR_info_t *frrInfo, int left, int right);
 extern void non_dominated_sort_MOEADM2M(SMRT_individual *pop_table, int pop_num,int *pop_index);
+extern int non_dominated_sort_KnEA(SMRT_individual *pop_table, int pop_num);
 extern void quicksort_by_obj(SMRT_individual* pop_table, int pop_sort[], int left, int right, int obj_index);
+extern void quicksort_formal(double* array, int left, int right);
 #endif

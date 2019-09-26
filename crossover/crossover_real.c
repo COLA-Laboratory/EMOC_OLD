@@ -516,7 +516,7 @@ extern void crossover_SPEA2_R(SMRT_individual *parent_pop_table, SMRT_individual
 }
  */
  
- extern void RVEA_crossover_operator (SMRT_individual *parent_table, SMRT_individual *offspring_table,int popNum)
+ extern void crossover_RVEA (SMRT_individual *parent_table, SMRT_individual *offspring_table,int popNum)
 {
 
     int i = 0;
@@ -539,3 +539,80 @@ extern void crossover_SPEA2_R(SMRT_individual *parent_pop_table, SMRT_individual
 
     }
 }
+
+
+extern void crossover_KnEA (SMRT_individual *parent_table, SMRT_individual *offspring_table,int *K,int popNum,double *weightedDis)
+{
+
+    int i = 0;
+    int k = 0, l = 0,index = 0;
+    SMRT_individual *parent1 = NULL, *parent2 = NULL;
+
+    for(i = 0;i < popNum/2;i++)
+    {
+        //随即选两个父代
+        k = rnd(0,popNum-1);
+        l = rnd(0,popNum-1);
+        while(k == l)
+            l = rnd(0,popNum-1);
+
+        parent1 = tournament_KnEA(parent_table,k, l, K, weightedDis);
+
+        k = rnd(0,popNum-1);
+        l = rnd(0,popNum-1);
+        while(k == l)
+            l = rnd(0,popNum-1);
+
+        parent2 = tournament_KnEA(parent_table,k, l, K, weightedDis);
+
+        sbx_crossover(parent1,parent2,offspring_table+index,offspring_table+index+1);
+        index+=2;
+
+    }
+}
+
+extern void crossover_AGE2(SMRT_individual *parent_table, SMRT_individual *offspring_table)
+{
+
+    int i = 0;
+    int *matingPool, index2 = 0;
+    int k = 0, l = 0,index = 0;
+
+    SMRT_individual *parent1 = NULL, *parent2 = NULL;
+
+    matingPool = (int *)malloc(sizeof(int) * g_algorithm_entity.algorithm_para.pop_size);
+    for(i = 0;i < g_algorithm_entity.algorithm_para.pop_size;i++)
+        matingPool[i] = -1;
+
+    for(i = 0;i < g_algorithm_entity.algorithm_para.pop_size;i++)
+    {
+        //printf("\n %d",parent_table[i].rank );
+        if(randomperc() < 1/(double)(parent_table[i].rank+1))
+            matingPool[index++] = i;
+    }
+
+    for(i = 0;i < g_algorithm_entity.algorithm_para.pop_size/2;i++)
+    {
+        //随即选两个父代
+        k = rnd(0,index-1);
+        l = rnd(0,index-1);
+        while(k == l)
+            l = rnd(0,index-1);
+
+        parent1 = tournament_AGE2(parent_table,k, l, matingPool);
+
+        k = rnd(0,index-1);
+        l = rnd(0,index-1);
+        while(k == l)
+            l = rnd(0,index-1);
+
+        parent2 = tournament_AGE2(parent_table,k, l, matingPool);
+
+        sbx_crossover(parent1,parent2,offspring_table+index2,offspring_table+index2+1);
+        index2 += 2;
+
+    }
+
+}
+
+

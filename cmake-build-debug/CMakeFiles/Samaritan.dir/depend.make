@@ -119,6 +119,20 @@ CMakeFiles/Samaritan.dir/mating/selection_mating.c.o: ../headers/mating.h
 CMakeFiles/Samaritan.dir/mating/selection_mating.c.o: ../headers/random.h
 CMakeFiles/Samaritan.dir/mating/selection_mating.c.o: ../mating/selection_mating.c
 
+CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.o: ../headers/analysis.h
+CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.o: ../headers/crossover.h
+CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.o: ../headers/dominance_relation.h
+CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.o: ../headers/global.h
+CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.o: ../headers/metaheuristics.h
+CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.o: ../headers/mutation.h
+CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.o: ../headers/population.h
+CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.o: ../headers/print.h
+CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.o: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.o: ../headers/selection.h
+CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.o: ../headers/sort.h
+CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.o: ../headers/utility.h
+CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.o: ../metaheuristics/AGE2.c
+
 CMakeFiles/Samaritan.dir/metaheuristics/CMOEA.c.o: ../headers/analysis.h
 CMakeFiles/Samaritan.dir/metaheuristics/CMOEA.c.o: ../headers/crossover.h
 CMakeFiles/Samaritan.dir/metaheuristics/CMOEA.c.o: ../headers/dominance_relation.h
@@ -185,6 +199,19 @@ CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o: ../headers/population.h
 CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o: ../headers/print.h
 CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o: ../headers/problem.h
 CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o: ../metaheuristics/IBEA.c
+
+CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o: ../headers/analysis.h
+CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o: ../headers/crossover.h
+CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o: ../headers/global.h
+CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o: ../headers/metaheuristics.h
+CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o: ../headers/mutation.h
+CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o: ../headers/population.h
+CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o: ../headers/print.h
+CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o: ../headers/selection.h
+CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o: ../headers/sort.h
+CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o: ../headers/utility.h
+CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o: ../metaheuristics/KnEA.c
 
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o: ../headers/analysis.h
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o: ../headers/crossover.h

@@ -119,6 +119,20 @@ CMakeFiles/Samaritan.dir/mating/selection_mating.c.o
  /home/stone/Samaritan/Samaritan/headers/mating.h
  /home/stone/Samaritan/Samaritan/headers/random.h
  /home/stone/Samaritan/Samaritan/mating/selection_mating.c
+CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.o
+ /home/stone/Samaritan/Samaritan/headers/analysis.h
+ /home/stone/Samaritan/Samaritan/headers/crossover.h
+ /home/stone/Samaritan/Samaritan/headers/dominance_relation.h
+ /home/stone/Samaritan/Samaritan/headers/global.h
+ /home/stone/Samaritan/Samaritan/headers/metaheuristics.h
+ /home/stone/Samaritan/Samaritan/headers/mutation.h
+ /home/stone/Samaritan/Samaritan/headers/population.h
+ /home/stone/Samaritan/Samaritan/headers/print.h
+ /home/stone/Samaritan/Samaritan/headers/problem.h
+ /home/stone/Samaritan/Samaritan/headers/selection.h
+ /home/stone/Samaritan/Samaritan/headers/sort.h
+ /home/stone/Samaritan/Samaritan/headers/utility.h
+ /home/stone/Samaritan/Samaritan/metaheuristics/AGE2.c
 CMakeFiles/Samaritan.dir/metaheuristics/CMOEA.c.o
  /home/stone/Samaritan/Samaritan/headers/analysis.h
  /home/stone/Samaritan/Samaritan/headers/crossover.h
@@ -186,6 +200,19 @@ CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o
  /home/stone/Samaritan/Samaritan/headers/print.h
  /home/stone/Samaritan/Samaritan/headers/problem.h
  /home/stone/Samaritan/Samaritan/metaheuristics/IBEA.c
+CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o
+ /home/stone/Samaritan/Samaritan/headers/analysis.h
+ /home/stone/Samaritan/Samaritan/headers/crossover.h
+ /home/stone/Samaritan/Samaritan/headers/global.h
+ /home/stone/Samaritan/Samaritan/headers/metaheuristics.h
+ /home/stone/Samaritan/Samaritan/headers/mutation.h
+ /home/stone/Samaritan/Samaritan/headers/population.h
+ /home/stone/Samaritan/Samaritan/headers/print.h
+ /home/stone/Samaritan/Samaritan/headers/problem.h
+ /home/stone/Samaritan/Samaritan/headers/selection.h
+ /home/stone/Samaritan/Samaritan/headers/sort.h
+ /home/stone/Samaritan/Samaritan/headers/utility.h
+ /home/stone/Samaritan/Samaritan/metaheuristics/KnEA.c
 CMakeFiles/Samaritan.dir/metaheuristics/MOEAD.c.o
  /home/stone/Samaritan/Samaritan/headers/analysis.h
  /home/stone/Samaritan/Samaritan/headers/crossover.h

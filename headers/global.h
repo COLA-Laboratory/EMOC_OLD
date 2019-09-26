@@ -105,6 +105,8 @@ typedef enum{
 	PICEA_G,
 	SPEA2_R,
 	RVEA,
+    KnEA,
+    AGE2,
 	
 
     //constraint

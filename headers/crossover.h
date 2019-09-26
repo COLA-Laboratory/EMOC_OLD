@@ -18,7 +18,9 @@ extern void crossover_SMSEMOA(SMRT_individual *parent_pop_table, SMRT_individual
 extern void crossover_HypE(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table);
 extern void crossover_MOEADM2M(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table,int K, int S);
 extern void crossover_SPEA2_R(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table,int K);
-extern void RVEA_crossover_operator (SMRT_individual *parent_table, SMRT_individual *offspring,int popNum);
+extern void crossover_RVEA (SMRT_individual *parent_table, SMRT_individual *offspring,int popNum);
+extern void crossover_KnEA (SMRT_individual *parent_table, SMRT_individual *offspring_table,int *K,int popNum,double *weightedDis);
+extern void crossover_AGE2(SMRT_individual *parent_table, SMRT_individual *offspring_table);
 extern void crossover_MOEADFRRMAB(int op,SMRT_individual *parent,SMRT_individual *offspring,SMRT_individual *parent1,
                                   SMRT_individual *parent2,SMRT_individual *parent3,SMRT_individual *parent4,SMRT_individual *parent5);
 								  

@@ -85,3 +85,72 @@ extern SMRT_individual *tournament_by_rank(SMRT_individual *ind1, SMRT_individua
             return (ind2);
     }
 }
+
+extern SMRT_individual *tournament_KnEA(SMRT_individual *pop_table, int k, int l,int *K,double * weightedDis)
+{
+    SMRT_individual *ind1 = pop_table + k;
+    SMRT_individual *ind2 = pop_table + l;
+
+    if(ind1->rank < ind2->rank)
+    {
+        return ind1;
+    }
+    else if(ind2->rank < ind1->rank)
+    {
+        return ind2;
+    }
+    else
+    {
+        if(K[k] == 1 && K[l] == -1)
+        {
+            return ind1;
+        }
+        else if(K[k] == -1 && K[l] == 1)
+        {
+            return ind2;
+        }
+        else
+        {
+            if(weightedDis[k] > weightedDis[l])
+            {
+                return ind1;
+            }
+            else if(weightedDis[k] < weightedDis[l])
+            {
+                return ind2;
+            }
+            else
+            {
+                if ((randomperc()) <= 0.5)
+                    return (ind1);
+                else
+                    return (ind2);
+            }
+        }
+
+    }
+}
+
+extern SMRT_individual *tournament_AGE2(SMRT_individual *pop_table, int k, int l,int *matingPool)
+{
+    SMRT_individual *ind1 = pop_table + matingPool[k];
+    SMRT_individual *ind2 = pop_table + matingPool[l];
+
+    if(ind1->fitness > ind2->fitness)
+        return ind1;
+    else if(ind1->fitness < ind2->fitness)
+        return ind2;
+    else
+    {
+        if ((randomperc()) <= 0.5)
+            return (ind1);
+        else
+            return (ind2);
+    }
+}
+
+
+
+
+
+

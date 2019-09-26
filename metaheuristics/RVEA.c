@@ -300,7 +300,7 @@ extern void RVEA_framework (SMRT_individual *parent_pop, SMRT_individual *offspr
         g_algorithm_entity.iteration_number++;
 
         //交叉变异生成子代
-        RVEA_crossover_operator(parent_pop,offspring_pop,currentPopNum);
+        crossover_RVEA(parent_pop,offspring_pop,currentPopNum);
         mutation_pop(offspring_pop);
         evaluate_population(offspring_pop,(currentPopNum/2)*2);
 

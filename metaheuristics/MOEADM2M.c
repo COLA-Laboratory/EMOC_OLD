@@ -441,7 +441,7 @@ extern void MOEADM2M_framework (SMRT_individual *parent_pop, SMRT_individual *of
         //crossover and mutation
         crossover_MOEADM2M(allocated_pop,offspring_pop,K,S);
 
-        //mutation_MOEADM2M(offspring_pop);
+        mutation_MOEADM2M(offspring_pop);
 
         evaluate_population(offspring_pop,N);
 

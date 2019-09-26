@@ -82,11 +82,12 @@ add_executable(Samaritan main.c
 		metaheuristics/PICEA_G.c
 		metaheuristics/SPEA2_R.c
 		metaheuristics/RVEA.c
+		metaheuristics/KnEA.c
+		metaheuristics/AGE2.c
 
 		metaheuristics/CMOEA.c
 		metaheuristics/CNSGA2.c
-
-		)
+)
 
 
 target_link_libraries(Samaritan m)

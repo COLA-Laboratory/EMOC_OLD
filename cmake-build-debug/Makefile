@@ -771,6 +771,33 @@ mating/selection_mating.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/mating/selection_mating.c.s
 .PHONY : mating/selection_mating.c.s
 
+metaheuristics/AGE2.o: metaheuristics/AGE2.c.o
+
+.PHONY : metaheuristics/AGE2.o
+
+# target to build an object file
+metaheuristics/AGE2.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.o
+.PHONY : metaheuristics/AGE2.c.o
+
+metaheuristics/AGE2.i: metaheuristics/AGE2.c.i
+
+.PHONY : metaheuristics/AGE2.i
+
+# target to preprocess a source file
+metaheuristics/AGE2.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.i
+.PHONY : metaheuristics/AGE2.c.i
+
+metaheuristics/AGE2.s: metaheuristics/AGE2.c.s
+
+.PHONY : metaheuristics/AGE2.s
+
+# target to generate assembly for a file
+metaheuristics/AGE2.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/AGE2.c.s
+.PHONY : metaheuristics/AGE2.c.s
+
 metaheuristics/CMOEA.o: metaheuristics/CMOEA.c.o
 
 .PHONY : metaheuristics/CMOEA.o
@@ -905,6 +932,33 @@ metaheuristics/IBEA.s: metaheuristics/IBEA.c.s
 metaheuristics/IBEA.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.s
 .PHONY : metaheuristics/IBEA.c.s
+
+metaheuristics/KnEA.o: metaheuristics/KnEA.c.o
+
+.PHONY : metaheuristics/KnEA.o
+
+# target to build an object file
+metaheuristics/KnEA.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o
+.PHONY : metaheuristics/KnEA.c.o
+
+metaheuristics/KnEA.i: metaheuristics/KnEA.c.i
+
+.PHONY : metaheuristics/KnEA.i
+
+# target to preprocess a source file
+metaheuristics/KnEA.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.i
+.PHONY : metaheuristics/KnEA.c.i
+
+metaheuristics/KnEA.s: metaheuristics/KnEA.c.s
+
+.PHONY : metaheuristics/KnEA.s
+
+# target to generate assembly for a file
+metaheuristics/KnEA.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.s
+.PHONY : metaheuristics/KnEA.c.s
 
 metaheuristics/MOEAD.o: metaheuristics/MOEAD.c.o
 
@@ -1770,6 +1824,9 @@ help:
 	@echo "... mating/selection_mating.o"
 	@echo "... mating/selection_mating.i"
 	@echo "... mating/selection_mating.s"
+	@echo "... metaheuristics/AGE2.o"
+	@echo "... metaheuristics/AGE2.i"
+	@echo "... metaheuristics/AGE2.s"
 	@echo "... metaheuristics/CMOEA.o"
 	@echo "... metaheuristics/CMOEA.i"
 	@echo "... metaheuristics/CMOEA.s"
@@ -1785,6 +1842,9 @@ help:
 	@echo "... metaheuristics/IBEA.o"
 	@echo "... metaheuristics/IBEA.i"
 	@echo "... metaheuristics/IBEA.s"
+	@echo "... metaheuristics/KnEA.o"
+	@echo "... metaheuristics/KnEA.i"
+	@echo "... metaheuristics/KnEA.s"
 	@echo "... metaheuristics/MOEAD.o"
 	@echo "... metaheuristics/MOEAD.i"
 	@echo "... metaheuristics/MOEAD.s"

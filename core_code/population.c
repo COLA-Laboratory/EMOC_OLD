@@ -63,3 +63,21 @@ extern int merge_population(SMRT_individual *new_pop, SMRT_individual *pop1, int
 
     return i;
 }
+
+
+extern int merge_population_AGE2(SMRT_individual *new_pop, SMRT_individual *pop1, int pop_num1, SMRT_individual *pop2, int pop_num2,int *index)
+{
+    int i = 0, j = 0;
+
+    for (i = 0; i < pop_num1; i++)
+    {
+        copy_individual(pop1 + i, new_pop + i);
+    }
+    for (j = 0; j < pop_num2; j++, i++)
+    {
+        copy_individual(pop2 + index[j], new_pop + i);
+    }
+
+    return i;
+}
+

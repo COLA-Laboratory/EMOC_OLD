@@ -159,6 +159,9 @@
 		<Unit filename="/home/stone/Samaritan/Samaritan/mating/selection_mating.c">
 			<Option target="Samaritan"/>
 		</Unit>
+		<Unit filename="/home/stone/Samaritan/Samaritan/metaheuristics/AGE2.c">
+			<Option target="Samaritan"/>
+		</Unit>
 		<Unit filename="/home/stone/Samaritan/Samaritan/metaheuristics/CMOEA.c">
 			<Option target="Samaritan"/>
 		</Unit>
@@ -172,6 +175,9 @@
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/stone/Samaritan/Samaritan/metaheuristics/IBEA.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/stone/Samaritan/Samaritan/metaheuristics/KnEA.c">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/stone/Samaritan/Samaritan/metaheuristics/MOEAD.c">

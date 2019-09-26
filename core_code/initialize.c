@@ -260,7 +260,7 @@ int initialization_real_para (int argc, char** argv)
         printf("All/Other parameters configured based on the defaut file: \'config.txt\'\n");
     // SBX parameter settings
     g_algorithm_entity.sbxPara.pcross_real = 1.0;
-    g_algorithm_entity.sbxPara.eta_c       = 15.0;
+    g_algorithm_entity.sbxPara.eta_c       = 20.0;
 
     // polynomial mutation parameter settings
     g_algorithm_entity.polynomialPara.pmut_real = 1.0 / g_algorithm_entity.algorithm_para.variable_number;
