@@ -182,7 +182,23 @@ double euclidian_distance (double *a, double *b, int dimension)
 
     return sqrt(distance);
 }
+/* Calculate the NORM distance between two points */
+extern double cal_NORM_distance(SMRT_individual *ind1, SMRT_individual *ind2, double p)
+{
+    int i = 0;
+    double difference = 0, distance = 0;
 
+    distance = 0.0;
+    for(i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+    {
+        difference = fabs(ind1->obj[i] - ind2->obj[i]);
+        distance +=   pow(difference, (double)p);
+    }
+
+    distance = pow(distance, (1/(double)p));
+
+    return distance;
+}
 
 extern void update_ideal_point(SMRT_individual *pop_table, int pop_num)
 {

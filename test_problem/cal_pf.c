@@ -65,6 +65,7 @@ extern void dtlz1_pf(SMRT_PF_DATA *pf, int *pf_size)
         free(obj[i]);
     }
 
+
     free(obj);
     return;
 }
@@ -96,24 +97,12 @@ extern void dtlz2_pf(SMRT_PF_DATA *pf, int *pf_size)
         free(obj[i]);
     }
 
+
     free(obj);
 
     return;
 }
 
-extern void dtlz3_pf(SMRT_PF_DATA *pf, int *pf_size)
-{
-    dtlz2_pf(pf, pf_size);
-
-    return;
-}
-
-extern void dtlz4_pf(SMRT_PF_DATA *pf, int *pf_size)
-{
-    dtlz2_pf(pf, pf_size);
-
-    return;
-}
 
 extern void dtlz5_pf(SMRT_PF_DATA *pf, int *pf_size)
 {
@@ -174,33 +163,12 @@ extern void dtlz5_pf(SMRT_PF_DATA *pf, int *pf_size)
         }
     }
 
-//    for (i = 0; i < (*pf_size); ++i)
-//    {
-//        printf("pf[%d]:  ", i);
-//        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
-//        {
-//            printf("obj%d:%f     ", j, obj[i][j]);
-//        }
-//        printf("\n");
-//    }
-
     for (i = 0; i < (*pf_size); ++i)
     {
         for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
         {
             g_algorithm_entity.PF_Data[i].obj[j] = obj[i][j];
         }
-    }
-
-
-    for (i = 0; i < (*pf_size); ++i)
-    {
-        printf("pf[%d]:  ", i);
-        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
-        {
-            printf("obj%d:%f     ", j, obj[i][j]);
-        }
-        printf("\n");
     }
 
 
@@ -214,18 +182,29 @@ extern void dtlz5_pf(SMRT_PF_DATA *pf, int *pf_size)
     return;
 }
 
-extern void dtlz6_pf(SMRT_PF_DATA *pf, int *pf_size)
-{
-    dtlz5_pf(pf, pf_size);
 
-
-    return;
-}
 
 extern void dtlz7_pf(SMRT_PF_DATA *pf, int *pf_size)
 {
-    int i = 0, j = 0, k = 0, temp = 0;
+    int i = 0, j = 0;
+    double interval[4] = {0, 0.251412, 0.631627, 0.859401}, median = 0;
 
+    median = (interval[2] - interval[1]) / (interval[4] - interval[3] + interval[2] - interval[1]);
+
+    g_algorithm_entity.PF_Data = (SMRT_PF_DATA *) malloc ((*pf_size) * sizeof(SMRT_PF_DATA));
+    for (i = 0; i < (*pf_size); i++)
+        g_algorithm_entity.PF_Data[i].obj = (double *) malloc (g_algorithm_entity.algorithm_para.objective_number * sizeof(double));
+
+
+    for (i = 0; i < (*pf_size); ++i)
+    {
+        printf("pf[%d]:  ", i);
+        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
+        {
+            printf("obj%d:%f     ", j, g_algorithm_entity.PF_Data[i].obj[j]);
+        }
+        printf("\n");
+    }
 
     return;
 }
@@ -462,7 +441,7 @@ extern void cal_pf (int test_problem)
         case DTLZ5:
         case DTLZ6:
             g_algorithm_entity.PF_size = 10000;
-            dtlz6_pf(g_algorithm_entity.PF_Data, &g_algorithm_entity.PF_size);
+            dtlz5_pf(g_algorithm_entity.PF_Data, &g_algorithm_entity.PF_size);
             break;
         case DTLZ7:
             dtlz7_pf(g_algorithm_entity.PF_Data, &g_algorithm_entity.PF_size);

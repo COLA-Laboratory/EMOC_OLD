@@ -219,10 +219,16 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SPEA2_SDE.c">
 			<Option target="Samaritan"/>
 		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/TWO_ARCH2.c">
+			<Option target="Samaritan"/>
+		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/mutation/mutation_operator.c">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/mutation/mutation_real.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/selection/IBEA/Ebsilon+.c">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/fitness.c">

@@ -539,3 +539,29 @@ extern void crossover_SPEA2_R(SMRT_individual *parent_pop_table, SMRT_individual
 
     }
 }
+
+
+extern void crossover_TWO_ARCH2(SMRT_individual *CA, int CA_num, SMRT_individual *DA, int DA_num, SMRT_individual *offspring_pop_table, int off_num)
+{
+    int i = 0, rand_1 = 0, rand_2 = 0;
+    SMRT_individual *parent1 = NULL,*parent2 = NULL;
+
+    for (i = 0; i < off_num; i+= 2)
+    {
+        rand_1 = rnd(0, CA_num - 1);
+        rand_2 = rnd(0, CA_num - 1);
+        if (DOMINATE == check_dominance(CA + rand_1, CA + rand_2))
+        {
+            parent1 = CA + rand_1;
+        }
+        else
+        {
+            parent1 = CA + rand_2;
+        }
+        rand_1 = rnd(0, DA_num - 1);
+        parent2 = DA + rand_1;
+        sbx_crossover(parent1, parent2, offspring_pop_table + i, offspring_pop_table + i + 1);
+    }
+
+    return;
+}

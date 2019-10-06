@@ -14,7 +14,7 @@
 # include <sys/stat.h>
 # include <limits.h>
 # include <regex.h>
-
+#include "list.h"
 
 
 
@@ -113,6 +113,7 @@ typedef enum{
 	PICEA_G,
 	SPEA2_R,
 	RVEA,
+    TWO_ARCH2,
 	
 
     //constraint
@@ -300,6 +301,14 @@ typedef struct Evolution_algorithm_entity{
     MOEAD_PARA MOEAD_para;
     MOEADD_PARA MOEADD_para;
 }SMRT_entity;
+
+typedef struct pop_list
+{
+    struct list_head lst;
+    int index;
+    int flag;
+    SMRT_individual *ind;
+} SMRT_POP_LIST;
 
 typedef struct lists
 {
