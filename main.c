@@ -68,7 +68,10 @@ int main(int argc, char** argv) {
 				break;
 			case RVEA:
                 RVEA_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
-				break;	
+				break;
+            case TWO_ARCH2:
+                TWO_ARCH2_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
             //constraint
 			case CNSGA2:
                 CNSGA2_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);

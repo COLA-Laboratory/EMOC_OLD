@@ -39,6 +39,7 @@ add_executable(Samaritan main.c
         selection/MOEAD/update.c
         selection/MOEAD/subproblem_selection.c
 		selection/NSGA2/niching.c
+		selection/IBEA/Ebsilon+.c
 
 
         test_problem/DTLZ.c
@@ -83,6 +84,7 @@ add_executable(Samaritan main.c
 		metaheuristics/PICEA_G.c
 		metaheuristics/SPEA2_R.c
 		metaheuristics/RVEA.c
+        metaheuristics/TWO_ARCH2.c
 
 		metaheuristics/CMOEA.c
 		metaheuristics/CNSGA2.c

@@ -1,7 +1,7 @@
 #include "../headers/global.h"
 #include "../headers/mutation.h"
-
-
+#include "../headers/population.h"
+#include "../headers/random.h"
 
 extern void mutation_pop(SMRT_individual *pop_table)
 {
@@ -32,4 +32,18 @@ extern void mutation_MOEADM2M(SMRT_individual *pop_table)
     }
     return;
 
+}
+
+extern void mutation_TWO_ARCH2(SMRT_individual *CA, int CA_num, SMRT_individual *pop_table, int pop_num)
+{
+    int i = 0, rand_i = 0;;
+
+
+    for (i = 0; i < pop_num; ++i)
+    {
+        rand_i = rnd(0, CA_num - 1);
+        copy_individual(CA + rand_i, pop_table + i);
+        mutation_ind(pop_table + i);
+    }
+    return;
 }

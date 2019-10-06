@@ -135,84 +135,76 @@ int initialization_real_para (int argc, char** argv)
 
     int flag_default = 1;
 
-    /*reg*/
-    const char *pattern = "\\w+:";
-    const size_t nmatch = 1;
-    regmatch_t pmatch = {0};
-    int cflags = REG_EXTENDED;
-    regex_t reg;
-    int status;
-
 
 
     config = fopen ("../config.txt", "r");
     print_error (config == NULL, 1, "Fail to read configure file: config.txt");
-    regcomp(&reg, pattern, cflags);
-
     while (!feof(config))
     {
+
         fgets(buff, BUFSIZE_M, config);
         formalize_str(buff);
-        status = regexec(&reg, buff, nmatch, &pmatch, 0);
-
-        if(REG_NOMATCH == status)
+        for (i = 0; i < strlen(buff); i++)
         {
-            continue;
+            if (buff[i] == ':')
+            {
+                buff[i] = 0;
+                break;
+            }
         }
 
-        buff[pmatch.rm_eo - 1] = 0;
-
+        i++;
         if (!strcmp(buff, "algorithm_name"))
         {
-            set_algorithm_name(buff + pmatch.rm_eo);
+            set_algorithm_name(buff + i);
         }
         else if (!strcmp(buff, "test_problem"))
         {
-            set_problem_name(buff + pmatch.rm_eo);
+            set_problem_name(buff + i);
         }
         else if (!strcmp(buff, "problem_param"))
         {
-            set_problem_para(buff + pmatch.rm_eo);
+            set_problem_para(buff + i);
         }
         else if (!strcmp(buff, "number_variable"))
         {
-            g_algorithm_entity.algorithm_para.variable_number = atoi(buff + pmatch.rm_eo);
+            g_algorithm_entity.algorithm_para.variable_number = atoi(buff + i);
         }
         else if (!strcmp(buff, "number_objective"))
         {
-            g_algorithm_entity.algorithm_para.objective_number = atoi(buff + pmatch.rm_eo);
+            g_algorithm_entity.algorithm_para.objective_number = atoi(buff + i);
         }
         else if (!strcmp(buff, "popSize"))
         {
-            g_algorithm_entity.algorithm_para.pop_size = atoi(buff + pmatch.rm_eo);
+            g_algorithm_entity.algorithm_para.pop_size = atoi(buff + i);
         }
         else if (!strcmp(buff, "eliteSize"))
         {
-            g_algorithm_entity.algorithm_para.elite_pop_size = atoi(buff + pmatch.rm_eo);
+            g_algorithm_entity.algorithm_para.elite_pop_size = atoi(buff + i);
         }
         else if (!strcmp(buff, "max_evaluation"))
         {
-            g_algorithm_entity.algorithm_para.max_evaluation = atoi(buff + pmatch.rm_eo);
+            g_algorithm_entity.algorithm_para.max_evaluation = atoi(buff + i);
         }
         else if (!strcmp(buff, "runtime_output"))
         {
-            g_algorithm_entity.algorithm_para.runtime_output = atoi(buff + pmatch.rm_eo);
+            g_algorithm_entity.algorithm_para.runtime_output = atoi(buff + i);
         }
         else if (!strcmp(buff, "output_interval"))
         {
-            g_algorithm_entity.algorithm_para.output_interval = atoi(buff + pmatch.rm_eo);
+            g_algorithm_entity.algorithm_para.output_interval = atoi(buff + i);
         }
         else if (!strcmp(buff, "run_index_begin"))
         {
-            g_algorithm_entity.run_index_begin = atoi(buff + pmatch.rm_eo);
+            g_algorithm_entity.run_index_begin = atoi(buff + i);
         }
         else if (!strcmp(buff, "run_index_end"))
         {
-            g_algorithm_entity.run_index_end = atoi(buff + pmatch.rm_eo);
+            g_algorithm_entity.run_index_end = atoi(buff + i);
         }
         else if (!strcmp(buff, "analyse"))
         {
-            set_analyse(buff + pmatch.rm_eo);
+            set_analyse(buff + i);
         }
         else
         {

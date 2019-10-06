@@ -1,9 +1,9 @@
-algorithm_name:PICEA_G
-test_problem:DTLZ5
+algorithm_name:TWO_ARCH2
+test_problem:DTLZ1
 problem_param:
-number_variable:22
-number_objective:10
-popSize:300
+number_variable:12
+number_objective:3
+popSize:200
 eliteSize:100
 max_evaluation:75000
 runtime_output:1
