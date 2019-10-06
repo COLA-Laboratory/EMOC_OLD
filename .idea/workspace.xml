@@ -2,7 +2,8 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="test" targetName="test" />
+      <config projectName="Samaritan" targetName="Samaritan" />
+      <config projectName="Samaritan" targetName="test" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -23,6 +24,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="ProjectId" id="1OUB65dGLCW8orPtw7R2M0MWkK9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../my_work/Samaritan" />
