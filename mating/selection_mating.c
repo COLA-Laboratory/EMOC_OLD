@@ -85,3 +85,23 @@ extern SMRT_individual *tournament_by_rank(SMRT_individual *ind1, SMRT_individua
             return (ind2);
     }
 }
+
+extern SMRT_individual *tournament_by_rank_diversity(SMRT_individual *ind1, SMRT_individual *ind2, double *density)
+{
+
+    if(ind1->rank < ind2->rank)
+    {
+        return ind1;
+    }
+    else if(ind2->rank < ind1->rank)
+    {
+        return ind2;
+    }
+    else
+    {
+        if ((randomperc()) <= 0.5)
+            return (ind1);
+        else
+            return (ind2);
+    }
+}

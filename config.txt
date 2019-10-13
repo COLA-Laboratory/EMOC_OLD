@@ -1,4 +1,4 @@
-algorithm_name:TWO_ARCH2
+algorithm_name:ONEBYONE
 test_problem:DTLZ1
 problem_param:
 number_variable:12

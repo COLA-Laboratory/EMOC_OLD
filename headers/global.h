@@ -114,6 +114,7 @@ typedef enum{
 	SPEA2_R,
 	RVEA,
     TWO_ARCH2,
+    ONEBYONE,
 	
 
     //constraint

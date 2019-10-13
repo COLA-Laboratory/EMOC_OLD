@@ -201,6 +201,9 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/NSGA3.c">
 			<Option target="Samaritan"/>
 		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/ONEBYONE.c">
+			<Option target="Samaritan"/>
+		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/PICEA_G.c">
 			<Option target="Samaritan"/>
 		</Unit>
