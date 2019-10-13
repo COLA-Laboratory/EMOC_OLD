@@ -1149,6 +1149,33 @@ metaheuristics/NSGA3.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.s
 .PHONY : metaheuristics/NSGA3.c.s
 
+metaheuristics/ONEBYONE.o: metaheuristics/ONEBYONE.c.o
+
+.PHONY : metaheuristics/ONEBYONE.o
+
+# target to build an object file
+metaheuristics/ONEBYONE.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/ONEBYONE.c.o
+.PHONY : metaheuristics/ONEBYONE.c.o
+
+metaheuristics/ONEBYONE.i: metaheuristics/ONEBYONE.c.i
+
+.PHONY : metaheuristics/ONEBYONE.i
+
+# target to preprocess a source file
+metaheuristics/ONEBYONE.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/ONEBYONE.c.i
+.PHONY : metaheuristics/ONEBYONE.c.i
+
+metaheuristics/ONEBYONE.s: metaheuristics/ONEBYONE.c.s
+
+.PHONY : metaheuristics/ONEBYONE.s
+
+# target to generate assembly for a file
+metaheuristics/ONEBYONE.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/ONEBYONE.c.s
+.PHONY : metaheuristics/ONEBYONE.c.s
+
 metaheuristics/PICEA_G.o: metaheuristics/PICEA_G.c.o
 
 .PHONY : metaheuristics/PICEA_G.o
@@ -1893,6 +1920,9 @@ help:
 	@echo "... metaheuristics/NSGA3.o"
 	@echo "... metaheuristics/NSGA3.i"
 	@echo "... metaheuristics/NSGA3.s"
+	@echo "... metaheuristics/ONEBYONE.o"
+	@echo "... metaheuristics/ONEBYONE.i"
+	@echo "... metaheuristics/ONEBYONE.s"
 	@echo "... metaheuristics/PICEA_G.o"
 	@echo "... metaheuristics/PICEA_G.i"
 	@echo "... metaheuristics/PICEA_G.s"

@@ -7,6 +7,10 @@ extern void update_nadir_point(SMRT_individual *pop_table, int pop_num);
 extern void update_ideal_point(SMRT_individual *pop_table, int pop_num);
 extern void update_ideal_point_by_ind(SMRT_individual *ind);
 extern void update_nadir_point_by_ind(SMRT_individual *ind);
+extern void initialize_idealpoint (SMRT_individual *pop_table, int pop_num, REFERENCE_POINT *ideal_point);
+extern void initialize_nadirpoint (SMRT_individual *pop_table, int pop_num, REFERENCE_POINT *nadir_point);
+extern void update_nadirpoint_nds (SMRT_individual *pop_table, int pop_num, REFERENCE_POINT *nadir_point);
+
 
 extern double euclidian_distance (double *a, double *b, int dimension);
 extern double cal_NORM_distance(SMRT_individual *ind1, SMRT_individual *ind2, double p);
@@ -17,6 +21,6 @@ extern double CalNorm(double *vector, int dimension);
 extern double CalDotProduct(double *vector1,double *vector2,int dimension);
 extern double CalSin(double *point1, double *point2);
 extern double Cal_perpendicular_distance(double * point1,double *weight);
-
+extern double Calcos(double *point1, double *point2);
 
 #endif

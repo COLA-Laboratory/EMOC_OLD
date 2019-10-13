@@ -34,4 +34,16 @@ extern void list_add_tail(struct list_head *new, struct list_head *head)
     list_add(new, head->prev, head);
 }
 
+extern void list_merge(struct list_head *head1, struct list_head *head2)
+{
+    head1->prev->next = head2->next;
+    head2->next->prev = head1->prev;
+    head1->prev = head2->prev;
+    head2->prev->next = head1;
+
+    LIST_INIT_HEAD(head2);
+    return;
+}
+
+
 /*list*/

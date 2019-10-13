@@ -182,6 +182,7 @@ double euclidian_distance (double *a, double *b, int dimension)
 
     return sqrt(distance);
 }
+
 /* Calculate the NORM distance between two points */
 extern double cal_NORM_distance(SMRT_individual *ind1, SMRT_individual *ind2, double p)
 {
@@ -273,6 +274,70 @@ extern void update_nadir_point_by_ind(SMRT_individual *ind)
 }
 
 
+/* Initialize the ideal point */
+extern void initialize_idealpoint (SMRT_individual *pop_table, int pop_num, REFERENCE_POINT *ideal_point)
+{
+    int i = 0, j = 0;
+    SMRT_individual *ind = NULL;
+
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+        ideal_point->obj[i] = INF;
+    for (i = 0 ;i < pop_num; i++)
+    {
+        ind = pop_table + i;
+        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
+        {
+            if (ind->obj[j] < ideal_point->obj[j])
+                ideal_point->obj[j] = ind->obj[j];
+        }
+    }
+    return;
+}
+
+/* Initialize the nadir point */
+extern void initialize_nadirpoint (SMRT_individual *pop_table, int pop_num, REFERENCE_POINT *nadir_point)
+{
+    int i = 0, j = 0;
+    SMRT_individual *ind = NULL;
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+        g_algorithm_entity.nadir_point.obj[i] = -INF;
+
+    for (i = 0 ;i < pop_num; i ++)
+    {
+        ind = pop_table + i;
+        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
+        {
+            if (ind->obj[j] > nadir_point->obj[j])
+                nadir_point->obj[j] = ind->obj[j];
+        }
+    }
+
+    return;
+}
+
+/* Initialize the nadir point */
+extern void update_nadirpoint_nds (SMRT_individual *pop_table, int pop_num, REFERENCE_POINT *nadir_point)
+{
+    int i = 0, j = 0;
+    SMRT_individual *ind = NULL;
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+        g_algorithm_entity.nadir_point.obj[i] = -INF;
+
+    for (i = 0 ;i < pop_num; i ++)
+    {
+        ind = pop_table + i;
+        if (ind->rank != 0)
+            continue;
+        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
+        {
+            if (ind->obj[j] > nadir_point->obj[j])
+                nadir_point->obj[j] = ind->obj[j];
+        }
+    }
+
+    return;
+}
+
 
 
 
@@ -359,7 +424,15 @@ extern double CalNorm(double *vector, int dimension)
 
 }
 
+extern double Calcos(double *point1, double *point2)
+{
+    int Dimension = g_algorithm_entity.algorithm_para.objective_number;
+    double cos = 0;
 
+    cos = CalDotProduct(point1,point2,Dimension)/(CalNorm(point1,Dimension) * CalNorm(point2,Dimension));
+
+    return cos;
+}
 
 extern double CalSin(double *point1, double *point2)
 {
