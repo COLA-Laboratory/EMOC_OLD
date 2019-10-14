@@ -1,4 +1,5 @@
 #include "../headers/global.h"
+#include "../headers/population.h"
 #include "../headers/utility.h"
 
 
@@ -460,4 +461,415 @@ extern double Cal_perpendicular_distance(double * point1,double *weight)
     d2 = d2* sin;
 
     return d2;
+}
+
+
+
+
+//-------------------------------------------
+//-------------------------------------------
+/* Solve the linear system Ax = b */
+extern double* gaussianElimination (double **A, double *b, double *x)
+{
+    int i, j, p;
+    int N, max;
+    double alpha, sum, t;
+    double *temp;
+
+    N = g_algorithm_entity.algorithm_para.objective_number;
+    for (p = 0; p < N; p++)
+    {
+        // find pivot row and swap
+        max = p;
+        for (i = p + 1; i < N; i++)
+            if (fabs(A[i][p]) > fabs(A[max][p]))
+                max = i;
+        temp   = A[p];
+        A[p]   = A[max];
+        A[max] = temp;
+        t      = b[p];
+        b[p]   = b[max];
+        b[max] = t;
+
+        // singular or nearly singular
+        if (fabs(A[p][p]) <= EPS)
+            return NULL;
+
+        // pivot within A and b
+        for (i = p + 1; i < N; i++)
+        {
+            alpha = A[i][p] / A[p][p];
+            b[i] -= alpha * b[p];
+            for ( j = p; j < N; j++)
+                A[i][j] -= alpha * A[p][j];
+        }
+    }
+
+    // back substitution
+    for (i = N - 1; i >= 0; i--)
+    {
+        sum = 0.0;
+        for (j = i + 1; j < N; j++)
+            sum += A[i][j] * x[j];
+        x[i] = (b[i] - sum) / A[i][i];
+    }
+
+    return x;
+}
+
+
+extern void getExtremePoints (SMRT_individual *candidate_pop, SMRT_individual *extreme_pop, int num_candidates)
+{
+    int i = 0, j =0, k = 0;
+    int min_idx = 0;
+    double *max_value = NULL, **weight_vec = NULL;
+    double temp_ASF = 0, temp_max_value = 0, min_value = 0;
+
+
+    max_value = (double *)malloc(sizeof(double) * num_candidates);
+    if (NULL == max_value)
+    {
+        printf("in the NSGA3_getExtremePoints, malloc max_value Failed\n");
+        return;
+    }
+
+    weight_vec = (double **)malloc(sizeof(double *) * g_algorithm_entity.algorithm_para.objective_number);
+    if (NULL == weight_vec)
+    {
+        printf("in the NSGA3_getExtremePoints, malloc weight_vec Failed\n");
+        return;
+    }
+
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+    {
+        weight_vec[i] = (double *)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
+        if (NULL == weight_vec[i])
+        {
+            printf("in the NSGA3_getExtremePoints, malloc weight_vec[i] Failed\n");
+            return;
+        }
+    }
+
+    /*initialize weight vector*/
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+    {
+        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
+        {
+            if (i == j)
+            {
+                weight_vec[i][j] = 1;
+            }
+            else
+            {
+                weight_vec[i][j] = EPS;
+
+            }
+        }
+    }
+
+    /*minimum ASF*/
+
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+    {
+        for (j = 0; j < num_candidates; j++)
+        {
+            temp_max_value = 0;
+            for (k = 0; k < g_algorithm_entity.algorithm_para.objective_number; k++)
+            {
+                temp_ASF = (candidate_pop[j].obj[k] - g_algorithm_entity.ideal_point.obj[k]) / weight_vec[i][k];
+
+                if (temp_ASF > temp_max_value)
+                {
+                    temp_max_value = temp_ASF;
+                }
+            }
+            max_value[j] = temp_max_value;
+        }
+
+        min_idx = 0;
+        min_value = max_value[0];
+
+        for (j = 1; j < num_candidates; j++)
+        {
+            if (max_value[j] < min_value)
+            {
+                min_idx = j;
+            }
+        }
+
+        copy_individual(candidate_pop + min_idx, extreme_pop + i);
+    }
+
+    free(max_value);
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+    {
+        free(weight_vec[i]);
+    }
+    free(weight_vec);
+    return;
+}
+
+
+extern void getIntercepts (SMRT_individual *extreme_pop, SMRT_individual *candidate_pop, int num_candidates, double *intercept)
+{
+    int i = 0, j = 0;
+    int flag = 0;
+    double **arg = NULL, *u = NULL, *max_obj_value = NULL;
+
+
+    arg = (double **)malloc(sizeof(double *) * g_algorithm_entity.algorithm_para.objective_number);
+    if (NULL == arg)
+    {
+        printf("in the NSGA3_getExtremePoints, malloc arg Failed\n");
+        return;
+    }
+
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+    {
+        arg[i] = (double *)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
+        if (NULL == arg[i])
+        {
+            printf("in the NSGA3_getExtremePoints, malloc arg[i] Failed\n");
+            return;
+        }
+    }
+
+    max_obj_value = (double *)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
+    if (NULL == max_obj_value)
+    {
+        printf("in the NSGA3_getExtremePoints, malloc max_obj_value Failed\n");
+        return;
+    }
+
+    u = (double *)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
+    if (NULL == u)
+    {
+        printf("in the NSGA3_getExtremePoints, malloc u Failed\n");
+        return;
+    }
+
+    /* initialize */
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+    {
+        max_obj_value[i] = -EPS ;
+        g_algorithm_entity.nadir_point.obj[i] = -EPS ;  //??
+        //nadirPoint[i] =  1e4;
+    }
+
+    /* traverse all the individuals of the population and get their maximum value of objective (The simplest way of
+     * calculating the nadir point is to get these maximum values among the first front individuals) */
+    for (i = 0; i < num_candidates; i++)
+    {
+        for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
+        {
+            if (max_obj_value[j] < candidate_pop[i].obj[j] - g_algorithm_entity.ideal_point.obj[j])
+                max_obj_value[j] = candidate_pop[i].obj[j] - g_algorithm_entity.ideal_point.obj[j];
+            if (candidate_pop[i].rank == 0)
+            {
+                if (g_algorithm_entity.nadir_point.obj[j] < candidate_pop[i].obj[j] - g_algorithm_entity.ideal_point.obj[j])
+                    g_algorithm_entity.nadir_point.obj[j] = candidate_pop[i].obj[j] - g_algorithm_entity.ideal_point.obj[j];
+            }
+        }
+    }
+
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+    {
+        u[i] = 1;
+    }
+
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+        for ( j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
+            arg[i][j] = extreme_pop[i].obj[j] - g_algorithm_entity.ideal_point.obj[j];
+
+
+    if (gaussianElimination(arg, u, intercept) == NULL)
+    {
+        flag = 1;
+    }
+
+    if (!flag)
+    {
+        for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+            intercept[i] = 1 / intercept[i];
+    }
+    else // If the follwing condition is true this means that you have to resort to the nadir point
+    {
+        for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+            intercept[i] = g_algorithm_entity.nadir_point.obj[i];
+    }
+
+    /* If any of the intercepts is still Zero (which means that one of the nadir values is Zero), then use the maximum
+     * value of each objective instead (remember that these values were calculated among all the individuals, not just
+     * the first-front individuals) */
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+    {
+        if (intercept[i] < EPS)
+        {
+            for (j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
+                intercept[j] = max_obj_value[j];
+            break;
+        }
+    }
+
+
+    free(u);
+    free(max_obj_value);
+    for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
+    {
+        free(arg[i]);
+    }
+    free(arg);
+    return;
+}
+
+//vector u minus vector v
+extern double* VectorSubtract(int length, double* u, double* v)
+{
+    int i;
+
+    for (i=0; i<length; i++)
+    {
+        u[i] -= v[i];
+    }
+
+    return u;
+
+}
+
+//vector clone
+extern double* VectorClone(int length, double* original)
+{
+    int i;
+    double* clone = (double*)calloc(length, sizeof(double));
+
+    for (i=0; i<length; i++)
+    {
+        clone[i] = original[i];
+    }
+
+    return clone;
+}
+
+//vector clone
+extern void VectorDestroy(double* v)
+{
+    free(v);
+}
+
+extern double* VectorAdd(int length, double* u, double* v)
+{
+    int i;
+
+    for (i=0; i<length; i++)
+    {
+        u[i] += v[i];
+    }
+
+    return u;
+}
+
+extern double* VectorMultiply(int length, double* v, double c)
+{
+    int i;
+
+    for (i=0; i<length; i++)
+    {
+        v[i] *= c;
+    }
+
+    return v;
+}
+
+extern int VectorIsZero(int length, double* v)
+{
+    int i;
+
+    for (i=0; i<length; i++)
+    {
+        if (fabs(v[i]) > EPS)
+        {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+extern double VectorMagnitude(int length, double* u)
+{
+    double norm = 0;
+
+    for (int i = 0;i < length;i++)
+    {
+        norm += (u[i]*u[i]);
+    }
+
+    return sqrt(norm);
+}
+
+extern double VectorDot(int length, double* u, double* v)
+{
+    int i;
+    double dot = 0.0;
+
+    for (i=0; i<length; i++) {
+        dot += u[i] * v[i];
+    }
+
+    return dot;
+}
+
+extern double* VectorProject(int length, double* u, double* v)
+{
+    return VectorMultiply(length, v, VectorDot(length, u, v)/VectorDot(length, v, v));
+}
+
+extern double* VectorNormalize(int length, double* u)
+{
+    return VectorMultiply(length, u, 1.0/VectorMagnitude(length, u));
+}
+
+extern double* VectorOrthogonalize(int length, double* v, int size, double** basis)
+{
+    int i;
+
+    for (i=0; i<size; i++)
+    {
+        double* u = VectorClone(length, basis[i]);
+        v = VectorSubtract(length, v, VectorProject(length, v, u));
+        VectorDestroy(u);
+    }
+
+    return v;
+}
+
+extern double RandomGaussian(double mean, double stdev)
+{
+
+    static double nextNextGaussian;
+    static int haveNextNextGaussian = 0;
+    double r;
+
+    if (haveNextNextGaussian)
+    {
+        haveNextNextGaussian = 0;
+        r = nextNextGaussian;
+    }
+    else
+    {
+        double v1, v2, s, m;
+
+        do {
+            v1 = rndreal(-1.0, 1.0);
+            v2 = rndreal(-1.0, 1.0);
+            s = v1*v1 + v2*v2;
+        } while (s >= 1 || s == 0);
+
+        m = sqrt(-2 * log(s)/s);
+        nextNextGaussian = v2 * m;
+        haveNextNextGaussian = 1;
+        r = v1 * m;
+    }
+
+    return stdev*r + mean;
 }

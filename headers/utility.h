@@ -23,4 +23,19 @@ extern double CalSin(double *point1, double *point2);
 extern double Cal_perpendicular_distance(double * point1,double *weight);
 extern double Calcos(double *point1, double *point2);
 
+extern double* gaussianElimination (double **A, double *b, double *x);
+extern void getExtremePoints (SMRT_individual *candidate_pop, SMRT_individual *extreme_pop, int num_candidates);
+extern void getIntercepts (SMRT_individual *extreme_pop, SMRT_individual *candidate_pop, int num_candidates, double *intercept);
+
+extern double* VectorClone(int length, double* original);
+extern void VectorDestroy(double* v);
+extern double* VectorAdd(int length, double* u, double* v);
+extern double* VectorMultiply(int length, double* v, double c);
+extern int VectorIsZero(int length, double* v);
+extern double VectorMagnitude(int length, double* u);
+extern double VectorDot(int length, double* u, double* v);
+extern double* VectorProject(int length, double* u, double* v);
+extern double* VectorNormalize(int length, double* u);
+extern double* VectorOrthogonalize(int length, double* v, int size, double** basis);
+extern double RandomGaussian(double mean, double stdev);
 #endif

@@ -115,6 +115,12 @@ typedef enum{
 	RVEA,
     TWO_ARCH2,
     ONEBYONE,
+	VaEA,
+    EFR_RR,
+    MOEAD_AWA,
+    KnEA,
+    AGE2,
+    Borg,
 	
 
     //constraint
@@ -233,6 +239,7 @@ typedef struct{
 
 typedef struct
 {
+    double *variable;
     double *obj;
 }SMRT_PF_DATA;
 
@@ -249,6 +256,7 @@ typedef struct
     double *obj;
     double fitness;
     double cv;
+    int operatorNum;
 }SMRT_individual;
 
 typedef struct{

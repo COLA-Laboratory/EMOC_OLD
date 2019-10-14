@@ -75,6 +75,26 @@ int main(int argc, char** argv) {
             case ONEBYONE:
                 ONEBYONE_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
+            case VaEA:
+                VaEA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
+            case EFR_RR:
+                EFR_RR_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
+            case MOEAD_AWA:
+                MOEAD_AWA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
+            case AGE2:
+                AGE2_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
+            case KnEA:
+                KnEA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
+            case Borg:
+                Borg_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
+
+
             //constraint
 			case CNSGA2:
                 CNSGA2_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
@@ -89,7 +109,7 @@ int main(int argc, char** argv) {
         }
     }
 
-    initialize_nadirpoint(g_algorithm_entity.parent_population, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.nadir_point);
+    //initialize_nadirpoint(g_algorithm_entity.parent_population, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.nadir_point);
 
     printf("The output as follows:\n");
     for (int i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)

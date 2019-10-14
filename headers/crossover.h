@@ -24,4 +24,9 @@ extern void crossover_MOEADFRRMAB(int op,SMRT_individual *parent,SMRT_individual
                                   SMRT_individual *parent2,SMRT_individual *parent3,SMRT_individual *parent4,SMRT_individual *parent5);
 extern void crossover_ONEBYONE (SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table);
 extern void crossover_TWO_ARCH2(SMRT_individual *CA, int CA_num, SMRT_individual *DA, int DA_num, SMRT_individual *offspring_pop_table, int off_num);
+extern void crossover_RVEA (SMRT_individual *parent_table, SMRT_individual *offspring,int popNum);
+extern void crossover_KnEA (SMRT_individual *parent_table, SMRT_individual *offspring_table,int *K,int popNum,double *weightedDis);
+extern void crossover_AGE2(SMRT_individual *parent_table, SMRT_individual *offspring_table);
+extern void crossover_Borg(SMRT_individual *parent_table,int pop_num, SMRT_individual *Archive,int archive_num,SMRT_individual *offspring);
+extern void real_crossover_Borg(SMRT_individual *parent_table,int pop_num, SMRT_individual *Archive,int archive_num,SMRT_individual *offspring,int currentOPNum, int tournmentSize);
 #endif

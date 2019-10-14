@@ -13,7 +13,7 @@
 
 
 //g_algorithm_entity.MOEAD_para.neighbor_size 要变的
-
+//注意种群大小(weight num)不能比邻居size小，会报错,
 
 //计算两个权重之间的距离
 static double CalDistance(double *weight1, double *weight2,int number)
@@ -42,16 +42,6 @@ static void InitENSMOEAD()
 
 
     lambda = initialize_uniform_point(g_algorithm_entity.algorithm_para.pop_size, &weight_num);
-
-//    for(i = 0;i < weight_num;i++)
-//    {
-//        for(j = 0;j < g_algorithm_entity.algorithm_para.objective_number;j++)
-//        {
-//            if(fabs(lambda[i][j]-0)<EPS)
-//                lambda[i][j] = 0.00001;
-//
-//        }
-//    }
 
     g_algorithm_entity.MOEAD_para.delta = (double *)malloc(sizeof(double )* weight_num);
     if(NULL == g_algorithm_entity.MOEAD_para.delta)
@@ -369,13 +359,8 @@ extern void ENSMOEAD_framework (SMRT_individual *parent_pop, SMRT_individual *of
             for(i = 0;i < NS_number;i++)
             {
                 R[i] = FEs_success[i]/FEs[i] + 0.0001;
-                //printf("%f\t%f\t%f\t",FEs_success[i],FEs[i],FEs_success[i]/FEs[i]);
             }
-           // printf("\n");
             UpdatePro(P,R,NS_number);
-//
-//            printf("(%f %f %f %f %f) %d\n",P[0],P[1],P[2],P[3],P[4],g_algorithm_entity.MOEAD_para.neighbor_size);
-//            printf("(%f %f %f %f %f) \n\n\n",R[0],R[1],R[2],R[3],R[4]);
 
             for(i = 0;i < NS_number;i++)
             {
@@ -398,7 +383,11 @@ extern void ENSMOEAD_framework (SMRT_individual *parent_pop, SMRT_individual *of
     //释放内存
     FreeMemory();
     free(selected);
-    free(NS);free(FEs);free(FEs_success);free(R);free(P);
+    free(NS);
+    free(FEs);
+    free(R);
+    free(P);
+    free(FEs_success);
 
     return;
 

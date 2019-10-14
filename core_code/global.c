@@ -20,7 +20,12 @@ char *g_algorithm_name_str[ALGORITHM_NAME_NUM] = {
 		"RVEA",
 		"TWO_ARCH2",
 		"ONEBYONE",
-		
+        "VaEA",
+        "EFR_RR",
+        "MOEAD_AWA",
+		"KnEA",
+		"AGE2",
+		"Borg",
         //constraint
 		"CMOEA",
 		"CNSGA2"

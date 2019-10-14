@@ -27,7 +27,20 @@ extern void SPEA2_R_framework(SMRT_individual *parent_pop, SMRT_individual *offs
 extern void RVEA_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
 extern void TWO_ARCH2_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
 extern void ONEBYONE_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
+extern void VaEA_framework(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
+extern void EFR_RR_framework(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
+extern void MOEAD_AWA_framework(SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
+extern void KnEA_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
+extern void AGE2_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
+extern void Borg_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
 //constraint
 extern void CNSGA2_framework(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
 extern void CMOEA_framework(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
+
+
+typedef struct {
+    int Solution_index;
+    int  K_neighbor_index[2];
+}K_Neighbor_Of_Solution;
+
 #endif

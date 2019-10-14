@@ -8,6 +8,7 @@
 #include "../headers/selection.h"
 
 
+
 void environmental_selection (SMRT_individual *mixed_ptr, SMRT_individual *new_ptr, int *flag, double *fitcomp, int size)
 {
     int i, j;

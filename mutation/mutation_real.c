@@ -18,6 +18,11 @@ extern void mutation_pop(SMRT_individual *pop_table)
 extern void mutation_ind(SMRT_individual *individual)
 {
     polymut_ind(individual);
+//    for(int i = 0;i < g_algorithm_entity.algorithm_para.variable_number;i++)
+//    {
+//        printf("%f ",individual->variable[i]);
+//    }
+//    printf("\n");
     return;
 }
 
