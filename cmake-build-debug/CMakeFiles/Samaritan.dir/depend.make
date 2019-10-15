@@ -39,6 +39,7 @@ CMakeFiles/Samaritan.dir/core_code/utility.c.o: ../core_code/utility.c
 CMakeFiles/Samaritan.dir/core_code/utility.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/core_code/utility.c.o: ../headers/list.h
 CMakeFiles/Samaritan.dir/core_code/utility.c.o: ../headers/population.h
+CMakeFiles/Samaritan.dir/core_code/utility.c.o: ../headers/random.h
 CMakeFiles/Samaritan.dir/core_code/utility.c.o: ../headers/utility.h
 
 CMakeFiles/Samaritan.dir/crossover/crossover_operator.c.o: ../crossover/crossover_operator.c
@@ -574,6 +575,22 @@ CMakeFiles/Samaritan.dir/metaheuristics/VaEA.c.o: ../headers/selection.h
 CMakeFiles/Samaritan.dir/metaheuristics/VaEA.c.o: ../headers/sort.h
 CMakeFiles/Samaritan.dir/metaheuristics/VaEA.c.o: ../headers/utility.h
 CMakeFiles/Samaritan.dir/metaheuristics/VaEA.c.o: ../metaheuristics/VaEA.c
+
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o: ../headers/analysis.h
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o: ../headers/crossover.h
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o: ../headers/global.h
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o: ../headers/list.h
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o: ../headers/memory.h
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o: ../headers/metaheuristics.h
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o: ../headers/mutation.h
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o: ../headers/population.h
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o: ../headers/print.h
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o: ../headers/random.h
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o: ../headers/selection.h
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o: ../headers/sort.h
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o: ../headers/utility.h
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o: ../metaheuristics/tDEA.c
 
 CMakeFiles/Samaritan.dir/mutation/mutation_operator.c.o: ../headers/global.h
 CMakeFiles/Samaritan.dir/mutation/mutation_operator.c.o: ../headers/list.h

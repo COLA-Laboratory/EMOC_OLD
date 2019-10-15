@@ -360,6 +360,7 @@ extern void tDEA_framework (SMRT_individual *parent_pop, SMRT_individual* offspr
 
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
+        printf("here\n");
         g_algorithm_entity.iteration_number++;
         print_progress ();
 

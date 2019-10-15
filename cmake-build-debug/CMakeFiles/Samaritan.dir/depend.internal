@@ -40,6 +40,7 @@ CMakeFiles/Samaritan.dir/core_code/utility.c.o
  /home/stone/TMEP/Samaritan/headers/global.h
  /home/stone/TMEP/Samaritan/headers/list.h
  /home/stone/TMEP/Samaritan/headers/population.h
+ /home/stone/TMEP/Samaritan/headers/random.h
  /home/stone/TMEP/Samaritan/headers/utility.h
 CMakeFiles/Samaritan.dir/crossover/crossover_operator.c.o
  /home/stone/TMEP/Samaritan/crossover/crossover_operator.c
@@ -575,6 +576,22 @@ CMakeFiles/Samaritan.dir/metaheuristics/VaEA.c.o
  /home/stone/TMEP/Samaritan/headers/sort.h
  /home/stone/TMEP/Samaritan/headers/utility.h
  /home/stone/TMEP/Samaritan/metaheuristics/VaEA.c
+CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o
+ /home/stone/TMEP/Samaritan/headers/analysis.h
+ /home/stone/TMEP/Samaritan/headers/crossover.h
+ /home/stone/TMEP/Samaritan/headers/global.h
+ /home/stone/TMEP/Samaritan/headers/list.h
+ /home/stone/TMEP/Samaritan/headers/memory.h
+ /home/stone/TMEP/Samaritan/headers/metaheuristics.h
+ /home/stone/TMEP/Samaritan/headers/mutation.h
+ /home/stone/TMEP/Samaritan/headers/population.h
+ /home/stone/TMEP/Samaritan/headers/print.h
+ /home/stone/TMEP/Samaritan/headers/problem.h
+ /home/stone/TMEP/Samaritan/headers/random.h
+ /home/stone/TMEP/Samaritan/headers/selection.h
+ /home/stone/TMEP/Samaritan/headers/sort.h
+ /home/stone/TMEP/Samaritan/headers/utility.h
+ /home/stone/TMEP/Samaritan/metaheuristics/tDEA.c
 CMakeFiles/Samaritan.dir/mutation/mutation_operator.c.o
  /home/stone/TMEP/Samaritan/headers/global.h
  /home/stone/TMEP/Samaritan/headers/list.h
