@@ -27,6 +27,8 @@ extern double* gaussianElimination (double **A, double *b, double *x);
 extern void getExtremePoints (SMRT_individual *candidate_pop, SMRT_individual *extreme_pop, int num_candidates);
 extern void getIntercepts (SMRT_individual *extreme_pop, SMRT_individual *candidate_pop, int num_candidates, double *intercept);
 
+
+extern double* VectorSubtract(int length, double* u, double* v);
 extern double* VectorClone(int length, double* original);
 extern void VectorDestroy(double* v);
 extern double* VectorAdd(int length, double* u, double* v);

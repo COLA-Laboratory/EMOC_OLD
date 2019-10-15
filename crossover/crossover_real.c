@@ -878,3 +878,37 @@ extern void real_crossover_Borg(SMRT_individual *parent_table,int pop_num, SMRT_
     destroy_memory_for_pop(&parent_list,10);
 
 }
+
+
+extern void crossover_tDEA(SMRT_individual *parent_table, SMRT_individual *offspring_table,int popNum)
+{
+
+    int i = 0;
+    int k = 0, l = 0,index = 0;
+    SMRT_individual *parent1 = NULL, *parent2 = NULL;
+
+    for(i = 0;i < popNum/2;i++)
+    {
+        //随即选两个父代
+        k = rnd(0,popNum-1);
+        l = rnd(0,popNum-1);
+        while(k == l)
+            l = rnd(0,popNum-1);
+
+        parent1 = parent_table + k;
+        parent2 = parent_table + l;
+
+        sbx_crossover(parent1,parent2,offspring_table+index,offspring_table+index+1);
+        index+=2;
+
+    }
+}
+
+
+
+
+
+
+
+
+

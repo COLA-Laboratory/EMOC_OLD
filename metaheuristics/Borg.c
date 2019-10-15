@@ -318,69 +318,6 @@ static void UpdateArchive(SMRT_individual **Archive, SMRT_individual *offspring,
     return;
 }
 
-//static void DirectUpdateArchive(SMRT_individual **Archive, SMRT_individual *offspring, double epsilon)
-//{
-//
-//    int i = 0;
-//    int flag = 0 , isAppend = 1;
-//    int result , oldArchiveNum = archive_num;
-//    int *index, count = 0;
-//    SMRT_individual *newArchive;
-//    SMRT_individual *tempPoint;
-//
-//    int newArchiveNum = archive_num + 1;
-//    allocate_memory_for_pop(&newArchive,newArchiveNum);
-//    index = (int *)malloc(sizeof(int ) * archive_num);
-//
-//
-//    for(i = 0;i < archive_num;i++)
-//    {
-//        flag = 0;                  //flag means that the current ind is dominated by offspring or not
-//        result = CheckDominance_Borg(offspring->obj,(*Archive)[i].obj,epsilon);
-//
-//        if(result == 1)
-//        {
-//            epsilonProgress += 1;
-//        }
-//
-//        if(result == 1 || result == 2)
-//            flag = 1;
-//        else if(result == -1 || result == -2)
-//        {
-//            isAppend = 0;
-//            break;
-//        }
-//
-//        if(flag == 0)
-//            index[count++] = i;
-//
-//    }
-//
-//    if(isAppend == 1)
-//    {
-//        for(i = 0;i < count;i++)
-//        {
-//            copy_individual((*Archive) + index[i],newArchive + i);
-//        }
-//        copy_individual(offspring,newArchive + count);
-//        archive_num = count+1;
-//
-//        tempPoint = *Archive;
-//        *Archive = newArchive;
-//
-//        if(g_algorithm_entity.algorithm_para.current_evaluation == 1)
-//            destroy_memory_for_pop(&tempPoint,g_algorithm_entity.algorithm_para.pop_size);
-//        else
-//            destroy_memory_for_pop(&tempPoint,oldArchiveNum);
-//    }
-//    else
-//    {
-//        destroy_memory_for_pop(&newArchive,newArchiveNum);
-//    }
-//
-//
-//    return;
-//}
 
 static  void ReStart(SMRT_individual **Archive, SMRT_individual **parent_pop,double epsilon, double tao,int *tournamentSize,int *evaluationFromLast)
 {
@@ -577,10 +514,8 @@ extern void Borg_framework (SMRT_individual *parent_pop, SMRT_individual *offspr
                 evaluationFromLast = 0;
 
             }
-            clock_t endtime = clock();
 
             //if(g_algorithm_entity.algorithm_para.current_evaluation %100 == 0)
-           // printf("allocate time : %.20f s\n",(double)(endtime-starttime)/CLOCKS_PER_SEC);
 
             if(updateNum >=updateInterval)
             {
@@ -595,15 +530,10 @@ extern void Borg_framework (SMRT_individual *parent_pop, SMRT_individual *offspr
                 updateNum = 0;
             }
 
-//        }
 
         // track the current evolutionary progress, including population and metrics
        // track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
     }
-
-
-
-   // initialize_nadirpoint(g_algorithm_entity.parent_population, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.nadir_point);
 
     printf("The output as follows:\n");
     for (int i = 0; i < archive_num; i++)

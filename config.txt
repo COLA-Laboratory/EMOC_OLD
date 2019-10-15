@@ -1,11 +1,11 @@
-algorithm_name:TWO_ARCH2
+algorithm_name:Borg
 test_problem:DTLZ1
 problem_param:
-number_variable:10
-number_objective:3
+number_variable:13
+number_objective:10
 popSize:200
 eliteSize:100
-max_evaluation:40000
+max_evaluation:250000
 runtime_output:1
 output_interval:1
 run_index_begin:1

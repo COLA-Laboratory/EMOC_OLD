@@ -1,6 +1,7 @@
 #include "../headers/global.h"
 #include "../headers/population.h"
 #include "../headers/utility.h"
+#include "../headers/random.h"
 
 
 
@@ -449,16 +450,10 @@ extern double Cal_perpendicular_distance(double * point1,double *weight)
 {
     double d2 = 0;
     double sin = 0;
-    double temp[3] = {0};
 
-    for(int i = 0;i < g_algorithm_entity.algorithm_para.objective_number;i++)
-    {
-
-        temp[i] = (point1[i] - g_algorithm_entity.ideal_point.obj[i])/(g_algorithm_entity.nadir_point.obj[i] - g_algorithm_entity.ideal_point.obj[i]);
-    }
-    sin = CalSin(temp,weight);
-    d2 = CalNorm(temp,g_algorithm_entity.algorithm_para.objective_number);
-    d2 = d2* sin;
+    sin = CalSin(point1,weight);
+    d2 = CalNorm(point1,g_algorithm_entity.algorithm_para.objective_number);
+    d2 = d2 * sin;
 
     return d2;
 }
@@ -593,6 +588,7 @@ extern void getExtremePoints (SMRT_individual *candidate_pop, SMRT_individual *e
         {
             if (max_value[j] < min_value)
             {
+                min_value = max_value[j];
                 min_idx = j;
             }
         }

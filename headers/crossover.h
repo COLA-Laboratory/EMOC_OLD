@@ -5,6 +5,10 @@
 extern void sbx_crossover (SMRT_individual *parent1, SMRT_individual *parent2, SMRT_individual *child1, SMRT_individual *child2);
 extern void de_crossover (SMRT_individual *parent1, SMRT_individual *parent2, SMRT_individual *parent3, SMRT_individual*offspring);
 extern void MOEADM2M_crossover_operator (SMRT_individual *parent1, SMRT_individual *parent2, SMRT_individual *offspring);
+extern void PCX(SMRT_individual *parent_table,int numberOfParents,SMRT_individual *offspring, double zeta, double eta);
+extern void UniformMutation(SMRT_individual *parent , SMRT_individual *offspring);
+extern void SPX(SMRT_individual *parent_table,  int num, SMRT_individual *offspring, double expansion);
+extern void UNDX(SMRT_individual *parent_table,int numOfParents,SMRT_individual *offspring, double zeta, double eta);
 
 
 
@@ -29,4 +33,6 @@ extern void crossover_KnEA (SMRT_individual *parent_table, SMRT_individual *offs
 extern void crossover_AGE2(SMRT_individual *parent_table, SMRT_individual *offspring_table);
 extern void crossover_Borg(SMRT_individual *parent_table,int pop_num, SMRT_individual *Archive,int archive_num,SMRT_individual *offspring);
 extern void real_crossover_Borg(SMRT_individual *parent_table,int pop_num, SMRT_individual *Archive,int archive_num,SMRT_individual *offspring,int currentOPNum, int tournmentSize);
+extern void crossover_tDEA(SMRT_individual *parent_table, SMRT_individual *offspring_table,int popNum);
+
 #endif

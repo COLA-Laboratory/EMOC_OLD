@@ -121,6 +121,7 @@ typedef enum{
     KnEA,
     AGE2,
     Borg,
+    tDEA,
 	
 
     //constraint

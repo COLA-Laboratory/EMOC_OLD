@@ -67,6 +67,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Samaritan.dir/metaheuristics/Borg.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/CMOEA.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/CNSGA2.c.o"
+  "CMakeFiles/Samaritan.dir/metaheuristics/tDEA.c.o"
   "Samaritan.pdb"
   "Samaritan"
 )
