@@ -1,4 +1,4 @@
-The system is: Linux - 5.0.0-29-generic - x86_64
+The system is: Linux - 5.0.0-27-generic - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /usr/bin/cc 
 Build flags: 
@@ -10,30 +10,29 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/3.14.5/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdC/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_3fdb2/fast 
-/usr/bin/make -f CMakeFiles/cmTC_3fdb2.dir/build.make CMakeFiles/cmTC_3fdb2.dir/build
-make[1]: Entering directory '/home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_3fdb2.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_3fdb2.dir/testCCompiler.c.o   -c /home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_3fdb2
-/home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3fdb2.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_3fdb2.dir/testCCompiler.c.o  -o cmTC_3fdb2 
-make[1]: Leaving directory '/home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp'
+Run Build Command(s):/usr/bin/make cmTC_d8bce/fast && /usr/bin/make -f CMakeFiles/cmTC_d8bce.dir/build.make CMakeFiles/cmTC_d8bce.dir/build
+make[1]: Entering directory '/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d8bce.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_d8bce.dir/testCCompiler.c.o   -c /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_d8bce
+/snap/clion/92/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d8bce.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_d8bce.dir/testCCompiler.c.o  -o cmTC_d8bce 
+make[1]: Leaving directory '/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp'
+
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_4b1ce/fast 
-/usr/bin/make -f CMakeFiles/cmTC_4b1ce.dir/build.make CMakeFiles/cmTC_4b1ce.dir/build
-make[1]: Entering directory '/home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc   -v -o CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o   -c /home/stone/Downloads/clion-2019.2/bin/cmake/linux/share/cmake-3.14/Modules/CMakeCCompilerABI.c
+Run Build Command(s):/usr/bin/make cmTC_6d514/fast && /usr/bin/make -f CMakeFiles/cmTC_6d514.dir/build.make CMakeFiles/cmTC_6d514.dir/build
+make[1]: Entering directory '/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc   -v -o CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o   -c /snap/clion/92/bin/cmake/linux/share/cmake-3.15/Modules/CMakeCCompilerABI.c
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 OFFLOAD_TARGET_NAMES=nvptx-none
@@ -42,8 +41,8 @@ Target: x86_64-linux-gnu
 Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.4.0-1ubuntu1~18.04.1' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
 Thread model: posix
 gcc version 7.4.0 (Ubuntu 7.4.0-1ubuntu1~18.04.1) 
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/7/cc1 -quiet -v -imultiarch x86_64-linux-gnu /home/stone/Downloads/clion-2019.2/bin/cmake/linux/share/cmake-3.14/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o -version -fstack-protector-strong -Wformat -Wformat-security -o /tmp/ccB0r0PL.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/cc1 -quiet -v -imultiarch x86_64-linux-gnu /snap/clion/92/bin/cmake/linux/share/cmake-3.15/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o -version -fstack-protector-strong -Wformat -Wformat-security -o /tmp/ccZe6Yy4.s
 GNU C11 (Ubuntu 7.4.0-1ubuntu1~18.04.1) version 7.4.0 (x86_64-linux-gnu)
 	compiled by GNU C version 7.4.0, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.19-GMP
 
@@ -63,15 +62,15 @@ GNU C11 (Ubuntu 7.4.0-1ubuntu1~18.04.1) version 7.4.0 (x86_64-linux-gnu)
 
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 Compiler executable checksum: fa57db1fe2d756b22d454aa8428fd3bd
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
- as -v --64 -o CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o /tmp/ccB0r0PL.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+ as -v --64 -o CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o /tmp/ccZe6Yy4.s
 GNU assembler version 2.30 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.30
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
-Linking C executable cmTC_4b1ce
-/home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4b1ce.dir/link.txt --verbose=1
-/usr/bin/cc     -v CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o  -o cmTC_4b1ce 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+Linking C executable cmTC_6d514
+/snap/clion/92/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6d514.dir/link.txt --verbose=1
+/usr/bin/cc     -v CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o  -o cmTC_6d514 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
@@ -83,10 +82,11 @@ Thread model: posix
 gcc version 7.4.0 (Ubuntu 7.4.0-1ubuntu1~18.04.1) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_4b1ce' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc9uLrdM.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_4b1ce /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_4b1ce' '-mtune=generic' '-march=x86-64'
-make[1]: Leaving directory '/home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6d514' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccCW5Qb8.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_6d514 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6d514' '-mtune=generic' '-march=x86-64'
+make[1]: Leaving directory '/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp'
+
 
 
 Parsed C implicit include dir info from above output: rv=done
@@ -108,13 +108,12 @@ Parsed C implicit include dir info from above output: rv=done
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):/usr/bin/make cmTC_4b1ce/fast ]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_4b1ce.dir/build.make CMakeFiles/cmTC_4b1ce.dir/build]
-  ignore line: [make[1]: Entering directory '/home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o   -c /home/stone/Downloads/clion-2019.2/bin/cmake/linux/share/cmake-3.14/Modules/CMakeCCompilerABI.c]
+  ignore line: [Run Build Command(s):/usr/bin/make cmTC_6d514/fast && /usr/bin/make -f CMakeFiles/cmTC_6d514.dir/build.make CMakeFiles/cmTC_6d514.dir/build]
+  ignore line: [make[1]: Entering directory '/home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o   -c /snap/clion/92/bin/cmake/linux/share/cmake-3.15/Modules/CMakeCCompilerABI.c]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
@@ -123,8 +122,8 @@ Parsed C implicit link information from above output:
   ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.4.0-1ubuntu1~18.04.1' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
   ignore line: [Thread model: posix]
   ignore line: [gcc version 7.4.0 (Ubuntu 7.4.0-1ubuntu1~18.04.1) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
-  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/7/cc1 -quiet -v -imultiarch x86_64-linux-gnu /home/stone/Downloads/clion-2019.2/bin/cmake/linux/share/cmake-3.14/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o -version -fstack-protector-strong -Wformat -Wformat-security -o /tmp/ccB0r0PL.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/7/cc1 -quiet -v -imultiarch x86_64-linux-gnu /snap/clion/92/bin/cmake/linux/share/cmake-3.15/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o -version -fstack-protector-strong -Wformat -Wformat-security -o /tmp/ccZe6Yy4.s]
   ignore line: [GNU C11 (Ubuntu 7.4.0-1ubuntu1~18.04.1) version 7.4.0 (x86_64-linux-gnu)]
   ignore line: [	compiled by GNU C version 7.4.0, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.19-GMP]
   ignore line: []
@@ -144,15 +143,15 @@ Parsed C implicit link information from above output:
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
   ignore line: [Compiler executable checksum: fa57db1fe2d756b22d454aa8428fd3bd]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
-  ignore line: [ as -v --64 -o CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o /tmp/ccB0r0PL.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o /tmp/ccZe6Yy4.s]
   ignore line: [GNU assembler version 2.30 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.30]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
-  ignore line: [Linking C executable cmTC_4b1ce]
-  ignore line: [/home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4b1ce.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o  -o cmTC_4b1ce ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [Linking C executable cmTC_6d514]
+  ignore line: [/snap/clion/92/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6d514.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o  -o cmTC_6d514 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
@@ -164,13 +163,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 7.4.0 (Ubuntu 7.4.0-1ubuntu1~18.04.1) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_4b1ce' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc9uLrdM.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_4b1ce /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6d514' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccCW5Qb8.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_6d514 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cc9uLrdM.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccCW5Qb8.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -189,7 +188,7 @@ Parsed C implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_4b1ce] ==> ignore
+    arg [cmTC_6d514] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o] ==> ignore
@@ -201,7 +200,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
-    arg [CMakeFiles/cmTC_4b1ce.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_6d514.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--push-state] ==> ignore
     arg [--as-needed] ==> ignore
@@ -228,63 +227,3 @@ Parsed C implicit link information from above output:
   implicit fwks: []
 
 
-
-
-Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/make cmTC_0b33d/fast 
-/usr/bin/make -f CMakeFiles/cmTC_0b33d.dir/build.make CMakeFiles/cmTC_0b33d.dir/build
-make[1]: Entering directory '/home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_0b33d.dir/feature_tests.c.o
-/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_0b33d.dir/feature_tests.c.o   -c /home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/feature_tests.c
-Linking C executable cmTC_0b33d
-/home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0b33d.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_0b33d.dir/feature_tests.c.o  -o cmTC_0b33d 
-make[1]: Leaving directory '/home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp'
-
-
-    Feature record: C_FEATURE:1c_function_prototypes
-    Feature record: C_FEATURE:1c_restrict
-    Feature record: C_FEATURE:1c_static_assert
-    Feature record: C_FEATURE:1c_variadic_macros
-
-
-Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/make cmTC_9fb5f/fast 
-/usr/bin/make -f CMakeFiles/cmTC_9fb5f.dir/build.make CMakeFiles/cmTC_9fb5f.dir/build
-make[1]: Entering directory '/home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_9fb5f.dir/feature_tests.c.o
-/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_9fb5f.dir/feature_tests.c.o   -c /home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/feature_tests.c
-Linking C executable cmTC_9fb5f
-/home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9fb5f.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_9fb5f.dir/feature_tests.c.o  -o cmTC_9fb5f 
-make[1]: Leaving directory '/home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp'
-
-
-    Feature record: C_FEATURE:1c_function_prototypes
-    Feature record: C_FEATURE:1c_restrict
-    Feature record: C_FEATURE:0c_static_assert
-    Feature record: C_FEATURE:1c_variadic_macros
-
-
-Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/make cmTC_41809/fast 
-/usr/bin/make -f CMakeFiles/cmTC_41809.dir/build.make CMakeFiles/cmTC_41809.dir/build
-make[1]: Entering directory '/home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_41809.dir/feature_tests.c.o
-/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_41809.dir/feature_tests.c.o   -c /home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/feature_tests.c
-Linking C executable cmTC_41809
-/home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_41809.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_41809.dir/feature_tests.c.o  -o cmTC_41809 
-make[1]: Leaving directory '/home/stone/TMEP/Samaritan/cmake-build-debug/CMakeFiles/CMakeTmp'
-
-
-    Feature record: C_FEATURE:1c_function_prototypes
-    Feature record: C_FEATURE:0c_restrict
-    Feature record: C_FEATURE:0c_static_assert
-    Feature record: C_FEATURE:0c_variadic_macros

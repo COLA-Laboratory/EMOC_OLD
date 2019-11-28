@@ -904,7 +904,36 @@ extern void crossover_tDEA(SMRT_individual *parent_table, SMRT_individual *offsp
     }
 }
 
+extern void crossover_MaOEAIT(SMRT_individual *parent_table, SMRT_individual *offspring_table,int popNum)
+{
 
+    int i = 0;
+    int k = 0, l = 0,index = 0;
+    Compare_type type = LESSER;
+    SMRT_individual *parent1 = NULL, *parent2 = NULL;
+
+
+    for(i = 0;i < popNum/2;i++)
+    {
+        //随即选两个父代
+        k = rnd(0,popNum-1);
+        l = rnd(0,popNum-1);
+        while(k == l)
+            l = rnd(0,popNum-1);
+
+        parent1 = tournament_by_fitness(parent_table + k,parent_table + l,type);
+
+        k = rnd(0,popNum-1);
+        l = rnd(0,popNum-1);
+        while(k == l)
+            l = rnd(0,popNum-1);
+
+        parent2 = tournament_by_fitness(parent_table + k,parent_table + l,type);
+
+        sbx_crossover(parent1,parent2,offspring_table+index,offspring_table+index+1);
+        index+=2;
+    }
+}
 
 
 

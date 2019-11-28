@@ -34,5 +34,5 @@ extern void crossover_AGE2(SMRT_individual *parent_table, SMRT_individual *offsp
 extern void crossover_Borg(SMRT_individual *parent_table,int pop_num, SMRT_individual *Archive,int archive_num,SMRT_individual *offspring);
 extern void real_crossover_Borg(SMRT_individual *parent_table,int pop_num, SMRT_individual *Archive,int archive_num,SMRT_individual *offspring,int currentOPNum, int tournmentSize);
 extern void crossover_tDEA(SMRT_individual *parent_table, SMRT_individual *offspring_table,int popNum);
-
+extern void crossover_MaOEAIT(SMRT_individual *parent_table, SMRT_individual *offspring_table,int popNum);
 #endif

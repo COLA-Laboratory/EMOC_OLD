@@ -27,6 +27,9 @@ char *g_algorithm_name_str[ALGORITHM_NAME_NUM] = {
 		"AGE2",
 		"Borg",
 		"tDEA",
+		"MTS",
+		"MaOEAIT",
+		
         //constraint
 		"CMOEA",
 		"CNSGA2"

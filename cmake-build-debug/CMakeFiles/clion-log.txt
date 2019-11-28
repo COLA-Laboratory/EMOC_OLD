@@ -1,4 +1,4 @@
-/home/stone/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/stone/TMEP/Samaritan
+/snap/clion/92/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/maopl/CLionProjects/my_work/Samaritan
 -- The C compiler identification is GNU 7.4.0
 -- Check for working C compiler: /usr/bin/cc
 -- Check for working C compiler: /usr/bin/cc -- works
@@ -8,4 +8,4 @@
 -- Detecting C compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/stone/TMEP/Samaritan/cmake-build-debug
+-- Build files have been written to: /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug

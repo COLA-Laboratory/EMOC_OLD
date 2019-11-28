@@ -1,11 +1,11 @@
 algorithm_name:AGE2
 test_problem:DTLZ1
 problem_param:
-number_variable:7
+number_variable:10
 number_objective:3
-popSize:100
+popSize:91
 eliteSize:100
-max_evaluation:25000
+max_evaluation:22750
 runtime_output:1
 output_interval:1000
 run_index_begin:1

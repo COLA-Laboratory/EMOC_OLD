@@ -297,6 +297,7 @@ static void UpdateArchive(SMRT_individual **Archive, SMRT_individual *offspring,
         {
             copy_individual((*Archive) + index[i],newArchive + i);
         }
+
         copy_individual(offspring,newArchive + count);
         archive_num = count+1;
 
@@ -343,6 +344,7 @@ static  void ReStart(SMRT_individual **Archive, SMRT_individual **parent_pop,dou
     {
         perm = (int *)malloc(sizeof(int) * 10000);
         random_permutation(perm,10000);
+
         for(i = 0;i < 2500;i++)
             copy_individual((*Archive) + i, newParentPop + index++);
 
@@ -371,6 +373,7 @@ static  void ReStart(SMRT_individual **Archive, SMRT_individual **parent_pop,dou
     *parent_pop = newParentPop;
 
     tempTournamentSize = (int)(tao * pop_num);
+
     if( tempTournamentSize > 2)
     {
         *tournamentSize = tempTournamentSize;
@@ -418,16 +421,16 @@ static void UpdateProDistribution(SMRT_individual *Archive, int *score,double *p
 }
 
 
-extern void Borg_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _Borg_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
+    int i = 0,j = 0;
+    SMRT_individual *Archive;
+    SMRT_individual *offspring;
+
     pop_num = g_algorithm_entity.algorithm_para.pop_size;
     g_algorithm_entity.iteration_number                  = 0;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;
     int N = g_algorithm_entity.algorithm_para.pop_size, M = g_algorithm_entity.algorithm_para.objective_number;
-
-    int i = 0,j = 0;
-    SMRT_individual *Archive;
-    SMRT_individual *offspring;
 
     //Borg Parameter
     int score[6];
@@ -458,6 +461,7 @@ extern void Borg_framework (SMRT_individual *parent_pop, SMRT_individual *offspr
 
     // track the current evolutionary progress, including population and metrics
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
+
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
         g_algorithm_entity.iteration_number++;
@@ -509,6 +513,7 @@ extern void Borg_framework (SMRT_individual *parent_pop, SMRT_individual *offspr
 
                     }
                 }
+
                 oldEpsilonProgress = epsilonProgress;
 
                 evaluationFromLast = 0;

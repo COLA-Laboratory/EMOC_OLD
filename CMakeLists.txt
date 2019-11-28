@@ -8,6 +8,7 @@ add_executable(Samaritan main.c
 		test.c
 
         analysis/analysis.c
+		analysis/plot.c
 
         core_code/initialize.c
         core_code/print.c
@@ -32,7 +33,7 @@ add_executable(Samaritan main.c
         lib/memory.c
         lib/sort.c
         lib/list.c
-
+	lib/SVD.c 
 
 
         selection/MOEAD/fitness.c
@@ -58,6 +59,7 @@ add_executable(Samaritan main.c
         externals/MY_WFG/Iwfg.c
         externals/WFG_1.15/wfg.c
         externals/WFG_1.15/read.c
+		externals/gnuplot_i/src/gnuplot_i.c
 
 
         indicators/hv.c
@@ -91,8 +93,9 @@ add_executable(Samaritan main.c
 		metaheuristics/MOEAD_AWA.c
 		metaheuristics/KnEA.c
 		metaheuristics/AGE2.c
-        	metaheuristics/Borg.c
-
+		metaheuristics/Borg.c
+		metaheuristics/MTS.c
+		metaheuristics/MaOEAIT.c
 		metaheuristics/CMOEA.c
 		metaheuristics/CNSGA2.c
 

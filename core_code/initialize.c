@@ -39,6 +39,9 @@ static void formalize_str(char *buff)
                     buff[j] = buff[j+1];
                 }
                 break;
+            case '\r':
+                buff[i] = 0;
+                break;
             default:
                 break;
         }

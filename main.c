@@ -85,18 +85,23 @@ int main(int argc, char** argv) {
                 MOEAD_AWA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
             case AGE2:
-                AGE2_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _AGE2_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
             case KnEA:
                 KnEA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
             case Borg:
-                Borg_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _Borg_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
             case tDEA:
                 tDEA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
-
+            case MTS:
+                MTS_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
+            case MaOEAIT:
+                MaOEAIT_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
 
             //constraint
 			case CNSGA2:

@@ -1,3 +1,37 @@
+/*
+ * AGE2.c:
+ *  This file implements the main procedures of AGE2. It is based on the following reference:
+ *
+ *  M. Wagner and F. Neumann, "A fast approximation-guided evolutionary multi-objective algorithm".
+ *  Annual Conference on Genetic and Evolutionary Computation. 687-694, 2013.
+ *
+ * Authors:
+ *  Peili Mao
+ *  Lei Sun
+ *  Longfei Zhang
+ *  Ke Li <k.li@exeter.ac.uk>
+ *  Xinyu Shan
+ *  Renzhi Chen
+ *
+ * Institution:
+ *  Computational Optimization and Data Analytics (CODA) Group @ University of Exeter
+ *
+ * Copyright (c) 2019 Peili Mao, Lei Sun, Longfei Zhang ,Ke Li
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>;.
+ */
+
 #include "../headers/global.h"
 #include "../headers/metaheuristics.h"
 #include "../headers/crossover.h"
@@ -19,8 +53,8 @@ static int countArchive = 0;          //计数器 for Archive
 
 static int IsBoxEqual(double *ind1,double *ind2, double epsilon)
 {
-    int flag = 1;
     int i = 0;
+    int flag = 1;
     int temp1,temp2;
 
     for(i = 0;i < g_algorithm_entity.algorithm_para.objective_number;i++)
@@ -93,8 +127,6 @@ static int CheckDominanceByReal(double *ind1, double *ind2)
 
 static void UpdateArchiveByInd(SMRT_individual *ind,double **Archive, double epsilon)
 {
-    int M = g_algorithm_entity.algorithm_para.objective_number;
-
     int result;
     int *discard;            //表示被剔除的解
     int flag = 1;            //表示当前解需不需要加入
@@ -105,11 +137,15 @@ static void UpdateArchiveByInd(SMRT_individual *ind,double **Archive, double eps
     double **ArchiveTemp;
     int archiveNum = countArchive;
 
+    int M = g_algorithm_entity.algorithm_para.objective_number;
+    
     ArchiveTemp = (double **)malloc(sizeof(double *) * countArchive);
+
     for(i = 0;i < countArchive;i++)
         ArchiveTemp[i] = (double *)malloc(sizeof(double) * M);
 
     discard = (int *)malloc(sizeof(int) * countArchive);
+
     for(i = 0;i < archiveNum;i++)
         discard[i] = -1;
 
@@ -123,6 +159,7 @@ static void UpdateArchiveByInd(SMRT_individual *ind,double **Archive, double eps
         for(i = 0;i < countArchive;i++)
         {
             result = CheckDominance_AGE2(ind->obj,Archive[i],epsilon);
+
             if(result == 1)
             {
                 discard[i] = 1;
@@ -161,6 +198,7 @@ static void UpdateArchiveByInd(SMRT_individual *ind,double **Archive, double eps
                     tempArcIndex++;
                 }
             }
+
             if(flag == 1)
             {
                 for(j = 0;j < M;j++)
@@ -239,6 +277,7 @@ static void UpdateArchive(SMRT_individual *Pop,double **Archive,double epsilon)
     for(i = 0;i < countArchive;i++)
     {
         flag = 0;
+
         for(j = 0;j < countArchive;j++)
         {
             result = CheckDominance_AGE2(Archive[i],Archive[j],epsilon);
@@ -272,9 +311,9 @@ static void UpdateArchive(SMRT_individual *Pop,double **Archive,double epsilon)
 
 static void AGE2_crowding_distance_assign(SMRT_individual *pop_table, int pop_num)
 {
-    int rank_index = 0;
     int maxRank = -1;
     int i = 0, j = 0, k = 0;
+    int rank_index = 0;
     int pop_num_in_rank = 0;
     int *sort_arr = NULL;
 
@@ -317,6 +356,7 @@ static void AGE2_crowding_distance_assign(SMRT_individual *pop_table, int pop_nu
             /*第一个和最后一个赋值为无穷大，为了使其能够保存下来*/
             pop_table[sort_arr[0]].fitness = INF;
             pop_table[sort_arr[pop_num_in_rank - 1]].fitness = INF;
+
             for (j = 1; j < pop_num_in_rank - 1; j++)
             {
 
@@ -345,6 +385,7 @@ static int EliminateOffspring(SMRT_individual *offspring, double **Archive,int *
     int result;
     int flag = 0;
     int count = 0;      //remainOff的計數器
+    double *temp_point;
     int i = 0, j = 0 ,k = 0;
     double *tempPoint;
 
@@ -376,8 +417,8 @@ static int EliminateOffspring(SMRT_individual *offspring, double **Archive,int *
 /* 找到一个数组中最大的值 */
 static double FindMax(double *array, int num)
 {
-    double max = -1000000;
     int i = 0;
+    double max = -1000000;
 
     for(i = 0;i < num;i++)
     {
@@ -393,6 +434,7 @@ static double FindMax(double *array, int num)
 static int CompareVector(double *row1,double *row2,int dimension)
 {
     int i = 0;
+
     for(i = 0;i < dimension;i++)
     {
         if(row1[i] == row2[i])
@@ -412,9 +454,9 @@ static int CompareVector(double *row1,double *row2,int dimension)
 static int Partition(vector *matrix,int left,int right)
 {
     int result = 0;
+    double *temp;
     int index = 0;
     int i = 0, j = 0;
-    double *temp;
     temp = (double *)malloc(sizeof(double) * countArchive);
 
     for(i = 0;i < countArchive;i++)
@@ -443,6 +485,7 @@ static int Partition(vector *matrix,int left,int right)
 
         result = CompareVector(matrix[left].array,temp,countArchive);
         while ((left < right) && ((result == -1) || (result == 0)))left++;
+
         if (left < right)
         {
             for(i = 0;i < countArchive;i++)
@@ -454,12 +497,14 @@ static int Partition(vector *matrix,int left,int right)
             right--;
         }
     }
+
     for(i = 0;i < countArchive;i++)
     {
 
         matrix[left].array[i] = temp[i];
 
     }
+
     matrix[left].index = index;
 
     free(temp);
@@ -490,11 +535,10 @@ static void EnvironmentSelection_AGE2(SMRT_individual *mixedPop,int mixedPopNum,
     int worst = -1;      //剔除的index
     double min = 100000;     //剔除的approximation的大小
 
-
     double temp;
     int count = 0;
-    double *tempValue;
     vector *matrix;
+    double *tempValue;
     int **rank,*discardIndex;
     double **alpha,**rho,**S;      //mixedPopNum * countArchive
     int i = 0, j = 0, k = 0;
@@ -595,8 +639,6 @@ static void EnvironmentSelection_AGE2(SMRT_individual *mixedPop,int mixedPopNum,
 
         }
 
-
-
         for(i = 0;i < mixedPopNum;i++)
         {
             quicksort_formal(S[i],0,countArchive-1);
@@ -663,7 +705,9 @@ static void EnvironmentSelection_AGE2(SMRT_individual *mixedPop,int mixedPopNum,
 
     for(i = 0;i < mixedPopNum;i++)
         free(S[i]);
-    free(S);free(matrix);
+
+    free(S);
+    free(matrix);
     free(distanceList);
     free(discardIndex);
     free(tempValue);
@@ -676,13 +720,13 @@ static void EnvironmentSelection_AGE2(SMRT_individual *mixedPop,int mixedPopNum,
 
 
 
-extern void AGE2_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _AGE2_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     g_algorithm_entity.iteration_number                  = 0;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;
 
-    int i = 0, j = 0;
     int *remainOff;
+    int i = 0;
     int mixedPopNum = 0;
     int countOffspring = 0;
 
@@ -708,6 +752,7 @@ extern void AGE2_framework (SMRT_individual *parent_pop, SMRT_individual *offspr
     UpdateArchive(parent_pop, Archive, epsilon);
     // track the current evolutionary progress, including population and metrics
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
+
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
         g_algorithm_entity.iteration_number++;
@@ -716,8 +761,6 @@ extern void AGE2_framework (SMRT_individual *parent_pop, SMRT_individual *offspr
         // reproduction (crossover and mutation)
         non_dominated_sort(parent_pop,g_algorithm_entity.algorithm_para.pop_size);
         AGE2_crowding_distance_assign(parent_pop,g_algorithm_entity.algorithm_para.pop_size);
-
-
 
         crossover_AGE2(parent_pop,offspring_pop);
 
@@ -749,7 +792,6 @@ extern void AGE2_framework (SMRT_individual *parent_pop, SMRT_individual *offspr
 
     free(Archive);
     free(remainOff);
-
 
     return;
 }

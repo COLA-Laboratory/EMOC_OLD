@@ -122,7 +122,8 @@ typedef enum{
     AGE2,
     Borg,
     tDEA,
-	
+    MTS,
+	MaOEAIT,
 
     //constraint
     CMOEA,
