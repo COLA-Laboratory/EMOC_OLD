@@ -82,7 +82,7 @@ int main(int argc, char** argv) {
                 EFR_RR_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
             case MOEAD_AWA:
-                MOEAD_AWA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                moead_awa_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
             case AGE2:
                 _AGE2_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
@@ -101,6 +101,9 @@ int main(int argc, char** argv) {
                 break;
             case MaOEAIT:
                 MaOEAIT_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                break;
+            case MaOEA_IGD:
+                MaOEA_IGD_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
 
             //constraint

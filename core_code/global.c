@@ -29,6 +29,7 @@ char *g_algorithm_name_str[ALGORITHM_NAME_NUM] = {
 		"tDEA",
 		"MTS",
 		"MaOEAIT",
+        "MaOEA_IGD",
 		
         //constraint
 		"CMOEA",

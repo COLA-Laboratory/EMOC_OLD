@@ -1,11 +1,11 @@
-algorithm_name:AGE2
+algorithm_name:MOEAD
 test_problem:DTLZ1
 problem_param:
 number_variable:10
 number_objective:3
-popSize:91
-eliteSize:100
-max_evaluation:22750
+popSize:300
+eliteSize:300
+max_evaluation:120000
 runtime_output:1
 output_interval:1000
 run_index_begin:1

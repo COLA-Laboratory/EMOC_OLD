@@ -1,0 +1,573 @@
+#include "../headers/global.h"
+#include "../headers/metaheuristics.h"
+#include "../headers/crossover.h"
+#include "../headers/mutation.h"
+#include "../headers/problem.h"
+#include "../headers/print.h"
+#include "../headers/initialize.h"
+#include "../headers/memory.h"
+#include "../headers/utility.h"
+#include "../headers/analysis.h"
+#include "../headers/sort.h"
+#include "../headers/dominance_relation.h"
+#include "../headers/utility.h"
+#include "../headers/selection.h"
+#include "../headers/global.h"
+#include "../headers/crossover.h"
+#include "../headers/mating.h"
+#include "../headers/random.h"
+#include "../headers/memory.h"
+#include "../headers/dominance_relation.h"
+#include "../headers/population.h"
+
+
+static int countArchive = -1;          //计数器 for Archive
+
+static int CompareVector(double *row1,double *row2,int dimension)
+{
+    int i = 0;
+    for(i = 0;i < dimension;i++)
+    {
+        if(fabs(row1[i] - row2[i]) < 0.00001)
+            continue;
+
+        if(row1[i] < row2[i])
+            return -1;
+        else
+            return 1;
+    }
+
+    return 0;
+
+}
+
+static int Partition(vector *matrix,int left,int right)
+{
+    int result = 0;
+    int index = 0;
+    int i = 0, j = 0;
+    double *temp;
+    temp = (double *)malloc(sizeof(double) * countArchive);
+
+    for(i = 0;i < countArchive;i++)
+        temp[i] = matrix[left].array[i];
+    index = matrix[left].index;
+
+
+    while(left < right)
+    {
+        result = CompareVector(matrix[right].array,temp,countArchive);
+        while ((left < right) && (result == 1) )
+        {
+            right--;
+            result = CompareVector(matrix[right].array,temp,countArchive);
+        }
+        if (left < right)
+        {
+            for(i = 0;i < countArchive;i++)
+            {
+
+                matrix[left].array[i] = matrix[right].array[i];
+                matrix[left].index = matrix[right].index;
+            }
+            left++;
+        }
+
+        result = CompareVector(matrix[left].array,temp,countArchive);
+        while ((left < right) && ((result == -1) || (result == 0)))
+        {
+            left++;
+
+            result = CompareVector(matrix[left].array,temp,countArchive);
+        }
+        if (left < right)
+        {
+            for(i = 0;i < countArchive;i++)
+            {
+
+                matrix[right].array[i] = matrix[left].array[i];
+                matrix[right].index = matrix[left].index;
+            }
+            right--;
+        }
+    }
+    for(i = 0;i < countArchive;i++)
+    {
+
+        matrix[left].array[i] = temp[i];
+
+    }
+    matrix[left].index = index;
+
+    //printf("%d   %d\n",left,index);
+    free(temp);
+    return left;
+
+}
+
+static void SortRows(vector *matrix, int left,int right)
+{
+    int pos = 0;
+
+    if (left < right)
+    {
+        pos = Partition(matrix,left,right);
+        SortRows(matrix, pos + 1, right);
+        SortRows(matrix, left, pos - 1);
+    }
+    return;
+}
+
+double Max_euclidian_distance_copy (double *a, double *b, int dimension)
+{
+    int i;
+    double distance;
+
+    distance = 0.0;
+
+    for(i = 0; i < dimension; i++)
+    {
+        if((a[i] - b[i]) > 0)
+        {
+            distance += (a[i] - b[i]) * (a[i] - b[i]);
+        }
+        else
+        {
+            distance += 0;
+        }
+    }
+
+
+    return sqrt(distance);
+}
+
+static void cal_individual_Rank(SMRT_individual * Parent_pop, int pop_number, SMRT_individual * PF_ind, int uniform_PF_point_number)
+{
+    int i, j;
+
+    int dominate_relation = 0;
+
+    int Flag_Dominate_one = 0;
+    int Flag_Dominated = 0;
+    for (i = 0; i < pop_number; i++)
+    {
+        Flag_Dominate_one = 0;
+        Flag_Dominated = 0;
+        for(j = 0; j < uniform_PF_point_number; j++)
+        {
+            dominate_relation = check_dominance (Parent_pop + i, PF_ind + j);
+            if (dominate_relation == DOMINATE )
+            {
+                Flag_Dominate_one = 1;
+            }
+            else if(dominate_relation == DOMINATED )
+            {
+                Flag_Dominated = 1;
+            }
+        }
+        if(Flag_Dominate_one == 1)
+        {
+            Parent_pop[i].rank = 1;
+        }
+        else if(Flag_Dominated == 1)
+        {
+
+            Parent_pop[i].rank = 3;
+        }
+        else
+        {
+            Parent_pop[i].rank = 2;
+        }
+    }
+
+}
+
+static void Assign_Rank_And_Proximity_Distance(SMRT_individual * Parent_pop, int parent_number, double **uniform_PF_point, int uniform_PF_point_number, double  ** Distance_store)
+{
+    int i, j;
+
+    SMRT_individual * PF_ind = NULL;
+    allocate_memory_for_pop(&PF_ind, uniform_PF_point_number);
+
+    for(i = 0; i < uniform_PF_point_number; i++)
+    {
+        for(j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
+        {
+            PF_ind[i].obj[j] = uniform_PF_point[i][j];
+        }
+    }
+
+    cal_individual_Rank(Parent_pop , parent_number, PF_ind, uniform_PF_point_number);
+
+    for(i = 0; i < parent_number; i++)
+    {
+
+        for(j = 0;  j < uniform_PF_point_number; j++)
+        {
+            if(Parent_pop[i].rank == 1)
+            {
+                Distance_store[i][j] = - euclidian_distance(Parent_pop[i].obj, PF_ind[j].obj, g_algorithm_entity.algorithm_para.objective_number);
+            }
+            else if(Parent_pop[i].rank == 2)
+            {
+                Distance_store[i][j] = Max_euclidian_distance_copy (Parent_pop[i].obj, PF_ind[j].obj, g_algorithm_entity.algorithm_para.objective_number);
+            }
+            else
+            {
+                Distance_store[i][j] = euclidian_distance(Parent_pop[i].obj, PF_ind[j].obj, g_algorithm_entity.algorithm_para.objective_number);
+            }
+        }
+    }
+
+    destroy_memory_for_pop(&PF_ind, uniform_PF_point_number);
+}
+
+static void Fit_Set_And_Select_Sop(SMRT_individual * mixed_pop, int mixed_number, SMRT_individual * offspring, int offspring_number, int object_number, double * Zmax, double * Zmin)
+{
+    int i,j,k,m;
+    int offspring_index = 0;
+    double temp_count = 0;
+
+    Distance_info_t * distanceInfo = NULL;
+    distanceInfo = (Distance_info_t *)malloc(sizeof(Distance_info_t) * mixed_number);
+
+    for(i = 0; i < object_number; i++)
+    {
+
+        for(j = 0; j < mixed_number; j++)
+        {
+            temp_count = 0;
+            for(k = 0; k < object_number; k++)
+            {
+                if(i == k)
+                {
+                    temp_count += fabs(mixed_pop[j].obj[k]);
+                }
+                else
+                {
+                    temp_count += 100*mixed_pop[j].obj[k] * mixed_pop[j].obj[k];
+                }
+            }
+            distanceInfo[j].idx = j;
+            distanceInfo[j].E_distance = temp_count;
+        }
+
+        distance_quick_sort(distanceInfo, 0, mixed_number - 1);
+
+        for(m = 0; m < offspring_number/object_number ;m++)
+        {
+            copy_individual(mixed_pop + distanceInfo[m].idx, offspring + offspring_index);
+            offspring_index++;
+        }
+
+    }
+
+
+    for(i = 0; i < object_number; i++)
+    {
+        for(j = 0; j < offspring_number; j++)
+        {
+            distanceInfo[j].idx = j;
+            distanceInfo[j].E_distance = offspring[j].obj[i];
+        }
+        distance_quick_sort(distanceInfo, 0, offspring_number - 1);
+
+        Zmin[i] = distanceInfo[0].E_distance;
+        Zmax[i] = distanceInfo[offspring_number - 1].E_distance;
+    }
+    free(distanceInfo);
+
+}
+
+static void MaOEA_IGD_Environmental_select(SMRT_individual *merge_pop, int merge_number, SMRT_individual * parent_pop, int parent_number, double  ** Distance_store_parent, double **uniform_PF_point)
+{
+
+    int i, j, k, l;
+    int temp_number = 0, current_pop_num = 0, rank_index = 1, Remain_To_Be_Select = 0;
+    SMRT_individual * Remain_Selected_Pop = NULL;
+    allocate_memory_for_pop(&Remain_Selected_Pop, merge_number);
+
+    double  ** Hungarian_distance_matrix = NULL;
+    Hungarian_distance_matrix = (double **)malloc(sizeof(double *) * merge_number);
+
+    for (i = 0; i < merge_number; i++)
+    {
+        Hungarian_distance_matrix[i] = (double *)malloc(sizeof(double) * merge_number);
+        memset(Hungarian_distance_matrix[i], 0, sizeof(double) * merge_number);
+    }
+
+    //environmental select
+    while (1)
+    {
+        temp_number = 0;
+        for (i = 0; i < merge_number; i++)
+        {
+            if (merge_pop[i].rank == rank_index )
+            {
+                temp_number++;
+            }
+        }
+        if (current_pop_num + temp_number <= parent_number)
+        {
+            for (i = 0; i < merge_number; i++)
+            {
+                if (merge_pop[i].rank == rank_index)
+                {
+                    copy_individual(merge_pop + i, parent_pop + current_pop_num);
+                    current_pop_num++;
+                }
+            }
+            rank_index++;
+        }
+        else
+            break;
+    }
+
+
+    if (current_pop_num == parent_number)
+    {
+        return;
+    }
+    else
+    {
+        Remain_To_Be_Select = parent_number - current_pop_num;
+        int * PF_delete_index = NULL;
+        int worst = 0;
+        double **distance_matrix = NULL;
+        Distance_info_t *distanceInfo = NULL;
+        vector *matrix;
+
+        PF_delete_index = (int *)malloc(sizeof(int) * merge_number);
+        memset(PF_delete_index, 0, merge_number);
+
+        distance_matrix = (double **) malloc(sizeof(double *) * parent_number);
+        distanceInfo = (Distance_info_t *)malloc(sizeof(Distance_info_t) * temp_number);
+
+        matrix = (vector *) malloc(sizeof(vector) * parent_number);
+
+        for (i = 0; i < parent_number; i++)
+        {
+            distance_matrix[i] = (double *) malloc(sizeof(double) * parent_number);
+            memset(distance_matrix[i], 0, sizeof(double) * parent_number);
+        }
+
+        SMRT_individual * PF_ind = NULL;
+        SMRT_individual * Rank_last_select = NULL;
+
+        //PF_ind是原来整个PF点，而PF——select是我们挑选出来的点
+        allocate_memory_for_pop(&PF_ind, parent_number);
+        allocate_memory_for_pop(&Rank_last_select, temp_number);
+
+        for(i = 0; i < parent_number; i++)
+        {
+            for(j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
+            {
+                PF_ind[i].obj[j] = uniform_PF_point[i][j];
+            }
+        }
+
+        for (i = 0; i < parent_number; i++)
+        {
+            for(j = 0; j < parent_number; j++)
+            {
+                if(i == j)
+                {
+                    distance_matrix[i][j] = INF;
+                }
+                else
+                {
+                    distance_matrix[i][j] = euclidian_distance(PF_ind[i].obj, PF_ind[j].obj, g_algorithm_entity.algorithm_para.objective_number);
+                }
+                distanceInfo[j].E_distance = distance_matrix[i][j];
+                distanceInfo[j].idx = j;
+            }
+
+            distance_quick_sort(distanceInfo, 0, j - 1);
+
+            for (j = 0; j < parent_number; j ++)
+            {
+                distance_matrix[i][j] = distanceInfo[j].E_distance;
+            }
+        }
+
+        //delete the weight number, tne number is current_pop_num
+        for(k = 0; k < current_pop_num; k++)
+        {
+            for(i = 0; i < parent_number; i++)
+            {
+                matrix[i].array = distance_matrix[i];
+                matrix[i].index = i;
+            }
+
+            countArchive = parent_number-1;
+
+            SortRows(matrix, 0, parent_number-1);
+
+            worst = matrix[parent_number - 1].index;
+
+            PF_delete_index[worst] = 1;
+
+            for(j = 0; j < parent_number; j++)
+            {
+                distance_matrix[worst][j] = INF;
+            }
+        }
+
+
+        for(i = 0, k = 0; i < merge_number; i++)
+        {
+            if(merge_pop[i].rank == rank_index)
+            {
+                copy_individual(merge_pop + i, Rank_last_select + k);
+                Rank_last_select[k].rank =  merge_pop[i].rank;
+
+                for(j = 0, l = 0; j < parent_number; j++)
+                {
+                    if(PF_delete_index[i] == 0)
+                    {
+                        Hungarian_distance_matrix[k][l] = Distance_store_parent[i][j];
+                        l++;
+                    }
+                }
+                k++;
+            }
+        }
+
+
+        for(k = 0; k < Remain_To_Be_Select; k++)
+        {
+            for(i = 0; i < temp_number; i++)
+            {
+                distanceInfo[i].E_distance = Hungarian_distance_matrix[i][k];
+                distanceInfo[i].idx = i;
+            }
+
+            distance_quick_sort(distanceInfo, 0, temp_number - 1);
+
+            //printf("index is %d   distance is %f \n ", distanceInfo[0].idx, distanceInfo[0].E_distance);
+
+            copy_individual(Rank_last_select + distanceInfo[0].idx, parent_pop + current_pop_num);
+
+            parent_pop[current_pop_num].rank =  Rank_last_select[distanceInfo[0].idx].rank;
+
+            current_pop_num++;
+
+            for(j = 0; j < Remain_To_Be_Select; j++)
+            {
+                Hungarian_distance_matrix[distanceInfo[0].idx][j] = INF;
+            }
+        }
+
+        free(distanceInfo);
+        free(matrix);
+        free(PF_delete_index);
+    }
+
+
+    for (i = 0; i < merge_number; i++)
+    {
+        free(Hungarian_distance_matrix[i]);
+    }
+    free(Hungarian_distance_matrix);
+
+
+    return ;
+}
+
+extern void MaOEA_IGD_framework(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+{
+
+    int i,j;
+    int ref_point_num = 0;
+    int DNPE_number = 250 * g_algorithm_entity.algorithm_para.pop_size;
+    double **uniform_PF_point = NULL, * Zmax = NULL, * Zmin = NULL;
+    double  ** Distance_store_parent = NULL;
+
+    //initialize W using Das and Dennis's method
+    uniform_PF_point = initialize_uniform_point(g_algorithm_entity.algorithm_para.pop_size, &ref_point_num);
+
+    Zmax = (double *) malloc(sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
+    Zmin = (double *) malloc(sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
+
+    Distance_store_parent = (double **)malloc(sizeof(double *) * ref_point_num * 2);
+
+    for (i = 0; i < ref_point_num * 2; i++)
+    {
+        Distance_store_parent[i] = (double *)malloc(sizeof(double) * ref_point_num);
+        memset(Distance_store_parent[i], 0, sizeof(double) * ref_point_num);
+    }
+
+    // initialize population
+    initialize_population_real (parent_pop, ref_point_num);
+    evaluate_population (parent_pop, ref_point_num);
+
+    //Uniformly generate reference points for IGD indicator
+    while (g_algorithm_entity.algorithm_para.current_evaluation  < DNPE_number)
+    {
+        crossover_nsga2 (parent_pop, offspring_pop);
+        mutation_pop(offspring_pop);
+        evaluate_population (offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
+        merge_population(mixed_pop, parent_pop, g_algorithm_entity.algorithm_para.pop_size, offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
+        Fit_Set_And_Select_Sop(mixed_pop, 2 * g_algorithm_entity.algorithm_para.pop_size, parent_pop, g_algorithm_entity.algorithm_para.pop_size, g_algorithm_entity.algorithm_para.objective_number, Zmax,  Zmin);
+    }
+    //Generate the PF set
+    for(i = 0; i < ref_point_num; i++)
+    {
+        for(j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
+        {
+            uniform_PF_point[i][j] = uniform_PF_point[i][j] * (Zmax[j] - Zmin[j]) + Zmin[i];
+        }
+    }
+    // initialize population
+
+    initialize_population_real (parent_pop, ref_point_num);
+
+    evaluate_population (parent_pop, ref_point_num);
+
+    while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
+    {
+        print_progress ();
+
+        // reproduction (crossover and mutation)
+        crossover_nsga2 (parent_pop, offspring_pop);
+        mutation_pop(offspring_pop);
+        evaluate_population (offspring_pop, ref_point_num);
+
+        // environmental selection
+        merge_population(mixed_pop, parent_pop, ref_point_num, offspring_pop, ref_point_num);
+
+        Assign_Rank_And_Proximity_Distance(mixed_pop, 2 * ref_point_num, uniform_PF_point, ref_point_num, Distance_store_parent);
+
+        //Environmental_select
+        MaOEA_IGD_Environmental_select(mixed_pop, 2 * ref_point_num, parent_pop, ref_point_num,  Distance_store_parent,  uniform_PF_point);
+
+        // track the current evolutionary progress, including population and metrics
+        track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
+
+        g_algorithm_entity.iteration_number++;
+
+    }
+
+    for(i = 0; i < ref_point_num;i++)
+    {
+        free(uniform_PF_point[i]);
+    }
+
+    free(uniform_PF_point);
+
+    for(i = 0; i < g_algorithm_entity.algorithm_para.pop_size;i++)
+    {
+        free(Distance_store_parent[i]);
+    }
+
+    free(Distance_store_parent);
+
+    free(Zmax);
+    free(Zmin);
+
+    return;
+
+
+
+}
+

@@ -124,6 +124,7 @@ typedef enum{
     tDEA,
     MTS,
 	MaOEAIT,
+    MaOEA_IGD,
 
     //constraint
     CMOEA,

@@ -99,7 +99,7 @@ add_executable(Samaritan main.c
 		metaheuristics/CMOEA.c
 		metaheuristics/CNSGA2.c
 
-		metaheuristics/tDEA.c)
+		metaheuristics/tDEA.c metaheuristics/MaOEA_IGD.c)
 
 
 target_link_libraries(Samaritan m)
