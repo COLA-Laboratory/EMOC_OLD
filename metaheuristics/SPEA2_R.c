@@ -3,7 +3,6 @@
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/initialize.h"
 #include "../headers/memory.h"
 #include "../headers/utility.h"
 #include "../headers/analysis.h"
@@ -196,7 +195,7 @@ static void SPEA2_R_environmentalSelect(SMRT_individual *parent_pop, SMRT_indivi
             for (i = 0; i < H_pop_number; i++)
             {
 
-                fitnessInfo[i].fitness = (parent_pop + store_index[i])->fitness;
+                fitnessInfo[i].value = (parent_pop + store_index[i])->fitness;
                 fitnessInfo[i].idx = store_index[i];
             }
 

@@ -6,79 +6,11 @@
 #include "../headers/print.h"
 #include "../headers/analysis.h"
 #include "../headers/sort.h"
-#include "../headers/selection.h"
 #include "../headers/memory.h"
 #include "../headers/utility.h"
 #include "../headers/random.h"
 
-//static void NSGA2_select(SMRT_individual *parent_pop, SMRT_individual *merge_pop)
-//{
-//    int i = 0, sort_num = 0;
-//    int *pop_sort = NULL;
-//    int merge_pop_number = 0, current_pop_num = 0, temp_number = 0, rank_index = 0;
-//
-//    merge_pop_number = 2 * g_algorithm_entity.algorithm_para.pop_size;
-//    pop_sort = (int*)malloc(sizeof(int) * merge_pop_number);
-//
-//
-//    non_dominated_sort(merge_pop, merge_pop_number);
-//
-//    while (1)
-//    {
-//        temp_number = 0;
-//        for (i = 0; i < merge_pop_number; i++)
-//        {
-//            if (merge_pop[i].rank == rank_index)
-//            {
-//                temp_number++;
-//            }
-//        }
-//        if (current_pop_num + temp_number <= g_algorithm_entity.algorithm_para.pop_size)
-//        {
-//            for (i = 0; i < merge_pop_number; i++)
-//            {
-//                if (merge_pop[i].rank == rank_index)
-//                {
-//                    copy_individual(merge_pop + i, parent_pop + current_pop_num);
-//                    current_pop_num++;
-//                }
-//            }
-//            rank_index++;
-//        }
-//        else
-//            break;
-//    }
-//
-//    if (current_pop_num == g_algorithm_entity.algorithm_para.pop_size)
-//    {
-//        goto NSGA2_SELECT_TERMINATE_HANDLE;
-//    }
-//    else
-//    {
-//        sort_num = crowding_distance_assign(merge_pop, pop_sort, merge_pop_number, rank_index);
-//        /*这一行有点问题，出现了SIGSEG*/
-//        while(1)
-//        {
-//            /*对最后一层rank的solution，计算distance后在依据distance值纳入下一代*/
-//            if (current_pop_num < g_algorithm_entity.algorithm_para.pop_size)
-//            {
-//                copy_individual(merge_pop + pop_sort[--sort_num], parent_pop + current_pop_num);
-//                current_pop_num++;
-//            }
-//            else {
-//                break;
-//            }
-//        }
-//    }
-//    for(i = 0;i<g_algorithm_entity.algorithm_para.pop_size;i++)
-//    {
-//        parent_pop[i].fitness = 0;
-//    }
-//
-//    NSGA2_SELECT_TERMINATE_HANDLE:
-//    free(pop_sort);
-//    return ;
-//}
+
 static void GetNondominatedPop(SMRT_individual *merge_pop, int merge_pop_number, SMRT_individual **ndPop, int *lastNDPOPNum)
 {
     int i = 0;
@@ -121,49 +53,18 @@ static void GetNondominatedPop(SMRT_individual *merge_pop, int merge_pop_number,
     {
         if(merge_pop[i].rank <= rank_index)
         {
-            //printf("%d\n",merge_pop[i].rank);
             copy_individual(merge_pop + i,(*ndPop) + index++);
         }
     }
 
-//    if(index == newNDPopNum)
-//        printf("here!\n");
-
-
-
     return;
 }
 
-static void Normalization(SMRT_individual *ndPop, int popNum,SMRT_individual *extremePop, double **popObj)
-{
-    int i = 0,j = 0;
-    double *intercept;
 
-    intercept = (double *)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
-
-    update_ideal_point(ndPop,popNum);
-
-    getExtremePoints(ndPop,extremePop,popNum);
-
-    getIntercepts(extremePop,ndPop,popNum,intercept);
-
-    for(i = 0;i < popNum;i++)
-    {
-        for(j = 0;j < g_algorithm_entity.algorithm_para.objective_number;j++)
-        {
-            popObj[i][j] = (ndPop[i].obj[j]-g_algorithm_entity.ideal_point.obj[j])/intercept[j];
-        }
-    }
-
-
-    free(intercept);
-
-    return;
-}
 
 
 //对每个点进行Cluster
-static void Cluster(double **popObj, int popNum, int **C, int *count)
+static void tDEA_cluster(double **popObj, int popNum, int **C, int *count)
 {
     int n = 0;
     int i = 0,j = 0;
@@ -196,12 +97,11 @@ static void Cluster(double **popObj, int popNum, int **C, int *count)
 
 
 
-static void ThetaNDSort(SMRT_individual *ndPop, double **popObj, int popNum, int **C, int *count)
+static void tDEA_thetaNDSort(SMRT_individual *ndPop, double **popObj, int popNum, int **C, int *count)
 {
     int i = 0, j = 0,sum = 0,index = 0;
     double *theta, tempDistance = 0, d1 = 0, d2 = 0;
     Distance_info_t distanceInfo[MAX_SIZE];
-
 
     theta = (double *)malloc(sizeof(double) * weight_num);
 
@@ -239,7 +139,7 @@ static void ThetaNDSort(SMRT_individual *ndPop, double **popObj, int popNum, int
                 d2 = Cal_perpendicular_distance(popObj[index],lambda[i]);
                 tempDistance = d1 + theta[i] * d2;
 
-                distanceInfo[j].E_distance = tempDistance;
+                distanceInfo[j].value = tempDistance;
                 distanceInfo[j].idx = index;
             }
             distance_quick_sort(distanceInfo,0,count[i]-1);
@@ -252,17 +152,12 @@ static void ThetaNDSort(SMRT_individual *ndPop, double **popObj, int popNum, int
         }
     }
 
-
-
-
-
     free(theta);
-
 
     return;
 }
 
-static void EnviromentSelection_tDEA(SMRT_individual *ndPop,int popNum, SMRT_individual *parent_pop)
+static void tDEA_enviromentSelection(SMRT_individual *ndPop, int popNum, SMRT_individual *parent_pop)
 {
     int i = 0,count = 0;
     int *index,*perm;
@@ -316,7 +211,7 @@ static void EnviromentSelection_tDEA(SMRT_individual *ndPop,int popNum, SMRT_ind
     return;
 }
 
-extern void tDEA_framework (SMRT_individual *parent_pop, SMRT_individual* offspring_pop, SMRT_individual* mixed_pop)
+extern void _tDEA_ (SMRT_individual *parent_pop, SMRT_individual* offspring_pop, SMRT_individual* mixed_pop)
 {
     g_algorithm_entity.iteration_number       = 0;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;
@@ -378,11 +273,11 @@ extern void tDEA_framework (SMRT_individual *parent_pop, SMRT_individual* offspr
 
         Normalization(ndPop,lastNDPopNum,extremePop,popObj);
 
-        Cluster(popObj,lastNDPopNum,C,count);
+        tDEA_cluster(popObj, lastNDPopNum, C, count);
 
-        ThetaNDSort(ndPop,popObj,lastNDPopNum,C,count);
+        tDEA_thetaNDSort(ndPop, popObj, lastNDPopNum, C, count);
 
-        EnviromentSelection_tDEA(ndPop,lastNDPopNum,parent_pop);
+        tDEA_enviromentSelection(ndPop, lastNDPopNum, parent_pop);
 
         // track the current evolutionary progress, including population and metrics
         track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);

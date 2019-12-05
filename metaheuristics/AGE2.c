@@ -126,115 +126,6 @@ static int AGEA2_checkDominanceByReal(double *ind1, double *ind2)
     }
 }
 
-static void AGEA2_updateArchiveByInd(SMRT_individual *ind, double **Archive, double epsilon)
-{
-    int result;
-    int *discard;
-    int flag = 1;
-    int i = 0,j = 0;
-    int discard_index = 0;
-    int temp_arc_index = 0;
-    int archive_num = count_archive;
-    double **archive_temp;
-    int M = g_algorithm_entity.algorithm_para.objective_number;
-
-    archive_temp = (double **)malloc(sizeof(double *) * count_archive);
-
-    for(i = 0; i < count_archive; i++)
-        archive_temp[i] = (double *)malloc(sizeof(double) * M);
-
-    discard = (int *)malloc(sizeof(int) * count_archive);
-
-    for(i = 0; i < archive_num; i++)
-        discard[i] = -1;
-
-    if(count_archive == 0)
-    {
-        for(i = 0; i < M; i++)
-            Archive[count_archive++][i] = ind->obj[i];
-    }
-    else
-    {
-        for(i = 0; i < count_archive; i++)
-        {
-            result = AGEA2_checkDominance(ind->obj, Archive[i], epsilon);
-
-            if(result == 1)
-            {
-                discard[i] = 1;
-                discard_index++;
-            }
-            else if((result == 0) && AGEA2_isBoxEqual(ind->obj, Archive[i], epsilon) == 1)
-            {
-                if(AGEA2_checkDominanceByReal(ind->obj, Archive[i]) == 1)
-                {
-                    discard[i] = 1;
-                    discard_index++;
-                }
-                else
-                {
-                    flag = 0;
-                }
-            }
-            else if(result == -1)
-            {
-                flag = 0;
-            }
-        }
-
-        if(discard_index != 0 )
-        {
-            for(i = 0; i < archive_num; i++)
-            {
-                if(discard[i] != 1 )
-                {
-                    for(j = 0; j < M; j++)
-                    {
-                        archive_temp[temp_arc_index][j] = Archive[i][j];
-                    }
-                    temp_arc_index++;
-                }
-            }
-
-            if(flag == 1)
-            {
-                for(j = 0; j < M; j++)
-                {
-                    archive_temp[temp_arc_index][j] = ind->obj[j];
-                }
-                temp_arc_index++;
-            }
-
-            for(i = 0; i < temp_arc_index; i++)
-            {
-                for(j = 0; j < M; j++)
-                {
-                    Archive[i][j] = archive_temp[i][j];
-                }
-            }
-
-            count_archive = temp_arc_index;
-        }
-        else
-        {
-            if(flag == 1)
-            {
-                for(j = 0; j < M; j++)
-                {
-                    Archive[count_archive][j] = ind->obj[j];
-                }
-                count_archive++;
-            }
-        }
-    }
-
-    for(i = 0; i < archive_num; i++)
-        free(archive_temp[i]);
-
-    free(archive_temp);
-    free(discard);
-}
-
 
 static void AGEA2_updateArchive(SMRT_individual *Pop, double **Archive, double epsilon)
 {
@@ -381,23 +272,11 @@ static int AGE2_eliminateOffspring(SMRT_individual *offspring, double **Archive,
             remain_off[count++] = i;
     }
 
+    free(temp_point);
+
     return count;
 }
 
-
-static double AGE2_findMax(double *array, int num)
-{
-    int i = 0;
-    double max = -1000000;
-
-    for(i = 0; i < num; i++)
-    {
-        if(max < array[i])
-            max = array[i];
-    }
-
-    return max;
-}
 
 
 static int AGE2_compareVector(double *row1, double *row2, int dimension)
@@ -484,6 +363,7 @@ static void AGE2_sortRows(vector *matrix, int left, int right)
         AGE2_sortRows(matrix, pos + 1, right);
         AGE2_sortRows(matrix, left, pos - 1);
     }
+
     return;
 }
 
@@ -544,14 +424,14 @@ static void AGE2_environmentSelection(SMRT_individual *mixed_pop, int mixed_pop_
         for(j = 0; j < mixed_pop_num; j++)
         {
             distanceList[j].idx = j;
-            distanceList[j].E_distance = alpha[j][i];
+            distanceList[j].value = alpha[j][i];
         }
 
         distance_quick_sort(distanceList,0,mixed_pop_num-1);
 
         for(j = 0; j < mixed_pop_num; j++)
         {
-            rho[j][i] = distanceList[j].E_distance;
+            rho[j][i] = distanceList[j].value;
             rank[j][i] = distanceList[j].idx;
         }
     }

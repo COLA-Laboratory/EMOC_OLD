@@ -4,14 +4,12 @@
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/initialize.h"
 #include "../headers/utility.h"
 #include "../headers/analysis.h"
 #include "../headers/sort.h"
 #include "../headers/indicator.h"
 
 static int **association_matrix = NULL, *association_num = NULL;
-
 
 static void MOEADD_calculateLayerByObj(int *layer, int *layer_inner, int *layer_out)
 {
@@ -272,7 +270,7 @@ static void MOEADD_Ini()
             }
 
             Euc_distance = sqrt((double)distance_temp);
-            sort_list[j].E_distance = Euc_distance;
+            sort_list[j].value = Euc_distance;
             sort_list[j].idx = j;
         }
 
@@ -586,7 +584,7 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
         delete_id = MOEADD_locateWorstSolution(merge_pop, merge_num);
     }
 
-    MOEADD_ELIMINATE:
+MOEADD_ELIMINATE:
     if (delete_id == (merge_num - 1))
     {
         MOEADD_associationDelByInd(merge_num - 1, weight_num);
@@ -609,7 +607,7 @@ static void MOEADD_update(SMRT_individual *merge_pop, int merge_num)
     return;
 }
 
-extern void MOEADD_framework (SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _MOEADD_ (SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int i = 0;
     g_algorithm_entity.iteration_number          = 1;

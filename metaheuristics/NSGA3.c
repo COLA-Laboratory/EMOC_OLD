@@ -12,7 +12,7 @@
 static int **association_matrix_without_fl = NULL, **association_matrix_in_fl = NULL;
 static int *association_num_without_fl = NULL, *association_num_in_fl = NULL;
 
-static void NSGA3_cleaMem(int ref_point_num, double **distance)
+static void NSGA3_clearMem(int ref_point_num, double **distance)
 {
     int i = 0;
 
@@ -208,7 +208,7 @@ static void NSGA3_niching (SMRT_individual *candidate_pop, int candidate_num, in
     return;
 }
 
-extern void NSGA3_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _NSGA3_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int i = 0, ref_point_num = 0, candidate_num = 0, selected_num = 0, last_rank = 0;
     double **uniform_ref_point = NULL, **distance = NULL;
@@ -333,7 +333,7 @@ extern void NSGA3_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
 
         NSGA3_niching (candidate_pop, candidate_num, selected_num, parent_pop, ref_point_num , distance);
 
-        NSGA3_cleaMem(ref_point_num, distance);
+        NSGA3_clearMem(ref_point_num, distance);
 
         // track the current evolutionary progress, including population and metrics
         track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);

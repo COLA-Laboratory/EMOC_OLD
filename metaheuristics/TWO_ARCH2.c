@@ -28,10 +28,10 @@ static void TWO_ARCH2_calMinDistDAPop(Distance_info_t *distance_arr, SMRT_indivi
     {
         for (j = 0; j < DA_num; j++)
         {
-            temp_distance[j].E_distance = cal_NORM_distance(pop_table + i, DA + j, 1.0 / g_algorithm_entity.algorithm_para.objective_number);
+            temp_distance[j].value = cal_NORM_distance(pop_table + i, DA + j, 1.0 / g_algorithm_entity.algorithm_para.objective_number);
         }
         distance_quick_sort(temp_distance, 0, DA_num - 1);
-        distance_arr[i].E_distance = temp_distance[0].E_distance;
+        distance_arr[i].value = temp_distance[0].value;
         distance_arr[i].idx = i;
     }
 
@@ -80,7 +80,7 @@ static void TWO_ARCH2_getExtremePoint(SMRT_individual *extreme_point, int *extre
     return;
 }
 
-static void TWO_ARCH2_CA_update(SMRT_individual *pop_table, int pop_num, SMRT_individual *CA, int CA_num)
+static void TWO_ARCH2_caUpdate(SMRT_individual *pop_table, int pop_num, SMRT_individual *CA, int CA_num)
 {
     int i = 0, j = 0;
     int delete_size = 0, min_index = 0;
@@ -90,7 +90,7 @@ static void TWO_ARCH2_CA_update(SMRT_individual *pop_table, int pop_num, SMRT_in
     fitness = (double*)malloc(sizeof(double) * pop_num);
     if (NULL == fitness)
     {
-        printf("malloc indicator fitness failed\n");
+        printf("malloc indicator value failed\n");
         return;
     }
 
@@ -194,7 +194,7 @@ static void TWO_ARCH2_DA_update(SMRT_individual *pop_table, int pop_num, SMRT_in
     return;
 }
 
-extern void TWO_ARCH2_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _TWO_ARCH2_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int i = 0, j = 0;
     int CA_max_num = 100, DA_max_num = 100, DA_current_num = 0, off_num = 0;
@@ -214,7 +214,7 @@ extern void TWO_ARCH2_framework (SMRT_individual *parent_pop, SMRT_individual *o
     evaluate_population (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
 
     //initialize CA and DA
-    TWO_ARCH2_CA_update(parent_pop, g_algorithm_entity.algorithm_para.pop_size, CA, CA_max_num);
+    TWO_ARCH2_caUpdate(parent_pop, g_algorithm_entity.algorithm_para.pop_size, CA, CA_max_num);
     TWO_ARCH2_DA_update(parent_pop, g_algorithm_entity.algorithm_para.pop_size, DA, &DA_current_num, DA_max_num);
 
     // track the current evolutionary progress, including population and metrics
@@ -234,7 +234,7 @@ extern void TWO_ARCH2_framework (SMRT_individual *parent_pop, SMRT_individual *o
 
         // update_CA
         merge_population(mixed_pop, CA, CA_max_num, offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
-        TWO_ARCH2_CA_update(mixed_pop, CA_max_num + g_algorithm_entity.algorithm_para.pop_size, CA, CA_max_num);
+        TWO_ARCH2_caUpdate(mixed_pop, CA_max_num + g_algorithm_entity.algorithm_para.pop_size, CA, CA_max_num);
         //update_DA
         merge_population(mixed_pop, DA, DA_current_num, offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
         TWO_ARCH2_DA_update(mixed_pop, DA_current_num + g_algorithm_entity.algorithm_para.pop_size, DA, &DA_current_num, DA_max_num);

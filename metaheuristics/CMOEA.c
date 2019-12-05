@@ -8,7 +8,6 @@
 #include "../headers/utility.h"
 #include "../headers/sort.h"
 #include "../headers/selection.h"
-#include "../headers/initialize.h"
 #include "../headers/dominance_relation.h"
 
 static double **con_obj = NULL;
@@ -202,6 +201,7 @@ void CMOEA_calFitnessCv(SMRT_individual *pop, int pop_nm)
     {
         pop[i].fitness = pop[i].cv;
     }
+
     return;
 }
 
@@ -217,7 +217,7 @@ void COMEA_selectCv(SMRT_individual *parent_pop, SMRT_individual *mixed_pop, int
         rank_num[i] = i;
     }
 
-    //rank individuals with their fitness
+    //rank individuals with their value
     for(i = 0; i < (2 * pop_nm - 1); i++)
     {
         for(j = (i + 1); j < (2 * pop_nm); j++)
@@ -278,6 +278,7 @@ void COMEA_selectCv(SMRT_individual *parent_pop, SMRT_individual *mixed_pop, int
             con_obj[i][j] = distance + penalty;
         }
     }
+
     return;
  }
 
@@ -288,7 +289,6 @@ void COMEA_selectCv(SMRT_individual *parent_pop, SMRT_individual *mixed_pop, int
     int pop_num_in_rank = 0;
     int *sort_arr = NULL;
     Distance_info_t *distance_arr;
-
 
     distance_arr  = (Distance_info_t*) malloc(sizeof(Distance_info_t) * pop_num);
     if (NULL == distance_arr)
@@ -468,7 +468,7 @@ static void CMOEA_select(SMRT_individual *parent_pop, SMRT_individual *merge_pop
     return ;
 }
 
-extern void CMOEA_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _CMOEA_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int i = 0;
     int fea_num;
@@ -517,10 +517,10 @@ extern void CMOEA_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
         //environmental selection
         merge_population(mixed_pop, parent_pop, g_algorithm_entity.algorithm_para.pop_size, offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
 
-        //1.give fitness to individuals based on their sum of constraint violations
+        //1.give value to individuals based on their sum of constraint violations
         CMOEA_calFitnessCv(mixed_pop, g_algorithm_entity.algorithm_para.pop_size);
 
-        //2.rank individuals based on fitness in 1.
+        //2.rank individuals based on value in 1.
         COMEA_selectCv(parent_pop, mixed_pop, g_algorithm_entity.algorithm_para.pop_size);
 
         // track the current evolutionary progress, including population and metrics
@@ -547,9 +547,11 @@ extern void CMOEA_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
         merge_population(mixed_pop, parent_pop, g_algorithm_entity.algorithm_para.pop_size, offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
 
         fea_num = CMOEA_calFeaNum(mixed_pop, g_algorithm_entity.algorithm_para.pop_size * 2);
+
         //calculate modified objective function values using distance measures and penalty functions for all individuals
         CMOEA_calModifiObjDisPenal(mixed_pop, g_algorithm_entity.algorithm_para.pop_size,
                                    g_algorithm_entity.algorithm_para.objective_number, fea_num);
+
         //pareto sort individuals according to their modified objective function values
         CMOEA_select(parent_pop, mixed_pop);
 

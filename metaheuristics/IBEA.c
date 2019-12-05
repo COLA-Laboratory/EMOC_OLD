@@ -62,7 +62,7 @@ extern void IBEA_select(SMRT_individual *parent_pop, SMRT_individual* mixed_pop)
     figcomp = (double*)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.pop_size* g_algorithm_entity.algorithm_para.pop_size * 4);
     if (NULL == figcomp)
     {
-        printf("malloc indicator fitness failed\n");
+        printf("malloc indicator value failed\n");
         goto IBEA_SELECT_TERMINATE_HANDLE;
     }
 
@@ -83,7 +83,7 @@ IBEA_SELECT_TERMINATE_HANDLE:
 }
 
 
-extern void IBEA_framework (SMRT_individual *parent_pop, SMRT_individual* offspring_pop, SMRT_individual* mixed_pop)
+extern void _IBEA_ (SMRT_individual *parent_pop, SMRT_individual* offspring_pop, SMRT_individual* mixed_pop)
 {
 
     g_algorithm_entity.iteration_number       = 1;

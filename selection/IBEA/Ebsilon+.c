@@ -48,7 +48,7 @@ void calcFitnessComponents(SMRT_individual* population, double *fitcomp, int siz
         }
     }
 
-    // calculate for each pair of individuals the corresponding fitness component
+    // calculate for each pair of individuals the corresponding value component
     for (i = 0; i < size; i++)
         for (j = 0; j < size; j++)
             fitcomp[i * size +j] = exp((-fitcomp[i * size +j] / maxAbsIndicatorValue) / kappa);
@@ -56,7 +56,7 @@ void calcFitnessComponents(SMRT_individual* population, double *fitcomp, int siz
     return;
 }
 
-/* Assign the fitness values to the solutions within a population */
+/* Assign the value values to the solutions within a population */
 extern void cal_indicator(SMRT_individual *population, double *fitcomp, int size)
 {
     int i, j;

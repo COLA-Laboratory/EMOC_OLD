@@ -4,7 +4,6 @@
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/initialize.h"
 #include "../headers/utility.h"
 #include "../headers/sort.h"
 #include "../headers/selection.h"
@@ -14,6 +13,7 @@
 static void MOEAD_dra_free()
 {
     int i = 0;
+
     if (NULL != g_algorithm_entity.MOEAD_para.delta)
     {
         free(g_algorithm_entity.MOEAD_para.delta);
@@ -31,7 +31,7 @@ static void MOEAD_dra_free()
         free(g_algorithm_entity.MOEAD_para.frequency);
     }
 
-    for (int i = 0; i < weight_num; ++i)
+    for (i = 0; i < weight_num; ++i)
     {
         if (NULL != g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor)
         {
@@ -48,7 +48,6 @@ static void MOEAD_dra_free()
     free (lambda);
 
     return;
-
 }
 
 static void ini_MOEAD_dra()
@@ -104,7 +103,7 @@ static void ini_MOEAD_dra()
             }
 
             Euc_distance = sqrt((double)distance_temp);
-            sort_list[j].E_distance = Euc_distance;
+            sort_list[j].value = Euc_distance;
             sort_list[j].idx = j;
         }
         distance_quick_sort(sort_list, 0, weight_num - 1);

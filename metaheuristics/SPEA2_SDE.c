@@ -1,11 +1,9 @@
-
 #include "../headers/global.h"
 #include "../headers/metaheuristics.h"
 #include "../headers/crossover.h"
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/initialize.h"
 #include "../headers/memory.h"
 #include "../headers/utility.h"
 #include "../headers/analysis.h"
@@ -64,18 +62,18 @@ static void SPEA2_SDE_setDistance(SMRT_individual *pop_table, int  pop_num, doub
             if (i == j)
             {
                 distance_arr[i][j] = INF;
-                distanceInfo[j].E_distance = distance_arr[i][j];
+                distanceInfo[j].value = distance_arr[i][j];
                 continue;
             }
             distance_arr[i][j] = euclidian_distance(temp_i->obj, temp_j->obj, g_algorithm_entity.algorithm_para.objective_number);
-            distanceInfo[j].E_distance = distance_arr[i][j];
+            distanceInfo[j].value = distance_arr[i][j];
             distanceInfo[j].idx = j;
         }
         distance_quick_sort(distanceInfo, 0, j - 1);
 
         for (j = 0; j < pop_num; j ++)
         {
-            distance_arr[i][j] = distanceInfo[j].E_distance;
+            distance_arr[i][j] = distanceInfo[j].value;
         }
     }
 
@@ -84,7 +82,7 @@ static void SPEA2_SDE_setDistance(SMRT_individual *pop_table, int  pop_num, doub
     return;
 }
 
-static void SPEA2_SDK_setFitness(SMRT_individual *pop_table, int  pop_num, int para_k)
+static void SPEA2_SDE_setFitness(SMRT_individual *pop_table, int  pop_num, int para_k)
 {
     int i = 0, j = 0, temp_index = 0;
     DOMINATE_RELATION relation;
@@ -206,7 +204,7 @@ static void SPEA2_SDK_setFitness(SMRT_individual *pop_table, int  pop_num, int p
     return;
 }
 
-static void SPEA2_SDK_environmentalSelect(SMRT_individual *elite_pop, SMRT_individual *offspring_pop, int para_k)
+static void SPEA2_SDE_environmentalSelect(SMRT_individual *elite_pop, SMRT_individual *offspring_pop, int para_k)
 {
     int i = 0, j = 0, k = 0;
     SMRT_individual *merge_pop = NULL;
@@ -259,7 +257,7 @@ static void SPEA2_SDK_environmentalSelect(SMRT_individual *elite_pop, SMRT_indiv
         copy_individual(elite_pop + j, merge_pop + i);
     }
 
-    SPEA2_SDK_setFitness(merge_pop, merge_pop_num, para_k);
+    SPEA2_SDE_setFitness(merge_pop, merge_pop_num, para_k);
 
     for (i = 0; i < merge_pop_num; i++)
     {
@@ -267,7 +265,7 @@ static void SPEA2_SDK_environmentalSelect(SMRT_individual *elite_pop, SMRT_indiv
         {
             candidate_Num++;
         }
-        fitnessInfo[i].fitness = merge_pop[i].fitness;
+        fitnessInfo[i].value = merge_pop[i].fitness;
         fitnessInfo[i].idx = i;
     }
 
@@ -290,14 +288,14 @@ static void SPEA2_SDK_environmentalSelect(SMRT_individual *elite_pop, SMRT_indiv
             current_dimension = 0;
             for (i = 0; i < candidate_Num; i++)
             {
-                distanceInfo[i].E_distance = distance_arr[fitnessInfo[i].idx][current_dimension];
+                distanceInfo[i].value = distance_arr[fitnessInfo[i].idx][current_dimension];
                 distanceInfo[i].idx = i;
             }
             distance_quick_sort(distanceInfo, 0, candidate_Num - 1);
 
             do{
                 same_distance_num = 0;
-                while(fabs(distanceInfo[same_distance_num].E_distance - distanceInfo[same_distance_num + 1].E_distance) < 1e-4)
+                while(fabs(distanceInfo[same_distance_num].value - distanceInfo[same_distance_num + 1].value) < 1e-4)
                 {
                     same_distance_num++;
                 }
@@ -308,7 +306,7 @@ static void SPEA2_SDK_environmentalSelect(SMRT_individual *elite_pop, SMRT_indiv
                 }
                 for (j = 0; j <= same_distance_num; j++)
                 {
-                    distanceInfo[j].E_distance = distance_arr[fitnessInfo[distanceInfo[j].idx].idx][current_dimension];
+                    distanceInfo[j].value = distance_arr[fitnessInfo[distanceInfo[j].idx].idx][current_dimension];
                 }
                 distance_quick_sort(distanceInfo, 0, same_distance_num);
 
@@ -326,7 +324,7 @@ static void SPEA2_SDK_environmentalSelect(SMRT_individual *elite_pop, SMRT_indiv
                 }
             }
 
-            fitnessInfo[distanceInfo[0].idx].fitness = fitnessInfo[candidate_Num-1].fitness;
+            fitnessInfo[distanceInfo[0].idx].value = fitnessInfo[candidate_Num - 1].value;
             fitnessInfo[distanceInfo[0].idx].idx = fitnessInfo[candidate_Num-1].idx;
 
             candidate_Num--;
@@ -350,7 +348,7 @@ static void SPEA2_SDK_environmentalSelect(SMRT_individual *elite_pop, SMRT_indiv
     return;
 }
 
-extern void SPEA2_SDK_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _SPEA2_SDE_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int i = 0;
     int para_k = 0;
@@ -372,21 +370,23 @@ extern void SPEA2_SDK_framework (SMRT_individual *parent_pop, SMRT_individual *o
 
         if (2 == g_algorithm_entity.iteration_number)
         {
-            SPEA2_SDK_setFitness(parent_pop, g_algorithm_entity.algorithm_para.pop_size, para_k);
+            SPEA2_SDE_setFitness(parent_pop, g_algorithm_entity.algorithm_para.pop_size, para_k);
             for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
             {
                 copy_individual(g_algorithm_entity.parent_population + i, g_algorithm_entity.elit_population + i);
             }
         }
 
-        SPEA2_SDK_setFitness(g_algorithm_entity.elit_population, g_algorithm_entity.algorithm_para.elite_pop_size, para_k);
+        SPEA2_SDE_setFitness(g_algorithm_entity.elit_population, g_algorithm_entity.algorithm_para.elite_pop_size,
+                             para_k);
         // reproduction (crossover and mutation)
         crossover_spea2 (g_algorithm_entity.elit_population, offspring_pop);
         mutation_pop(offspring_pop);
         evaluate_population (offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
 
         // environment selection
-        SPEA2_SDK_environmentalSelect(g_algorithm_entity.elit_population, g_algorithm_entity.offspring_population, para_k);
+        SPEA2_SDE_environmentalSelect(g_algorithm_entity.elit_population, g_algorithm_entity.offspring_population,
+                                      para_k);
 
         // track the current evolutionary progress, including population and metrics
         track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);

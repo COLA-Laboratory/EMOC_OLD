@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/92/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/97/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/92/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/97/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/maopl/CLionProjects/my_work/Samaritan/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/92/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/97/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/92/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/97/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -1365,6 +1365,33 @@ metaheuristics/MaOEAIT.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MaOEAIT.c.s
 .PHONY : metaheuristics/MaOEAIT.c.s
 
+metaheuristics/MaOEA_IGD.o: metaheuristics/MaOEA_IGD.c.o
+
+.PHONY : metaheuristics/MaOEA_IGD.o
+
+# target to build an object file
+metaheuristics/MaOEA_IGD.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MaOEA_IGD.c.o
+.PHONY : metaheuristics/MaOEA_IGD.c.o
+
+metaheuristics/MaOEA_IGD.i: metaheuristics/MaOEA_IGD.c.i
+
+.PHONY : metaheuristics/MaOEA_IGD.i
+
+# target to preprocess a source file
+metaheuristics/MaOEA_IGD.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MaOEA_IGD.c.i
+.PHONY : metaheuristics/MaOEA_IGD.c.i
+
+metaheuristics/MaOEA_IGD.s: metaheuristics/MaOEA_IGD.c.s
+
+.PHONY : metaheuristics/MaOEA_IGD.s
+
+# target to generate assembly for a file
+metaheuristics/MaOEA_IGD.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/MaOEA_IGD.c.s
+.PHONY : metaheuristics/MaOEA_IGD.c.s
+
 metaheuristics/NSGA2.o: metaheuristics/NSGA2.c.o
 
 .PHONY : metaheuristics/NSGA2.o
@@ -2268,6 +2295,9 @@ help:
 	@echo "... metaheuristics/MaOEAIT.o"
 	@echo "... metaheuristics/MaOEAIT.i"
 	@echo "... metaheuristics/MaOEAIT.s"
+	@echo "... metaheuristics/MaOEA_IGD.o"
+	@echo "... metaheuristics/MaOEA_IGD.i"
+	@echo "... metaheuristics/MaOEA_IGD.s"
 	@echo "... metaheuristics/NSGA2.o"
 	@echo "... metaheuristics/NSGA2.i"
 	@echo "... metaheuristics/NSGA2.s"

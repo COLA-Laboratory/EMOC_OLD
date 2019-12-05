@@ -1,39 +1,18 @@
 #include "../headers/global.h"
-#include "../headers/metaheuristics.h"
 #include "../headers/crossover.h"
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/initialize.h"
 #include "../headers/memory.h"
 #include "../headers/utility.h"
 #include "../headers/analysis.h"
 #include "../headers/sort.h"
-#include "../headers/dominance_relation.h"
-#include "../headers/utility.h"
-#include "../headers/selection.h"
-#include "../headers/global.h"
-#include "../headers/crossover.h"
-#include "../headers/mating.h"
-#include "../headers/random.h"
-#include "../headers/memory.h"
-#include "../headers/dominance_relation.h"
 #include "../headers/population.h"
 #include "math.h"
 
-typedef struct {
-    double Q_angle;
-    int R_idx;
-}Angle_info;
-
-typedef struct {
-    double angle;
-    int idx;
-}Sort_Pop_info;
-
 
 static void VaEA_maximumVectorAngleFirst(SMRT_individual *P_pop, int P_pop_num, SMRT_individual * F_last_rank,
-                                         int F_pop_num, int add_index_p, int * niching_index, Angle_info * angle_store)
+                                         int F_pop_num, int add_index_p, int * niching_index, Fitness_info_t * angle_store)
 {
     int i = 0, j = 0;
     double value_cos, temp_angle ;
@@ -60,10 +39,10 @@ static void VaEA_maximumVectorAngleFirst(SMRT_individual *P_pop, int P_pop_num, 
                 value_cos = CalDotProduct(F_last_rank[j].obj, temp_pop_store[i].obj, g_algorithm_entity.algorithm_para.objective_number) / (CalNorm(F_last_rank[j].obj, g_algorithm_entity.algorithm_para.objective_number) * CalNorm(temp_pop_store[i].obj, g_algorithm_entity.algorithm_para.objective_number));
                 temp_angle = acos(value_cos);
 
-                if(temp_angle < angle_store[j].Q_angle)
+                if(temp_angle < angle_store[j].value)
                 {
-                    angle_store[j].R_idx = i;
-                    angle_store[j].Q_angle = temp_angle;
+                    angle_store[j].idx = i;
+                    angle_store[j].value = temp_angle;
                 }
             }
         }
@@ -81,14 +60,14 @@ static void VaEA_maximumVectorAngleFirst(SMRT_individual *P_pop, int P_pop_num, 
 
 
 static void VaEA_worseElimination(SMRT_individual *P_pop, int P_pop_num, SMRT_individual *F_last_rank, int F_pop_num,
-                                  int remove_index_u, int *niching_index, Angle_info *angle_store)
+                                  int remove_index_u, int *niching_index, Fitness_info_t *angle_store)
 {
     int R, j;
     double value_cos, temp_angle ;
 
-    if((remove_index_u != -1) && (angle_store[remove_index_u].Q_angle < (PI/(2 * P_pop_num))))
+    if((remove_index_u != -1) && (angle_store[remove_index_u].value < (PI / (2 * P_pop_num))))
     {
-        R = angle_store[remove_index_u].R_idx;
+        R = angle_store[remove_index_u].idx;
         if((P_pop[R].fitness > F_last_rank[remove_index_u].fitness) && (niching_index[remove_index_u] == 0) )
         {
             copy_individual(F_last_rank + remove_index_u, P_pop + R);
@@ -101,17 +80,17 @@ static void VaEA_worseElimination(SMRT_individual *P_pop, int P_pop_num, SMRT_in
                     value_cos = CalDotProduct(F_last_rank[j].obj, F_last_rank[remove_index_u].obj, g_algorithm_entity.algorithm_para.objective_number) / (CalNorm(F_last_rank[j].obj, g_algorithm_entity.algorithm_para.objective_number) * CalNorm(F_last_rank[remove_index_u].obj, g_algorithm_entity.algorithm_para.objective_number));
                     temp_angle = acos(value_cos);
 
-                    if( angle_store[j].R_idx != angle_store[remove_index_u].R_idx)
+                    if( angle_store[j].idx != angle_store[remove_index_u].idx)
                     {
-                        if(temp_angle < angle_store[j].Q_angle)
+                        if(temp_angle < angle_store[j].value)
                         {
-                            angle_store[j].Q_angle = temp_angle;
-                            angle_store[j].R_idx = R;
+                            angle_store[j].value = temp_angle;
+                            angle_store[j].idx = R;
                         }
                     }
                     else
                     {
-                        angle_store[j].Q_angle = temp_angle;
+                        angle_store[j].value = temp_angle;
                     }
                 }
             }
@@ -130,11 +109,11 @@ static void VaEA_associationAndNiching(SMRT_individual *P_pop, int P_pop_num, SM
     double **uniform_ref_point = NULL;
     Fitness_info_t *fitnessInfo = NULL;
     int * niching_index = malloc(sizeof(int) * F_pop_num );
-    Sort_Pop_info P_min_temp, * P_empty_store_angle = NULL;
+    Fitness_info_t P_min_temp, * P_empty_store_angle = NULL;
 
-    P_empty_store_angle = (Sort_Pop_info *)malloc(sizeof(Sort_Pop_info) * F_pop_num);
+    P_empty_store_angle = (Fitness_info_t *)malloc(sizeof(Fitness_info_t) * F_pop_num);
     uniform_ref_point = (double **)malloc(sizeof(double *) * F_pop_num);
-    Angle_info * angle_store = (Angle_info *)malloc(sizeof(Angle_info) * F_pop_num);
+    Fitness_info_t * angle_store = (Fitness_info_t *)malloc(sizeof(Fitness_info_t) * F_pop_num);
 
     memset(niching_index, 0, sizeof(int) * F_pop_num );
     fitnessInfo = (Fitness_info_t *)malloc(sizeof(Fitness_info_t) * F_pop_num);
@@ -166,7 +145,7 @@ static void VaEA_associationAndNiching(SMRT_individual *P_pop, int P_pop_num, SM
         for( i = 0; i < F_pop_num; i++)
         {
             value_cos = CalDotProduct(F_last_rank[i].obj, uniform_ref_point[i],  g_algorithm_entity.algorithm_para.objective_number) / (CalNorm(F_last_rank[i].obj, g_algorithm_entity.algorithm_para.objective_number) *CalNorm(uniform_ref_point[i], g_algorithm_entity.algorithm_para.objective_number));
-            P_empty_store_angle[i].angle = acos(value_cos);
+            P_empty_store_angle[i].value = acos(value_cos);
             P_empty_store_angle[i].idx = i;
         }
 
@@ -174,7 +153,7 @@ static void VaEA_associationAndNiching(SMRT_individual *P_pop, int P_pop_num, SM
         {
             for(j = 0; j < F_pop_num - i - 1; j++)
             {
-                if(P_empty_store_angle[j].angle < P_empty_store_angle[j+1].angle)
+                if(P_empty_store_angle[j].value < P_empty_store_angle[j + 1].value)
                 {
                     P_min_temp = P_empty_store_angle[j];
                     P_empty_store_angle[j] = P_empty_store_angle[j+1];
@@ -190,7 +169,7 @@ static void VaEA_associationAndNiching(SMRT_individual *P_pop, int P_pop_num, SM
 
         for (i = 0; i < F_pop_num; i++)
         {
-            fitnessInfo[i].fitness = F_last_rank[i].fitness;
+            fitnessInfo[i].value = F_last_rank[i].fitness;
             fitnessInfo[i].idx = i;
         }
 
@@ -205,8 +184,8 @@ static void VaEA_associationAndNiching(SMRT_individual *P_pop, int P_pop_num, SM
 
     for( i = 0; i < F_pop_num; i++)
     {
-        angle_store[i].R_idx = -1;
-        angle_store[i].Q_angle = INF;
+        angle_store[i].idx = -1;
+        angle_store[i].value = INF;
     }
 
     for(j = 0; j < F_pop_num; j++)
@@ -216,10 +195,10 @@ static void VaEA_associationAndNiching(SMRT_individual *P_pop, int P_pop_num, SM
             value_cos = CalDotProduct(F_last_rank[j].obj, P_pop[k].obj, g_algorithm_entity.algorithm_para.objective_number) / (CalNorm(F_last_rank[j].obj, g_algorithm_entity.algorithm_para.objective_number) * CalNorm(P_pop[k].obj, g_algorithm_entity.algorithm_para.objective_number));
             temp_angle = acos(value_cos);
 
-            if(temp_angle < angle_store[j].Q_angle)
+            if(temp_angle < angle_store[j].value)
             {
-                angle_store[j].R_idx = k;
-                angle_store[j].Q_angle = temp_angle;
+                angle_store[j].idx = k;
+                angle_store[j].value = temp_angle;
             }
         }
     }
@@ -233,15 +212,15 @@ static void VaEA_associationAndNiching(SMRT_individual *P_pop, int P_pop_num, SM
 
         for(j = 0; j < F_pop_num; j++)
         {
-            if((min_angle > angle_store[j].Q_angle) && (niching_index[j] == 0))
+            if((min_angle > angle_store[j].value) && (niching_index[j] == 0))
             {
-                min_angle = angle_store[j].Q_angle;
+                min_angle = angle_store[j].value;
                 remove_index_u = j;
             }
 
-            if((max_angle < angle_store[j].Q_angle) && (niching_index[j] == 0))
+            if((max_angle < angle_store[j].value) && (niching_index[j] == 0))
             {
-                max_angle = angle_store[j].Q_angle;
+                max_angle = angle_store[j].value;
                 add_index_p = j;
             }
         }
@@ -269,7 +248,7 @@ static void VaEA_environmentalSelect(SMRT_individual *parent_pop, SMRT_individua
     allocate_memory_for_pop(&temp_rank_select, mix_pop_num);
     int i = 0, j = 0, K_remove_number = 0, current_pop_num = 0, count_temp_rank_num = 0, rank_index = 0;
 
-    //Normalization and assign fitness value
+    //Normalization and assign value value
     for(i = 0; i < mix_pop_num; i++)
     {
         copy_individual(parent_pop + i, temp_pop + i);
@@ -345,7 +324,7 @@ static void VaEA_environmentalSelect(SMRT_individual *parent_pop, SMRT_individua
 }
 
 
-extern void VaEA_framework(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _VaEA_(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
 
     g_algorithm_entity.iteration_number                  = 1;

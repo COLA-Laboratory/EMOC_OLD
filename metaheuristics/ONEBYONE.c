@@ -333,7 +333,7 @@ static void ONEBYONE_update(SMRT_individual *pop_table, int pop_num, SMRT_indivi
     return;
 }
 
-extern void ONEBYONE_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _ONEBYONE_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int i = 0;
     double threshold = 1;

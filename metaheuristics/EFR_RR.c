@@ -4,25 +4,16 @@
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/initialize.h"
 #include "../headers/memory.h"
 #include "../headers/utility.h"
 #include "../headers/analysis.h"
 #include "../headers/sort.h"
-#include "../headers/dominance_relation.h"
-#include "../headers/utility.h"
 #include "../headers/selection.h"
-#include "../headers/global.h"
-#include "../headers/crossover.h"
-#include "../headers/mating.h"
-#include "../headers/random.h"
-#include "../headers/memory.h"
-#include "../headers/dominance_relation.h"
 #include "../headers/population.h"
 
 
 
-extern void EFR_RR_sortNondecresingOrder(SMRT_individual *parent_pop_table, int *Ln_store, int Ln_number, int *weight)
+static void EFR_RR_sortNondecresingOrder(SMRT_individual *parent_pop_table, int *Ln_store, int Ln_number, int *weight)
 {
     int i, j, temp;
 
@@ -86,7 +77,7 @@ static void EFR_RR_maximumRanking(SMRT_individual *parent_pop_table, SMRT_indivi
         for (i = 0; i < ref_point_num; i++)
         {
             distance_solution_to_weight = Cal_perpendicular_distance(parent_pop_table[j].obj, uniform_ref_point[i]);
-            sort_list[i].E_distance = distance_solution_to_weight;
+            sort_list[i].value = distance_solution_to_weight;
             sort_list[i].idx = i;
         }
 
@@ -148,7 +139,7 @@ static void EFR_RR_maximumRanking(SMRT_individual *parent_pop_table, SMRT_indivi
     return;
 }
 
-extern void EFR_RR_framework(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _EFR_RR_(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int i = 0;
     int ref_point_num = 0;

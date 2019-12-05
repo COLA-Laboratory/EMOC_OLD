@@ -66,7 +66,7 @@ static void MTS_adjustAppSet(SMRT_individual *Approximation_Set, int *set_num)
             }
 
             distanceInfo[i].idx = i;
-            distanceInfo[i].E_distance = min_dis;
+            distanceInfo[i].value = min_dis;
         }
 
         distance_quick_sort(distanceInfo, 0, app_num - 1);
@@ -463,7 +463,7 @@ static int MTS_choseSearchApproach(SMRT_individual *ind, int *improve, double *s
     return search_f_num;
 }
 
-extern void MTS_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _MTS_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int i = 0, j = 0;
     int *entry = NULL, *improve = NULL, local_search = 0, approximation_set_num = 0, max_app_set_num = 0, max_new_app_set_num = 0;
@@ -546,7 +546,7 @@ extern void MTS_framework (SMRT_individual *parent_pop, SMRT_individual *offspri
         {
             entry[i] = 0;
             fitnessInfo[i].idx = i;
-            fitnessInfo[i].fitness = grade[i];
+            fitnessInfo[i].value = grade[i];
         }
 
         fitness_quicksort(fitnessInfo, 0, g_algorithm_entity.algorithm_para.pop_size - 1);

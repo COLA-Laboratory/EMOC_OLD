@@ -385,7 +385,7 @@ static int MaOEAIT_findSubspace(SMRT_individual *Archive_table, double epsilon, 
     return  selectId;
 }
 
-// cal cos value for pop as fitness
+// cal cos value for pop as value
 static void MaOEAIT_calPopCosV(SMRT_individual *pop, double *weight, int num)
 {
     int i = 0;
@@ -409,7 +409,7 @@ static void MaOEAIT_updatePop(SMRT_individual *mix_pop, SMRT_individual *parent_
 
     for(i = 0; i < num; i++)
     {
-        sortList[i].fitness = -mix_pop[i].fitness;
+        sortList[i].value = -mix_pop[i].fitness;
         sortList[i].idx = i;
     }
 
@@ -481,7 +481,7 @@ static int MaOEAIT_chooseBestInd(SMRT_individual *pop, int num)
 
     for(i = 0; i < num; i++)
     {
-        sortList[i].fitness = -pop[i].fitness;
+        sortList[i].value = -pop[i].fitness;
         sortList[i].idx = i;
     }
 
@@ -493,12 +493,9 @@ static int MaOEAIT_chooseBestInd(SMRT_individual *pop, int num)
     return index;
 }
 
-extern void MaOEAIT_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _MaOEAIT_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     MaOEAIT_isAlert();
-
-    g_algorithm_entity.iteration_number          = 0;
-    g_algorithm_entity.algorithm_para.current_evaluation = 0;
 
     int selectId = 0;
     int W_index = 0;
@@ -511,6 +508,9 @@ extern void MaOEAIT_framework (SMRT_individual *parent_pop, SMRT_individual *off
     int evaluation1 = g_algorithm_entity.algorithm_para.pop_size * 400;
     int evaluation2 = g_algorithm_entity.algorithm_para.pop_size * 60;
     int evaluation3 = g_algorithm_entity.algorithm_para.max_evaluation - evaluation1 - evaluation2;
+
+    g_algorithm_entity.iteration_number          = 0;
+    g_algorithm_entity.algorithm_para.current_evaluation = 0;
 
     // initialization process
     lambda = initialize_uniform_point (g_algorithm_entity.algorithm_para.pop_size, &weight_num);

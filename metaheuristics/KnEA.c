@@ -6,7 +6,6 @@
 #include "../headers/print.h"
 #include "../headers/analysis.h"
 #include "../headers/sort.h"
-#include "../headers/selection.h"
 #include "../headers/utility.h"
 
 static void KnEA_calWeightedDis(SMRT_individual *pop_table, int pop_num, double *weightedDis)
@@ -21,7 +20,7 @@ static void KnEA_calWeightedDis(SMRT_individual *pop_table, int pop_num, double 
     for(i = 0;i < pop_num;i++)
     {
         distance_sort_list[i].idx = -1;
-        distance_sort_list[i].E_distance = -1;
+        distance_sort_list[i].value = -1;
     }
 
     for(i = 0;i < pop_num;i++)
@@ -33,11 +32,11 @@ static void KnEA_calWeightedDis(SMRT_individual *pop_table, int pop_num, double 
             if(i != j)
             {
                 distance_sort_list[j].idx = j;
-                distance_sort_list[j].E_distance = euclidian_distance(pop_table[i].obj,pop_table[j].obj,g_algorithm_entity.algorithm_para.objective_number);
+                distance_sort_list[j].value = euclidian_distance(pop_table[i].obj, pop_table[j].obj, g_algorithm_entity.algorithm_para.objective_number);
             }else
             {
                 distance_sort_list[j].idx = j;
-                distance_sort_list[j].E_distance = 10000000;
+                distance_sort_list[j].value = 10000000;
             }
         }
 
@@ -46,20 +45,20 @@ static void KnEA_calWeightedDis(SMRT_individual *pop_table, int pop_num, double 
         distanceSum = 0;
         for(j = 0; j < 3; j++)
         {
-            distanceSum += distance_sort_list[j].E_distance;
+            distanceSum += distance_sort_list[j].value;
         }
 
         rankSum = 0;
         for(j = 0; j < 3; j++)
         {
-            r[j] = 1/fabs((distance_sort_list[j].E_distance - distanceSum/3.0));
+            r[j] = 1/fabs((distance_sort_list[j].value - distanceSum / 3.0));
             rankSum += r[j];
         }
 
         for(j = 0; j < 3; j++)
         {
             w[j] = r[j]/rankSum;
-            weightedDis[i] += w[j] * distance_sort_list[j].E_distance;
+            weightedDis[i] += w[j] * distance_sort_list[j].value;
         }
     }
 
@@ -131,7 +130,7 @@ static Distance_info_t* KnEA_findKneePoint(SMRT_individual *mixed_table, int pop
     for(i = 0; i < pop_num; i++)
     {
         rankDistanceInfo[i].idx = -1;
-        rankDistanceInfo->E_distance = -1;
+        rankDistanceInfo->value = -1;
     }
 
     A = (double **)malloc(sizeof(double *) * g_algorithm_entity.algorithm_para.objective_number);
@@ -160,7 +159,7 @@ static Distance_info_t* KnEA_findKneePoint(SMRT_individual *mixed_table, int pop
     for(i = 0; i < pop_num; i++)
     {
         distance_sort_list[i].idx = -1;
-        distance_sort_list[i].E_distance = -1;
+        distance_sort_list[i].value = -1;
     }
 
     for(i = 0; i < pop_num; i++)
@@ -233,8 +232,8 @@ static Distance_info_t* KnEA_findKneePoint(SMRT_individual *mixed_table, int pop
             for(j = 0; j < count; j++)
             {
                 distance_sort_list[j].idx = currentFront[j];
-                distance_sort_list[j].E_distance = KnEA_calDisToHyper(mixed_table[currentFront[j]].obj, x,
-                                                                      g_algorithm_entity.algorithm_para.objective_number);
+                distance_sort_list[j].value = KnEA_calDisToHyper(mixed_table[currentFront[j]].obj, x,
+                                                                 g_algorithm_entity.algorithm_para.objective_number);
             }
             distance_quick_sort(distance_sort_list,0,count-1);
 
@@ -243,7 +242,7 @@ static Distance_info_t* KnEA_findKneePoint(SMRT_individual *mixed_table, int pop
                 for(j = 0; j < count; j++)
                 {
                     rankDistanceInfo[j].idx = distance_sort_list[j].idx;
-                    rankDistanceInfo[j].E_distance = distance_sort_list[j].E_distance;
+                    rankDistanceInfo[j].value = distance_sort_list[j].value;
                 }
             }
 
@@ -395,26 +394,26 @@ static void KnEA_environmentSelection(SMRT_individual *mixed_table, SMRT_individ
         }
     }
 
-    KnEA_SELECT_TERMINATE_HANDLE:
+KnEA_SELECT_TERMINATE_HANDLE:
     free(distanceList);
-    free(newK);free(currentKneePoints);
+    free(newK);
+    free(currentKneePoints);
 
     return ;
 }
 
 
-extern void KnEA_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _KnEA_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
-    g_algorithm_entity.algorithm_para.current_evaluation = 0;
-    g_algorithm_entity.iteration_number = 0;
-
     int rank = -1, i = 0;
 
-    //KnEA parameter
-    int *K;  //wait to release
-    double *weightedDis;  //release
-    double *t, *r, T = 0.6; //release
+    int *K;
+    double *weightedDis;
+    double *t, *r, T = 0.6;
     Distance_info_t *distanceList = NULL;
+
+    g_algorithm_entity.algorithm_para.current_evaluation = 0;
+    g_algorithm_entity.iteration_number = 0;
 
     K = (int *)malloc(sizeof(int) * g_algorithm_entity.algorithm_para.pop_size * 2);
     for(i = 0; i < g_algorithm_entity.algorithm_para.pop_size * 2; i++)

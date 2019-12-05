@@ -45,6 +45,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Samaritan.dir/metaheuristics/MOEAD_STM.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/MTS.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/MaOEAIT.c.o"
+  "CMakeFiles/Samaritan.dir/metaheuristics/MaOEA_IGD.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/NSGA2.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/NSGA3.c.o"
   "CMakeFiles/Samaritan.dir/metaheuristics/ONEBYONE.c.o"

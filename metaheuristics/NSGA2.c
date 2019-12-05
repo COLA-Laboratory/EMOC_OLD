@@ -81,7 +81,7 @@ NSGA2_SELECT_TERMINATE_HANDLE:
 }
 
 
-extern void NSGA2_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _NSGA2_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     g_algorithm_entity.iteration_number                  = 1;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;

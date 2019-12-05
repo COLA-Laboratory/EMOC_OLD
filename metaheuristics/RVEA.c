@@ -26,7 +26,7 @@ static void RVEA_normalization(double **lambda)
 }
 
 static int RVEA_referBasedSelection(SMRT_individual *parent_table, SMRT_individual *mixedPop_table, double **lambda,
-                                    int mixedPopNum, int maxGen, int alpha)
+                                    int mixedPopNum, int maxGen, double alpha)
 {
     int popCount = 0, i = 0, j = 0;
     double cosVal = 0, tempValue = 0;
@@ -83,7 +83,7 @@ static int RVEA_referBasedSelection(SMRT_individual *parent_table, SMRT_individu
         for(j = 0; j < mixedPopNum; j++)
         {
             APDInfo[i][j].idx = -1;
-            APDInfo[i][j].E_distance = 10000000;
+            APDInfo[i][j].value = 10000000;
         }
     }
 
@@ -112,7 +112,7 @@ static int RVEA_referBasedSelection(SMRT_individual *parent_table, SMRT_individu
         {
             cosVal = CalDotProduct(popObj[i], lambda[j], M)/(CalNorm(popObj[i], M) * CalNorm(lambda[j], M));
             angleInfo[i][j].idx = j;
-            angleInfo[i][j].cosValue = cosVal;
+            angleInfo[i][j].value = cosVal;
         }
     }
 
@@ -149,7 +149,7 @@ static int RVEA_referBasedSelection(SMRT_individual *parent_table, SMRT_individu
                 cosVal = CalDotProduct(lambda[i], popObj[partitionRes[i][j]],M)/(CalNorm(popObj[partitionRes[i][j]], M) * CalNorm(lambda[i], M));
                 tempValue = M * pow((double)g_algorithm_entity.iteration_number/maxGen, alpha) * (acos(cosVal)/gama[i]);
                 APDInfo[i][j].idx = partitionRes[i][j];
-                APDInfo[i][j].E_distance = (1 + tempValue) * CalNorm(popObj[partitionRes[i][j]], M);
+                APDInfo[i][j].value = (1 + tempValue) * CalNorm(popObj[partitionRes[i][j]], M);
             }
         }
     }
@@ -208,7 +208,7 @@ static void RVEA_referAdaptation(double **lambda, SMRT_individual *pop_table)
     return;
 }
 
-extern void RVEA_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _RVEA_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
 
     int i = 0, j = 0, currentPopNum = 0,maxGen = 0;

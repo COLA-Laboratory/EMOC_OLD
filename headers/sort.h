@@ -2,23 +2,23 @@
 #define _SORT_H_
 
 typedef struct {
-    double E_distance;
+    double value;
     int idx;
 }Distance_info_t;
 
 typedef struct {
-    double fitness;
+    double value;
     int idx;
 }Fitness_info_t;
 
 typedef struct{
     int idx;
-    double cosValue;
+    double value;
 }Angle_info_t;
 
 typedef struct {
     int op;
-    double FRR_temp;
+    double value;
 }FRR_info_t;
 
 typedef struct {

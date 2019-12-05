@@ -127,7 +127,7 @@ static void CNSGA2_select(SMRT_individual *parent_pop, SMRT_individual *merge_po
 }
 
 
-extern void CNSGA2_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _CNSGA2_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     g_algorithm_entity.iteration_number                  = 1;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;

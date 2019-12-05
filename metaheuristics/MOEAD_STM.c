@@ -4,7 +4,6 @@
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/initialize.h"
 #include "../headers/utility.h"
 #include "../headers/sort.h"
 #include "../headers/selection.h"
@@ -102,11 +101,11 @@ static void MOEAD_STM_stableMatching(int *idx, int size)
             {
                 if (solMatrix[current_sol_id][i].idx == current_subp_id)
                 {
-                    preference1 = solMatrix[current_sol_id][i].fitness;
+                    preference1 = solMatrix[current_sol_id][i].value;
                 }
                 if (solMatrix[current_sol_id][i].idx == predecessor)
                 {
-                    preference2 = solMatrix[current_sol_id][i].fitness;
+                    preference2 = solMatrix[current_sol_id][i].value;
                 }
             }
             if (preference1 > preference2)
@@ -147,7 +146,6 @@ static void MOEAD_STM_ini()
     int i = 0, j = 0, k = 0;
     double difference = 0, distance_temp = 0, Euc_distance = 0;
     Distance_info_t sort_list[MAX_SIZE];
-
 
     lambda = initialize_uniform_point(g_algorithm_entity.algorithm_para.pop_size, &weight_num);
 
@@ -196,7 +194,7 @@ static void MOEAD_STM_ini()
             }
 
             Euc_distance = sqrt((double)distance_temp);
-            sort_list[j].E_distance = Euc_distance;
+            sort_list[j].value = Euc_distance;
             sort_list[j].idx = j;
         }
 
@@ -295,7 +293,7 @@ static void MOEAD_STM_update(SMRT_individual *merge_pop, int merge_num)
         min_index = 0;
         for (j = 0; j < weight_num; j++)
         {
-            subpMatrix[j][i].fitness   = cal_moead_fitness (merge_pop + i, lambda[j], g_algorithm_entity.MOEAD_para.function_type);
+            subpMatrix[j][i].value   = cal_moead_fitness (merge_pop + i, lambda[j], g_algorithm_entity.MOEAD_para.function_type);
             subpMatrix[j][i].idx = i;
             distMatrix[i][j]  	= calculateDistance_sol_weight (merge_pop + i, lambda[j]);
             if (distMatrix[i][j] < distMatrix[i][min_index])
@@ -308,7 +306,7 @@ static void MOEAD_STM_update(SMRT_individual *merge_pop, int merge_num)
     {
         for (j = 0; j < weight_num; j++)
         {
-            solMatrix[i][j].fitness    = distMatrix[i][j];
+            solMatrix[i][j].value    = distMatrix[i][j];
             solMatrix[i][j].idx  = j;
         }
     }
@@ -331,7 +329,7 @@ static void MOEAD_STM_update(SMRT_individual *merge_pop, int merge_num)
     return;
 }
 
-extern void MOEAD_STM_framework(SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _MOEAD_STM_(SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int i, j;
     SMRT_individual *offspring, *parent;

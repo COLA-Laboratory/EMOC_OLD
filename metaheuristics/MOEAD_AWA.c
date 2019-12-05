@@ -4,17 +4,12 @@
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/initialize.h"
 #include "../headers/utility.h"
 #include "../headers/sort.h"
 #include "../headers/selection.h"
 #include "../headers/random.h"
 #include "../headers/analysis.h"
 #include "../headers/memory.h"
-#include "../headers/dominance_relation.h"
-
-
-#include "../headers/indicator.h"
 
 static void MOEAD_AWA_free()
 {
@@ -109,7 +104,7 @@ static void MOEAD_AWA_ini()
             }
 
             Euc_distance = sqrt((double)distance_temp);
-            sort_list[j].E_distance = Euc_distance;
+            sort_list[j].value = Euc_distance;
             sort_list[j].idx = j;
         }
         distance_quick_sort(sort_list, 0, weight_num - 1);
@@ -217,7 +212,7 @@ static void MOEAD_AWA_updateEP(SMRT_individual *mix_pop, int mix_pop_number, SMR
             {
                 for(m = 0; m < non_dominated_pop_number; m++)
                 {
-                    quick_sort_one_copy[m].E_distance = Distance_store_copy[l][m];
+                    quick_sort_one_copy[m].value = Distance_store_copy[l][m];
                     quick_sort_one_copy[m].idx = m;
                 }
 
@@ -225,7 +220,7 @@ static void MOEAD_AWA_updateEP(SMRT_individual *mix_pop, int mix_pop_number, SMR
 
                 for (n = 0; n < non_dominated_pop_number; n++)
                 {
-                    Distance_store_copy[l][n] = quick_sort_one_copy[n].E_distance;
+                    Distance_store_copy[l][n] = quick_sort_one_copy[n].value;
                 }
             }
 
@@ -237,7 +232,7 @@ static void MOEAD_AWA_updateEP(SMRT_individual *mix_pop, int mix_pop_number, SMR
                     temp_result *=  Distance_store_copy[z][x];
                 }
 
-                quick_sort_two_copy[z].E_distance = temp_result * 1000;
+                quick_sort_two_copy[z].value = temp_result * 1000;
                 quick_sort_two_copy[z].idx = z;
             }
 
@@ -382,7 +377,7 @@ static void MOEAD_AWA_updateWeight(SMRT_individual *parent_pop, int parent_pop_n
     {
         for(j = 0; j < merge_pop_number; j++)
         {
-            distanceInfo[j].E_distance = temp_result[j][i];
+            distanceInfo[j].value = temp_result[j][i];
             distanceInfo[j].idx = j;
         }
 
@@ -447,7 +442,7 @@ static void MOEAD_AWA_updateWeight(SMRT_individual *parent_pop, int parent_pop_n
         {
             for(m = 0; m < parent_pop_number; m++)
             {
-                quick_sort_one_copy[m].E_distance = Distance_store_copy[l][m];
+                quick_sort_one_copy[m].value = Distance_store_copy[l][m];
                 quick_sort_one_copy[m].idx = m;
             }
 
@@ -455,7 +450,7 @@ static void MOEAD_AWA_updateWeight(SMRT_individual *parent_pop, int parent_pop_n
 
             for (n = 0; n < parent_pop_number; n++)
             {
-                Distance_store_copy[l][n] = quick_sort_one_copy[n].E_distance;
+                Distance_store_copy[l][n] = quick_sort_one_copy[n].value;
             }
         }
 
@@ -467,7 +462,7 @@ static void MOEAD_AWA_updateWeight(SMRT_individual *parent_pop, int parent_pop_n
                 result_temp_store *=  Distance_store_copy[z][x];
             }
 
-            quick_sort_two_copy[z].E_distance = result_temp_store * 1000;
+            quick_sort_two_copy[z].value = result_temp_store * 1000;
             quick_sort_two_copy[z].idx = z;
         }
 
@@ -555,7 +550,7 @@ static void MOEAD_AWA_updateWeight(SMRT_individual *parent_pop, int parent_pop_n
         {
             for(m = 0; m < selected_solutions_number; m++)
             {
-                quick_sort_one_copy[m].E_distance = Distance_store[l][m];
+                quick_sort_one_copy[m].value = Distance_store[l][m];
                 quick_sort_one_copy[m].idx = m;
             }
 
@@ -563,7 +558,7 @@ static void MOEAD_AWA_updateWeight(SMRT_individual *parent_pop, int parent_pop_n
 
             for (n = 0; n < selected_solutions_number; n++)
             {
-                Distance_store[l][n] = quick_sort_one_copy[n].E_distance;
+                Distance_store[l][n] = quick_sort_one_copy[n].value;
             }
         }
 
@@ -576,7 +571,7 @@ static void MOEAD_AWA_updateWeight(SMRT_individual *parent_pop, int parent_pop_n
                 result_temp_store *=  Distance_store[z][x];
             }
 
-            quick_sort_two_copy[z].E_distance = result_temp_store * 1000;
+            quick_sort_two_copy[z].value = result_temp_store * 1000;
             quick_sort_two_copy[z].idx = z;
         }
 
@@ -613,7 +608,7 @@ static void MOEAD_AWA_updateWeight(SMRT_individual *parent_pop, int parent_pop_n
 
 }
 
-extern void moead_awa_framework(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop) {
+extern void _MOEAD_AWA_(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop) {
 
     int i, j, wag = 20, flag_first_time_EP = 1;
     int real_EP_number = 0;

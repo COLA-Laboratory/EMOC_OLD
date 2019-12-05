@@ -3,7 +3,6 @@
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/initialize.h"
 #include "../headers/utility.h"
 #include "../headers/analysis.h"
 #include "../headers/crossover.h"
@@ -132,10 +131,12 @@ void HypE_exact( Fitness_info_t * fitnessInfo, int param_k, double* rho, SMRT_in
 
     for (i = 0; i < pop_num; ++i)
     {
-        fitnessInfo[i].fitness = fitness[i];
+        fitnessInfo[i].value = fitness[i];
     }
 
     free(fitness);
+
+    return;
 }
 
 double hypeSampling (Fitness_info_t *fitnessInfo, int nrOfSamples, int param_k, double *rho, SMRT_individual *pop_table, int pop_num)
@@ -149,7 +150,7 @@ double hypeSampling (Fitness_info_t *fitnessInfo, int nrOfSamples, int param_k, 
     sample  = malloc (sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
 
     for (i = 0; i < pop_num; i++)
-        fitnessInfo[i].fitness = 0.0;
+        fitnessInfo[i].value = 0.0;
     for (s = 0; s < nrOfSamples; s++)
     {
         for(k = 0; k < g_algorithm_entity.algorithm_para.objective_number; k++)
@@ -179,7 +180,7 @@ double hypeSampling (Fitness_info_t *fitnessInfo, int nrOfSamples, int param_k, 
             for (i = 0; i < pop_num; ++i)
             {
                 if (hitstat[counter] == 1)
-                    fitnessInfo[counter].fitness += rho[domCount];
+                    fitnessInfo[counter].value += rho[domCount];
                 counter++;
             }
         }
@@ -189,9 +190,9 @@ double hypeSampling (Fitness_info_t *fitnessInfo, int nrOfSamples, int param_k, 
     for (i = 0; i < pop_num; ++i)
     {
         fitnessInfo[counter].idx = i;
-        fitnessInfo[counter].fitness = fitnessInfo[counter].fitness  / (double) nrOfSamples;
+        fitnessInfo[counter].value = fitnessInfo[counter].value / (double) nrOfSamples;
         for (k = 0; k < g_algorithm_entity.algorithm_para.objective_number; k++)
-            fitnessInfo[counter].fitness *= (g_algorithm_entity.nadir_point.obj[k] - g_algorithm_entity.ideal_point.obj[k]);
+            fitnessInfo[counter].value *= (g_algorithm_entity.nadir_point.obj[k] - g_algorithm_entity.ideal_point.obj[k]);
         counter++;
     }
 
@@ -214,18 +215,14 @@ void HypE_hypeIndicator(Fitness_info_t *fitnessInfo, int nrOfSamples, int param_
             rho[i] *= (double)(param_k - j ) / (double)( pop_num - j );
     }
     for( i = 0; i < pop_num; i++ )
-        fitnessInfo[i].fitness = 0.0;
+        fitnessInfo[i].value = 0.0;
 
     if( nrOfSamples < 0 )
-        HypE_exact( fitnessInfo, param_k, rho, pop_table, pop_num);
+        HypE_exact(fitnessInfo, param_k, rho, pop_table, pop_num);
     else
         hypeSampling(fitnessInfo, nrOfSamples, param_k, rho, pop_table, pop_num);
-/*
-    for (i = 0; i < pop_num; i++)
-    {
-        printf("index:%d, fit:%f\n", i, fitnessInfo[i].fitness);
-    }
-*/
+
+    return;
 }
 
 
@@ -254,8 +251,9 @@ static void HypE_set_fitness(SMRT_individual *pop_table, int pop_num, int param_
 
     for (i = 0; i < pop_num; ++i)
     {
-        pop_table[i].fitness = fitnessInfo[i].fitness;
+        pop_table[i].fitness = fitnessInfo[i].value;
     }
+
     free(fitnessInfo);
     return;
 }
@@ -263,7 +261,7 @@ static void HypE_set_fitness(SMRT_individual *pop_table, int pop_num, int param_
 static void HypE_select(SMRT_individual *parent_pop, SMRT_individual *mix_pop, int mix_pop_num)
 {
     int i = 0, j = 0;
-    int sort_num = 0, temp_number = 0, rank_index = 0, current_pop_num = 0;
+    int temp_number = 0, rank_index = 0, current_pop_num = 0;
     SMRT_individual *temp_pop = NULL;
     Fitness_info_t *fitnessInfo = NULL;
 
@@ -328,7 +326,7 @@ static void HypE_select(SMRT_individual *parent_pop, SMRT_individual *mix_pop, i
             for (i = 0; i < temp_number; ++i)
             {
                 fitnessInfo[i].idx = i;
-                fitnessInfo[i].fitness = temp_pop[i].fitness;
+                fitnessInfo[i].value = temp_pop[i].fitness;
             }
             fitness_quicksort(fitnessInfo, 0, temp_number - 1);
 
@@ -354,15 +352,13 @@ HYPE_SELECT_TERMINATE_HANDLE:
     return ;
 }
 
-extern void HypE_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _HypE_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
 
     g_algorithm_entity.iteration_number    = 1;
     g_algorithm_entity.algorithm_para.current_evaluation  = 0;
 
     printf ("|\tThe %d run\t|\t1%%\t|", g_algorithm_entity.run_index_current);
-
-
 
     // initialize process
     initialize_population_real (parent_pop, g_algorithm_entity.algorithm_para.pop_size);

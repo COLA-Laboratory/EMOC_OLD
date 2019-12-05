@@ -4,7 +4,6 @@
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/initialize.h"
 #include "../headers/memory.h"
 #include "../headers/utility.h"
 #include "../headers/analysis.h"
@@ -32,18 +31,18 @@ static void SPEA2_setDistance(SMRT_individual *pop_table, int  pop_num, double *
             if (i == j)
             {
                 distance_arr[i][j] = INF;
-                distanceInfo[j].E_distance = distance_arr[i][j];
+                distanceInfo[j].value = distance_arr[i][j];
                 continue;
             }
             distance_arr[i][j] = euclidian_distance(temp_i->obj, temp_j->obj, g_algorithm_entity.algorithm_para.objective_number);
-            distanceInfo[j].E_distance = distance_arr[i][j];
+            distanceInfo[j].value = distance_arr[i][j];
             distanceInfo[j].idx = j;
         }
         distance_quick_sort(distanceInfo, 0, j - 1);
 
         for (j = 0; j < pop_num; j ++)
         {
-            distance_arr[i][j] = distanceInfo[j].E_distance;
+            distance_arr[i][j] = distanceInfo[j].value;
         }
     }
 
@@ -234,7 +233,7 @@ static void SPEA2_environmentalSelect(SMRT_individual *elite_pop, SMRT_individua
         {
             candidate_Num++;
         }
-        fitnessInfo[i].fitness = merge_pop[i].fitness;
+        fitnessInfo[i].value = merge_pop[i].fitness;
         fitnessInfo[i].idx = i;
     }
 
@@ -256,14 +255,14 @@ static void SPEA2_environmentalSelect(SMRT_individual *elite_pop, SMRT_individua
             current_dimension = 0;
             for (i = 0; i < candidate_Num; i++)
             {
-                distanceInfo[i].E_distance = distance_arr[fitnessInfo[i].idx][current_dimension];
+                distanceInfo[i].value = distance_arr[fitnessInfo[i].idx][current_dimension];
                 distanceInfo[i].idx = i;
             }
             distance_quick_sort(distanceInfo, 0, candidate_Num - 1);
 
             do{
                 same_distance_num = 0;
-                while(fabs(distanceInfo[same_distance_num].E_distance - distanceInfo[same_distance_num + 1].E_distance) < 1e-4)
+                while(fabs(distanceInfo[same_distance_num].value - distanceInfo[same_distance_num + 1].value) < 1e-4)
                 {
                     same_distance_num++;
                 }
@@ -274,7 +273,7 @@ static void SPEA2_environmentalSelect(SMRT_individual *elite_pop, SMRT_individua
                 }
                 for (j = 0; j <= same_distance_num; j++)
                 {
-                    distanceInfo[j].E_distance = distance_arr[fitnessInfo[distanceInfo[j].idx].idx][current_dimension];
+                    distanceInfo[j].value = distance_arr[fitnessInfo[distanceInfo[j].idx].idx][current_dimension];
                 }
                 distance_quick_sort(distanceInfo, 0, same_distance_num);
 
@@ -292,7 +291,7 @@ static void SPEA2_environmentalSelect(SMRT_individual *elite_pop, SMRT_individua
                 }
             }
 
-            fitnessInfo[distanceInfo[0].idx].fitness = fitnessInfo[candidate_Num-1].fitness;
+            fitnessInfo[distanceInfo[0].idx].value = fitnessInfo[candidate_Num - 1].value;
             fitnessInfo[distanceInfo[0].idx].idx = fitnessInfo[candidate_Num-1].idx;
 
             candidate_Num--;
@@ -316,7 +315,7 @@ static void SPEA2_environmentalSelect(SMRT_individual *elite_pop, SMRT_individua
     return;
 }
 
-extern void SPEA2_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _SPEA2_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int i = 0;
     int para_k = 0;
@@ -362,5 +361,6 @@ extern void SPEA2_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
     {
         copy_individual(g_algorithm_entity.elit_population + i, g_algorithm_entity.parent_population + i);
     }
+
     return;
 }

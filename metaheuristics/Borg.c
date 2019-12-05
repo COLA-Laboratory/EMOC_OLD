@@ -7,10 +7,7 @@
 #include "../headers/analysis.h"
 #include "../headers/utility.h"
 #include "../headers/memory.h"
-#include "../headers/initialize.h"
-#include "../headers/indicator.h"
 #include "../headers/random.h"
-#include <time.h>
 
 
 static int archive_num = 0;
@@ -62,7 +59,7 @@ static int Borg_checkDominanceByReal(double *ind1, double *ind2)
     }
 }
 
-static int Borg_CheckDominance_Borg(double *ind1, double *ind2, double epsilon)
+static int Borg_checkDominance_Borg(double *ind1, double *ind2, double epsilon)
 {
     int i = 0;
     double *Box;
@@ -125,7 +122,7 @@ static int Borg_CheckDominance_Borg(double *ind1, double *ind2, double epsilon)
     }
 }
 
-static int Borg_OperatorSelection(double *pro_distribution)
+static int Borg_operatorSelection(double *pro_distribution)
 {
     int i = 0;
     double sum = 0;
@@ -147,7 +144,7 @@ static int Borg_OperatorSelection(double *pro_distribution)
 }
 
 
-static void Borg_InitializeArchive(SMRT_individual *parentPop, SMRT_individual *Archive, double epsilon)
+static void Borg_initializeArchive(SMRT_individual *parentPop, SMRT_individual *Archive, double epsilon)
 {
     int result;
     int flag = 0;
@@ -164,7 +161,7 @@ static void Borg_InitializeArchive(SMRT_individual *parentPop, SMRT_individual *
         flag = 0;
         for(j = 0; j < N; j++)
         {
-            result = Borg_CheckDominance_Borg(parentPop[i].obj, parentPop[j].obj, epsilon);
+            result = Borg_checkDominance_Borg(parentPop[i].obj, parentPop[j].obj, epsilon);
 
             if(result == -1 )
             {
@@ -244,7 +241,7 @@ static void Borg_updateArchive(SMRT_individual **Archive, SMRT_individual *offsp
     for(i = 0; i < archive_num; i++)
     {
         flag = 0;
-        result = Borg_CheckDominance_Borg(offspring->obj, (*Archive)[i].obj, epsilon);
+        result = Borg_checkDominance_Borg(offspring->obj, (*Archive)[i].obj, epsilon);
 
         if(result == 1)
         {
@@ -387,11 +384,6 @@ extern void _Borg_(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, 
     SMRT_individual *Archive;
     SMRT_individual *offspring;
 
-    pop_num = g_algorithm_entity.algorithm_para.pop_size;
-    g_algorithm_entity.iteration_number                  = 0;
-    g_algorithm_entity.algorithm_para.current_evaluation = 0;
-    int N = g_algorithm_entity.algorithm_para.pop_size;
-
     //Borg Parameter
     int score[6];
     int numOfOffpsing;
@@ -404,6 +396,11 @@ extern void _Borg_(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, 
     int periodRestart = 300;
     int updateInterval = 100;
     int updateNum = 0, evaluationFromLast = 0;
+    int N = g_algorithm_entity.algorithm_para.pop_size;
+
+    pop_num = g_algorithm_entity.algorithm_para.pop_size;
+    g_algorithm_entity.iteration_number                  = 0;
+    g_algorithm_entity.algorithm_para.current_evaluation = 0;
 
     for(i = 0; i < 6; i++)
     {
@@ -416,18 +413,18 @@ extern void _Borg_(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, 
 
     initialize_population_real (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
     evaluate_population (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
-    Borg_InitializeArchive(parent_pop, Archive, epsilon);
+    Borg_initializeArchive(parent_pop, Archive, epsilon);
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
 
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
         g_algorithm_entity.iteration_number++;
         print_progress ();
-        currentOPNum = Borg_OperatorSelection(proDistribution);
+        currentOPNum = Borg_operatorSelection(proDistribution);
         updateNum++;
 
         real_crossover_Borg(parent_pop, pop_num, Archive, archive_num, offspring, currentOPNum, tournamentSize);
-        if(currentOPNum!=0 && currentOPNum!=5)
+        if(currentOPNum != 0 && currentOPNum != 5)
             numOfOffpsing = 2;
         else
             numOfOffpsing = 1;
@@ -473,5 +470,6 @@ extern void _Borg_(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, 
 
     destroy_memory_for_pop(&Archive, archive_num);
     destroy_memory_for_pop(&offspring, 2);
+
     return;
 }

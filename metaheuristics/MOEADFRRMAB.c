@@ -5,7 +5,6 @@
 #include "../headers/random.h"
 #include "../headers/analysis.h"
 #include "../headers/problem.h"
-#include "../headers/initialize.h"
 #include "../headers/selection.h"
 #include "../headers/crossover.h"
 #include "../headers/mutation.h"
@@ -58,7 +57,7 @@ static void MOEADFRRMAB_init()
         for(j = 0;j < weight_num;j++)
         {
             distance_sort_list[j].idx = j;
-            distance_sort_list[j].E_distance = euclidian_distance(lambda[i],lambda[j],g_algorithm_entity.algorithm_para.objective_number);
+            distance_sort_list[j].value = euclidian_distance(lambda[i], lambda[j], g_algorithm_entity.algorithm_para.objective_number);
         }
 
         distance_quick_sort(distance_sort_list,0,weight_num-1);
@@ -218,7 +217,7 @@ static void MOEADFRRMAB_creditAssignment(double *FRR, SlideWindow *SW, int W, do
     for(i = 0; i < 4; i++)
     {
         FRRsort[i].op = i;
-        FRRsort[i].FRR_temp = reward[i];
+        FRRsort[i].value = reward[i];
     }
 
     frr_quick_sort(FRRsort, 0, 3);

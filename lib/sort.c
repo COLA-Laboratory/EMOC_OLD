@@ -786,26 +786,26 @@ extern void non_dominated_sort_MOEADM2M(SMRT_individual *pop_table, int pop_num,
 
 static int partition_by_fit(Fitness_info_t *fitnessInfo, int left, int right)
 {
-    double temp_fit = fitnessInfo[left].fitness;
+    double temp_fit = fitnessInfo[left].value;
     int temp_index = fitnessInfo[left].idx;
     while(left < right)
     {
-        while ((left < right) && (fitnessInfo[right].fitness >= temp_fit))right--;
+        while ((left < right) && (fitnessInfo[right].value >= temp_fit))right--;
         if (left < right)
         {
             fitnessInfo[left].idx = fitnessInfo[right].idx;
-            fitnessInfo[left].fitness = fitnessInfo[right].fitness;
+            fitnessInfo[left].value = fitnessInfo[right].value;
             left++;
         }
-        while ((left < right) && (fitnessInfo[left].fitness < temp_fit))left++;
+        while ((left < right) && (fitnessInfo[left].value < temp_fit))left++;
         if (left < right)
         {
             fitnessInfo[right].idx = fitnessInfo[left].idx;
-            fitnessInfo[right].fitness = fitnessInfo[left].fitness;
+            fitnessInfo[right].value = fitnessInfo[left].value;
             right--;
         }
     }
-    fitnessInfo[left].fitness = temp_fit;
+    fitnessInfo[left].value = temp_fit;
     fitnessInfo[left].idx = temp_index;
     return left;
 }
@@ -828,26 +828,26 @@ extern void fitness_quicksort(Fitness_info_t *fitnessInfo, int left, int right)
 
 static int partition_by_distance(Distance_info_t *distanceInfo, int left, int right)
 {
-    double temp_fit = distanceInfo[left].E_distance;
+    double temp_fit = distanceInfo[left].value;
     int temp_index = distanceInfo[left].idx;
     while(left < right)
     {
-        while ((left < right) && (distanceInfo[right].E_distance >= temp_fit))right--;
+        while ((left < right) && (distanceInfo[right].value >= temp_fit))right--;
         if (left < right)
         {
             distanceInfo[left].idx = distanceInfo[right].idx;
-            distanceInfo[left].E_distance = distanceInfo[right].E_distance;
+            distanceInfo[left].value = distanceInfo[right].value;
             left++;
         }
-        while ((left < right) && (distanceInfo[left].E_distance < temp_fit))left++;
+        while ((left < right) && (distanceInfo[left].value < temp_fit))left++;
         if (left < right)
         {
             distanceInfo[right].idx = distanceInfo[left].idx;
-            distanceInfo[right].E_distance = distanceInfo[left].E_distance;
+            distanceInfo[right].value = distanceInfo[left].value;
             right--;
         }
     }
-    distanceInfo[left].E_distance = temp_fit;
+    distanceInfo[left].value = temp_fit;
     distanceInfo[left].idx = temp_index;
     return left;
 }
@@ -868,26 +868,26 @@ extern void distance_quick_sort(Distance_info_t *distanceInfo, int left, int rig
 
 static int partition_by_angle(Angle_info_t * angleInfo, int left, int right)
 {
-    double temp_fit = angleInfo[left].cosValue;
+    double temp_fit = angleInfo[left].value;
     int temp_index = angleInfo[left].idx;
     while(left < right)
     {
-        while ((left < right) && (angleInfo[right].cosValue > temp_fit))right--;
+        while ((left < right) && (angleInfo[right].value > temp_fit))right--;
         if (left < right)
         {
             angleInfo[left].idx = angleInfo[right].idx;
-            angleInfo[left].cosValue = angleInfo[right].cosValue;
+            angleInfo[left].value = angleInfo[right].value;
             left++;
         }
-        while ((left < right) && (angleInfo[left].cosValue < temp_fit))left++;
+        while ((left < right) && (angleInfo[left].value < temp_fit))left++;
         if (left < right)
         {
             angleInfo[right].idx = angleInfo[left].idx;
-            angleInfo[right].cosValue = angleInfo[left].cosValue;
+            angleInfo[right].value = angleInfo[left].value;
             right--;
         }
     }
-    angleInfo[left].cosValue = temp_fit;
+    angleInfo[left].value = temp_fit;
     angleInfo[left].idx = temp_index;
     return left;
 }
@@ -908,26 +908,26 @@ extern void angle_quick_sort(Angle_info_t *angleInfo, int left, int right)
 
 static int partition_by_frr(FRR_info_t * frrInfo, int left, int right)
 {
-    double temp_fit = frrInfo[left].FRR_temp;
+    double temp_fit = frrInfo[left].value;
     int temp_index = frrInfo[left].op;
     while(left < right)
     {
-        while ((left < right) && (frrInfo[right].FRR_temp > temp_fit))right--;
+        while ((left < right) && (frrInfo[right].value > temp_fit))right--;
         if (left < right)
         {
             frrInfo[left].op = frrInfo[right].op;
-            frrInfo[left].FRR_temp = frrInfo[right].FRR_temp;
+            frrInfo[left].value = frrInfo[right].value;
             left++;
         }
-        while ((left < right) && (frrInfo[left].FRR_temp < temp_fit))left++;
+        while ((left < right) && (frrInfo[left].value < temp_fit))left++;
         if (left < right)
         {
             frrInfo[right].op = frrInfo[left].op;
-            frrInfo[right].FRR_temp = frrInfo[left].FRR_temp;
+            frrInfo[right].value = frrInfo[left].value;
             right--;
         }
     }
-    frrInfo[left].FRR_temp = temp_fit;
+    frrInfo[left].value = temp_fit;
     frrInfo[left].op = temp_index;
     return left;
 }

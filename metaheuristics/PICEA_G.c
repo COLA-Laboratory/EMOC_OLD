@@ -6,7 +6,6 @@
 #include "../headers/print.h"
 #include "../headers/analysis.h"
 #include "../headers/sort.h"
-#include "../headers/selection.h"
 #include "../headers/memory.h"
 #include "../headers/dominance_relation.h"
 #include "../headers/utility.h"
@@ -155,7 +154,7 @@ static void PICEA_G_selection(SMRT_individual *new_pop, SMRT_individual *new_goa
                 pop_table[i].fitness = 0;
             }
 
-            fitnessInfo[i].fitness = pop_table[i].fitness;
+            fitnessInfo[i].value = pop_table[i].fitness;
             fitnessInfo[i].idx = i;
         }
     }
@@ -168,7 +167,7 @@ static void PICEA_G_selection(SMRT_individual *new_pop, SMRT_individual *new_goa
                 pop_table[i].fitness = INF;
             }
 
-            fitnessInfo[i].fitness = pop_table[i].fitness;
+            fitnessInfo[i].value = pop_table[i].fitness;
             fitnessInfo[i].idx = i;
         }
     }
@@ -182,7 +181,7 @@ static void PICEA_G_selection(SMRT_individual *new_pop, SMRT_individual *new_goa
 
     for (i = 0; i < goals_number; i++)
     {
-        fitnessInfo[i].fitness = goals[i].fitness;
+        fitnessInfo[i].value = goals[i].fitness;
         fitnessInfo[i].idx = i;
     }
 
@@ -197,7 +196,7 @@ static void PICEA_G_selection(SMRT_individual *new_pop, SMRT_individual *new_goa
     return;
 }
 
-extern void PICEA_G_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _PICEA_G_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int goals_number = 0;
     SMRT_individual *goals = NULL, *goals_off = NULL, *merge_goals = NULL;
@@ -248,7 +247,7 @@ extern void PICEA_G_framework (SMRT_individual *parent_pop, SMRT_individual *off
         PICEA_G_genrateGoal(goals_off, goals_number);
         merge_population(merge_goals, goals, goals_number, goals_off, goals_number);
 
-        //fitness assign
+        //value assign
         PICEA_G_fitnessAssign(mixed_pop, g_algorithm_entity.algorithm_para.pop_size * 2, merge_goals, goals_number * 2);
 
         //non-dominate sort

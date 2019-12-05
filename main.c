@@ -16,102 +16,129 @@ int main(int argc, char** argv) {
         switch(g_algorithm_entity.algorithm_Name)
         {
             case NSGA2:
-                NSGA2_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _NSGA2_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                        g_algorithm_entity.mix_population);
                 break;
             case NSGA3:
-                NSGA3_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _NSGA3_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                        g_algorithm_entity.mix_population);
                 break;
             case IBEA:
-                IBEA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _IBEA_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                       g_algorithm_entity.mix_population);
                 break;
             case MOEAD:
-                MOEAD_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _MOEAD_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                        g_algorithm_entity.mix_population);
                 break;
             case MOEAD_DRA:
                 MOEAD_dra_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
             case MOEAD_STM:
-                MOEAD_STM_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _MOEAD_STM_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                            g_algorithm_entity.mix_population);
                 break;
             case MOEADD:
-                MOEADD_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _MOEADD_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                         g_algorithm_entity.mix_population);
                 break;
             case SMS_EMOA:
-                SMSEMOA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _SMSEMOA_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                          g_algorithm_entity.mix_population);
                 break;
             case HypE:
-                HypE_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _HypE_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                       g_algorithm_entity.mix_population);
                 break;
             case SPEA2:
-                SPEA2_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _SPEA2_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                        g_algorithm_entity.mix_population);
                 break;
             case MOEADM2M:
-                MOEADM2M_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _MOEADM2M_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                           g_algorithm_entity.mix_population);
                 break;
 			case ENSMOEAD:
-                ENSMOEAD_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _ENSMOEAD_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                           g_algorithm_entity.mix_population);
                 break;
 			case SPEA2_SDK:
-                SPEA2_SDK_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _SPEA2_SDE_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                            g_algorithm_entity.mix_population);
 				break;
 			case MOEAD_PAS:
-                MOEAD_PAS_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _MOEAD_PAS_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                            g_algorithm_entity.mix_population);
                 break;
             case MOEADFRRMAB:
                 MOEADFRRMAB_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
             case PICEA_G:
-                PICEA_G_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _PICEA_G_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                          g_algorithm_entity.mix_population);
                 break;
 			case SPEA2_R:
                 SPEA2_R_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
 				break;
 			case RVEA:
-                RVEA_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _RVEA_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                       g_algorithm_entity.mix_population);
 				break;
             case TWO_ARCH2:
-                TWO_ARCH2_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _TWO_ARCH2_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                            g_algorithm_entity.mix_population);
                 break;
             case ONEBYONE:
-                ONEBYONE_framework (g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _ONEBYONE_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                           g_algorithm_entity.mix_population);
                 break;
             case VaEA:
-                VaEA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _VaEA_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                       g_algorithm_entity.mix_population);
                 break;
             case EFR_RR:
-                EFR_RR_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _EFR_RR_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                         g_algorithm_entity.mix_population);
                 break;
             case MOEAD_AWA:
-                moead_awa_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _MOEAD_AWA_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                            g_algorithm_entity.mix_population);
                 break;
             case AGE2:
                 _AGE2_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
             case KnEA:
-                KnEA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _KnEA_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                       g_algorithm_entity.mix_population);
                 break;
             case Borg:
                 _Borg_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
             case tDEA:
-                tDEA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _tDEA_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                       g_algorithm_entity.mix_population);
                 break;
             case MTS:
-                MTS_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _MTS_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                      g_algorithm_entity.mix_population);
                 break;
             case MaOEAIT:
-                MaOEAIT_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _MaOEAIT_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                          g_algorithm_entity.mix_population);
                 break;
             case MaOEA_IGD:
-                MaOEA_IGD_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _MaOEA_IGD_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                            g_algorithm_entity.mix_population);
                 break;
 
             //constraint
 			case CNSGA2:
-                CNSGA2_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _CNSGA2_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                         g_algorithm_entity.mix_population);
                 break;
 			case CMOEA:
-                CMOEA_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _CMOEA_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                        g_algorithm_entity.mix_population);
                 break;
 				
 				
@@ -125,7 +152,7 @@ int main(int argc, char** argv) {
     printf("The output as follows:\n");
     for (int i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
     {
-        printf("solution[%d]:fitness:%f  \n    ", i, g_algorithm_entity.parent_population[i].fitness);
+        printf("solution[%d]:value:%f  \n    ", i, g_algorithm_entity.parent_population[i].fitness);
         for (int j = 0; j < g_algorithm_entity.algorithm_para.variable_number; j++)
         {
             printf("variable[%d]:%f  ", j, g_algorithm_entity.parent_population[i].variable[j]);

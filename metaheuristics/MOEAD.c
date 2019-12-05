@@ -4,9 +4,7 @@
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/initialize.h"
 #include "../headers/utility.h"
-
 #include "../headers/selection.h"
 #include "../headers/analysis.h"
 #include "../headers/random.h"
@@ -39,7 +37,7 @@ static void MOEAD_ini()
             }
 
             Euc_distance = sqrt((double)distance_temp);
-            sort_list[j].E_distance = Euc_distance;
+            sort_list[j].value = Euc_distance;
             sort_list[j].idx = j;
         }
 
@@ -61,7 +59,7 @@ static void MOEAD_ini()
 }
 
 
-extern void MOEAD_framework (SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _MOEAD_ (SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int  i = 0;
     NeighborType type;

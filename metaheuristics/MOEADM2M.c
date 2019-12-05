@@ -2,14 +2,12 @@
 #include "../headers/population.h"
 #include "../headers/analysis.h"
 #include "../headers/crossover.h"
-#include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/utility.h"
 #include "../headers/memory.h"
 #include "../headers/sort.h"
 #include "../headers/random.h"
 #include "../headers/print.h"
-#include "../headers/initialize.h"
 
 #define MAXSUBPOPNUMBER 300
 
@@ -39,13 +37,14 @@ static void MOEADM2M_setDistanceByIndex(Distance_info_t *distance_arr, int index
     {
         if (distance_arr[k].idx == index)
         {
-            distance_arr[k].E_distance += distance;
+            distance_arr[k].value += distance;
         }
     }
+
     return;
 }
 
-static int MOEADM2M_crowdingdistanceAssign(SMRT_individual *pop_table, int *pop_index, int *pop_sort, int pop_num,
+static int MOEADM2M_crowdingDistanceAssign(SMRT_individual *pop_table, int *pop_index, int *pop_sort, int pop_num,
                                            int rank_index)
 {
     int i = 0, j = 0, pop_num_in_rank = 0;
@@ -69,7 +68,7 @@ static int MOEADM2M_crowdingdistanceAssign(SMRT_individual *pop_table, int *pop_
         if (pop_table[pop_index[i]].rank == rank_index)
         {
             distance_arr[pop_num_in_rank++].idx = pop_index[i];
-            distance_arr[pop_num_in_rank-1].E_distance = 0;
+            distance_arr[pop_num_in_rank-1].value = 0;
         }
     }
 
@@ -153,7 +152,7 @@ static void MOEADM2M_select(SMRT_individual *parent_pop, int pop_num,int subpop_
     }
     else
     {
-        sort_num = MOEADM2M_crowdingdistanceAssign(parent_pop, pop_index, pop_sort, pop_num, rank_index);
+        sort_num = MOEADM2M_crowdingDistanceAssign(parent_pop, pop_index, pop_sort, pop_num, rank_index);
         while(current_pop_num < subpop_num)
         {
             sub_partition[current_pop_num] = pop_sort[--sort_num];
@@ -212,7 +211,7 @@ static void MOEADM2M_allocatePop(SMRT_individual *parent_pop, int parent_pop_num
         {
             angle_info_array[i][j].idx = j;
             double temp_value = CalDotProduct(parent_pop[i].obj, weight[j],  M) / (CalNorm(parent_pop[i].obj, M) *CalNorm(weight[j], M));
-            angle_info_array[i][j].cosValue = temp_value;
+            angle_info_array[i][j].value = temp_value;
         }
     }
 
@@ -291,7 +290,7 @@ static void MOEADM2M_allocatePop(SMRT_individual *parent_pop, int parent_pop_num
     return;
 }
 
-extern void MOEADM2M_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _MOEADM2M_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     g_algorithm_entity.iteration_number                  = 0;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;

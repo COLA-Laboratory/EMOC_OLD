@@ -38,6 +38,7 @@ void print_objective (char *file_name, SMRT_individual * pop_table)
             fprintf (fpt, "%lf\t", pop->obj[j]);
         fprintf (fpt, "\n");
     }
+
     fclose (fpt);
 
     return;

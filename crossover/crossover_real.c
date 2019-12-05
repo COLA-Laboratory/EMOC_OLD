@@ -20,7 +20,7 @@ extern void crossover_IBEA(SMRT_individual *parent_pop_table, SMRT_individual *o
     figcomp = (double*)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.pop_size* g_algorithm_entity.algorithm_para.pop_size * 4);
     if (NULL == figcomp)
     {
-        printf("malloc indicator fitness failed\n");
+        printf("malloc indicator value failed\n");
         goto IBEA_CROSSOVER_TERMINATE_HANDLE;
     }
     a1 = (int *) malloc (g_algorithm_entity.algorithm_para.pop_size * sizeof(int));
@@ -163,12 +163,8 @@ extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *
         }
 
     }
-    //printf("selected1:%d, selected2:%d, selected3:%d\n",parent_index, select_id[0], select_id[1]);
-
     de_crossover(parent, parent_pop_table + select_id[0],
                  parent_pop_table + select_id[1], offspring);
-
-
 
     return;
 }

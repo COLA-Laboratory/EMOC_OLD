@@ -30,7 +30,7 @@ extern void MOEADM2M_setDistanceByIndex(Distance_info_t *distance_arr, int index
     {
         if (distance_arr[k].idx == index)
         {
-            distance_arr[k].E_distance += distance;
+            distance_arr[k].value += distance;
         }
     }
     return;

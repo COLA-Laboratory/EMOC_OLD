@@ -718,6 +718,34 @@ extern void getIntercepts (SMRT_individual *extreme_pop, SMRT_individual *candid
     return;
 }
 
+
+extern void Normalization(SMRT_individual *ndPop, int popNum,SMRT_individual *extremePop, double **popObj)
+{
+    int i = 0,j = 0;
+    double *intercept;
+
+    intercept = (double *)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
+
+    update_ideal_point(ndPop,popNum);
+
+    getExtremePoints(ndPop,extremePop,popNum);
+
+    getIntercepts(extremePop,ndPop,popNum,intercept);
+
+    for(i = 0;i < popNum;i++)
+    {
+        for(j = 0;j < g_algorithm_entity.algorithm_para.objective_number;j++)
+        {
+            popObj[i][j] = (ndPop[i].obj[j]-g_algorithm_entity.ideal_point.obj[j])/intercept[j];
+        }
+    }
+
+    free(intercept);
+
+    return;
+}
+
+
 //vector u minus vector v
 extern double* VectorSubtract(int length, double* u, double* v)
 {

@@ -4,15 +4,12 @@
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
 #include "../headers/print.h"
-#include "../headers/initialize.h"
 #include "../headers/utility.h"
 #include "../headers/selection.h"
-#include "../headers/sort.h"
 #include "../headers/analysis.h"
 #include "../headers/random.h"
 
 static int *Pi = NULL;
-
 
 static int MOEAD_PAS_updatePi(SMRT_individual *pop, double *weight, int *candidate_p, int candidate_p_num)
 {
@@ -128,7 +125,7 @@ static int MOEAD_PAS_updateSubproblemPas(SMRT_individual *offspring, int pop_ind
     return SUCCESS;
 }
 
-static void MOEAD_ENS_ini()
+static void MOEAD_PAS_ini()
 {
     int i = 0, j = 0, k = 0;
     double difference = 0, distance_temp = 0, Euc_distance = 0;
@@ -155,7 +152,7 @@ static void MOEAD_ENS_ini()
             }
 
             Euc_distance = sqrt((double)distance_temp);
-            sort_list[j].E_distance = Euc_distance;
+            sort_list[j].value = Euc_distance;
             sort_list[j].idx = j;
         }
 
@@ -178,7 +175,7 @@ static void MOEAD_ENS_ini()
 
 
 
-extern void MOEAD_PAS_framework (SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _MOEAD_PAS_ (SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int  i = 0, j = 0;
     NeighborType type;
@@ -193,7 +190,7 @@ extern void MOEAD_PAS_framework (SMRT_individual *pop, SMRT_individual *offsprin
     printf ("|\tThe %d run\t|\t1%%\t|", g_algorithm_entity.run_index_current);
 
     // initialization process
-    MOEAD_ENS_ini();
+    MOEAD_PAS_ini();
 
     initialize_population_real (pop, weight_num);
 

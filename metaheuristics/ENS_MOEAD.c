@@ -5,27 +5,10 @@
 #include "../headers/random.h"
 #include "../headers/analysis.h"
 #include "../headers/problem.h"
-#include "../headers/initialize.h"
 #include "../headers/selection.h"
 #include "../headers/crossover.h"
 #include "../headers/mutation.h"
 #include "../headers/print.h"
-
-
-static double ENS_MOEAD_calDistance(double *weight1, double *weight2,int number)
-{
-    int i = 0;
-    double distance = 0;
-    double temp = 0;
-
-    for(i = 0; i<number; i++)
-    {
-        temp = fabs(weight1[i] - weight2[i]);
-        distance += temp*temp;
-    }
-
-    return sqrt(distance);
-}
 
 
 static void ENS_MOEAD_init()
@@ -75,7 +58,7 @@ static void ENS_MOEAD_init()
         for(j = 0; j < weight_num; j++)
         {
             distance_sort_list[j].idx = j;
-            distance_sort_list[j].E_distance = ENS_MOEAD_calDistance(lambda[i],lambda[j],g_algorithm_entity.algorithm_para.objective_number);
+            distance_sort_list[j].value = euclidian_distance(lambda[i], lambda[j], g_algorithm_entity.algorithm_para.objective_number);
         }
 
         distance_quick_sort(distance_sort_list,0,weight_num-1);
@@ -214,7 +197,7 @@ static void ENS_MOEAD_updatePro(double *P, double *R, int NS_number)
 }
 
 
-extern void ENSMOEAD_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
+extern void _ENSMOEAD_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     printf("|\tThe %d run\t|\t1%%\t|", g_algorithm_entity.run_index_current);
 
