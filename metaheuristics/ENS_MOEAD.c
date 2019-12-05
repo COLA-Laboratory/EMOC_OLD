@@ -12,17 +12,13 @@
 #include "../headers/print.h"
 
 
-//g_algorithm_entity.MOEAD_para.neighbor_size 要变的
-//注意种群大小(weight num)不能比邻居size小，会报错,
-
-//计算两个权重之间的距离
-static double CalDistance(double *weight1, double *weight2,int number)
+static double ENS_MOEAD_calDistance(double *weight1, double *weight2,int number)
 {
     int i = 0;
     double distance = 0;
     double temp = 0;
 
-    for(i = 0;i<number;i++)
+    for(i = 0; i<number; i++)
     {
         temp = fabs(weight1[i] - weight2[i]);
         distance += temp*temp;
@@ -32,14 +28,10 @@ static double CalDistance(double *weight1, double *weight2,int number)
 }
 
 
-//weightnum 其实就是种群的个数
-static void InitENSMOEAD()
+static void ENS_MOEAD_init()
 {
-
     int i = 0;int j = 0;
     Distance_info_t distance_sort_list[MAX_SIZE];
-
-
 
     lambda = initialize_uniform_point(g_algorithm_entity.algorithm_para.pop_size, &weight_num);
 
@@ -71,9 +63,7 @@ static void InitENSMOEAD()
         return;
     }
 
-
-    //这里我的思路是把所有的weight都当作邻居 排序后存起来 要动态变邻居个数的时候只该个数就可以了
-    for(i = 0;i < weight_num;i++)
+    for(i = 0; i < weight_num; i++)
     {
         g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor = (int *)malloc(sizeof(int) * weight_num);
         if(NULL == g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor)
@@ -82,21 +72,18 @@ static void InitENSMOEAD()
             return;
         }
 
-
-        for(j = 0;j < weight_num;j++)
+        for(j = 0; j < weight_num; j++)
         {
             distance_sort_list[j].idx = j;
-            distance_sort_list[j].E_distance = CalDistance(lambda[i],lambda[j],g_algorithm_entity.algorithm_para.objective_number);
+            distance_sort_list[j].E_distance = ENS_MOEAD_calDistance(lambda[i],lambda[j],g_algorithm_entity.algorithm_para.objective_number);
         }
 
         distance_quick_sort(distance_sort_list,0,weight_num-1);
 
-        for(j = 0;j < weight_num;j++)
+        for(j = 0; j < weight_num; j++)
         {
             g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor[j] = distance_sort_list[j].idx;
         }
-
-
     }
 
     for (i = 0; i < weight_num; i++)
@@ -107,12 +94,9 @@ static void InitENSMOEAD()
     }
 
     return ;
-
-
 }
 
-//释放内存
-static void FreeMemory()
+static void ENS_MOEAD_freeMemory()
 {
     int i = 0;
     if (NULL != g_algorithm_entity.MOEAD_para.delta)
@@ -140,7 +124,6 @@ static void FreeMemory()
         free(g_algorithm_entity.MOEAD_para.neighbor_table);
     }
 
-
     for (i = 0; i < weight_num; i++)
         free (lambda[i]);
     free (lambda);
@@ -149,7 +132,7 @@ static void FreeMemory()
     return;
 }
 
-static void SelectNS_number(int *NS_number)
+static void ENS_MOEAD_selectNS_number(int *NS_number)
 {
     switch (g_algorithm_entity.algorithm_para.objective_number)
     {
@@ -162,15 +145,12 @@ static void SelectNS_number(int *NS_number)
             break;
         default:
             break;
-
-
     }
-
 
     return;
 }
 
-static void SelectNSSet(int *NS)
+static void ENS_MOEAD_selectNSSet(int *NS)
 {
     switch (g_algorithm_entity.algorithm_para.objective_number)
     {
@@ -181,14 +161,12 @@ static void SelectNSSet(int *NS)
         case 3:
             NS[0] = 60;NS[1] = 80;NS[2] = 100;NS[3] = 120;NS[4] = 140;
             break;
-
-
     }
 
     return ;
 }
 
-static int  SelectNS(double *P,int *NS,int NS_number)
+static int  ENS_MOEAD_selectNS(double *P, int *NS, int NS_number)
 {
     int i = 0;
     int NS_index = 0;
@@ -206,6 +184,7 @@ static int  SelectNS(double *P,int *NS,int NS_number)
         }
         tempSum += P[i];
     }
+
     if(NS[NS_index] == 0)
     {
         printf("%d\n",NS_index);
@@ -217,48 +196,41 @@ static int  SelectNS(double *P,int *NS,int NS_number)
     return NS_index;
 }
 
-static void UpdatePro(double *P,double *R,int NS_number)
+static void ENS_MOEAD_updatePro(double *P, double *R, int NS_number)
 {
     double sum = 0;
-    for(int i = 0;i < NS_number;i++)
+
+    for(int i = 0; i < NS_number; i++)
     {
         sum += R[i];
     }
 
-    for(int i = 0;i < NS_number;i++)
+    for(int i = 0; i < NS_number; i++)
     {
         P[i] = R[i]/sum;
     }
 
-
     return ;
-
-
 }
-
-
-
 
 
 extern void ENSMOEAD_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     printf("|\tThe %d run\t|\t1%%\t|", g_algorithm_entity.run_index_current);
-    //初始化参数（申请一些内存，顺便把neighbour给设置了）
-    InitENSMOEAD();
+
+    ENS_MOEAD_init();
 
     int i = 0;
     double rand = 0;
     NeighborType Type;
     SMRT_individual *parent,*offspring;
     g_algorithm_entity.iteration_number = 0;
-    int *selected;int selectedSize = weight_num/5; //存储每一代被选中进行更新的种群的index  wait to release
+    int *selected;int selectedSize = weight_num/5;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;
 
-    //for ENS-MOEAD 的特别参  wait to release
     const int LP = 50;
     int *NS;int NS_number;
     double *FEs,*FEs_success,*R,*P;
-
 
     selected = (int *)malloc(sizeof(int) * selectedSize);
     if(NULL == selected)
@@ -267,8 +239,7 @@ extern void ENSMOEAD_framework (SMRT_individual *parent_pop, SMRT_individual *of
         return;
     }
 
-    //根据目标纬度选择NS的个数，然后申请内存
-    SelectNS_number(&NS_number);
+    ENS_MOEAD_selectNS_number(&NS_number);
     NS = (int *)malloc(sizeof(int )*NS_number);
     if(NULL == NS)
     {
@@ -288,20 +259,15 @@ extern void ENSMOEAD_framework (SMRT_individual *parent_pop, SMRT_individual *of
         FEs_success[i] = 0;
     }
 
-    //初始化概率分布
-    UpdatePro(P,R,NS_number);
+    ENS_MOEAD_updatePro(P, R, NS_number);
 
+    ENS_MOEAD_selectNSSet(NS);
 
-    //根据目标唯独选择NS集合
-    SelectNSSet(NS);
-
-    //初始化种群
     initialize_population_real(parent_pop,weight_num);
     evaluate_population(parent_pop,weight_num);
     initialize_idealpoint(parent_pop,weight_num,&g_algorithm_entity.ideal_point);
 
-    //存储第一代的I切比雪夫的值
-    for(i = 0;i<weight_num;i++)
+    for(i = 0; i<weight_num; i++)
     {
         g_algorithm_entity.MOEAD_para.old_function[i] = cal_moead_fitness(parent_pop+i,lambda[i],g_algorithm_entity.MOEAD_para.function_type);
     }
@@ -313,10 +279,8 @@ extern void ENSMOEAD_framework (SMRT_individual *parent_pop, SMRT_individual *of
         g_algorithm_entity.iteration_number++;
 
         print_progress();
-        //根据概率分布选择本代的NS
-        int NS_index = SelectNS(P,NS,NS_number);
 
-
+        int NS_index = ENS_MOEAD_selectNS(P, NS, NS_number);
 
         tour_selection_subproblem(selected,weight_num);
 
@@ -343,7 +307,6 @@ extern void ENSMOEAD_framework (SMRT_individual *parent_pop, SMRT_individual *of
 
         }
 
-        //更新utility
         if(g_algorithm_entity.iteration_number%30 == 0)
         {
             for(i = 0;i < weight_num;i++)
@@ -353,14 +316,14 @@ extern void ENSMOEAD_framework (SMRT_individual *parent_pop, SMRT_individual *of
             }
             comp_utility();
         }
-        //更新NS概率
+
         if(g_algorithm_entity.iteration_number % LP == 0)
         {
             for(i = 0;i < NS_number;i++)
             {
                 R[i] = FEs_success[i]/FEs[i] + 0.0001;
             }
-            UpdatePro(P,R,NS_number);
+            ENS_MOEAD_updatePro(P, R, NS_number);
 
             for(i = 0;i < NS_number;i++)
             {
@@ -371,17 +334,12 @@ extern void ENSMOEAD_framework (SMRT_individual *parent_pop, SMRT_individual *of
 
         }
 
-
-
-
         track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
 
     }
 
 
-
-    //释放内存
-    FreeMemory();
+    ENS_MOEAD_freeMemory();
     free(selected);
     free(NS);
     free(FEs);

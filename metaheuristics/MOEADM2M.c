@@ -13,16 +13,10 @@
 
 #define MAXSUBPOPNUMBER 300
 
-
-
-
-
-
-/*对某一个rank的solution按照某一objective进行排序，返回当前rank的solution的个数*/
-static int MOEADM2M_sort_by_obj_rank(SMRT_individual *pop_table, int *pop_index,int sort_arr[], int obj_index, int rank_index, int pop_num)
+static int MOEADM2M_sortByObjRank(SMRT_individual *pop_table, int *pop_index, int *sort_arr, int obj_index,
+                                  int rank_index, int pop_num)
 {
-    int i = 0, j = 0;
-    int array_num = 0;
+    int i = 0, array_num = 0;
 
     for (i = 0; i < pop_num; i++)
     {
@@ -37,11 +31,10 @@ static int MOEADM2M_sort_by_obj_rank(SMRT_individual *pop_table, int *pop_index,
     return array_num;
 }
 
-
-
-static void setDistance_by_index(Distance_info_t *distance_arr, int index, int pop_num, double distance)
+static void MOEADM2M_setDistanceByIndex(Distance_info_t *distance_arr, int index, int pop_num, double distance)
 {
     int k = 0;
+
     for (k = 0; k < pop_num; k++)
     {
         if (distance_arr[k].idx == index)
@@ -52,14 +45,10 @@ static void setDistance_by_index(Distance_info_t *distance_arr, int index, int p
     return;
 }
 
-
-
-
-/*在指定的rank里面计算crowding distance 排序结果丢在pop_sort里面*/
-static int MOEADM2M_crowding_distance_assign(SMRT_individual *pop_table, int *pop_index,int pop_sort[], int pop_num,  int rank_index)
+static int MOEADM2M_crowdingdistanceAssign(SMRT_individual *pop_table, int *pop_index, int *pop_sort, int pop_num,
+                                           int rank_index)
 {
-    int i = 0, j = 0, k = 0;
-    int pop_num_in_rank = 0;
+    int i = 0, j = 0, pop_num_in_rank = 0;
     int *sort_arr = NULL;
     Distance_info_t *distance_arr;
 
@@ -75,8 +64,6 @@ static int MOEADM2M_crowding_distance_assign(SMRT_individual *pop_table, int *po
         goto CROWDING_DISTANCE_FAIL_HANDLE;
     }
 
-
-    /*找出所有对应rank的值*/
     for (i = 0; i < pop_num; i++)
     {
         if (pop_table[pop_index[i]].rank == rank_index)
@@ -86,36 +73,30 @@ static int MOEADM2M_crowding_distance_assign(SMRT_individual *pop_table, int *po
         }
     }
 
-
-
     for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
     {
         memset(sort_arr, 0, sizeof(int) * pop_num);
-        MOEADM2M_sort_by_obj_rank(pop_table, pop_index,sort_arr, i, rank_index, pop_num);
+        MOEADM2M_sortByObjRank(pop_table, pop_index, sort_arr, i, rank_index, pop_num);
 
-        /*第一个和最后一个赋值为无穷大，为了使其能够保存下来*/
         pop_table[sort_arr[0]].fitness = 1000;
-        setDistance_by_index(distance_arr, sort_arr[0], pop_num_in_rank, 1000);
+        MOEADM2M_setDistanceByIndex(distance_arr, sort_arr[0], pop_num_in_rank, 1000);
         pop_table[sort_arr[pop_num_in_rank - 1]].fitness = 1000;
-        setDistance_by_index(distance_arr, sort_arr[pop_num_in_rank - 1], pop_num_in_rank, 1000);
+        MOEADM2M_setDistanceByIndex(distance_arr, sort_arr[pop_num_in_rank - 1], pop_num_in_rank, 1000);
+
         for (j = 1; j < pop_num_in_rank - 1; j++)
         {
             double temp = pop_table[sort_arr[pop_num_in_rank - 1]].obj[i] - pop_table[sort_arr[0]].obj[i];
             pop_table[sort_arr[j]].fitness += (pop_table[sort_arr[j+1]].obj[i] - pop_table[sort_arr[j - 1]].obj[i]) /(temp);
-            setDistance_by_index(distance_arr, sort_arr[j], pop_num_in_rank, pop_table[sort_arr[j]].fitness);
+            MOEADM2M_setDistanceByIndex(distance_arr, sort_arr[j], pop_num_in_rank, pop_table[sort_arr[j]].fitness);
         }
     }
 
-
-
     distance_quick_sort(distance_arr, 0, pop_num_in_rank - 1);
+
     for (i = 0; i < pop_num_in_rank; i++)
     {
         pop_sort[i] = distance_arr[i].idx;
     }
-
-
-
 
     CROWDING_DISTANCE_FAIL_HANDLE:
     free(distance_arr);
@@ -123,10 +104,6 @@ static int MOEADM2M_crowding_distance_assign(SMRT_individual *pop_table, int *po
     return pop_num_in_rank;
 }
 
-
-
-
-//pop_index中存储当前需要进行率选的个体在种群中的index
 static void MOEADM2M_select(SMRT_individual *parent_pop, int pop_num,int subpop_num,int *pop_index,int *sub_partition)
 {
     int i = 0, sort_num = 0;
@@ -142,20 +119,17 @@ static void MOEADM2M_select(SMRT_individual *parent_pop, int pop_num,int subpop_
 
     non_dominated_sort_MOEADM2M(parent_pop,pop_num,pop_index);
 
-
     while (1)
     {
         temp_number = 0;
         for (i = 0; i < pop_num; i++)
         {
-            //
             if (parent_pop[pop_index[i]].rank == rank_index)
             {
                 temp_number++;
             }
         }
 
-        //printf("\n");
         if (current_pop_num + temp_number <= subpop_num)
         {
             for (i = 0; i < pop_num; i++)
@@ -179,25 +153,20 @@ static void MOEADM2M_select(SMRT_individual *parent_pop, int pop_num,int subpop_
     }
     else
     {
-        sort_num = MOEADM2M_crowding_distance_assign(parent_pop, pop_index,pop_sort, pop_num, rank_index);
-        /*这一行有点问题，出现了SIGSEG*/
+        sort_num = MOEADM2M_crowdingdistanceAssign(parent_pop, pop_index, pop_sort, pop_num, rank_index);
         while(current_pop_num < subpop_num)
         {
-            /*对最后一层rank的solution，计算distance后在依据distance值继续加入subpopulation*/
             sub_partition[current_pop_num] = pop_sort[--sort_num];
             current_pop_num++;
         }
     }
-
 
     MOEADM2M_SELECT_TERMINATE_HANDLE:
     free(pop_sort);
     return ;
 }
 
-
-/* 选择K的参数 */
-static void SelectParam(int obj_numm,int *K)
+static void MOEADM2M_selectParam(int obj_numm, int *K)
 {
 
     switch (obj_numm)
@@ -216,24 +185,13 @@ static void SelectParam(int obj_numm,int *K)
     return;
 }
 
-
-
-/* 分配种群 */
-static void AllocatePop(SMRT_individual *parent_pop, int parent_pop_num,SMRT_individual *allocated_pop, double **weight,int K,int S)
+static void MOEADM2M_allocatePop(SMRT_individual *parent_pop, int parent_pop_num, SMRT_individual *allocated_pop,
+                                 double **weight, int K, int S)
 {
-
-
-    int index_t = 0; //allocated_pop的临时索引
-    int i = 0;
-    int j = 0;
-    int N = parent_pop_num;
-
+    int index_t = 0, i = 0, j = 0, N = parent_pop_num;
     int M = g_algorithm_entity.algorithm_para.objective_number;
-    int **partition;//wait to release K*S //存储被分配之后的index
-    Angle_info_t **angle_info_array;//wait to release  N*K //存储每个个体与direction的角度信息
-
-
-
+    int **partition;
+    Angle_info_t **angle_info_array;
 
     partition = (int **) malloc(sizeof(int *) * K);
     for (i = 0; i < K; i++)
@@ -241,26 +199,21 @@ static void AllocatePop(SMRT_individual *parent_pop, int parent_pop_num,SMRT_ind
         partition[i] = (int *) malloc(sizeof(int) * S);
         memset(partition[i], 0, sizeof(int) * S);
     }
-
-
     angle_info_array = (Angle_info_t **) malloc(sizeof(Angle_info_t *) * N);
+
     for (i = 0; i < N; i++)
     {
         angle_info_array[i] = (Angle_info_t *) malloc(sizeof(Angle_info_t) * K);
     }
-    //angle_info_array初始化
+
     for (i = 0; i < N; i++)
     {
-
         for (j = 0; j < K; j++)
         {
             angle_info_array[i][j].idx = j;
             double temp_value = CalDotProduct(parent_pop[i].obj, weight[j],  M) / (CalNorm(parent_pop[i].obj, M) *CalNorm(weight[j], M));
-
-
             angle_info_array[i][j].cosValue = temp_value;
         }
-
     }
 
     for(i = 0;i < N;i++)
@@ -268,15 +221,11 @@ static void AllocatePop(SMRT_individual *parent_pop, int parent_pop_num,SMRT_ind
         parent_pop[i].fitness = 0;
     }
 
-
-
-    //每一行排序
     for (i = 0; i < N; i++)
     {
         angle_quick_sort(angle_info_array[i], 0, K-1 );
     }
 
-    //统计不同subpopulation的个数
     for (int class = 0; class < K; class++)
     {
         int index = 0;
@@ -289,13 +238,10 @@ static void AllocatePop(SMRT_individual *parent_pop, int parent_pop_num,SMRT_ind
             {
                 count++;
             }
-
         }
 
-        //根据不同情况重新分配
         if (count <= S)
         {
-
             for (i = 0; i < N; i++)
             {
                 if (angle_info_array[i][K - 1].idx == class)
@@ -304,50 +250,34 @@ static void AllocatePop(SMRT_individual *parent_pop, int parent_pop_num,SMRT_ind
                 }
             }
 
-            //随即选加入subpopulation
             while (index < S)
             {
                 int rand = rnd(0, N - 1);
-
                 partition[class][index++] = rand;
             }
 
         } else
         {
-
-            //用非支配排序筛选
             int pop_index[MAXSUBPOPNUMBER] = {0};
             for (i = 0; i < N; i++)
             {
                 if (angle_info_array[i][K - 1].idx == class)
                 {
                     pop_index[index++] = i;
-
                 }
             }
             MOEADM2M_select(parent_pop, index, S, pop_index, partition[class]);
-
-
         }
-
     }
-
-
-
 
     for (int class = 0; class < K; class++)
     {
-
         for (int s = 0; s < S; s++)
         {
             copy_individual(&parent_pop[partition[class][s]], &allocated_pop[index_t++]);
         }
-
-
     }
 
-
-    //释放内存
     for (i = 0; i < N; i++) {
         free(angle_info_array[i]);
     }
@@ -359,14 +289,7 @@ static void AllocatePop(SMRT_individual *parent_pop, int parent_pop_num,SMRT_ind
     free(partition);
 
     return;
-
-
 }
-
-
-
-
-
 
 extern void MOEADM2M_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
@@ -375,38 +298,26 @@ extern void MOEADM2M_framework (SMRT_individual *parent_pop, SMRT_individual *of
     int N = g_algorithm_entity.algorithm_para.pop_size;
     int M = g_algorithm_entity.algorithm_para.objective_number;
 
-    //K设置
     int K = 0;
-    SelectParam(M,&K);
+    MOEADM2M_selectParam(M, &K);
 
-    //各个子种群大小设置
     int S = N/K;
-
-    //均匀权重，即direction
     double **weight;
     int number_weight = 0;
     weight = initialize_direction_MOEADM2M(&number_weight,K);
 
-
-
-    //额外数组存储分配之后的种群 wait to release
     SMRT_individual *allocated_pop;
     allocate_memory_for_pop(&allocated_pop,N);
-    //初始化种群
+
     initialize_population_real(parent_pop,N);
     evaluate_population(parent_pop,N);
 
-
-
-    //分配种群
-    AllocatePop(parent_pop, N,allocated_pop, weight,K,S);
-
+    MOEADM2M_allocatePop(parent_pop, N, allocated_pop, weight, K, S);
 
     // track the current evolutionary progress, including population and metrics
     track_evolution (allocated_pop, g_algorithm_entity.iteration_number, 0);
     while(g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
-
         g_algorithm_entity.iteration_number++;
         print_progress ();
 
@@ -417,31 +328,20 @@ extern void MOEADM2M_framework (SMRT_individual *parent_pop, SMRT_individual *of
 
         evaluate_population(offspring_pop,N);
 
-        //父代子代合并
         merge_population(mixed_pop,allocated_pop,N,offspring_pop,N);
 
-        //分配种群
-        AllocatePop(mixed_pop,2*N,allocated_pop,weight,K,S);
-
-
+        MOEADM2M_allocatePop(mixed_pop, 2 * N, allocated_pop, weight, K, S);
         // track the current evolutionary progress, including population and metrics
         track_evolution(allocated_pop,g_algorithm_entity.iteration_number,g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
 
     }
     g_algorithm_entity.parent_population = allocated_pop;
 
-
-
-
-    //释放内存
-
-
-    for(int i = 0;i < K;i++)
+    for(int i = 0; i < K; i++)
     {
         free(weight[i]);
     }
     free(weight);
-
 
     return;
 }

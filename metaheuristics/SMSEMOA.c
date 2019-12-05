@@ -12,16 +12,13 @@
 #include "../externals/MY_WFG/Iwfg.h"
 
 
-
-static int SMS_find_min_volume_Index(SMRT_individual *pop_table, int pop_num)
+static int SMSEMOA_findMinVolumeIndex(SMRT_individual *pop_table, int pop_num)
 {
     FILECONTENTS f ;
     double *min = NULL;
     int i = 0, j = 0, num_same = 0;
-    int index = 0;
 
     min = (double *)malloc(sizeof(double) * (g_algorithm_entity.algorithm_para.objective_number + 2));
-
     i_n = g_algorithm_entity.algorithm_para.objective_number;
     cola_read_data(&f, pop_table, pop_num);
 
@@ -29,14 +26,11 @@ static int SMS_find_min_volume_Index(SMRT_individual *pop_table, int pop_num)
     if (g_algorithm_entity.algorithm_para.objective_number == 2)
     {
         i_ihv2(f.fronts[0], min);
-
     }
     else
     {
         i_ihv(f.fronts[0], min);
     }
-
-
 
     for (j = 0; j < pop_num; j++)
     {
@@ -51,16 +45,15 @@ static int SMS_find_min_volume_Index(SMRT_individual *pop_table, int pop_num)
     }
 
     free (min);
+
     return j;
 }
 
 static void SMSEMOA_select(SMRT_individual *parent_pop, SMRT_individual *offspring)
 {
-    int i = 0, j = 0, archive_num = 0, temp_num = 0, min_hv_index = 0;
     int **front = NULL, *front_size = NULL;
-    int current_rank = 0, front_num = 0;
+    int i = 0, j = 0, archive_num = 0, temp_num = 0, min_hv_index = 0, current_rank = 0, front_num = 0;
     SMRT_individual *merge_pop = NULL, *temp_pop = NULL;
-
 
     allocate_memory_for_pop(&merge_pop, g_algorithm_entity.algorithm_para.pop_size + 1);
     allocate_memory_for_pop(&temp_pop, g_algorithm_entity.algorithm_para.pop_size + 1);
@@ -107,7 +100,6 @@ static void SMSEMOA_select(SMRT_individual *parent_pop, SMRT_individual *offspri
         }
     }
 
-
     for (i = 0; i < front_num; ++i)
     {
         if (archive_num + front_size[i] <= g_algorithm_entity.algorithm_para.pop_size)
@@ -122,7 +114,6 @@ static void SMSEMOA_select(SMRT_individual *parent_pop, SMRT_individual *offspri
         {
             break;
         }
-
     }
 
     if (front_size[i] == 1)
@@ -136,9 +127,7 @@ static void SMSEMOA_select(SMRT_individual *parent_pop, SMRT_individual *offspri
         temp_num++;
     }
 
-
-    min_hv_index = SMS_find_min_volume_Index(temp_pop, temp_num);
-
+    min_hv_index = SMSEMOA_findMinVolumeIndex(temp_pop, temp_num);
 
     for (i = 0; i < temp_num; i++)
     {
@@ -168,22 +157,18 @@ SMSEMOA_FINISH_HANDLE:
     return;
 }
 
-
 extern void SMSEMOA_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int i = 0, j = 0;
     SMRT_individual *offspring;
     int maxdepth, maxStackSize;
 
-
     g_algorithm_entity.iteration_number    = 1;
     g_algorithm_entity.algorithm_para.current_evaluation  = 0;
 
     printf ("|\tThe %d run\t|\t1%%\t|", g_algorithm_entity.run_index_current);
 
-
     allocate_memory_for_ind(&offspring);
-
 
     // initialize process
     initialize_population_real (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
@@ -191,7 +176,6 @@ extern void SMSEMOA_framework (SMRT_individual *parent_pop, SMRT_individual *off
     evaluate_population (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
 
     initialize_nadirpoint (parent_pop, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.nadir_point);
-
 
     // preparation for IWFG algorithm, which is used for calculating the individual Hypervolume contribution
     i_maxn   = g_algorithm_entity.algorithm_para.objective_number;

@@ -22,18 +22,18 @@
 
 
 
-extern void sort_nondecresing_order(SMRT_individual *parent_pop_table, int * Ln_store, int Ln_number,int *weight)
+extern void EFR_RR_sortNondecresingOrder(SMRT_individual *parent_pop_table, int *Ln_store, int Ln_number, int *weight)
 {
-    int i,j,temp;
+    int i, j, temp;
 
-    for(i = 0;i < Ln_number;i++)
+    for(i = 0; i < Ln_number; i++)
     {
-        cal_ITCH (&parent_pop_table[Ln_store[i]],weight,g_algorithm_entity.algorithm_para.objective_number);
+        cal_ITCH (&parent_pop_table[Ln_store[i]], weight, g_algorithm_entity.algorithm_para.objective_number);
     }
 
-    for(i = 0; i < Ln_number-1; i++)
+    for(i = 0; i < Ln_number - 1; i++)
     {
-        for(j = 0; j < Ln_number-i-1; j++)
+        for(j = 0; j < Ln_number - i - 1; j++)
         {
             if(parent_pop_table[Ln_store[j]].fitness > parent_pop_table[Ln_store[j+1]].fitness)
             {
@@ -43,11 +43,14 @@ extern void sort_nondecresing_order(SMRT_individual *parent_pop_table, int * Ln_
             }
         }
     }
+
+    return;
 }
 
 
-
-static void MaximumRanking(SMRT_individual *parent_pop_table, SMRT_individual *offspring_table, double **uniform_ref_point, int ref_point_num, int parent_pop_num, int offspring_num, int K_neighbor, double *intercepts)
+static void EFR_RR_maximumRanking(SMRT_individual *parent_pop_table, SMRT_individual *offspring_table,
+                                  double **uniform_ref_point, int ref_point_num, int parent_pop_num, int offspring_num,
+                                  int K_neighbor)
 {
     int i, j, k, m, temp_index,rank_index = 0;
     int **Ln_store = NULL;
@@ -82,7 +85,6 @@ static void MaximumRanking(SMRT_individual *parent_pop_table, SMRT_individual *o
         K_neighbor_store[j].Solution_index = j;
         for (i = 0; i < ref_point_num; i++)
         {
-
             distance_solution_to_weight = Cal_perpendicular_distance(parent_pop_table[j].obj, uniform_ref_point[i]);
             sort_list[i].E_distance = distance_solution_to_weight;
             sort_list[i].idx = i;
@@ -97,19 +99,20 @@ static void MaximumRanking(SMRT_individual *parent_pop_table, SMRT_individual *o
         }
     }
 
+    for (j = 0; j < ref_point_num; j++)
+    {
+        EFR_RR_sortNondecresingOrder(parent_pop_table, Ln_store[j], Ln_number[j], uniform_ref_point[j]);
 
-    for (j = 0; j < ref_point_num; j++) {
-        sort_nondecresing_order(parent_pop_table, Ln_store[j], Ln_number[j],uniform_ref_point[j]);
-
-        for (k = 0; k < Ln_number[j]; k++) {
+        for (k = 0; k < Ln_number[j]; k++)
+        {
             temp_index = Ln_store[j][k];
+
             if (k < Rg_value[temp_index])
             {
                 Rg_value[temp_index] = k;
             }
         }
     }
-
 
     for(i = 0; i < parent_pop_num; i++)
     {
@@ -126,12 +129,12 @@ static void MaximumRanking(SMRT_individual *parent_pop_table, SMRT_individual *o
                 copy_individual(parent_pop_table + j, offspring_table + i);
                 i++;
             }
+
             if(i == offspring_num)
                 break;
         }
         rank_index++;
     }
-
 
     for (i = 0; i < ref_point_num; i++)
     {
@@ -142,6 +145,7 @@ static void MaximumRanking(SMRT_individual *parent_pop_table, SMRT_individual *o
     free(Ln_number);
     free(Bx_store);
 
+    return;
 }
 
 extern void EFR_RR_framework(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
@@ -173,12 +177,8 @@ extern void EFR_RR_framework(SMRT_individual *parent_pop, SMRT_individual *offsp
     // track the current evolutionary progress, including population and metrics
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
 
-    //fitness_value(parent_pop, uniform_ref_point, g_algorithm_entity.algorithm_para.pop_size);
-
-
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
-
         print_progress ();
 
         // reproduction (crossover and mutation)
@@ -195,13 +195,14 @@ extern void EFR_RR_framework(SMRT_individual *parent_pop, SMRT_individual *offsp
 
         getIntercepts (extreme_pop, mixed_pop, 2*g_algorithm_entity.algorithm_para.pop_size, intercept);
 
-        MaximumRanking(mixed_pop, parent_pop, uniform_ref_point, ref_point_num, 2 * g_algorithm_entity.algorithm_para.pop_size, g_algorithm_entity.algorithm_para.pop_size, 2, intercept);
+        EFR_RR_maximumRanking(mixed_pop, parent_pop, uniform_ref_point, ref_point_num,
+                              2 * g_algorithm_entity.algorithm_para.pop_size,
+                              g_algorithm_entity.algorithm_para.pop_size, 2);
 
         // track the current evolutionary progress, including population and metrics
         track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
 
         g_algorithm_entity.iteration_number++;
-
     }
 
     for(i = 0; i < ref_point_num;i++)

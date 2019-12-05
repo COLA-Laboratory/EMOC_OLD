@@ -57,10 +57,9 @@ static void NSGA2_select(SMRT_individual *parent_pop, SMRT_individual *merge_pop
     else
     {
         sort_num = crowding_distance_assign(merge_pop, pop_sort, merge_pop_number, rank_index);
-        /*这一行有点问题，出现了SIGSEG*/
+
         while(1)
         {
-            /*对最后一层rank的solution，计算distance后在依据distance值纳入下一代*/
             if (current_pop_num < g_algorithm_entity.algorithm_para.pop_size)
             {
                 copy_individual(merge_pop + pop_sort[--sort_num], parent_pop + current_pop_num);
@@ -91,7 +90,6 @@ extern void NSGA2_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
     // initialize population
     initialize_population_real (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
     evaluate_population (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
-
 
     // track the current evolutionary progress, including population and metrics
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);

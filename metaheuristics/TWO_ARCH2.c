@@ -11,36 +11,36 @@
 #include "../headers/utility.h"
 
 
-
-
-static void TWO_ARCH2_cal_min_dist_DA_pop(Distance_info_t* distance_arr, SMRT_individual *pop_table, int pop_num, SMRT_individual *DA, int DA_num)
+static void TWO_ARCH2_calMinDistDAPop(Distance_info_t *distance_arr, SMRT_individual *pop_table, int pop_num,
+                                      SMRT_individual *DA, int DA_num)
 {
-	int i = 0, j = 0;
-	Distance_info_t* temp_distance = NULL;
+    int i = 0, j = 0;
+    Distance_info_t* temp_distance = NULL;
 
-	temp_distance = (Distance_info_t *)malloc(sizeof(Distance_info_t) * DA_num);
-	if (NULL == temp_distance)
-	{
-		printf("In the state of TWO_ARCH2_DA_update, malloc distance_arr failed\n");
-		return;
-	}
+    temp_distance = (Distance_info_t *)malloc(sizeof(Distance_info_t) * DA_num);
+    if (NULL == temp_distance)
+    {
+        printf("In the state of TWO_ARCH2_DA_update, malloc distance_arr failed\n");
+        return;
+    }
 
-	for (i = 0; i < pop_num; i++)
-	{
-		for (j = 0; j < DA_num; j++)
-		{
-			temp_distance[j].E_distance = cal_NORM_distance(pop_table + i, DA + j, 1.0 / g_algorithm_entity.algorithm_para.objective_number);
-		}
-		distance_quick_sort(temp_distance, 0, DA_num - 1);
-		distance_arr[i].E_distance = temp_distance[0].E_distance;
-		distance_arr[i].idx = i;
-	}
+    for (i = 0; i < pop_num; i++)
+    {
+        for (j = 0; j < DA_num; j++)
+        {
+            temp_distance[j].E_distance = cal_NORM_distance(pop_table + i, DA + j, 1.0 / g_algorithm_entity.algorithm_para.objective_number);
+        }
+        distance_quick_sort(temp_distance, 0, DA_num - 1);
+        distance_arr[i].E_distance = temp_distance[0].E_distance;
+        distance_arr[i].idx = i;
+    }
 
-	free(temp_distance);
-	return;
+    free(temp_distance);
+    return;
 }
 
-static void TWO_ARCH2_get_extreme_point(SMRT_individual *extreme_point, int *extreme_point_num, SMRT_individual *pop_table, int pop_num)
+static void TWO_ARCH2_getExtremePoint(SMRT_individual *extreme_point, int *extreme_point_num,
+                                      SMRT_individual *pop_table, int pop_num)
 {
     int i = 0, j = 0, new_size = 0;
     int min_index = 0, max_index = 0;
@@ -77,11 +77,8 @@ static void TWO_ARCH2_get_extreme_point(SMRT_individual *extreme_point, int *ext
         new_size += 2;
     }
 
-
     return;
 }
-
-
 
 static void TWO_ARCH2_CA_update(SMRT_individual *pop_table, int pop_num, SMRT_individual *CA, int CA_num)
 {
@@ -126,7 +123,6 @@ static void TWO_ARCH2_CA_update(SMRT_individual *pop_table, int pop_num, SMRT_in
             fitness[min_index] = fitness[pop_num - 1];
         }
         pop_num--;
-
     }
 
     for (i = 0; i < CA_num; ++i)
@@ -134,30 +130,26 @@ static void TWO_ARCH2_CA_update(SMRT_individual *pop_table, int pop_num, SMRT_in
         copy_individual(pop_table + i, CA + i);
     }
 
-
     free(fitness);
 
     return;
 }
 
-
-
 static void TWO_ARCH2_DA_update(SMRT_individual *pop_table, int pop_num, SMRT_individual *DA, int *DA_num, int DA_MAX_num)
 {
-    int i = 0, j = 0, k = 0;
-	int extreme_point_num = 0, temp_num = 0;
-	Distance_info_t* distance_arr = NULL;
-	SMRT_individual *ND_pop = NULL;
+    int i = 0, extreme_point_num = 0, temp_num = 0;
+    Distance_info_t * distance_arr = NULL;
+    SMRT_individual * ND_pop = NULL;
 
-	allocate_memory_for_pop(&ND_pop, pop_num);
-	distance_arr = (Distance_info_t *)malloc(sizeof(Distance_info_t) * pop_num);
-	if (NULL == distance_arr)
-	{
-		printf("In the state of TWO_ARCH2_DA_update, malloc distance_arr failed\n");
-		return;
-	}
+    allocate_memory_for_pop(&ND_pop, pop_num);
+    distance_arr = (Distance_info_t *)malloc(sizeof(Distance_info_t) * pop_num);
+    if (NULL == distance_arr)
+    {
+        printf("In the state of TWO_ARCH2_DA_update, malloc distance_arr failed\n");
+        return;
+    }
 
-	non_dominated_sort(pop_table, pop_num);
+    non_dominated_sort(pop_table, pop_num);
 
     for (i = 0; i < pop_num; i++)
     {
@@ -165,7 +157,6 @@ static void TWO_ARCH2_DA_update(SMRT_individual *pop_table, int pop_num, SMRT_in
         {
             copy_individual(pop_table + i, ND_pop + temp_num);
             temp_num++;
-
         }
     }
 
@@ -179,12 +170,12 @@ static void TWO_ARCH2_DA_update(SMRT_individual *pop_table, int pop_num, SMRT_in
     }
     else
     {
-        TWO_ARCH2_get_extreme_point(DA, &extreme_point_num, ND_pop, temp_num);
+        TWO_ARCH2_getExtremePoint(DA, &extreme_point_num, ND_pop, temp_num);
         *DA_num = extreme_point_num;
 
         for (i = extreme_point_num; i < DA_MAX_num; i++)
         {
-            TWO_ARCH2_cal_min_dist_DA_pop(distance_arr, ND_pop, temp_num, DA, *DA_num);
+            TWO_ARCH2_calMinDistDAPop(distance_arr, ND_pop, temp_num, DA, *DA_num);
             distance_quick_sort(distance_arr, 0, temp_num - 1);
 
             copy_individual(ND_pop + distance_arr[temp_num - 1].idx, DA + (*DA_num));
@@ -206,8 +197,7 @@ static void TWO_ARCH2_DA_update(SMRT_individual *pop_table, int pop_num, SMRT_in
 extern void TWO_ARCH2_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int i = 0, j = 0;
-    int CA_max_num = 100, DA_max_num = 100, DA_current_num = 0;
-    int off_num = 0;
+    int CA_max_num = 100, DA_max_num = 100, DA_current_num = 0, off_num = 0;
     SMRT_individual *CA = NULL, *DA = NULL;
 
     g_algorithm_entity.iteration_number                  = 1;
@@ -223,9 +213,9 @@ extern void TWO_ARCH2_framework (SMRT_individual *parent_pop, SMRT_individual *o
     initialize_population_real (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
     evaluate_population (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
 
-	//initialize CA and DA
-	TWO_ARCH2_CA_update(parent_pop, g_algorithm_entity.algorithm_para.pop_size, CA, CA_max_num);
-	TWO_ARCH2_DA_update(parent_pop, g_algorithm_entity.algorithm_para.pop_size, DA, &DA_current_num, DA_max_num);
+    //initialize CA and DA
+    TWO_ARCH2_CA_update(parent_pop, g_algorithm_entity.algorithm_para.pop_size, CA, CA_max_num);
+    TWO_ARCH2_DA_update(parent_pop, g_algorithm_entity.algorithm_para.pop_size, DA, &DA_current_num, DA_max_num);
 
     // track the current evolutionary progress, including population and metrics
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
@@ -244,16 +234,14 @@ extern void TWO_ARCH2_framework (SMRT_individual *parent_pop, SMRT_individual *o
 
         // update_CA
         merge_population(mixed_pop, CA, CA_max_num, offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
-		TWO_ARCH2_CA_update(mixed_pop, CA_max_num + g_algorithm_entity.algorithm_para.pop_size, CA, CA_max_num);
-		//update_DA
+        TWO_ARCH2_CA_update(mixed_pop, CA_max_num + g_algorithm_entity.algorithm_para.pop_size, CA, CA_max_num);
+        //update_DA
         merge_population(mixed_pop, DA, DA_current_num, offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
-		TWO_ARCH2_DA_update(mixed_pop, DA_current_num + g_algorithm_entity.algorithm_para.pop_size, DA, &DA_current_num, DA_max_num);
-		
+        TWO_ARCH2_DA_update(mixed_pop, DA_current_num + g_algorithm_entity.algorithm_para.pop_size, DA, &DA_current_num, DA_max_num);
+
         // track the current evolutionary progress, including population and metrics
         track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
     }
-
-
 
     for (i = 0; i < CA_max_num; i++)
     {
@@ -264,7 +252,7 @@ extern void TWO_ARCH2_framework (SMRT_individual *parent_pop, SMRT_individual *o
         copy_individual(DA + j, parent_pop + i);
     }
 
-	destroy_memory_for_pop(&CA, CA_max_num);
-	destroy_memory_for_pop(&DA, DA_max_num);
+    destroy_memory_for_pop(&CA, CA_max_num);
+    destroy_memory_for_pop(&DA, DA_max_num);
     return;
 }

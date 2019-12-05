@@ -9,12 +9,14 @@
 #include "../headers/initialize.h"
 #include "../headers/dominance_relation.h"
 
-static void ONEBYONE_threshold_update(double *threshold, double preselected_ratio)
+static void ONEBYONE_thresholdUpdate(double *threshold, double preselected_ratio)
 {
     *threshold = (*threshold) * exp((double) (preselected_ratio - 1) / g_algorithm_entity.algorithm_para.objective_number);
+
     return;
 }
-static double ONEBYONE_dis_cal(SMRT_individual *point1, SMRT_individual *point2)
+
+static double ONEBYONE_disCal(SMRT_individual *point1, SMRT_individual *point2)
 {
     int i = 0;
     double sigema1 = 0, sigema2 = 0, sigema3 = 0, diff = 0, cos = 0;
@@ -29,19 +31,17 @@ static double ONEBYONE_dis_cal(SMRT_individual *point1, SMRT_individual *point2)
     sigema2 = pow(sigema2, 1.0 / 2);
     sigema3 = pow(sigema3, 1.0 / 2);
     cos = sigema1 / (sigema2 * sigema3);
-
-//    cos =  Calcos(point1->obj, point2->obj);
     diff = 1 - cos;
 
     return diff;
 }
 
-static void de_emphasized_by_dominate(struct list_head *pop_table, struct list_head *dominated_pop, int *dominate_idx, int dominate_num)
+static void ONEBYONE_deEmphasizedByDominate(struct list_head * pop_table, struct list_head * dominated_pop,
+                                            int * dominate_idx, int dominate_num)
 {
     int i = 0;
     struct list_head *safe, *pos;
     SMRT_POP_LIST *temp_pop = NULL;
-
 
     list_for_each_safe(pos, safe, pop_table)
     {
@@ -60,12 +60,12 @@ static void de_emphasized_by_dominate(struct list_head *pop_table, struct list_h
     return;
 }
 
-static void de_emphasized_by_neighbor(struct list_head *pop_table, struct list_head *neighbor_pop, int *neighbor_idx, int neighbor_num)
+static void ONEBYONE_deEmphasizedByNeighbor(struct list_head *pop_table, struct list_head *neighbor_pop,
+                                            int *neighbor_idx, int neighbor_num)
 {
     int i = 0;
     struct list_head *safe, *pos;
     SMRT_POP_LIST *temp_pop = NULL;
-
 
     list_for_each_safe(pos, safe, pop_table)
     {
@@ -88,7 +88,6 @@ static double ONEBYONE_aggregate(SMRT_individual *point, int type)
 {
     int i = 0;
     double fit = 0;
-
 
     switch (type)
     {
@@ -121,17 +120,16 @@ static double ONEBYONE_aggregate(SMRT_individual *point, int type)
 
     return fit;
 }
+
 static void ONEBYONE_update(SMRT_individual *pop_table, int pop_num, SMRT_individual *offspring_pop, int offspring_pop_num, double *threshold)
 {
     int i = 0, j = 0;
-    int dominated_num = 0, min_idx = 0, type = 1, curr_off_num = 0, first_run_flag = 1;
-    int current_rank = 1;
+    int dominated_num = 0, min_idx = 0, type = 1, curr_off_num = 0, first_run_flag = 1, current_rank = 1;
     int **dominate_index = NULL, **neighbor_index = NULL, *dominate_num = NULL, *neighbor_num = NULL;
     double diff = 0, min_dis = 0, fit = 0, min_fit = 0, preselected_ratio = 0;
     struct list_head parent_pop, dominated_pop, de_emp_pop, off_pop, *safe, *pos;
     SMRT_POP_LIST *temp_pop = NULL;
     SMRT_individual *temp_ind = NULL;
-
 
     dominate_num = (int *)malloc(sizeof(int ) * pop_num);
     memset(dominate_num, 0, sizeof(int) * pop_num);
@@ -140,6 +138,7 @@ static void ONEBYONE_update(SMRT_individual *pop_table, int pop_num, SMRT_indivi
     {
         dominate_index[i] = (int *)malloc(sizeof(int) * pop_num);
     }
+
     neighbor_num = (int *)malloc(sizeof(int ) * pop_num);
     memset(neighbor_num, 0, sizeof(int) * pop_num);
     neighbor_index = (int **)malloc(sizeof(int *) * pop_num);
@@ -169,7 +168,9 @@ static void ONEBYONE_update(SMRT_individual *pop_table, int pop_num, SMRT_indivi
             {
                 continue;
             }
-            diff = ONEBYONE_dis_cal(pop_table + i, pop_table + j);
+
+            diff = ONEBYONE_disCal(pop_table + i, pop_table + j);
+
             if (diff < (*threshold))
             {
                 neighbor_index[i][neighbor_num[i]++] = j;
@@ -207,6 +208,7 @@ static void ONEBYONE_update(SMRT_individual *pop_table, int pop_num, SMRT_indivi
                     diff += pow(temp_ind->obj[j] - g_algorithm_entity.ideal_point.obj[j], 2);
                 }
             }
+
             diff = pow(diff, 1.0 / 2);
 
             if (diff < min_dis)
@@ -231,25 +233,9 @@ static void ONEBYONE_update(SMRT_individual *pop_table, int pop_num, SMRT_indivi
         }
 
 
-        de_emphasized_by_neighbor(&parent_pop, &de_emp_pop, neighbor_index[min_idx], neighbor_num[min_idx]);
-//        printf("Now, the ind in the neighbor_pop\n");
-//        list_for_each_safe(pos, safe, &de_emp_pop)
-//        {
-//            temp_pop = (SMRT_POP_LIST *)pos;
-//            printf("indx:%d     ", temp_pop->index);
-//        }
-//        printf("\n");
-        de_emphasized_by_dominate(&parent_pop, &dominated_pop, dominate_index[min_idx], dominate_num[min_idx]);
+        ONEBYONE_deEmphasizedByNeighbor(&parent_pop, &de_emp_pop, neighbor_index[min_idx], neighbor_num[min_idx]);
 
-//        printf("Now, the ind in the dominated_pop\n");
-//        list_for_each_safe(pos, safe, &dominated_pop)
-//        {
-//            temp_pop = (SMRT_POP_LIST *)pos;
-//            printf("indx:%d     ", temp_pop->index);
-//        }
-//        printf("\n");
-//
-//
+        ONEBYONE_deEmphasizedByDominate(&parent_pop, &dominated_pop, dominate_index[min_idx], dominate_num[min_idx]);
     }
 
     //update one by one
@@ -284,22 +270,9 @@ static void ONEBYONE_update(SMRT_individual *pop_table, int pop_num, SMRT_indivi
                 }
             }
 
-            de_emphasized_by_neighbor(&parent_pop, &de_emp_pop, neighbor_index[min_idx], neighbor_num[min_idx]);
-//            printf("Now, the ind in the neighbor_pop\n");
-//            list_for_each_safe(pos, safe, &de_emp_pop)
-//            {
-//                temp_pop = (SMRT_POP_LIST *)pos;
-//                printf("indx:%d     ", temp_pop->index);
-//            }
-//            printf("\n");
-            de_emphasized_by_dominate(&parent_pop, &dominated_pop, dominate_index[min_idx], dominate_num[min_idx]);
-//            printf("Now, the ind in the dominated_pop\n");
-//            list_for_each_safe(pos, safe, &dominated_pop)
-//            {
-//                temp_pop = (SMRT_POP_LIST *)pos;
-//                printf("indx:%d     ", temp_pop->index);
-//            }
-//            printf("\n");
+            ONEBYONE_deEmphasizedByNeighbor(&parent_pop, &de_emp_pop, neighbor_index[min_idx], neighbor_num[min_idx]);
+
+            ONEBYONE_deEmphasizedByDominate(&parent_pop, &dominated_pop, dominate_index[min_idx], dominate_num[min_idx]);
 
         }
 
@@ -313,7 +286,6 @@ static void ONEBYONE_update(SMRT_individual *pop_table, int pop_num, SMRT_indivi
             first_run_flag = 0;
         }
 
-        //parent_pop = dominated_pop U de_emp_pop
         list_merge(&parent_pop, &dominated_pop);
         list_merge(&parent_pop, &de_emp_pop);
 
@@ -335,7 +307,7 @@ static void ONEBYONE_update(SMRT_individual *pop_table, int pop_num, SMRT_indivi
     //update threshold
     if (dominated_num < g_algorithm_entity.algorithm_para.pop_size)
     {
-        ONEBYONE_threshold_update(threshold, preselected_ratio);
+        ONEBYONE_thresholdUpdate(threshold, preselected_ratio);
     }
 
     //clear memory
@@ -364,7 +336,7 @@ static void ONEBYONE_update(SMRT_individual *pop_table, int pop_num, SMRT_indivi
 extern void ONEBYONE_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
     int i = 0;
-    double threshold = 1, R = 0;
+    double threshold = 1;
 
     g_algorithm_entity.iteration_number                  = 1;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;
@@ -381,7 +353,6 @@ extern void ONEBYONE_framework (SMRT_individual *parent_pop, SMRT_individual *of
 
     update_ideal_point(parent_pop, g_algorithm_entity.algorithm_para.pop_size);
     update_nadirpoint_nds(parent_pop, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.nadir_point);
-    // track the current evolutionary progress, including population and metrics
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
 
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)

@@ -9,10 +9,6 @@
 #include "../headers/selection.h"
 
 
-
-
-
-
 static void CNSGA2_select(SMRT_individual *parent_pop, SMRT_individual *merge_pop)
 {
     int i = 0, j, sort_num = 0, infea_num = 0, swag;
@@ -48,6 +44,7 @@ static void CNSGA2_select(SMRT_individual *parent_pop, SMRT_individual *merge_po
             j++;
         }
     }
+
     //sort infeasible solutions with their cv
     for(i = 0; i < (infea_num - 1); i++)
     {
@@ -61,6 +58,7 @@ static void CNSGA2_select(SMRT_individual *parent_pop, SMRT_individual *merge_po
             }
         }
     }
+
     //If the number of infeasible solutions is more than pop_num, we just need to fill the new pop with infeasible solultions.
     if(infea_num > g_algorithm_entity.algorithm_para.pop_size)
     {
@@ -103,16 +101,16 @@ static void CNSGA2_select(SMRT_individual *parent_pop, SMRT_individual *merge_po
     else
     {
         sort_num = crowding_distance_assign(merge_pop, pop_sort, merge_pop_number, rank_index);
-        /*这一行有点问题，出现了SIGSEG*/
+
         while(1)
         {
-            /*对最后一层rank的solution，计算distance后在依据distance值纳入下一代*/
             if (current_pop_num < g_algorithm_entity.algorithm_para.pop_size)
             {
                 copy_individual(merge_pop + pop_sort[--sort_num], parent_pop + current_pop_num);
                 current_pop_num++;
             }
-            else {
+            else
+                {
                 break;
             }
         }
@@ -124,6 +122,7 @@ static void CNSGA2_select(SMRT_individual *parent_pop, SMRT_individual *merge_po
 
     NSGA2_SELECT_TERMINATE_HANDLE:
     free(pop_sort);
+
     return ;
 }
 
@@ -137,7 +136,6 @@ extern void CNSGA2_framework (SMRT_individual *parent_pop, SMRT_individual *offs
     // initialize population
     initialize_population_real (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
     evaluate_population (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
-
 
     // track the current evolutionary progress, including population and metrics
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);

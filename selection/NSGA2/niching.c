@@ -23,7 +23,7 @@ extern int sort_by_obj_rank(SMRT_individual *pop_table, int sort_arr[], int obj_
 
 
 
-extern void setDistance_by_index(Distance_info_t *distance_arr, int index, int pop_num, double distance)
+extern void MOEADM2M_setDistanceByIndex(Distance_info_t *distance_arr, int index, int pop_num, double distance)
 {
     int k = 0;
     for (k = 0; k < pop_num; k++)
@@ -76,9 +76,9 @@ extern int crowding_distance_assign(SMRT_individual *pop_table, int pop_sort[], 
 
         /*第一个和最后一个赋值为无穷大，为了使其能够保存下来*/
         pop_table[sort_arr[0]].fitness = INF;
-        setDistance_by_index(distance_arr, sort_arr[0], pop_num_in_rank, INF);
+        MOEADM2M_setDistanceByIndex(distance_arr, sort_arr[0], pop_num_in_rank, INF);
         pop_table[sort_arr[pop_num_in_rank - 1]].fitness = INF;
-        setDistance_by_index(distance_arr, sort_arr[pop_num_in_rank - 1], pop_num_in_rank, INF);
+        MOEADM2M_setDistanceByIndex(distance_arr, sort_arr[pop_num_in_rank - 1], pop_num_in_rank, INF);
         for (j = 1; j < pop_num_in_rank - 1; j++)
         {
             if (INF != pop_table[sort_arr[j]].fitness)
@@ -90,7 +90,8 @@ extern int crowding_distance_assign(SMRT_individual *pop_table, int pop_sort[], 
                 else
                 {
                     pop_table[sort_arr[j]].fitness += (pop_table[sort_arr[j+1]].obj[i] - pop_table[sort_arr[j - 1]].obj[i]) / (pop_table[sort_arr[pop_num_in_rank - 1]].obj[i] - pop_table[sort_arr[0]].obj[i]);
-                    setDistance_by_index(distance_arr, sort_arr[j], pop_num_in_rank, pop_table[sort_arr[j]].fitness);
+                    MOEADM2M_setDistanceByIndex(distance_arr, sort_arr[j], pop_num_in_rank,
+                                                pop_table[sort_arr[j]].fitness);
                 }
             }
         }

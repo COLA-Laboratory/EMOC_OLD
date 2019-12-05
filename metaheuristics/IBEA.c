@@ -8,11 +8,9 @@
 #include "../headers/selection.h"
 
 
-
-void environmental_selection (SMRT_individual *mixed_ptr, SMRT_individual *new_ptr, int *flag, double *fitcomp, int size)
+void IBEA_environmentalSelection (SMRT_individual *mixed_ptr, SMRT_individual *new_ptr, int *flag, double *fitcomp, int size)
 {
-    int i, j;
-    int worst, new_size;
+    int i, j, worst, new_size;
 
     SMRT_individual *pop     = mixed_ptr;
     SMRT_individual *new_pop = new_ptr;
@@ -23,8 +21,8 @@ void environmental_selection (SMRT_individual *mixed_ptr, SMRT_individual *new_p
     for (i = size - g_algorithm_entity.algorithm_para.pop_size; i > 0; i--)
     {
         for (j = 0; j < size && flag[j] == 1; j++);
-
         worst = j;
+
         for (j = j + 1; j < size; j++)
         {
             if (flag[j] != 1)
@@ -34,6 +32,7 @@ void environmental_selection (SMRT_individual *mixed_ptr, SMRT_individual *new_p
                     worst = j;
             }
         }
+
         for (j = 0; j < size; j++)
             if (flag[j] != 1)
             {
@@ -41,7 +40,7 @@ void environmental_selection (SMRT_individual *mixed_ptr, SMRT_individual *new_p
             }
         flag[worst] = 1;
     }
-    /* Move remaining individuals to top of array in 'pp_all' */
+
     new_size = 0;
     for (i = 0; i < size; i++)
     {
@@ -60,7 +59,6 @@ extern void IBEA_select(SMRT_individual *parent_pop, SMRT_individual* mixed_pop)
     int *flage_arr = NULL;
     double *figcomp = NULL;
 
-
     figcomp = (double*)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.pop_size* g_algorithm_entity.algorithm_para.pop_size * 4);
     if (NULL == figcomp)
     {
@@ -74,12 +72,9 @@ extern void IBEA_select(SMRT_individual *parent_pop, SMRT_individual* mixed_pop)
         goto IBEA_SELECT_TERMINATE_HANDLE;
     }
 
-
     cal_indicator(mixed_pop, figcomp, g_algorithm_entity.algorithm_para.pop_size * 2);
-    environmental_selection (mixed_pop, g_algorithm_entity.parent_population, flage_arr,
+    IBEA_environmentalSelection (mixed_pop, g_algorithm_entity.parent_population, flage_arr,
                              figcomp, g_algorithm_entity.algorithm_para.pop_size * 2);
-
-
 
 IBEA_SELECT_TERMINATE_HANDLE:
     free(flage_arr);
@@ -90,7 +85,6 @@ IBEA_SELECT_TERMINATE_HANDLE:
 
 extern void IBEA_framework (SMRT_individual *parent_pop, SMRT_individual* offspring_pop, SMRT_individual* mixed_pop)
 {
-    int i;
 
     g_algorithm_entity.iteration_number       = 1;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;
@@ -100,10 +94,8 @@ extern void IBEA_framework (SMRT_individual *parent_pop, SMRT_individual* offspr
     initialize_population_real (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
     evaluate_population (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
 
-
     // track the current evolutionary progress, including population and metrics
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
-
 
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {

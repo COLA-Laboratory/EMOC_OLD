@@ -13,15 +13,10 @@
 
 static double **con_obj = NULL;
 
-
-
-static DOMINATE_RELATION COMEA_check_dominance(SMRT_individual *ind1, int ind1_idx, SMRT_individual *ind2, int ind2_idx)
+static DOMINATE_RELATION COMEA_checkDominance(SMRT_individual *ind1, int ind1_idx, SMRT_individual *ind2, int ind2_idx)
 {
-    int i;
-    int flag1;
-    int flag2;
+    int i, flag1 = 0, flag2 = 0;
 
-    flag1 = flag2 = 0;
     for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
     {
         if (con_obj[ind1_idx][i] < con_obj[ind2_idx][i])
@@ -32,6 +27,7 @@ static DOMINATE_RELATION COMEA_check_dominance(SMRT_individual *ind1, int ind1_i
                 flag2 = 1;
         }
     }
+
     if (flag1 == 1 && flag2 == 0)
         return (DOMINATE);
     else
@@ -44,14 +40,14 @@ static DOMINATE_RELATION COMEA_check_dominance(SMRT_individual *ind1, int ind1_i
 }
 
 
-extern void CMOEA_constrained_non_dominated_sort(SMRT_individual *pop_table, int pop_num)
+extern void CMOEA_constrainedNonDominatedSort(SMRT_individual *pop_table, int pop_num)
 {
     int i = 0; int j = 0, k = 0;
-    int index = 0; /*临时索引号*/
-    int current_rank = 0, unrank_num = pop_num; /*rank用于等级赋值，unrank_num用于判断是否停止循环*/
+    int index = 0;
+    int current_rank = 0, unrank_num = pop_num;
     int dominate_relation = 0;
-    int *ni = NULL, **si = NULL, *Q = NULL;/*ni用于表示支配第i个solution的解的个数，si是一个集合，存放第i个元素支配的解,Q集合用于存放当前ni为0的solution*/
-    int *dominate_num = NULL;   /*用于存储I支配的解的个数*/
+    int *ni = NULL, **si = NULL, *Q = NULL;
+    int *dominate_num = NULL;
     SMRT_individual *ind_tempA = NULL, *ind_tempB = NULL;
 
     ni = (int *)malloc(sizeof(int) * pop_num);
@@ -113,7 +109,9 @@ extern void CMOEA_constrained_non_dominated_sort(SMRT_individual *pop_table, int
         {
             continue;
         }
+
         index = 0;
+
         for (j = 0; j < pop_num; j++)
         {
             if (i == j)
@@ -124,20 +122,18 @@ extern void CMOEA_constrained_non_dominated_sort(SMRT_individual *pop_table, int
             {
                 continue;
             }
-            dominate_relation = COMEA_check_dominance(ind_tempA, i, ind_tempB, j);
+            dominate_relation = COMEA_checkDominance(ind_tempA, i, ind_tempB, j);
             if (DOMINATE == dominate_relation)
             {
-                /*I支配J*/
                 si[i][index++] = j;
-
             }
-            else if(DOMINATED == dominate_relation)/*J支配I*/
+            else if(DOMINATED == dominate_relation)
             {
-
                 ni[i]++;
             }
             else;
         }
+
         dominate_num[i] = index;
     }
 
@@ -155,7 +151,9 @@ extern void CMOEA_constrained_non_dominated_sort(SMRT_individual *pop_table, int
                 ni[i] = -1;
             }
         }
+
         current_rank++;
+
         for (i = 0; i < index; i++)
         {
             for(j = 0; j < dominate_num[Q[i]]; j++)
@@ -178,10 +176,11 @@ extern void CMOEA_constrained_non_dominated_sort(SMRT_individual *pop_table, int
     free(si);
     free(Q);
     free(dominate_num);
+
     return;
 }
 
-int cal_fea_num(SMRT_individual * pop, int pop_nm)
+int CMOEA_calFeaNum(SMRT_individual *pop, int pop_nm)
 {
     int i, fea_num;
     fea_num = 0;
@@ -195,17 +194,18 @@ int cal_fea_num(SMRT_individual * pop, int pop_nm)
     return fea_num;
 }
 
-void cal_fitness_cv(SMRT_individual * pop, int pop_nm)
+void CMOEA_calFitnessCv(SMRT_individual *pop, int pop_nm)
 {
     int i;
-    for(i=0;i<pop_nm;i++)
+
+    for(i = 0; i<pop_nm; i++)
     {
         pop[i].fitness = pop[i].cv;
     }
     return;
 }
 
-void COMEA_select_cv(SMRT_individual *parent_pop, SMRT_individual *mixed_pop, int pop_nm)
+void COMEA_selectCv(SMRT_individual *parent_pop, SMRT_individual *mixed_pop, int pop_nm)
 {
     int i, j, swap;
     int *rank_num = NULL;
@@ -216,6 +216,7 @@ void COMEA_select_cv(SMRT_individual *parent_pop, SMRT_individual *mixed_pop, in
     {
         rank_num[i] = i;
     }
+
     //rank individuals with their fitness
     for(i = 0; i < (2 * pop_nm - 1); i++)
     {
@@ -229,14 +230,16 @@ void COMEA_select_cv(SMRT_individual *parent_pop, SMRT_individual *mixed_pop, in
             }
         }
     }
+
     for(i = 0; i < pop_nm; i++)
     {
         copy_individual(parent_pop + i, mixed_pop + rank_num[i]);
     }
+
     return;
 }
 
- void cal_modifi_obj_dis_penal(SMRT_individual * pop, int pop_nm, int obj_nm, int fea_num)
+ void CMOEA_calModifiObjDisPenal(SMRT_individual *pop, int pop_nm, int obj_nm, int fea_num)
  {
     int i, j;
     double distance, penalty, cv_max;
@@ -250,6 +253,7 @@ void COMEA_select_cv(SMRT_individual *parent_pop, SMRT_individual *mixed_pop, in
             cv_max = fabs(pop[i].cv);
         }
     }
+
     if(cv_max == 0)
     {
         cv_max = 100.0;
@@ -262,6 +266,7 @@ void COMEA_select_cv(SMRT_individual *parent_pop, SMRT_individual *mixed_pop, in
         {
             distance = pow(pop[i].cv/cv_max, 2.0) +pow((pop[i].obj[j] - g_algorithm_entity.ideal_point.obj[j])/(g_algorithm_entity.nadir_point.obj[j] - g_algorithm_entity.ideal_point.obj[j]) ,2.0);
             distance = sqrt(distance);
+
             if(pop[i].cv >= 0)
             {
                 penalty = 0;
@@ -277,11 +282,9 @@ void COMEA_select_cv(SMRT_individual *parent_pop, SMRT_individual *mixed_pop, in
  }
 
 
-
- /*这个函数写的复杂了*/
-extern int CMOEA_crowding_distance_assign(SMRT_individual *pop_table, int *pop_sort, int pop_num, int rank_index)
+ extern int CMOEA_crowdingDistanceAssign(SMRT_individual *pop_table, int *pop_sort, int pop_num, int rank_index)
 {
-    int i = 0, j = 0, k = 0;
+    int i = 0, j = 0;
     int pop_num_in_rank = 0;
     int *sort_arr = NULL;
     Distance_info_t *distance_arr;
@@ -298,7 +301,6 @@ extern int CMOEA_crowding_distance_assign(SMRT_individual *pop_table, int *pop_s
         goto CROWDING_DISTANCE_FAIL_HANDLE;
     }
 
-    /*找出所有对应rank的值*/
     for (i = 0; i < pop_num; i++)
     {
         if (pop_table[i].rank == rank_index)
@@ -307,17 +309,17 @@ extern int CMOEA_crowding_distance_assign(SMRT_individual *pop_table, int *pop_s
         }
     }
 
-
     for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
     {
         memset(sort_arr, 0, sizeof(int) * pop_num);
         sort_by_obj_rank(pop_table, sort_arr, i, rank_index, pop_num);
 
-        /*第一个和最后一个赋值为无穷大，为了使其能够保存下来*/
         pop_table[sort_arr[0]].fitness = INF;
-        setDistance_by_index(distance_arr, sort_arr[0], pop_num_in_rank, INF);
+        MOEADM2M_setDistanceByIndex(distance_arr, sort_arr[0], pop_num_in_rank, INF);
+
         pop_table[sort_arr[pop_num_in_rank - 1]].fitness = INF;
-        setDistance_by_index(distance_arr, sort_arr[pop_num_in_rank - 1], pop_num_in_rank, INF);
+        MOEADM2M_setDistanceByIndex(distance_arr, sort_arr[pop_num_in_rank - 1], pop_num_in_rank, INF);
+
         for (j = 1; j < pop_num_in_rank - 1; j++)
         {
             if (INF != pop_table[sort_arr[j]].fitness)
@@ -329,22 +331,24 @@ extern int CMOEA_crowding_distance_assign(SMRT_individual *pop_table, int *pop_s
                 else
                 {
                     pop_table[sort_arr[j]].fitness += (con_obj[sort_arr[j+1]][i] - con_obj[sort_arr[j - 1]][i]) / (con_obj[sort_arr[pop_num_in_rank - 1]][i] - con_obj[sort_arr[0]][i]);
-                    setDistance_by_index(distance_arr, sort_arr[j], pop_num_in_rank, pop_table[sort_arr[j]].fitness);
+                    MOEADM2M_setDistanceByIndex(distance_arr, sort_arr[j], pop_num_in_rank,
+                                                pop_table[sort_arr[j]].fitness);
                 }
             }
         }
     }
 
     distance_quick_sort(distance_arr, 0, pop_num_in_rank - 1);
+
     for (i = 0; i < pop_num_in_rank; i++)
     {
         pop_sort[i] = distance_arr[i].idx;
     }
 
-
     CROWDING_DISTANCE_FAIL_HANDLE:
     free(distance_arr);
     free(sort_arr);
+
     return pop_num_in_rank;
 }
 
@@ -363,7 +367,7 @@ static void CMOEA_select(SMRT_individual *parent_pop, SMRT_individual *merge_pop
         goto NSGA2_SELECT_TERMINATE_HANDLE;
     }
 
-    CMOEA_constrained_non_dominated_sort(merge_pop, merge_pop_number);
+    CMOEA_constrainedNonDominatedSort(merge_pop, merge_pop_number);
 
     for(i = 0; i < merge_pop_number; i++)
     {
@@ -384,6 +388,7 @@ static void CMOEA_select(SMRT_individual *parent_pop, SMRT_individual *merge_pop
             j++;
         }
     }
+
     //sort infeasible solutions with their cv
     for(i = 0; i < (infea_num - 1); i++)
     {
@@ -397,6 +402,7 @@ static void CMOEA_select(SMRT_individual *parent_pop, SMRT_individual *merge_pop
             }
         }
     }
+
     //If the number of infeasible solutions is more than pop_num, we just need to fill the new pop with infeasible solultions.
     if(infea_num > g_algorithm_entity.algorithm_para.pop_size)
     {
@@ -438,7 +444,7 @@ static void CMOEA_select(SMRT_individual *parent_pop, SMRT_individual *merge_pop
     }
     else
     {
-        sort_num = CMOEA_crowding_distance_assign(merge_pop, pop_sort, merge_pop_number, rank_index);
+        sort_num = CMOEA_crowdingDistanceAssign(merge_pop, pop_sort, merge_pop_number, rank_index);
         while(1)
         {
             if (current_pop_num < g_algorithm_entity.algorithm_para.pop_size)
@@ -458,6 +464,7 @@ static void CMOEA_select(SMRT_individual *parent_pop, SMRT_individual *merge_pop
 
     NSGA2_SELECT_TERMINATE_HANDLE:
     free(pop_sort);
+
     return ;
 }
 
@@ -480,7 +487,6 @@ extern void CMOEA_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
         con_obj[i] = (double *)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
         if (NULL == con_obj)
         {
-            printf("");
             return;
         }
     }
@@ -495,7 +501,7 @@ extern void CMOEA_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
     // track the current evolutionary progress, including population and metrics
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
 
-    fea_num = cal_fea_num(parent_pop, g_algorithm_entity.algorithm_para.pop_size);
+    fea_num = CMOEA_calFeaNum(parent_pop, g_algorithm_entity.algorithm_para.pop_size);
     //printf("fea_num:%d\n", fea_num);
 
     while(fea_num == 0 || g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation)
@@ -512,13 +518,14 @@ extern void CMOEA_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
         merge_population(mixed_pop, parent_pop, g_algorithm_entity.algorithm_para.pop_size, offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
 
         //1.give fitness to individuals based on their sum of constraint violations
-        cal_fitness_cv(mixed_pop, g_algorithm_entity.algorithm_para.pop_size);
+        CMOEA_calFitnessCv(mixed_pop, g_algorithm_entity.algorithm_para.pop_size);
+
         //2.rank individuals based on fitness in 1.
-        COMEA_select_cv(parent_pop, mixed_pop, g_algorithm_entity.algorithm_para.pop_size);
+        COMEA_selectCv(parent_pop, mixed_pop, g_algorithm_entity.algorithm_para.pop_size);
 
         // track the current evolutionary progress, including population and metrics
         track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
-        fea_num = cal_fea_num(parent_pop, g_algorithm_entity.algorithm_para.pop_size);
+        fea_num = CMOEA_calFeaNum(parent_pop, g_algorithm_entity.algorithm_para.pop_size);
     }
 
     // feasible solutions have been found
@@ -539,15 +546,17 @@ extern void CMOEA_framework (SMRT_individual *parent_pop, SMRT_individual *offsp
         //environmental selection
         merge_population(mixed_pop, parent_pop, g_algorithm_entity.algorithm_para.pop_size, offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
 
-        fea_num = cal_fea_num(mixed_pop, g_algorithm_entity.algorithm_para.pop_size * 2);
+        fea_num = CMOEA_calFeaNum(mixed_pop, g_algorithm_entity.algorithm_para.pop_size * 2);
         //calculate modified objective function values using distance measures and penalty functions for all individuals
-        cal_modifi_obj_dis_penal(mixed_pop, g_algorithm_entity.algorithm_para.pop_size, g_algorithm_entity.algorithm_para.objective_number, fea_num);
+        CMOEA_calModifiObjDisPenal(mixed_pop, g_algorithm_entity.algorithm_para.pop_size,
+                                   g_algorithm_entity.algorithm_para.objective_number, fea_num);
         //pareto sort individuals according to their modified objective function values
         CMOEA_select(parent_pop, mixed_pop);
 
         // track the current evolutionary progress, including population and metrics
         track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
     }
+
     return;
 }
 

@@ -23,7 +23,7 @@
 
 static int countArchive = -1;          //计数器 for Archive
 
-static int CompareVector(double *row1,double *row2,int dimension)
+static int MaOEA_IGD_CompareVector(double *row1,double *row2,int dimension)
 {
     int i = 0;
     for(i = 0;i < dimension;i++)
@@ -41,11 +41,9 @@ static int CompareVector(double *row1,double *row2,int dimension)
 
 }
 
-static int Partition(vector *matrix,int left,int right)
+static int MaOEA_IGD_Partition(vector *matrix,int left,int right)
 {
-    int result = 0;
-    int index = 0;
-    int i = 0, j = 0;
+    int result = 0, index = 0, i = 0;
     double *temp;
     temp = (double *)malloc(sizeof(double) * countArchive);
 
@@ -53,32 +51,32 @@ static int Partition(vector *matrix,int left,int right)
         temp[i] = matrix[left].array[i];
     index = matrix[left].index;
 
-
     while(left < right)
     {
-        result = CompareVector(matrix[right].array,temp,countArchive);
+        result = MaOEA_IGD_CompareVector(matrix[right].array,temp,countArchive);
+
         while ((left < right) && (result == 1) )
         {
             right--;
-            result = CompareVector(matrix[right].array,temp,countArchive);
+            result = MaOEA_IGD_CompareVector(matrix[right].array,temp,countArchive);
         }
+
         if (left < right)
         {
             for(i = 0;i < countArchive;i++)
             {
-
                 matrix[left].array[i] = matrix[right].array[i];
                 matrix[left].index = matrix[right].index;
             }
             left++;
         }
 
-        result = CompareVector(matrix[left].array,temp,countArchive);
+        result = MaOEA_IGD_CompareVector(matrix[left].array,temp,countArchive);
         while ((left < right) && ((result == -1) || (result == 0)))
         {
             left++;
 
-            result = CompareVector(matrix[left].array,temp,countArchive);
+            result = MaOEA_IGD_CompareVector(matrix[left].array,temp,countArchive);
         }
         if (left < right)
         {
@@ -91,6 +89,7 @@ static int Partition(vector *matrix,int left,int right)
             right--;
         }
     }
+
     for(i = 0;i < countArchive;i++)
     {
 
@@ -99,26 +98,25 @@ static int Partition(vector *matrix,int left,int right)
     }
     matrix[left].index = index;
 
-    //printf("%d   %d\n",left,index);
     free(temp);
     return left;
 
 }
 
-static void SortRows(vector *matrix, int left,int right)
+static void MaOEA_IGD_SortRows(vector *matrix, int left,int right)
 {
     int pos = 0;
 
     if (left < right)
     {
-        pos = Partition(matrix,left,right);
-        SortRows(matrix, pos + 1, right);
-        SortRows(matrix, left, pos - 1);
+        pos = MaOEA_IGD_Partition(matrix,left,right);
+        MaOEA_IGD_SortRows(matrix, pos + 1, right);
+        MaOEA_IGD_SortRows(matrix, left, pos - 1);
     }
     return;
 }
 
-double Max_euclidian_distance_copy (double *a, double *b, int dimension)
+double MaOEA_IGD_maxEuclidianDistance (double *a, double *b, int dimension)
 {
     int i;
     double distance;
@@ -137,18 +135,15 @@ double Max_euclidian_distance_copy (double *a, double *b, int dimension)
         }
     }
 
-
     return sqrt(distance);
 }
 
-static void cal_individual_Rank(SMRT_individual * Parent_pop, int pop_number, SMRT_individual * PF_ind, int uniform_PF_point_number)
+static void MaOEA_IGD_calIndividualRank(SMRT_individual *Parent_pop, int pop_number, SMRT_individual *PF_ind,
+                                        int uniform_PF_point_number)
 {
     int i, j;
+    int dominate_relation = 0, Flag_Dominate_one = 0, Flag_Dominated = 0;
 
-    int dominate_relation = 0;
-
-    int Flag_Dominate_one = 0;
-    int Flag_Dominated = 0;
     for (i = 0; i < pop_number; i++)
     {
         Flag_Dominate_one = 0;
@@ -180,9 +175,12 @@ static void cal_individual_Rank(SMRT_individual * Parent_pop, int pop_number, SM
         }
     }
 
+    return;
 }
 
-static void Assign_Rank_And_Proximity_Distance(SMRT_individual * Parent_pop, int parent_number, double **uniform_PF_point, int uniform_PF_point_number, double  ** Distance_store)
+static void MaOEA_IGD_assignRankAndProximityDistance(SMRT_individual *Parent_pop, int parent_number,
+                                                     double **uniform_PF_point, int uniform_PF_point_number,
+                                                     double **Distance_store)
 {
     int i, j;
 
@@ -197,11 +195,10 @@ static void Assign_Rank_And_Proximity_Distance(SMRT_individual * Parent_pop, int
         }
     }
 
-    cal_individual_Rank(Parent_pop , parent_number, PF_ind, uniform_PF_point_number);
+    MaOEA_IGD_calIndividualRank(Parent_pop, parent_number, PF_ind, uniform_PF_point_number);
 
     for(i = 0; i < parent_number; i++)
     {
-
         for(j = 0;  j < uniform_PF_point_number; j++)
         {
             if(Parent_pop[i].rank == 1)
@@ -210,7 +207,7 @@ static void Assign_Rank_And_Proximity_Distance(SMRT_individual * Parent_pop, int
             }
             else if(Parent_pop[i].rank == 2)
             {
-                Distance_store[i][j] = Max_euclidian_distance_copy (Parent_pop[i].obj, PF_ind[j].obj, g_algorithm_entity.algorithm_para.objective_number);
+                Distance_store[i][j] = MaOEA_IGD_maxEuclidianDistance (Parent_pop[i].obj, PF_ind[j].obj, g_algorithm_entity.algorithm_para.objective_number);
             }
             else
             {
@@ -220,9 +217,12 @@ static void Assign_Rank_And_Proximity_Distance(SMRT_individual * Parent_pop, int
     }
 
     destroy_memory_for_pop(&PF_ind, uniform_PF_point_number);
+
+    return;
 }
 
-static void Fit_Set_And_Select_Sop(SMRT_individual * mixed_pop, int mixed_number, SMRT_individual * offspring, int offspring_number, int object_number, double * Zmax, double * Zmin)
+static void MaOEA_IGD_fitSetAndSelectSop(SMRT_individual *mixed_pop, int mixed_number, SMRT_individual *offspring,
+                                         int offspring_number, int object_number, double *Zmax, double *Zmin)
 {
     int i,j,k,m;
     int offspring_index = 0;
@@ -233,7 +233,6 @@ static void Fit_Set_And_Select_Sop(SMRT_individual * mixed_pop, int mixed_number
 
     for(i = 0; i < object_number; i++)
     {
-
         for(j = 0; j < mixed_number; j++)
         {
             temp_count = 0;
@@ -259,9 +258,7 @@ static void Fit_Set_And_Select_Sop(SMRT_individual * mixed_pop, int mixed_number
             copy_individual(mixed_pop + distanceInfo[m].idx, offspring + offspring_index);
             offspring_index++;
         }
-
     }
-
 
     for(i = 0; i < object_number; i++)
     {
@@ -270,18 +267,21 @@ static void Fit_Set_And_Select_Sop(SMRT_individual * mixed_pop, int mixed_number
             distanceInfo[j].idx = j;
             distanceInfo[j].E_distance = offspring[j].obj[i];
         }
+
         distance_quick_sort(distanceInfo, 0, offspring_number - 1);
 
         Zmin[i] = distanceInfo[0].E_distance;
         Zmax[i] = distanceInfo[offspring_number - 1].E_distance;
     }
+
     free(distanceInfo);
 
+    return;
 }
 
-static void MaOEA_IGD_Environmental_select(SMRT_individual *merge_pop, int merge_number, SMRT_individual * parent_pop, int parent_number, double  ** Distance_store_parent, double **uniform_PF_point)
+static void MaOEA_IGD_environmentalSelect(SMRT_individual *merge_pop, int merge_number, SMRT_individual *parent_pop,
+                                          int parent_number, double **Distance_store_parent, double **uniform_PF_point)
 {
-
     int i, j, k, l;
     int temp_number = 0, current_pop_num = 0, rank_index = 1, Remain_To_Be_Select = 0;
     SMRT_individual * Remain_Selected_Pop = NULL;
@@ -323,7 +323,6 @@ static void MaOEA_IGD_Environmental_select(SMRT_individual *merge_pop, int merge
             break;
     }
 
-
     if (current_pop_num == parent_number)
     {
         return;
@@ -354,7 +353,6 @@ static void MaOEA_IGD_Environmental_select(SMRT_individual *merge_pop, int merge
         SMRT_individual * PF_ind = NULL;
         SMRT_individual * Rank_last_select = NULL;
 
-        //PF_ind是原来整个PF点，而PF——select是我们挑选出来的点
         allocate_memory_for_pop(&PF_ind, parent_number);
         allocate_memory_for_pop(&Rank_last_select, temp_number);
 
@@ -401,7 +399,7 @@ static void MaOEA_IGD_Environmental_select(SMRT_individual *merge_pop, int merge
 
             countArchive = parent_number-1;
 
-            SortRows(matrix, 0, parent_number-1);
+            MaOEA_IGD_SortRows(matrix, 0, parent_number-1);
 
             worst = matrix[parent_number - 1].index;
 
@@ -412,7 +410,6 @@ static void MaOEA_IGD_Environmental_select(SMRT_individual *merge_pop, int merge
                 distance_matrix[worst][j] = INF;
             }
         }
-
 
         for(i = 0, k = 0; i < merge_number; i++)
         {
@@ -433,7 +430,6 @@ static void MaOEA_IGD_Environmental_select(SMRT_individual *merge_pop, int merge
             }
         }
 
-
         for(k = 0; k < Remain_To_Be_Select; k++)
         {
             for(i = 0; i < temp_number; i++)
@@ -443,8 +439,6 @@ static void MaOEA_IGD_Environmental_select(SMRT_individual *merge_pop, int merge
             }
 
             distance_quick_sort(distanceInfo, 0, temp_number - 1);
-
-            //printf("index is %d   distance is %f \n ", distanceInfo[0].idx, distanceInfo[0].E_distance);
 
             copy_individual(Rank_last_select + distanceInfo[0].idx, parent_pop + current_pop_num);
 
@@ -463,20 +457,17 @@ static void MaOEA_IGD_Environmental_select(SMRT_individual *merge_pop, int merge
         free(PF_delete_index);
     }
 
-
     for (i = 0; i < merge_number; i++)
     {
         free(Hungarian_distance_matrix[i]);
     }
     free(Hungarian_distance_matrix);
 
-
     return ;
 }
 
 extern void MaOEA_IGD_framework(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
-
     int i,j;
     int ref_point_num = 0;
     int DNPE_number = 250 * g_algorithm_entity.algorithm_para.pop_size;
@@ -508,8 +499,11 @@ extern void MaOEA_IGD_framework(SMRT_individual *parent_pop, SMRT_individual *of
         mutation_pop(offspring_pop);
         evaluate_population (offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
         merge_population(mixed_pop, parent_pop, g_algorithm_entity.algorithm_para.pop_size, offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
-        Fit_Set_And_Select_Sop(mixed_pop, 2 * g_algorithm_entity.algorithm_para.pop_size, parent_pop, g_algorithm_entity.algorithm_para.pop_size, g_algorithm_entity.algorithm_para.objective_number, Zmax,  Zmin);
+        MaOEA_IGD_fitSetAndSelectSop(mixed_pop, 2 * g_algorithm_entity.algorithm_para.pop_size, parent_pop,
+                                     g_algorithm_entity.algorithm_para.pop_size,
+                                     g_algorithm_entity.algorithm_para.objective_number, Zmax, Zmin);
     }
+
     //Generate the PF set
     for(i = 0; i < ref_point_num; i++)
     {
@@ -536,14 +530,14 @@ extern void MaOEA_IGD_framework(SMRT_individual *parent_pop, SMRT_individual *of
         // environmental selection
         merge_population(mixed_pop, parent_pop, ref_point_num, offspring_pop, ref_point_num);
 
-        Assign_Rank_And_Proximity_Distance(mixed_pop, 2 * ref_point_num, uniform_PF_point, ref_point_num, Distance_store_parent);
+        MaOEA_IGD_assignRankAndProximityDistance(mixed_pop, 2 * ref_point_num, uniform_PF_point, ref_point_num,
+                                                 Distance_store_parent);
 
         //Environmental_select
-        MaOEA_IGD_Environmental_select(mixed_pop, 2 * ref_point_num, parent_pop, ref_point_num,  Distance_store_parent,  uniform_PF_point);
+        MaOEA_IGD_environmentalSelect(mixed_pop, 2 * ref_point_num, parent_pop, ref_point_num, Distance_store_parent,
+                                      uniform_PF_point);
 
-        // track the current evolutionary progress, including population and metrics
         track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
-
         g_algorithm_entity.iteration_number++;
 
     }
@@ -566,8 +560,5 @@ extern void MaOEA_IGD_framework(SMRT_individual *parent_pop, SMRT_individual *of
     free(Zmin);
 
     return;
-
-
-
 }
 

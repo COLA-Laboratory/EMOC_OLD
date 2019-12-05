@@ -13,7 +13,7 @@
 #include "../headers/random.h"
 
 
-static void PICEA_G_genrate_goal(SMRT_individual *goals, int goals_number)
+static void PICEA_G_genrateGoal(SMRT_individual *goals, int goals_number)
 {
     int i = 0, j = 0;
 
@@ -28,12 +28,11 @@ static void PICEA_G_genrate_goal(SMRT_individual *goals, int goals_number)
     return;
 }
 
-
-static void PICEA_G_fitness_assign(SMRT_individual *pop_table, int pop_num, SMRT_individual *goals, int goals_number)
+static void PICEA_G_fitnessAssign(SMRT_individual *pop_table, int pop_num, SMRT_individual *goals, int goals_number)
 {
     int i = 0, j = 0, temp_num = 0;
-    int *number_satisfy_goals = NULL, *number_ind_dominate = NULL;//number_satisfy_goals表示满足该目标的ind个数，number_ind_dominate表示该ind满足的目标个数
-    int **ind_dominate_goal = NULL; //表示该ind满足的goal的id
+    int *number_satisfy_goals = NULL, *number_ind_dominate = NULL;
+    int **ind_dominate_goal = NULL;
     SMRT_individual *temp_ind = NULL, *temp_goal = NULL;
     double temp_fit = 0;
 
@@ -68,19 +67,6 @@ static void PICEA_G_fitness_assign(SMRT_individual *pop_table, int pop_num, SMRT
             return;
         }
     }
-//
-//    for (int k = 0; k < pop_num; ++k) {
-//        for (int l = 0; l < g_algorithm_entity.algorithm_para.objective_number; ++l) {
-//            printf("obj:%f    ", pop_table[k].obj[l]);
-//        }
-//        printf("\n");
-//    }
-//    for (int k = 0; k < goals_number; ++k) {
-//        for (int l = 0; l < g_algorithm_entity.algorithm_para.objective_number; ++l) {
-//            printf("goals:%f    ", goals[k].obj[l]);
-//        }
-//        printf("\n");
-//    }
 
     for (i = 0; i < pop_num; ++i)
     {
@@ -90,7 +76,6 @@ static void PICEA_G_fitness_assign(SMRT_individual *pop_table, int pop_num, SMRT
             temp_goal = goals + j;
             if (DOMINATE == check_dominance(temp_ind, temp_goal))
             {
-                //printf("%d dominate %d\n", i, j);
                 number_satisfy_goals[j]++;
                 ind_dominate_goal[i][number_ind_dominate[i]++] = j;
             }
@@ -100,13 +85,13 @@ static void PICEA_G_fitness_assign(SMRT_individual *pop_table, int pop_num, SMRT
     for (i = 0; i < pop_num; i++)
     {
         temp_fit = 0;
+
         if (number_ind_dominate[i] == 0)
         {
             pop_table[i].fitness = 0;
         }
         else
         {
-            //printf("num%d:%d\n", i, number_ind_dominate[i]);
             for (j = 0; j < number_ind_dominate[i]; j++)
             {
                 temp_num = number_satisfy_goals[ind_dominate_goal[i][j]];
@@ -114,7 +99,6 @@ static void PICEA_G_fitness_assign(SMRT_individual *pop_table, int pop_num, SMRT
             }
             pop_table[i].fitness = temp_fit;
         }
-        //printf("pop_table[%d]:%f\n", i, pop_table[i].fitness);
     }
 
     for (i = 0; i < goals_number; i++)
@@ -128,11 +112,11 @@ static void PICEA_G_fitness_assign(SMRT_individual *pop_table, int pop_num, SMRT
             temp_fit = (double)(number_satisfy_goals[i] - 1) / (double)(goals_number - 1);
             goals[i].fitness = 1.0 / (1 + temp_fit);
         }
-        //printf("goal[%d]:%f\n", i, goals[i].fitness);
     }
 
     free(number_ind_dominate);
     free(number_satisfy_goals);
+
     for (i = 0; i < pop_num; ++i)
     {
         free(ind_dominate_goal[i]);
@@ -144,8 +128,7 @@ static void PICEA_G_fitness_assign(SMRT_individual *pop_table, int pop_num, SMRT
 
 static void PICEA_G_selection(SMRT_individual *new_pop, SMRT_individual *new_goals, int new_goals_num, SMRT_individual *pop_table, int pop_num, SMRT_individual *goals, int goals_number)
 {
-    int i = 0;
-    int nd_num = 0;
+    int i = 0, nd_num = 0;
     Fitness_info_t *fitnessInfo = NULL;
 
     fitnessInfo = (Fitness_info_t *)malloc(sizeof(Fitness_info_t) * (goals_number + pop_num));
@@ -192,9 +175,6 @@ static void PICEA_G_selection(SMRT_individual *new_pop, SMRT_individual *new_goa
 
     fitness_quicksort(fitnessInfo, 0, pop_num - 1);
 
-//    for (int j = 0; j < pop_num; ++j) {
-//        printf("fitness：%f\n", fitnessInfo[j].fitness);
-//    }
     for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
     {
         copy_individual(pop_table + fitnessInfo[pop_num - i - 1].idx, new_pop + i);
@@ -213,12 +193,9 @@ static void PICEA_G_selection(SMRT_individual *new_pop, SMRT_individual *new_goa
         copy_individual(goals + fitnessInfo[goals_number - i - 1].idx, new_goals + i);
     }
 
-
     free(fitnessInfo);
     return;
 }
-
-
 
 extern void PICEA_G_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
@@ -242,7 +219,7 @@ extern void PICEA_G_framework (SMRT_individual *parent_pop, SMRT_individual *off
     allocate_memory_for_pop(&goals, goals_number);
     allocate_memory_for_pop(&goals_off, goals_number);
     allocate_memory_for_pop(&merge_goals, goals_number * 2);
-    PICEA_G_genrate_goal(goals, goals_number);
+    PICEA_G_genrateGoal(goals, goals_number);
 
     // track the current evolutionary progress, including population and metrics
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
@@ -268,11 +245,11 @@ extern void PICEA_G_framework (SMRT_individual *parent_pop, SMRT_individual *off
         update_nadir_point(mixed_pop, g_algorithm_entity.algorithm_para.pop_size * 2);
 
         //generate goals
-        PICEA_G_genrate_goal(goals_off, goals_number);
+        PICEA_G_genrateGoal(goals_off, goals_number);
         merge_population(merge_goals, goals, goals_number, goals_off, goals_number);
 
         //fitness assign
-        PICEA_G_fitness_assign(mixed_pop, g_algorithm_entity.algorithm_para.pop_size * 2, merge_goals, goals_number * 2);
+        PICEA_G_fitnessAssign(mixed_pop, g_algorithm_entity.algorithm_para.pop_size * 2, merge_goals, goals_number * 2);
 
         //non-dominate sort
         non_dominated_sort(mixed_pop, g_algorithm_entity.algorithm_para.pop_size * 2);

@@ -16,7 +16,7 @@
 
 #include "../headers/indicator.h"
 
-static void free_MOEAD_dra()
+static void MOEAD_AWA_free()
 {
     int i = 0;
     if (NULL != g_algorithm_entity.MOEAD_para.delta)
@@ -48,7 +48,6 @@ static void free_MOEAD_dra()
         free(g_algorithm_entity.MOEAD_para.neighbor_table);
     }
 
-
     for (i = 0; i < weight_num; i++)
         free (lambda[i]);
     free (lambda);
@@ -57,7 +56,7 @@ static void free_MOEAD_dra()
 
 }
 
-static void ini_MOEAD_dra()
+static void MOEAD_AWA_ini()
 {
     int i = 0, j = 0, k = 0;
     double difference = 0, distance_temp = 0, Euc_distance = 0;
@@ -98,7 +97,6 @@ static void ini_MOEAD_dra()
         return;
     }
 
-
     for (i = 0; i < weight_num; i++)
     {
         for (j = 0; j < weight_num; j++)
@@ -129,7 +127,6 @@ static void ini_MOEAD_dra()
         }
     }
 
-
     for (i = 0; i < weight_num; i++)
     {
         g_algorithm_entity.MOEAD_para.delta[i] = 0;
@@ -141,10 +138,10 @@ static void ini_MOEAD_dra()
     return ;
 }
 
-
-static void update_EP(SMRT_individual * mix_pop, int mix_pop_number, SMRT_individual * Elite_pop, int * real_EP_number, int  Global_Elite_number)
+static void MOEAD_AWA_updateEP(SMRT_individual *mix_pop, int mix_pop_number, SMRT_individual *Elite_pop,
+                               int *real_EP_number, int Global_Elite_number)
 {
-    int i,j,k,l,m,n,z,x,c;
+    int i, j, k, l, m, n, z, x, c;
     int non_dominated_pop_number = 0;
     double temp_result = 1;
     SMRT_individual* non_dominated_pop  = NULL;
@@ -161,7 +158,6 @@ static void update_EP(SMRT_individual * mix_pop, int mix_pop_number, SMRT_indivi
             non_dominated_pop_number++;
         }
     }
-
 
     if(non_dominated_pop_number > Global_Elite_number)
     {
@@ -194,7 +190,6 @@ static void update_EP(SMRT_individual * mix_pop, int mix_pop_number, SMRT_indivi
             }
         }
 
-
         int delete_non_dominated_pop_index [non_dominated_pop_number];
 
         for(i = 0; i < non_dominated_pop_number; i++)
@@ -208,10 +203,8 @@ static void update_EP(SMRT_individual * mix_pop, int mix_pop_number, SMRT_indivi
         Distance_info_t * quick_sort_two_copy = NULL;
         quick_sort_two_copy = (Distance_info_t *)malloc(sizeof(Distance_info_t) * non_dominated_pop_number);
 
-
         for(i = 0; i < non_dominated_pop_number - Global_Elite_number; i++ )
         {
-
             for(j = 0; j < non_dominated_pop_number; j++)
             {
                 for(k = 0; k < non_dominated_pop_number; k++)
@@ -252,15 +245,12 @@ static void update_EP(SMRT_individual * mix_pop, int mix_pop_number, SMRT_indivi
 
             delete_non_dominated_pop_index[quick_sort_two_copy[0].idx] = 1;
 
-
-
             for(c = 0; c < non_dominated_pop_number; c++)
             {
                 Distance_store[quick_sort_two_copy[0].idx][c] = INF;
                 Distance_store[c][quick_sort_two_copy[0].idx] = INF;
             }
         }
-
 
         for(i = 0 , j = 0; i < non_dominated_pop_number; i++)
         {
@@ -276,7 +266,6 @@ static void update_EP(SMRT_individual * mix_pop, int mix_pop_number, SMRT_indivi
         }
 
         *real_EP_number = Global_Elite_number;
-
     }
 
     else
@@ -289,11 +278,10 @@ static void update_EP(SMRT_individual * mix_pop, int mix_pop_number, SMRT_indivi
     }
 
     return;
-
 }
 
-static void update_Weight(SMRT_individual * parent_pop, int parent_pop_number, SMRT_individual * Elite_pop, int * real_EP_number, int  Global_Elite_number,
-                          double **uniform_ref_point, double rate_update_weight )
+static void MOEAD_AWA_updateWeight(SMRT_individual *parent_pop, int parent_pop_number, SMRT_individual *Elite_pop,
+                                   int *real_EP_number, double **uniform_ref_point, double rate_update_weight)
 {
 
     int * delete_pop_index = NULL;
@@ -642,7 +630,7 @@ extern void moead_awa_framework(SMRT_individual *parent_pop, SMRT_individual *of
     printf("|\tThe %d run\t|\t1%%\t|", g_algorithm_entity.run_index_current);
 
     // initialization process
-    ini_MOEAD_dra();
+    MOEAD_AWA_ini();
 
     if (g_algorithm_entity.algorithm_para.pop_size < weight_num || selected_size > weight_num)
     {
@@ -725,22 +713,26 @@ extern void moead_awa_framework(SMRT_individual *parent_pop, SMRT_individual *of
             {
                 flag_first_time_EP = 0;
                 merge_population(mixed_pop, parent_pop, weight_num, offspring_pop, selected_size);
-                update_EP(mixed_pop, weight_num + selected_size, g_algorithm_entity.elit_population, &real_EP_number, g_algorithm_entity.algorithm_para.elite_pop_size);
+                MOEAD_AWA_updateEP(mixed_pop, weight_num + selected_size, g_algorithm_entity.elit_population,
+                                   &real_EP_number, g_algorithm_entity.algorithm_para.elite_pop_size);
             }
             else
             {
                 merge_population(mixed_pop, g_algorithm_entity.elit_population, real_EP_number, offspring_pop, selected_size);
-                update_EP(mixed_pop, real_EP_number + selected_size, g_algorithm_entity.elit_population, &real_EP_number, g_algorithm_entity.algorithm_para.elite_pop_size);
+                MOEAD_AWA_updateEP(mixed_pop, real_EP_number + selected_size, g_algorithm_entity.elit_population,
+                                   &real_EP_number, g_algorithm_entity.algorithm_para.elite_pop_size);
             }
 
             if(g_algorithm_entity.iteration_number % wag == 0)
             {
-                update_Weight(parent_pop, weight_num, g_algorithm_entity.elit_population, &real_EP_number, g_algorithm_entity.algorithm_para.elite_pop_size, lambda, rate_update_weight );
+                MOEAD_AWA_updateWeight(parent_pop, weight_num, g_algorithm_entity.elit_population, &real_EP_number,
+                                       lambda, rate_update_weight);
 
             }
             if(g_algorithm_entity.algorithm_para.current_evaluation == g_algorithm_entity.algorithm_para.max_evaluation)
             {
-                update_Weight(parent_pop, weight_num, g_algorithm_entity.elit_population, &real_EP_number, g_algorithm_entity.algorithm_para.elite_pop_size, lambda, rate_update_weight );
+                MOEAD_AWA_updateWeight(parent_pop, weight_num, g_algorithm_entity.elit_population, &real_EP_number,
+                                        lambda, rate_update_weight);
             }
         }
 
@@ -752,7 +744,7 @@ extern void moead_awa_framework(SMRT_individual *parent_pop, SMRT_individual *of
     }
 
     free(selected);
-    free_MOEAD_dra();
+    MOEAD_AWA_free();
 
     return;
 }

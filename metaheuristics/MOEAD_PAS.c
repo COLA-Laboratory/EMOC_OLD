@@ -14,13 +14,12 @@
 static int *Pi = NULL;
 
 
-static int MOEAD_PAS_update_pi(SMRT_individual *pop, double *weight, int *candidate_p, int candidate_p_num)
+static int MOEAD_PAS_updatePi(SMRT_individual *pop, double *weight, int *candidate_p, int candidate_p_num)
 {
-    int i = 0, j = 0, k = 0;
+    int i = 0, j = 0;
+    double d2 = 0;
     double *min_value_table = NULL, temp_value = 0, min_d2 = INF;
     int current_pi_index = 0, index = 0, *index_table = NULL;
-    double d1 = 0, d2 = 0, nl = 0;
-
 
     min_value_table = (double *)malloc(sizeof(double) * candidate_p_num);
     if (NULL == min_value_table)
@@ -40,6 +39,7 @@ static int MOEAD_PAS_update_pi(SMRT_individual *pop, double *weight, int *candid
     {
         min_value_table[i] = cal_normal_NORM(pop, weight, candidate_p[i]);
         index_table[i] = 0;
+
         for (j = 1; j < weight_num; j++)
         {
             temp_value = cal_normal_NORM(pop + j, weight, candidate_p[i]);
@@ -70,12 +70,10 @@ static int MOEAD_PAS_update_pi(SMRT_individual *pop, double *weight, int *candid
     return candidate_p[current_pi_index];
 }
 
-
-static int MOEAD_PAS_update_subproblem_pas(SMRT_individual *offspring, int pop_index, NeighborType type)
+static int MOEAD_PAS_updateSubproblemPas(SMRT_individual *offspring, int pop_index, NeighborType type)
 {
-    int i = 0;
-    int index = 0, replace_num = 0;
     double temp = 0;
+    int i = 0, index = 0, replace_num = 0;
 
     if (NEIGHBOR == type)
     {
@@ -85,9 +83,11 @@ static int MOEAD_PAS_update_subproblem_pas(SMRT_individual *offspring, int pop_i
             {
                 break;
             }
+
             index = g_algorithm_entity.MOEAD_para.neighbor_table[pop_index].neighbor[i];
             temp = cal_normal_NORM(offspring, lambda[index], Pi[index]);
             cal_normal_NORM(g_algorithm_entity.parent_population + index, lambda[index], Pi[index]);
+
             if (temp < g_algorithm_entity.parent_population[index].fitness)
             {
                 memcpy(g_algorithm_entity.parent_population[index].variable,offspring->variable,
@@ -107,6 +107,7 @@ static int MOEAD_PAS_update_subproblem_pas(SMRT_individual *offspring, int pop_i
             {
                 break;
             }
+
             temp = cal_normal_NORM(offspring, lambda[i], Pi[i]);
             cal_normal_NORM(g_algorithm_entity.parent_population + i, lambda[i], Pi[i]);
 
@@ -119,7 +120,6 @@ static int MOEAD_PAS_update_subproblem_pas(SMRT_individual *offspring, int pop_i
 
                 g_algorithm_entity.parent_population[i].fitness = temp;
 
-
                 replace_num++;
             }
         }
@@ -128,12 +128,11 @@ static int MOEAD_PAS_update_subproblem_pas(SMRT_individual *offspring, int pop_i
     return SUCCESS;
 }
 
-static void ini_MOEAD_ENS()
+static void MOEAD_ENS_ini()
 {
     int i = 0, j = 0, k = 0;
     double difference = 0, distance_temp = 0, Euc_distance = 0;
     Distance_info_t sort_list[MAX_SIZE];
-
 
     lambda = initialize_uniform_point (g_algorithm_entity.algorithm_para.pop_size, &weight_num);
 
@@ -159,6 +158,7 @@ static void ini_MOEAD_ENS()
             sort_list[j].E_distance = Euc_distance;
             sort_list[j].idx = j;
         }
+
         distance_quick_sort(sort_list, 0, weight_num - 1);
 
         g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor = (int *)malloc(sizeof(int) * g_algorithm_entity.MOEAD_para.neighbor_size);
@@ -168,7 +168,6 @@ static void ini_MOEAD_ENS()
             return ;
         }
 
-
         for (j = 0; j < g_algorithm_entity.MOEAD_para.neighbor_size; j++)
         {
             g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor[j] = sort_list[j].idx;
@@ -176,7 +175,6 @@ static void ini_MOEAD_ENS()
     }
     return ;
 }
-
 
 
 
@@ -189,16 +187,13 @@ extern void MOEAD_PAS_framework (SMRT_individual *pop, SMRT_individual *offsprin
     int candidate_p[11] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, INF_NORM};
     SMRT_individual *offspring = g_algorithm_entity.offspring_population;
 
-    int bb = 0;
-
     g_algorithm_entity.iteration_number          = 1;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;
-
 
     printf ("|\tThe %d run\t|\t1%%\t|", g_algorithm_entity.run_index_current);
 
     // initialization process
-    ini_MOEAD_ENS();
+    MOEAD_ENS_ini();
 
     initialize_population_real (pop, weight_num);
 
@@ -216,7 +211,6 @@ extern void MOEAD_PAS_framework (SMRT_individual *pop, SMRT_individual *offsprin
         printf("in the NSGA3_getExtremePoints, malloc Pi Failed\n");
         return;
     }
-
 
     for (i = 0; i < weight_num; ++i)
     {
@@ -252,19 +246,18 @@ extern void MOEAD_PAS_framework (SMRT_individual *pop, SMRT_individual *offsprin
             update_ideal_point_by_ind(offspring);
 
             // update subproblem
-            MOEAD_PAS_update_subproblem_pas(offspring, i, type);
+            MOEAD_PAS_updateSubproblemPas(offspring, i, type);
         }
         non_dominated_sort(pop, weight_num);
         update_nadirpoint_nds(pop, weight_num, &g_algorithm_entity.nadir_point);
 
         g_algorithm_entity.iteration_number++;
 
-
         for (i = 0; i < weight_num; i++)
         {
             if (randomperc() >= (double)g_algorithm_entity.algorithm_para.current_evaluation / (double)g_algorithm_entity.algorithm_para.max_evaluation)
             {
-                Pi[i] = MOEAD_PAS_update_pi(pop,lambda[i], candidate_p, candidate_p_num);
+                Pi[i] = MOEAD_PAS_updatePi(pop, lambda[i], candidate_p, candidate_p_num);
 
                 cal_normal_NORM(pop + i, lambda[i], Pi[i]);
             }

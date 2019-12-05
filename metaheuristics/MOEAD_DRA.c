@@ -11,9 +11,7 @@
 #include "../headers/random.h"
 #include "../headers/analysis.h"
 
-
-
-static void free_MOEAD_dra()
+static void MOEAD_dra_free()
 {
     int i = 0;
     if (NULL != g_algorithm_entity.MOEAD_para.delta)
@@ -45,7 +43,6 @@ static void free_MOEAD_dra()
         free(g_algorithm_entity.MOEAD_para.neighbor_table);
     }
 
-
     for (i = 0; i < weight_num; i++)
         free (lambda[i]);
     free (lambda);
@@ -54,18 +51,13 @@ static void free_MOEAD_dra()
 
 }
 
-
-
-
 static void ini_MOEAD_dra()
 {
     int i = 0, j = 0, k = 0;
     double difference = 0, distance_temp = 0, Euc_distance = 0;
     Distance_info_t sort_list[MAX_SIZE];
 
-
     lambda = initialize_uniform_point (g_algorithm_entity.algorithm_para.pop_size, &weight_num);
-
 
     g_algorithm_entity.MOEAD_para.neighbor_table = (MOEAD_NEIGHBOR*)malloc(sizeof(MOEAD_NEIGHBOR) * weight_num);
     if(NULL == g_algorithm_entity.MOEAD_para.neighbor_table)
@@ -100,8 +92,6 @@ static void ini_MOEAD_dra()
         return;
     }
 
-
-
     for (i = 0; i < weight_num; i++)
     {
         for (j = 0; j < weight_num; j++)
@@ -131,7 +121,6 @@ static void ini_MOEAD_dra()
             g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor[j] = sort_list[j].idx;
         }
     }
-
 
     for (i = 0; i < weight_num; i++)
     {
@@ -177,7 +166,6 @@ extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring
         return;
     }
 
-
     for (i = 0; i < weight_num; ++i)
     {
         g_algorithm_entity.MOEAD_para.old_function[i] = cal_moead_fitness(pop + i, lambda[i], g_algorithm_entity.MOEAD_para.function_type);
@@ -220,11 +208,9 @@ extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring
 
             // update the subproblem
             update_subproblem(offspring, j, type);
-
         }
 
         g_algorithm_entity.iteration_number++;
-
 
         if (g_algorithm_entity.iteration_number % 30 == 0)
         {
@@ -237,12 +223,13 @@ extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring
 
             }
         }
+
         track_evolution (pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
     }
 
     free(selected);
 
-    free_MOEAD_dra();
+    MOEAD_dra_free();
 
     return;
 }

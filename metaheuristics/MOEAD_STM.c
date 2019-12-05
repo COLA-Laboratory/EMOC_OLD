@@ -16,18 +16,14 @@ static double **fitnessMatrix;
 static Fitness_info_t **subpMatrix;
 static Fitness_info_t **solMatrix;
 
-
-
-
-
-static void MOEAD_STM_stable_matching(int *idx, int size)
+static void MOEAD_STM_stableMatching(int *idx, int size)
 {
-    int i = 0;
-    int current_subp_id = 0, current_sol_id = 0, predecessor = 0;
-    int rest_num = 0, terminate_flag = 1, rand_i = 0;
-    int *F_sol = NULL, *F_subp = NULL;
     int *free_subp = NULL;
     int **pair = NULL;
+    int *F_sol = NULL, *F_subp = NULL;
+    int rest_num = 0, terminate_flag = 1, rand_i = 0;
+    int i = 0, current_subp_id = 0, current_sol_id = 0, predecessor = 0;
+
     double preference1 = 0, preference2 = 0;
 
     F_sol = (int *)malloc(sizeof(int) * size);
@@ -146,7 +142,7 @@ static void MOEAD_STM_stable_matching(int *idx, int size)
 }
 
 
-static void ini_MOEAD_STM()
+static void MOEAD_STM_ini()
 {
     int i = 0, j = 0, k = 0;
     double difference = 0, distance_temp = 0, Euc_distance = 0;
@@ -203,6 +199,7 @@ static void ini_MOEAD_STM()
             sort_list[j].E_distance = Euc_distance;
             sort_list[j].idx = j;
         }
+
         distance_quick_sort(sort_list, 0, weight_num - 1);
 
         g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor = (int *)malloc(sizeof(int) * g_algorithm_entity.MOEAD_para.neighbor_size);
@@ -214,7 +211,6 @@ static void ini_MOEAD_STM()
 
         for (j = 0; j < g_algorithm_entity.MOEAD_para.neighbor_size; j++)
         {
-
             g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor[j] = sort_list[j].idx;
         }
     }
@@ -232,7 +228,7 @@ static void ini_MOEAD_STM()
 }
 
 
-static  void free_MOEAD_STM()
+static  void MOEAD_STM_free()
 {
     int i = 0;
     if (NULL != g_algorithm_entity.MOEAD_para.delta)
@@ -324,7 +320,7 @@ static void MOEAD_STM_update(SMRT_individual *merge_pop, int merge_num)
         fitness_quicksort (solMatrix[i], 0, weight_num - 1);
 
 
-    MOEAD_STM_stable_matching(idx, merge_num);
+    MOEAD_STM_stableMatching(idx, merge_num);
 
     for (i = 0; i < weight_num; ++i)
     {
@@ -335,12 +331,8 @@ static void MOEAD_STM_update(SMRT_individual *merge_pop, int merge_num)
     return;
 }
 
-
-
-
 extern void MOEAD_STM_framework(SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
-
     int i, j;
     SMRT_individual *offspring, *parent;
     NeighborType type;
@@ -352,7 +344,7 @@ extern void MOEAD_STM_framework(SMRT_individual *pop, SMRT_individual *offspring
     printf("|\tThe %d run\t|\t1%%\t|", g_algorithm_entity.run_index_current);
 
     // initialization process
-    ini_MOEAD_STM();
+    MOEAD_STM_ini();
 
     if (g_algorithm_entity.algorithm_para.pop_size < weight_num || selected_size > weight_num)
     {
@@ -402,7 +394,6 @@ extern void MOEAD_STM_framework(SMRT_individual *pop, SMRT_individual *offspring
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
         //create empty head for selected and candidate
-
         print_progress ();
 
         // select the current most active subproblems to evolve (based on utility)
@@ -440,10 +431,6 @@ extern void MOEAD_STM_framework(SMRT_individual *pop, SMRT_individual *offspring
         //update the subproblem
         MOEAD_STM_update(mixed_pop, weight_num + selected_size);
 
-        // update the ideal point
-
-
-
         g_algorithm_entity.iteration_number++;
 
         if (g_algorithm_entity.iteration_number % 30 == 0)
@@ -454,15 +441,13 @@ extern void MOEAD_STM_framework(SMRT_individual *pop, SMRT_individual *offspring
             {
                 g_algorithm_entity.MOEAD_para.delta[i] = fabs(g_algorithm_entity.parent_population[i].fitness - g_algorithm_entity.MOEAD_para.old_function[i]) / g_algorithm_entity.MOEAD_para.old_function[i];
                 g_algorithm_entity.MOEAD_para.old_function[i] = g_algorithm_entity.parent_population[i].fitness;
-
             }
         }
         track_evolution (pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
     }
 
     free(selected);
-    free_MOEAD_STM();
-
-
+    MOEAD_STM_free();
+    
     return;
 }

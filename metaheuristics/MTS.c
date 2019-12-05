@@ -15,7 +15,7 @@
 
 static int oflocalsearchTest = 5, oflocalsearch = 45, ofForeground = 5;
 
-static void MTS_AdjustAppSet(SMRT_individual *Approximation_Set, int *set_num)
+static void MTS_adjustAppSet(SMRT_individual *Approximation_Set, int *set_num)
 {
     int i = 0, j = 0;
     int current_num = 0, tmp_id = 0, app_num = *set_num;
@@ -30,6 +30,7 @@ static void MTS_AdjustAppSet(SMRT_individual *Approximation_Set, int *set_num)
     for (i = 0; i < g_algorithm_entity.algorithm_para.objective_number; i++)
     {
         min_value = INF;
+
         for (j = 0; j < app_num; j++)
         {
             if (min_value > Approximation_Set[j].obj[i])
@@ -41,6 +42,7 @@ static void MTS_AdjustAppSet(SMRT_individual *Approximation_Set, int *set_num)
 
         copy_individual(Approximation_Set + tmp_id, new_Approximation_Set + current_num);
         current_num++;
+
         if (tmp_id != app_num - 1)
         {
             copy_individual(Approximation_Set + app_num - 1, Approximation_Set + tmp_id);
@@ -53,6 +55,7 @@ static void MTS_AdjustAppSet(SMRT_individual *Approximation_Set, int *set_num)
         for (i = 0; i < app_num; i++)
         {
             min_dis = INF;
+
             for (j = 0; j < current_num; j++)
             {
                 tmp_dis = euclidian_distance(Approximation_Set[i].obj, new_Approximation_Set[j].obj, g_algorithm_entity.algorithm_para.objective_number);
@@ -61,6 +64,7 @@ static void MTS_AdjustAppSet(SMRT_individual *Approximation_Set, int *set_num)
                     min_dis = tmp_dis;
                 }
             }
+
             distanceInfo[i].idx = i;
             distanceInfo[i].E_distance = min_dis;
         }
@@ -69,6 +73,7 @@ static void MTS_AdjustAppSet(SMRT_individual *Approximation_Set, int *set_num)
 
         copy_individual(Approximation_Set + distanceInfo[app_num - 1].idx, new_Approximation_Set + current_num);
         current_num++;
+
         if (distanceInfo[app_num - 1].idx != app_num - 1)
         {
             copy_individual(Approximation_Set + app_num - 1, Approximation_Set + distanceInfo[app_num - 1].idx);
@@ -90,7 +95,7 @@ static void MTS_AdjustAppSet(SMRT_individual *Approximation_Set, int *set_num)
     return;
 }
 
-static int MTS_AddToAppSet(SMRT_individual *ind, SMRT_individual *Approximation_Set, int *set_num)
+static int MTS_addToAppSet(SMRT_individual *ind, SMRT_individual *Approximation_Set, int *set_num)
 {
     int i = 0, j = 0;
     int *delete_idx, delete_num = 0;
@@ -141,7 +146,7 @@ static int MTS_AddToAppSet(SMRT_individual *ind, SMRT_individual *Approximation_
 
     if ((*set_num) > g_algorithm_entity.algorithm_para.pop_size * 10)
     {
-        MTS_AdjustAppSet(Approximation_Set, set_num);
+        MTS_adjustAppSet(Approximation_Set, set_num);
     }
 
     free(delete_idx);
@@ -150,10 +155,9 @@ static int MTS_AddToAppSet(SMRT_individual *ind, SMRT_individual *Approximation_
 }
 
 
-
 static void MTS_grading(SMRT_individual *ind, SMRT_individual *old_ind, int *improve, double *grade,SMRT_individual *Approximation_Set, int *set_num)
 {
-    if (MTS_AddToAppSet(ind, Approximation_Set, set_num))
+    if (MTS_addToAppSet(ind, Approximation_Set, set_num))
     {
         (*grade) += BONUS_1;
     }
@@ -167,8 +171,8 @@ static void MTS_grading(SMRT_individual *ind, SMRT_individual *old_ind, int *imp
 }
 
 
-
-static void MTS_local_search1(SMRT_individual *ind, int *improve, double *search_randge, double *grade, SMRT_individual *approximation_set, int *set_num)
+static void MTS_localSearch1(SMRT_individual *ind, int *improve, double *search_randge, double *grade,
+                             SMRT_individual *approximation_set, int *set_num)
 {
     int i = 0, k = 0;
     int temp = 0, *rand_idx = NULL, rand = 0;
@@ -226,7 +230,8 @@ static void MTS_local_search1(SMRT_individual *ind, int *improve, double *search
         if (DOMINATE == check_dominance(ind, new_ind))
         {
             copy_individual(ind, new_ind);
-            new_ind->variable[k] += 0.5 * search_randge[k]*(randomperc()*2 - 1);
+            new_ind->variable[k] += 0.5 * search_randge[k] * (randomperc() * 2 - 1);
+
             if (new_ind->variable[k] < 0)
             {
                 new_ind->variable[k] = 0;
@@ -250,10 +255,12 @@ static void MTS_local_search1(SMRT_individual *ind, int *improve, double *search
 
     free(rand_idx);
     destroy_memory_for_ind(new_ind);
+
     return ;
 }
 
-static void MTS_local_search2(SMRT_individual *ind, int *improve, double *search_randge, double *grade, SMRT_individual *approximation_set, int *set_num)
+static void MTS_localSearch2(SMRT_individual *ind, int *improve, double *search_randge, double *grade,
+                             SMRT_individual *approximation_set, int *set_num)
 {
     int i = 0, j = 0;
     int *rand_idx = NULL;
@@ -331,7 +338,6 @@ static void MTS_local_search2(SMRT_individual *ind, int *improve, double *search
             {
                 copy_individual(ind, new_ind);
             }
-
         }
     }
 
@@ -342,11 +348,12 @@ static void MTS_local_search2(SMRT_individual *ind, int *improve, double *search
     return ;
 }
 
-static void MTS_local_search3(SMRT_individual *ind, int *improve, double *search_range, double *grade, SMRT_individual *approximation_set, int *set_num)
+static void MTS_localSearch3(SMRT_individual *ind, int *improve, double *search_range, double *grade,
+                             SMRT_individual *approximation_set, int *set_num)
 {
     int i = 0, j = 0;
     int stop_flag = 0, temp = 0, *rand_idx = NULL, rand = 0;
-    double *search_upper = NULL, *search_low = NULL, *disp = NULL, max_var = 0, min_var = 0;
+    double *search_upper = NULL, *search_low = NULL, *disp = NULL;
     SMRT_individual *new_ind = NULL, *best = NULL;
 
     rand_idx = malloc(sizeof(int) * g_algorithm_entity.algorithm_para.variable_number);
@@ -427,21 +434,21 @@ static void MTS_local_search3(SMRT_individual *ind, int *improve, double *search
     free(disp);
     destroy_memory_for_ind(new_ind);
     destroy_memory_for_ind(best);
+
     return ;
 }
 
-
-
-static int MTS_chose_search_approach(SMRT_individual *ind, int *improve, double *search_range, SMRT_individual *approximation_set, int *set_num)
+static int MTS_choseSearchApproach(SMRT_individual *ind, int *improve, double *search_range,
+                                   SMRT_individual *approximation_set, int *set_num)
 {
     int i = 0;
     int search_f_num = 0;
     double test_grade[3] = {0}, min_value = INF;
     for (i = 0; i < oflocalsearchTest; i++)
     {
-        MTS_local_search1(ind, improve, search_range, test_grade, approximation_set, set_num);
-        MTS_local_search2(ind, improve, search_range, test_grade + 1, approximation_set, set_num);
-        MTS_local_search3(ind, improve, search_range, test_grade + 2, approximation_set, set_num);
+        MTS_localSearch1(ind, improve, search_range, test_grade, approximation_set, set_num);
+        MTS_localSearch2(ind, improve, search_range, test_grade + 1, approximation_set, set_num);
+        MTS_localSearch3(ind, improve, search_range, test_grade + 2, approximation_set, set_num);
     }
 
     for (i = 0; i < 2; i++)
@@ -455,7 +462,6 @@ static int MTS_chose_search_approach(SMRT_individual *ind, int *improve, double 
 
     return search_f_num;
 }
-
 
 extern void MTS_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
@@ -494,7 +500,6 @@ extern void MTS_framework (SMRT_individual *parent_pop, SMRT_individual *offspri
         {
             search_range[i][j] = (g_algorithm_entity.variable_higher_bound[j] - g_algorithm_entity.variable_lower_bound[j]) / 2;
         }
-
     }
 
     // initialize population
@@ -506,7 +511,6 @@ extern void MTS_framework (SMRT_individual *parent_pop, SMRT_individual *offspri
 
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
-
         g_algorithm_entity.iteration_number++;
         print_progress ();
 
@@ -514,25 +518,28 @@ extern void MTS_framework (SMRT_individual *parent_pop, SMRT_individual *offspri
         {
             if (!entry[i])
                 continue;
-            local_search = MTS_chose_search_approach(parent_pop + i, improve + i, search_range[i], approximation_set, &approximation_set_num);
+            local_search = MTS_choseSearchApproach(parent_pop + i, improve + i, search_range[i], approximation_set,
+                                                   &approximation_set_num);
             for (j = 0; j < oflocalsearch; j++)
             {
                 switch (local_search)
                 {
                     case 0:
-                        MTS_local_search1(parent_pop + i, improve + i, search_range[i], grade + i, approximation_set, &approximation_set_num);
+                        MTS_localSearch1(parent_pop + i, improve + i, search_range[i], grade + i, approximation_set,
+                                         &approximation_set_num);
                         break;
                     case 1:
-                        MTS_local_search2(parent_pop + i, improve + i, search_range[i], grade + i, approximation_set, &approximation_set_num);
+                        MTS_localSearch2(parent_pop + i, improve + i, search_range[i], grade + i, approximation_set,
+                                         &approximation_set_num);
                         break;
                     case 2:
-                        MTS_local_search3(parent_pop + i, improve + i, search_range[i], grade + i, approximation_set, &approximation_set_num);
+                        MTS_localSearch3(parent_pop + i, improve + i, search_range[i], grade + i, approximation_set,
+                                         &approximation_set_num);
                         break;
                     default:
                         break;
                 }
             }
-
         }
 
         for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
@@ -541,6 +548,7 @@ extern void MTS_framework (SMRT_individual *parent_pop, SMRT_individual *offspri
             fitnessInfo[i].idx = i;
             fitnessInfo[i].fitness = grade[i];
         }
+
         fitness_quicksort(fitnessInfo, 0, g_algorithm_entity.algorithm_para.pop_size - 1);
 
         for (i = 0; i < ofForeground; i++)
@@ -550,7 +558,7 @@ extern void MTS_framework (SMRT_individual *parent_pop, SMRT_individual *offspri
 
         if (approximation_set_num > max_app_set_num)
         {
-            MTS_AdjustAppSet(approximation_set, &approximation_set_num);
+            MTS_adjustAppSet(approximation_set, &approximation_set_num);
         }
 
         // track the current evolutionary progress, including population and metrics
@@ -561,12 +569,11 @@ extern void MTS_framework (SMRT_individual *parent_pop, SMRT_individual *offspri
     free(improve);
     free(grade);
     free(fitnessInfo);
+
     for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
     {
         free(search_range[i]);
     }
-
-
 
     printf("The output as follows:\n");
     for (int i = 0; i < approximation_set_num; i++)
@@ -582,7 +589,6 @@ extern void MTS_framework (SMRT_individual *parent_pop, SMRT_individual *offspri
         printf("\n");
     }
     printf("indicator:%f\n", cal_IGD(approximation_set, approximation_set_num));
-    //plot(parent_pop, 40);
 
     free(search_range);
     destroy_memory_for_pop(&approximation_set, max_app_set_num);

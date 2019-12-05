@@ -13,23 +13,21 @@
 #include "../headers/random.h"
 
 
-
-void rearrangeIndicesByColumn(double *mat, int rows, int columns, int col,
+void HypE_rearrangeIndicesByColumn(double *mat, int rows, int columns, int col,
                               int *ind )
-/**
- * Internal function used by hypeExact
- */
 {
-#define  MAX_LEVELS  300
+    #define  MAX_LEVELS  300
     int  beg[MAX_LEVELS], end[MAX_LEVELS], i = 0, L, R, swap;
     double pref, pind;
     double ref[rows];
+
     for( i = 0; i < rows; i++ ) {
         ref[i] = mat[ col + ind[i]*columns ];
     }
     i = 0;
 
     beg[0] = 0; end[0] = rows;
+
     while ( i >= 0 ) {
         L = beg[i]; R = end[i]-1;
         if( L < R ) {
@@ -63,12 +61,9 @@ void rearrangeIndicesByColumn(double *mat, int rows, int columns, int col,
     }
 }
 
-void hypeExactRecursive( double* input_p, int pnts, int dim, int nrOfPnts,
+void HypE_exactRecursive( double* input_p, int pnts, int dim, int nrOfPnts,
                          int actDim, double* bounds, int* input_pvec, double* fitness,
                          double* rho, int param_k )
-/**
- * Internal function used by hypeExact
- */
 {
     int i, j;
     double extrusion;
@@ -81,7 +76,7 @@ void hypeExactRecursive( double* input_p, int pnts, int dim, int nrOfPnts,
     for( i = 0; i < pnts*dim; i++ )
         p[i] = input_p[i];
 
-    rearrangeIndicesByColumn( p, nrOfPnts, dim, actDim, pvec );
+    HypE_rearrangeIndicesByColumn( p, nrOfPnts, dim, actDim, pvec );
 
     for( i = 0; i < nrOfPnts; i++ )
     {
@@ -99,7 +94,7 @@ void hypeExactRecursive( double* input_p, int pnts, int dim, int nrOfPnts,
         }
         else if( extrusion > 0 ) {
             double tmpfit[ pnts ];
-            hypeExactRecursive( p, pnts, dim, i+1, actDim-1, bounds, pvec,
+            HypE_exactRecursive( p, pnts, dim, i+1, actDim-1, bounds, pvec,
                                 tmpfit, rho, param_k );
             for( j = 0; j < pnts; j++ )
                 fitness[j] += extrusion*tmpfit[j];
@@ -108,11 +103,8 @@ void hypeExactRecursive( double* input_p, int pnts, int dim, int nrOfPnts,
 }
 
 
-void hypeExact( Fitness_info_t * fitnessInfo, int param_k, double* rho, SMRT_individual *pop_table, int pop_num)
-/**
- * Calculating the hypeIndicator
- * \f[ \sum_{i=1}^k \left( \prod_{j=1}^{i-1} \frac{k-j}{|P|-j} \right) \frac{ Leb( H_i(a) ) }{ i } \f]
- */
+void HypE_exact( Fitness_info_t * fitnessInfo, int param_k, double* rho, SMRT_individual *pop_table, int pop_num)
+
 {
     int i, j;
     double boundsVec[ g_algorithm_entity.algorithm_para.objective_number ];
@@ -135,18 +127,17 @@ void hypeExact( Fitness_info_t * fitnessInfo, int param_k, double* rho, SMRT_ind
     for( i = 0; i < pop_num; i++  )
         indices[i] = i;
 
-    /** Recursively calculate the indicator values */
-    hypeExactRecursive( p, pop_num, g_algorithm_entity.algorithm_para.objective_number, pop_num, g_algorithm_entity.algorithm_para.objective_number-1, boundsVec,
+    HypE_exactRecursive( p, pop_num, g_algorithm_entity.algorithm_para.objective_number, pop_num, g_algorithm_entity.algorithm_para.objective_number-1, boundsVec,
                         indices, fitness, rho, param_k );
 
     for (i = 0; i < pop_num; ++i)
     {
         fitnessInfo[i].fitness = fitness[i];
     }
+
     free(fitness);
 }
 
-/* HypE sampling procedure for Hypervolume approximation */
 double hypeSampling (Fitness_info_t *fitnessInfo, int nrOfSamples, int param_k, double *rho, SMRT_individual *pop_table, int pop_num)
 {
     int i, s, k;
@@ -226,7 +217,7 @@ void HypE_hypeIndicator(Fitness_info_t *fitnessInfo, int nrOfSamples, int param_
         fitnessInfo[i].fitness = 0.0;
 
     if( nrOfSamples < 0 )
-        hypeExact( fitnessInfo, param_k, rho, pop_table, pop_num);
+        HypE_exact( fitnessInfo, param_k, rho, pop_table, pop_num);
     else
         hypeSampling(fitnessInfo, nrOfSamples, param_k, rho, pop_table, pop_num);
 /*

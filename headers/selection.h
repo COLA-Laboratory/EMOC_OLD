@@ -20,6 +20,6 @@ extern double cal_ebsilon_plus(SMRT_individual *ind1 , SMRT_individual *ind2);
 extern void cal_ebsilon_plus_fit(SMRT_individual *pop_table, int pop_num, double *fitness);
 //NSGA2
 extern int crowding_distance_assign(SMRT_individual *pop_table, int pop_sort[], int pop_num,  int rank_index);
-extern void setDistance_by_index(Distance_info_t *distance_arr, int index, int pop_num, double distance);
+extern void MOEADM2M_setDistanceByIndex(Distance_info_t *distance_arr, int index, int pop_num, double distance);
 extern int sort_by_obj_rank(SMRT_individual *pop_table, int sort_arr[], int obj_index, int rank_index, int pop_num);
 #endif

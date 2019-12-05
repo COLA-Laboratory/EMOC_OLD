@@ -14,11 +14,11 @@
 static int  **association_matrix_in_fl = NULL;
 static int *association_num_in_fl = NULL;
 
-static void SPEA2_R_clear_mem(int ref_point_num, double **store_angle)
+static void SPEA2_R_clearMem(int ref_point_num, double **store_angle)
 {
     int i = 0;
 
-    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size*2; i++)
+    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size * 2; i++)
     {
         memset(store_angle[i], 0, ref_point_num * sizeof(double));
     }
@@ -27,19 +27,18 @@ static void SPEA2_R_clear_mem(int ref_point_num, double **store_angle)
     {
         memset(association_matrix_in_fl[i], 0, sizeof(int) * g_algorithm_entity.algorithm_para.pop_size * 2);
     }
-
     memset(association_num_in_fl, 0, sizeof(int) * ref_point_num);
+
     return;
 }
 
-static void SPEA2_R_set_fitness(SMRT_individual *pop_table,  double **store_angle, int point_num,  double*max_angle, int  pop_num)
+static void SPEA2_R_setFitness(SMRT_individual *pop_table, double **store_angle, int point_num, double *max_angle,
+                               int pop_num)
 {
-    int i = 0, j = 0, k = 0;
-    int index = 0;
+    int i = 0, j = 0,temp_index = 0, index = 0;
     DOMINATE_RELATION relation;
     SMRT_individual *temp_i = NULL, *temp_j = NULL;
-    int **si = NULL, *si_size = NULL, *Q = NULL; //s[i]表示支配第i个解的解集，si_size[i]表示支配第i个解的解集的解的个数，Q[i]表示第i个解支配的解的个数
-    int temp_index = 0;
+    int **si = NULL, *si_size = NULL, *Q = NULL;
 
     si = (int **)malloc(sizeof(int *) * pop_num);
     if (NULL == si)
@@ -98,6 +97,7 @@ static void SPEA2_R_set_fitness(SMRT_individual *pop_table,  double **store_angl
 
         }
     }
+
     for (i = 0; i < pop_num; i++)
     {
         if (0 == si_size[i])
@@ -114,7 +114,6 @@ static void SPEA2_R_set_fitness(SMRT_individual *pop_table,  double **store_angl
         }
     }
 
-
     for(i = 0; i < point_num; i++)
     {
         for(j = 0; j < association_num_in_fl[i]; j++)
@@ -124,7 +123,6 @@ static void SPEA2_R_set_fitness(SMRT_individual *pop_table,  double **store_angl
             temp_i->fitness += (store_angle[index][j]) /  (store_angle[index][j] + *max_angle);
         }
     }
-
 
     SPEA2_SET_FIT_TERMINATE:
     for (i = 0; i < pop_num; i++)
@@ -137,33 +135,25 @@ static void SPEA2_R_set_fitness(SMRT_individual *pop_table,  double **store_angl
     return;
 }
 
-static void SPEA2_R_environmental_slelct(SMRT_individual * parent_pop, SMRT_individual *offspring_pop, int point_num, int pop_num) {
-    int i = 0, j = 0, m = 0 ;
-    int remove_index1 = 0;
-    int offspring_index = 0;
-    int min_index = 0;
-    int H_pop_number = 0;
-    int All_pop_number = 0;
+static void SPEA2_R_environmentalSelect(SMRT_individual *parent_pop, SMRT_individual * offspring_pop, int point_num,
+                                        int pop_num) {
     int  ** index_matrix = NULL;
-    int * store_index = malloc(sizeof(int)* point_num);
-
-    Fitness_info_t *fitnessInfo = (Fitness_info_t *)malloc(sizeof(Fitness_info_t) * pop_num);
-
+    int * store_index = malloc(sizeof(int) * point_num);
     SMRT_individual * H_pop = NULL;
+    Fitness_info_t *fitnessInfo = (Fitness_info_t *)malloc(sizeof(Fitness_info_t) * pop_num);
+    int i = 0, j = 0, m = 0, remove_index1 = 0, offspring_index = 0, min_index = 0, H_pop_number = 0, All_pop_number = 0;
 
     allocate_memory_for_pop(&H_pop, pop_num);
 
     index_matrix = (int **)malloc(sizeof(int *) * point_num);
-    for (int i = 0; i < point_num; i++)
+    for (i = 0; i < point_num; i++)
     {
         index_matrix[i] = (int *)malloc(sizeof(int) * g_algorithm_entity.algorithm_para.pop_size * 2);
         memset(index_matrix[i], 0, sizeof(int) * g_algorithm_entity.algorithm_para.pop_size * 2);
     }
 
-
     while (offspring_index != pop_num )
     {
-
         H_pop_number = 0;
         for(i = 0; i < point_num; i++)
         {
@@ -185,7 +175,6 @@ static void SPEA2_R_environmental_slelct(SMRT_individual * parent_pop, SMRT_indi
                 association_matrix_in_fl[i][remove_index1] = association_matrix_in_fl[i][association_num_in_fl[i] - 1];
                 association_num_in_fl[i]--;
                 All_pop_number++;
-
             }
         }
 
@@ -204,7 +193,7 @@ static void SPEA2_R_environmental_slelct(SMRT_individual * parent_pop, SMRT_indi
         }
         else
         {
-            for (int i = 0; i < H_pop_number; i++)
+            for (i = 0; i < H_pop_number; i++)
             {
 
                 fitnessInfo[i].fitness = (parent_pop + store_index[i])->fitness;
@@ -213,9 +202,9 @@ static void SPEA2_R_environmental_slelct(SMRT_individual * parent_pop, SMRT_indi
 
             fitness_quicksort(fitnessInfo, 0, H_pop_number - 1);
 
-            for(int i = 0; i <  pop_num - offspring_index; i++)
+            for(i = 0; i <  pop_num - offspring_index; i++)
             {
-                copy_individual(parent_pop + fitnessInfo[i].idx , offspring_pop + offspring_index);
+                copy_individual(parent_pop + fitnessInfo[i].idx, offspring_pop + offspring_index);
                 offspring_index++;
                 if( offspring_index == pop_num - 1)
                 {
@@ -225,7 +214,7 @@ static void SPEA2_R_environmental_slelct(SMRT_individual * parent_pop, SMRT_indi
         }
     }
 
-    for (int i = 0; i < point_num; i++)
+    for (i = 0; i < point_num; i++)
     {
         free(index_matrix[i]) ;
     }
@@ -236,17 +225,13 @@ static void SPEA2_R_environmental_slelct(SMRT_individual * parent_pop, SMRT_indi
     return;
 }
 
-
-
-static void Objective_Normalization_And_Associate(SMRT_individual *parent_pop, double **store_angle, double **ref_point, int point_num, double * max_angle, int pop_num)
+static void SPEA2_R_objectiveNormalizationAssociate(SMRT_individual * parent_pop, double **store_angle,
+                                                    double **ref_point, int point_num, double *max_angle, int pop_num)
 {
+    int min_index = 0,i = 0, j = 0;
     double min_angle = 0,  value_cos = 0, angle = 0;
-    int min_index = 0;
-    int i = 0, j = 0, k = 0;
     double ** store_max_angle = NULL;
     SMRT_individual * temp_pop = NULL;
-
-
     allocate_memory_for_pop(&temp_pop, pop_num);
 
     store_max_angle = (double **)malloc(sizeof(double *) * point_num);
@@ -261,7 +246,6 @@ static void Objective_Normalization_And_Associate(SMRT_individual *parent_pop, d
         memset(store_max_angle[i], 0, sizeof(double) * point_num);
     }
 
-
     for(i = 0; i < pop_num; i++)
     {
         copy_individual(parent_pop + i, temp_pop + i);
@@ -274,7 +258,6 @@ static void Objective_Normalization_And_Associate(SMRT_individual *parent_pop, d
             temp_pop[i].obj[j] = (temp_pop[i].obj[j] - g_algorithm_entity.ideal_point.obj[j]) / (g_algorithm_entity.nadir_point.obj[j] - g_algorithm_entity.ideal_point.obj[j]);
         }
     }
-
     //the proess of the Associate and we need to calculate the angle
     for(i = 0; i < pop_num; i++)
     {
@@ -284,9 +267,7 @@ static void Objective_Normalization_And_Associate(SMRT_individual *parent_pop, d
             angle = acos(value_cos);
             store_angle[i][j] = angle ;
         }
-
     }
-
     //calculate the max_angle
     for( i = 0 ; i < point_num; i++)
     {
@@ -302,7 +283,6 @@ static void Objective_Normalization_And_Associate(SMRT_individual *parent_pop, d
             }
         }
     }
-
     //find the max——angle and store it
     *max_angle = store_max_angle[0][0];
     for(i = 0; i < point_num; i++)
@@ -316,10 +296,8 @@ static void Objective_Normalization_And_Associate(SMRT_individual *parent_pop, d
         }
     }
 
-    //这一部分是筛选过程，找到与当前个体夹角最小的权重向量，将这个信息存储，即该权重向量附近的个体都有谁
     for(i = 0; i < pop_num; i++)
     {
-
         min_index = 0;
         min_angle = store_angle[i][0];
 
@@ -331,7 +309,6 @@ static void Objective_Normalization_And_Associate(SMRT_individual *parent_pop, d
                  min_index = j;
             }
         }
-
         association_matrix_in_fl[min_index][association_num_in_fl[min_index]++] = i;
     }
 
@@ -347,48 +324,39 @@ static void Objective_Normalization_And_Associate(SMRT_individual *parent_pop, d
 
 extern void SPEA2_R_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
-    int ref_point_num = 0;
+    int i, ref_point_num = 0;
     double max_angle = 0;
-    double **uniform_ref_point = NULL, **store_angle = NULL; //store_angle[pop_size][refpoint]
+    double ** uniform_ref_point = NULL, ** store_angle = NULL;
     SMRT_individual * temp_parent_pop = NULL;
 
     g_algorithm_entity.iteration_number                  = 0;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;
     printf ("Progress: 1%%");
 
-
     allocate_memory_for_pop(&temp_parent_pop, g_algorithm_entity.algorithm_para.pop_size);
 
-
-    //initialize W using Das and Dennis's method
     uniform_ref_point = initialize_uniform_point(g_algorithm_entity.algorithm_para.pop_size, &ref_point_num);
 
     store_angle = (double **)malloc(sizeof(double *) * g_algorithm_entity.algorithm_para.pop_size * 2);
-    for (int i = 0; i < g_algorithm_entity.algorithm_para.pop_size*2; i++)
+    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size * 2; i++)
     {
         store_angle[i] = (double *)malloc(sizeof(double) * ref_point_num);
     }
 
     association_matrix_in_fl = (int **)malloc(sizeof(int *) * ref_point_num);
-    for (int i = 0; i < ref_point_num; i++)
+    for (i = 0; i < ref_point_num; i++)
     {
         association_matrix_in_fl[i] = (int *)malloc(sizeof(int) * g_algorithm_entity.algorithm_para.pop_size * 2);
     }
     association_num_in_fl = (int *)malloc(sizeof(int) * ref_point_num);
     memset(association_num_in_fl, 0, sizeof(int) * ref_point_num);
 
-
-    // initialize population
     initialize_population_real (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
     evaluate_population (parent_pop, g_algorithm_entity.algorithm_para.pop_size);
 
-    //
     initialize_nadirpoint (parent_pop, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.nadir_point);
     initialize_idealpoint(parent_pop, g_algorithm_entity.algorithm_para.pop_size, &g_algorithm_entity.ideal_point);
 
-
-
-    // track the current evolutionary progress, including population and metrics
     track_evolution (parent_pop, g_algorithm_entity.iteration_number, 0);
 
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
@@ -396,31 +364,30 @@ extern void SPEA2_R_framework (SMRT_individual *parent_pop, SMRT_individual *off
         g_algorithm_entity.iteration_number++;
         print_progress ();
 
-
         crossover_nsga2 (parent_pop, offspring_pop);
         mutation_pop(offspring_pop);
         evaluate_population (offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
 
         merge_population(mixed_pop, parent_pop, g_algorithm_entity.algorithm_para.pop_size, offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
 
-        non_dominated_sort(mixed_pop, 2*g_algorithm_entity.algorithm_para.pop_size);
-        update_ideal_point(mixed_pop, 2*g_algorithm_entity.algorithm_para.pop_size);
-        update_nadir_point(mixed_pop, 2*g_algorithm_entity.algorithm_para.pop_size);
+        non_dominated_sort(mixed_pop, 2 * g_algorithm_entity.algorithm_para.pop_size);
+        update_ideal_point(mixed_pop, 2 * g_algorithm_entity.algorithm_para.pop_size);
+        update_nadir_point(mixed_pop, 2 * g_algorithm_entity.algorithm_para.pop_size);
 
-        Objective_Normalization_And_Associate(mixed_pop, store_angle, uniform_ref_point, ref_point_num, &max_angle, 2*g_algorithm_entity.algorithm_para.pop_size);
+        SPEA2_R_objectiveNormalizationAssociate(mixed_pop, store_angle, uniform_ref_point, ref_point_num, &max_angle, 2 * g_algorithm_entity.algorithm_para.pop_size);
 
-        SPEA2_R_set_fitness(mixed_pop, store_angle, ref_point_num, &max_angle, 2*g_algorithm_entity.algorithm_para.pop_size);
+        SPEA2_R_setFitness(mixed_pop, store_angle, ref_point_num, &max_angle, 2 * g_algorithm_entity.algorithm_para.pop_size);
 
-        SPEA2_R_environmental_slelct(mixed_pop, parent_pop, ref_point_num, g_algorithm_entity.algorithm_para.pop_size);
+        SPEA2_R_environmentalSelect(mixed_pop, parent_pop, ref_point_num, g_algorithm_entity.algorithm_para.pop_size);
 
-        SPEA2_R_clear_mem(ref_point_num, store_angle);
+        SPEA2_R_clearMem(ref_point_num, store_angle);
     }
 
     destroy_memory_for_pop(&temp_parent_pop, g_algorithm_entity.algorithm_para.pop_size);
-    for (int i = 0; i < g_algorithm_entity.algorithm_para.pop_size*2; i++)
+    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size*2; i++)
        free(store_angle[i]);
 
-    for (int i = 0; i < ref_point_num; i++)
+    for (i = 0; i < ref_point_num; i++)
         free (uniform_ref_point[i]);
     free (uniform_ref_point);
 

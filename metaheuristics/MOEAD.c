@@ -12,17 +12,11 @@
 #include "../headers/random.h"
 
 
-
-
-
-
-static void ini_MOEAD()
+static void MOEAD_ini()
 {
     int i = 0, j = 0, k = 0;
     double difference = 0, distance_temp = 0, Euc_distance = 0;
     Distance_info_t sort_list[MAX_SIZE];
-
-
 
     lambda = initialize_uniform_point (g_algorithm_entity.algorithm_para.pop_size, &weight_num);
 
@@ -48,6 +42,7 @@ static void ini_MOEAD()
             sort_list[j].E_distance = Euc_distance;
             sort_list[j].idx = j;
         }
+
         distance_quick_sort(sort_list, 0, weight_num - 1);
 
         g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor = (int *)malloc(sizeof(int) * g_algorithm_entity.MOEAD_para.neighbor_size);
@@ -57,7 +52,6 @@ static void ini_MOEAD()
             return ;
         }
 
-
         for (j = 0; j < g_algorithm_entity.MOEAD_para.neighbor_size; j++)
         {
             g_algorithm_entity.MOEAD_para.neighbor_table[i].neighbor[j] = sort_list[j].idx;
@@ -65,8 +59,6 @@ static void ini_MOEAD()
     }
     return ;
 }
-
-
 
 
 extern void MOEAD_framework (SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
@@ -78,16 +70,13 @@ extern void MOEAD_framework (SMRT_individual *pop, SMRT_individual *offspring_po
     g_algorithm_entity.algorithm_para.current_evaluation = 0;
     SMRT_individual *offspring = g_algorithm_entity.offspring_population;
 
-
     printf ("|\tThe %d run\t|\t1%%\t|", g_algorithm_entity.run_index_current);
 
     // initialization process
-    ini_MOEAD();
-
+    MOEAD_ini();
 
     //print_error (number_weight != popsize, 1, "Number of weight vectors must be equal to the population size!");
     initialize_population_real (pop, weight_num);
-
 
     evaluate_population (pop, weight_num);
 

@@ -1,11 +1,11 @@
-algorithm_name:MOEAD
+algorithm_name:IBEA
 test_problem:DTLZ1
 problem_param:
 number_variable:10
 number_objective:3
 popSize:300
 eliteSize:300
-max_evaluation:120000
+max_evaluation:150000
 runtime_output:1
 output_interval:1000
 run_index_begin:1

@@ -16,7 +16,7 @@
 
 static int archiveNum = 0;
 
-static void IsAlert()
+static void MaOEAIT_isAlert()
 {
     int evaluation1 = g_algorithm_entity.algorithm_para.pop_size * 200;
     int evaluation2 = g_algorithm_entity.algorithm_para.pop_size * 60;
@@ -28,34 +28,31 @@ static void IsAlert()
     }
 }
 
-static void InitUW(double **UW)
+static void MaOEAIT_initUW(double **UW)
 {
     int i = 0, j = 0;
 
-    for(i = 0;i < weight_num;i++)
-        for(j = 0;j < g_algorithm_entity.algorithm_para.objective_number;j++)
+    for(i = 0; i < weight_num; i++)
+        for(j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
             UW[i][j] = lambda[i][j];
 
-    for(i = 0;i < weight_num;i++)
-        for(j = 0;j < g_algorithm_entity.algorithm_para.objective_number;j++)
+    for(i = 0; i < weight_num; i++)
+        for(j = 0; j < g_algorithm_entity.algorithm_para.objective_number; j++)
             UW[i+weight_num][j] = lambda[weight_num-1-i][j];
 
     return;
 }
 
-static void NDWA_EnvironmentSelection(SMRT_individual *mixedPop, int popNum, SMRT_individual *parentPop)
+static void MaOEAIT_NDWA_EnvironmentSelection(SMRT_individual *mixedPop, int popNum, SMRT_individual *parentPop)
 {
-    int i = 0;
-    int current_pop_num = 0, temp_number = 0, rank_index = 0;
-
+    int i = 0, current_pop_num = 0, temp_number = 0, rank_index = 0;
 
     non_dominated_sort(mixedPop, popNum);
-
-
 
     while (1)
     {
         temp_number = 0;
+
         for (i = 0; i < popNum; i++)
         {
             if (mixedPop[i].rank == rank_index)
@@ -63,6 +60,7 @@ static void NDWA_EnvironmentSelection(SMRT_individual *mixedPop, int popNum, SMR
                 temp_number++;
             }
         }
+
         if (current_pop_num + temp_number < g_algorithm_entity.algorithm_para.pop_size)
         {
             for (i = 0; i < popNum; i++)
@@ -96,11 +94,9 @@ static void NDWA_EnvironmentSelection(SMRT_individual *mixedPop, int popNum, SMR
     return ;
 }
 
-static void UpdateArchive(struct list_head *Archive, SMRT_individual *pop_table)
+static void MaOEAIT_updateArchive(struct list_head *Archive, SMRT_individual *pop_table)
 {
-    int popNum = 0;
-    int tempNum = 0;
-    int i = 0, j = 0;
+    int popNum = 0, i = 0;
     int *index1,*index2;
     int count1 = 0, count2 = 0;
     SMRT_POP_LIST *tempPop = NULL,*tempPop2 = NULL;
@@ -109,9 +105,7 @@ static void UpdateArchive(struct list_head *Archive, SMRT_individual *pop_table)
     DOMINATE_RELATION result;
 
     popNum = g_algorithm_entity.algorithm_para.pop_size;
-    tempNum = archiveNum + g_algorithm_entity.algorithm_para.pop_size;
 
-    // = 1表示被剔除
     index1 = (int *)malloc(sizeof(int) * archiveNum);
     index2 = (int *)malloc(sizeof(int) * popNum);
     for(i = 0;i < archiveNum;i++)
@@ -120,7 +114,6 @@ static void UpdateArchive(struct list_head *Archive, SMRT_individual *pop_table)
         index2[i] = 0;
 
     LIST_INIT_HEAD(&newPop);
-
 
     for (i = 0; i < popNum; i++)
     {
@@ -134,10 +127,10 @@ static void UpdateArchive(struct list_head *Archive, SMRT_individual *pop_table)
     {
         list_for_each_safe(pos1, safe1, &newPop)
         {
-            int flag = 0; //0表示保留
             tempPop = (SMRT_POP_LIST *)pos1;
             tempInd1 = tempPop->ind;
             count1 = 0;
+
             list_for_each_safe(pos2,safe2,Archive)
             {
                 tempPop2 = (SMRT_POP_LIST *)pos2;
@@ -152,10 +145,9 @@ static void UpdateArchive(struct list_head *Archive, SMRT_individual *pop_table)
                     index2[count2] = 1;
                 }
 
-
-
                 count1++;
             }
+
             count2++;
         }
 
@@ -170,14 +162,12 @@ static void UpdateArchive(struct list_head *Archive, SMRT_individual *pop_table)
              count1++;
         }
 
-
         list_for_each_safe(pos1, safe1, &newPop)
         {
             if(index2[count2] == 0)
             {
                 list_add_tail(pos1,Archive);
             }
-
 
             count2++;
         }
@@ -187,9 +177,10 @@ static void UpdateArchive(struct list_head *Archive, SMRT_individual *pop_table)
     {
         list_for_each_safe(pos1, safe1, &newPop)
         {
-            int flag = 0; //0表示保留
+            int flag = 0;
             tempPop = (SMRT_POP_LIST *)pos1;
             tempInd1 = tempPop->ind;
+
             list_for_each_safe(pos2,safe2,&newPop)
             {
                 tempPop2 = (SMRT_POP_LIST *)pos2;
@@ -244,9 +235,7 @@ static void UpdateArchive(struct list_head *Archive, SMRT_individual *pop_table)
         }
     }
 
-
     archiveNum = count;
-
 
     free(index1);
     free(index2);
@@ -254,7 +243,7 @@ static void UpdateArchive(struct list_head *Archive, SMRT_individual *pop_table)
     return;
 }
 
-static int FindSubspace(SMRT_individual *Archive_table, double epsilon, double **x1)
+static int MaOEAIT_findSubspace(SMRT_individual *Archive_table, double epsilon, double **x1)
 {
     double **a;
     double **aT;
@@ -265,7 +254,7 @@ static int FindSubspace(SMRT_individual *Archive_table, double epsilon, double *
     double sum = 0, tempSum = 0;
 
     a = (double **)malloc(sizeof(double *) * g_algorithm_entity.algorithm_para.variable_number);
-    for(i = 0;i < g_algorithm_entity.algorithm_para.variable_number;i++)
+    for(i = 0; i < g_algorithm_entity.algorithm_para.variable_number; i++)
     {
         a[i] = (double *)malloc(sizeof(double) * archiveNum);
     }
@@ -273,29 +262,29 @@ static int FindSubspace(SMRT_individual *Archive_table, double epsilon, double *
     avg = (double *)malloc(sizeof(double) * archiveNum);
 
     aT = (double **)malloc(sizeof(double *) * archiveNum);
-    for(i = 0;i < archiveNum;i++)
+    for(i = 0; i < archiveNum; i++)
     {
         aT[i] = (double *)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.variable_number);
     }
 
     sigma = (double **)malloc(sizeof(double *) * g_algorithm_entity.algorithm_para.variable_number);
-    for(i = 0;i < g_algorithm_entity.algorithm_para.variable_number;i++)
+    for(i = 0; i < g_algorithm_entity.algorithm_para.variable_number; i++)
     {
         sigma[i] = (double *)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.variable_number);
     }
 
-    for(i = 0;i < g_algorithm_entity.algorithm_para.variable_number;i++)
+    for(i = 0; i < g_algorithm_entity.algorithm_para.variable_number; i++)
     {
-        for(j = 0;j < archiveNum;j++)
+        for(j = 0; j < archiveNum; j++)
         {
             a[i][j] = Archive_table[j].variable[i];
         }
     }
 
-    for(i = 0;i < archiveNum;i++)
+    for(i = 0; i < archiveNum; i++)
     {
         sum = 0;
-        for(j = 0;j < g_algorithm_entity.algorithm_para.variable_number;j++)
+        for(j = 0; j < g_algorithm_entity.algorithm_para.variable_number; j++)
         {
             sum += a[j][i];
         }
@@ -304,28 +293,28 @@ static int FindSubspace(SMRT_individual *Archive_table, double epsilon, double *
         avg[i] = sum;
     }
 
-    for(i = 0;i < g_algorithm_entity.algorithm_para.variable_number;i++)
+    for(i = 0; i < g_algorithm_entity.algorithm_para.variable_number; i++)
     {
-        for(j = 0;j < archiveNum;j++)
+        for(j = 0; j < archiveNum; j++)
         {
             a[i][j] -= avg[j];
         }
     }
 
-    for(i = 0;i < g_algorithm_entity.algorithm_para.variable_number;i++)
+    for(i = 0; i < g_algorithm_entity.algorithm_para.variable_number; i++)
     {
-        for(j = 0;j < archiveNum;j++)
+        for(j = 0; j < archiveNum; j++)
         {
             aT[j][i] = a[i][j];
         }
     }
 
-    for(i = 0;i < g_algorithm_entity.algorithm_para.variable_number;i++)
+    for(i = 0; i < g_algorithm_entity.algorithm_para.variable_number; i++)
     {
-        for(j = 0;j < g_algorithm_entity.algorithm_para.variable_number;j++)
+        for(j = 0; j < g_algorithm_entity.algorithm_para.variable_number; j++)
         {
             sum = 0;
-            for(k = 0;k < archiveNum;k++)
+            for(k = 0; k < archiveNum; k++)
             {
                 sum += a[i][k] * aT[k][j];
             }
@@ -335,13 +324,13 @@ static int FindSubspace(SMRT_individual *Archive_table, double epsilon, double *
     }
 
     double **S;
-    S = SVD(sigma,g_algorithm_entity.algorithm_para.variable_number,g_algorithm_entity.algorithm_para.variable_number);
+    S = SVD(sigma, g_algorithm_entity.algorithm_para.variable_number, g_algorithm_entity.algorithm_para.variable_number);
 
     sum = 0;
-    for(i = 0;i < g_algorithm_entity.algorithm_para.variable_number;i++)
+    for(i = 0; i < g_algorithm_entity.algorithm_para.variable_number; i++)
         sum += S[i+1][i+1];
 
-    for(i = 0;i < g_algorithm_entity.algorithm_para.variable_number;i++)
+    for(i = 0; i < g_algorithm_entity.algorithm_para.variable_number; i++)
     {
         tempSum += S[i+1][i+1];
 
@@ -352,19 +341,19 @@ static int FindSubspace(SMRT_individual *Archive_table, double epsilon, double *
         }
     }
 
-
-    for(i = 0;i < archiveNum;i++)
+    for(i = 0; i < archiveNum; i++)
     {
-        for(j = 0;j < g_algorithm_entity.algorithm_para.variable_number;j++)
+        for(j = 0; j < g_algorithm_entity.algorithm_para.variable_number; j++)
         {
            x1[i][j] = Archive_table[i].variable[j];
         }
     }
 
-    for(i = 0;i < g_algorithm_entity.algorithm_para.variable_number;i++)
+    for(i = 0; i < g_algorithm_entity.algorithm_para.variable_number; i++)
     {
         sum = 0;
-        for(j = 0;j < archiveNum;j++)
+
+        for(j = 0; j < archiveNum; j++)
         {
             sum += Archive_table[j].variable[i];
         }
@@ -374,22 +363,21 @@ static int FindSubspace(SMRT_individual *Archive_table, double epsilon, double *
         avg[i] = ((int)(avg[i] * 10 + 0.5))/10.0;
     }
 
-    for(i = selectId + 1;i < g_algorithm_entity.algorithm_para.variable_number;i++)
+    for(i = selectId + 1; i < g_algorithm_entity.algorithm_para.variable_number; i++)
     {
         g_algorithm_entity.variable_lower_bound[i] = avg[i];
         g_algorithm_entity.variable_higher_bound[i] = avg[i];
     }
 
-    for(i = 0;i < g_algorithm_entity.algorithm_para.variable_number;i++)
+    for(i = 0; i < g_algorithm_entity.algorithm_para.variable_number; i++)
     {
         free(a[i]);
         free(sigma[i]);
     }
-    for(i = 0;i < archiveNum;i++)
+    for(i = 0; i < archiveNum; i++)
     {
         free(aT[i]);
     }
-
 
     free(avg);
     free(a);free(aT);free(sigma);
@@ -398,7 +386,7 @@ static int FindSubspace(SMRT_individual *Archive_table, double epsilon, double *
 }
 
 // cal cos value for pop as fitness
-static void CalPopCosV(SMRT_individual *pop, double *weight, int num)
+static void MaOEAIT_calPopCosV(SMRT_individual *pop, double *weight, int num)
 {
     int i = 0;
     double cosV = 0;
@@ -412,14 +400,14 @@ static void CalPopCosV(SMRT_individual *pop, double *weight, int num)
     return;
 }
 
-static void UpdatePop(SMRT_individual *mix_pop, SMRT_individual *parent_pop, int num)
+static void MaOEAIT_updatePop(SMRT_individual *mix_pop, SMRT_individual *parent_pop, int num)
 {
     int i = 0;
 
     Fitness_info_t *sortList;
     sortList = (Fitness_info_t *)malloc(sizeof(Fitness_info_t) * num);
 
-    for(i = 0;i < num;i++)
+    for(i = 0; i < num; i++)
     {
         sortList[i].fitness = -mix_pop[i].fitness;
         sortList[i].idx = i;
@@ -427,9 +415,9 @@ static void UpdatePop(SMRT_individual *mix_pop, SMRT_individual *parent_pop, int
 
     fitness_quicksort(sortList, 0, num-1);
 
-    for(i = 0;i < g_algorithm_entity.algorithm_para.pop_size;i++)
+    for(i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
     {
-        copy_individual(mix_pop + sortList[i].idx,parent_pop + i);
+        copy_individual(mix_pop + sortList[i].idx, parent_pop + i);
     }
 
     free(sortList);
@@ -437,11 +425,11 @@ static void UpdatePop(SMRT_individual *mix_pop, SMRT_individual *parent_pop, int
     return;
 }
 
-static void RepairOff(SMRT_individual *offspring_pop, int num, int selectId)
+static void MaOEAIT_repairOff(SMRT_individual *offspring_pop, int num, int selectId)
 {
     int i = 0, j = 0;
 
-    for(i = 0;i < num;i++)
+    for(i = 0; i < num; i++)
     {
         for(j = selectId + 1;j < g_algorithm_entity.algorithm_para.variable_number;j++)
         {
@@ -450,7 +438,7 @@ static void RepairOff(SMRT_individual *offspring_pop, int num, int selectId)
     }
 }
 
-static void UpdateWeight(double **extremePoints, double *nadirPoint, double *idealPoint)
+static void MaOEAIT_updateWeight(double **extremePoints, double *nadirPoint, double *idealPoint)
 {
     int i = 0, j = 0;
     double min = 0, max = 0;
@@ -483,7 +471,7 @@ static void UpdateWeight(double **extremePoints, double *nadirPoint, double *ide
 
 }
 
-static int ChooseBestInd(SMRT_individual *pop, int num)
+static int MaOEAIT_chooseBestInd(SMRT_individual *pop, int num)
 {
     int i = 0;
     int index = 0;
@@ -491,7 +479,7 @@ static int ChooseBestInd(SMRT_individual *pop, int num)
     Fitness_info_t *sortList;
     sortList = (Fitness_info_t *)malloc(sizeof(Fitness_info_t) * num);
 
-    for(i = 0;i < num;i++)
+    for(i = 0; i < num; i++)
     {
         sortList[i].fitness = -pop[i].fitness;
         sortList[i].idx = i;
@@ -505,10 +493,9 @@ static int ChooseBestInd(SMRT_individual *pop, int num)
     return index;
 }
 
-
 extern void MaOEAIT_framework (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop)
 {
-    IsAlert();
+    MaOEAIT_isAlert();
 
     g_algorithm_entity.iteration_number          = 0;
     g_algorithm_entity.algorithm_para.current_evaluation = 0;
@@ -534,7 +521,6 @@ extern void MaOEAIT_framework (SMRT_individual *parent_pop, SMRT_individual *off
     //allocate_memory_for_pop(&Archive,maxArchiveNum);
     LIST_INIT_HEAD(&Archive);
 
-
     UW = (double **)malloc(sizeof(double *) * weight_num * 2);
     for(i = 0;i < weight_num * 2;i++)
     {
@@ -542,6 +528,7 @@ extern void MaOEAIT_framework (SMRT_individual *parent_pop, SMRT_individual *off
     }
 
     referenceLine = (double **)malloc(sizeof(double *) * g_algorithm_entity.algorithm_para.objective_number);
+
     for(i = 0;i < g_algorithm_entity.algorithm_para.objective_number;i++)
     {
         referenceLine[i] = (double *)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
@@ -558,7 +545,7 @@ extern void MaOEAIT_framework (SMRT_individual *parent_pop, SMRT_individual *off
         }
     }
 
-    InitUW(UW);
+    MaOEAIT_initUW(UW);
     numOfUW = weight_num * 2;
     numOfOff = ((int)(g_algorithm_entity.algorithm_para.pop_size/2)) * 2;
 
@@ -581,8 +568,6 @@ extern void MaOEAIT_framework (SMRT_individual *parent_pop, SMRT_individual *off
             cal_moead_fitness(parent_pop + i, UW[W_index], g_algorithm_entity.MOEAD_para.function_type);
         }
 
-
-
         //crossover and mutation
         crossover_MaOEAIT(parent_pop,offspring_pop, g_algorithm_entity.algorithm_para.pop_size);
         mutation_pop(offspring_pop);
@@ -596,10 +581,9 @@ extern void MaOEAIT_framework (SMRT_individual *parent_pop, SMRT_individual *off
         //mixed
         merge_population(mixed_pop,parent_pop,g_algorithm_entity.algorithm_para.pop_size,offspring_pop,numOfOff);
 
-        NDWA_EnvironmentSelection(mixed_pop, g_algorithm_entity.algorithm_para.pop_size + numOfOff, parent_pop);
+        MaOEAIT_NDWA_EnvironmentSelection(mixed_pop, g_algorithm_entity.algorithm_para.pop_size + numOfOff, parent_pop);
 
-
-        UpdateArchive(&Archive, parent_pop);
+        MaOEAIT_updateArchive(&Archive, parent_pop);
 
         track_evolution (parent_pop, g_algorithm_entity.iteration_number, g_algorithm_entity.algorithm_para.current_evaluation >= g_algorithm_entity.algorithm_para.max_evaluation);
     }
@@ -626,7 +610,7 @@ extern void MaOEAIT_framework (SMRT_individual *parent_pop, SMRT_individual *off
         temp_ind = temp_pop->ind;
         copy_individual(temp_ind,Archive_table + tempIndex++);
     }
-    selectId = FindSubspace(Archive_table,0.95,x1);
+    selectId = MaOEAIT_findSubspace(Archive_table, 0.95, x1);
 
     //Adaptive Reference Line
     extremePoint = (double **)malloc(sizeof(double *) * g_algorithm_entity.algorithm_para.objective_number);
@@ -643,20 +627,20 @@ extern void MaOEAIT_framework (SMRT_individual *parent_pop, SMRT_individual *off
         currentEvaluation = g_algorithm_entity.algorithm_para.current_evaluation;
         initialize_population_real(parent_pop, g_algorithm_entity.algorithm_para.pop_size);
         evaluate_population(parent_pop, g_algorithm_entity.algorithm_para.pop_size);
-        CalPopCosV(parent_pop, referenceLine[i], g_algorithm_entity.algorithm_para.pop_size);
+        MaOEAIT_calPopCosV(parent_pop, referenceLine[i], g_algorithm_entity.algorithm_para.pop_size);
 
         while(g_algorithm_entity.algorithm_para.current_evaluation < currentEvaluation + singleObjectEV)
         {
             crossover_MaOEAIT(parent_pop,offspring_pop,g_algorithm_entity.algorithm_para.pop_size);
             mutation_pop(offspring_pop);
-            RepairOff(offspring_pop,numOfOff,selectId);
+            MaOEAIT_repairOff(offspring_pop, numOfOff, selectId);
             evaluate_population(offspring_pop,numOfOff);
 
-            CalPopCosV(offspring_pop, referenceLine[i], numOfOff);
+            MaOEAIT_calPopCosV(offspring_pop, referenceLine[i], numOfOff);
 
             merge_population(mixed_pop,parent_pop,g_algorithm_entity.algorithm_para.pop_size,offspring_pop,numOfOff);
 
-            UpdatePop(mixed_pop,parent_pop,g_algorithm_entity.algorithm_para.pop_size + numOfOff);
+            MaOEAIT_updatePop(mixed_pop, parent_pop, g_algorithm_entity.algorithm_para.pop_size + numOfOff);
         }
 
         for(j = 0;j < g_algorithm_entity.algorithm_para.objective_number;j++)
@@ -669,7 +653,7 @@ extern void MaOEAIT_framework (SMRT_individual *parent_pop, SMRT_individual *off
     idealPoint = (double *)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
     nadirPoint = (double *)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
 
-    UpdateWeight(extremePoint,nadirPoint,idealPoint);
+    MaOEAIT_updateWeight(extremePoint, nadirPoint, idealPoint);
 
     //Diversity maintaining
     singleObjectEV = (evaluation3 / weight_num)/g_algorithm_entity.algorithm_para.pop_size * g_algorithm_entity.algorithm_para.pop_size;
@@ -681,26 +665,26 @@ extern void MaOEAIT_framework (SMRT_individual *parent_pop, SMRT_individual *off
         currentEvaluation = g_algorithm_entity.algorithm_para.current_evaluation;
         initialize_population_real(parent_pop, g_algorithm_entity.algorithm_para.pop_size);
         evaluate_population(parent_pop, g_algorithm_entity.algorithm_para.pop_size);
-        CalPopCosV(parent_pop, lambda[i], g_algorithm_entity.algorithm_para.pop_size);
+        MaOEAIT_calPopCosV(parent_pop, lambda[i], g_algorithm_entity.algorithm_para.pop_size);
 
         while(g_algorithm_entity.algorithm_para.current_evaluation < currentEvaluation + singleObjectEV)
         {
             crossover_MaOEAIT(parent_pop,offspring_pop,g_algorithm_entity.algorithm_para.pop_size);
             mutation_pop(offspring_pop);
-            RepairOff(offspring_pop,numOfOff,selectId);
+            MaOEAIT_repairOff(offspring_pop, numOfOff, selectId);
             evaluate_population(offspring_pop,numOfOff);
 
-            CalPopCosV(offspring_pop, lambda[i], numOfOff);
+            MaOEAIT_calPopCosV(offspring_pop, lambda[i], numOfOff);
 
             merge_population(mixed_pop,parent_pop,g_algorithm_entity.algorithm_para.pop_size,offspring_pop,numOfOff);
 
-            UpdatePop(mixed_pop,parent_pop,g_algorithm_entity.algorithm_para.pop_size + numOfOff);
+            MaOEAIT_updatePop(mixed_pop, parent_pop, g_algorithm_entity.algorithm_para.pop_size + numOfOff);
 
         }
 
         if(singleObjectEV == g_algorithm_entity.algorithm_para.pop_size)
         {
-            int tempIndex = ChooseBestInd(parent_pop,g_algorithm_entity.algorithm_para.pop_size);
+            int tempIndex = MaOEAIT_chooseBestInd(parent_pop, g_algorithm_entity.algorithm_para.pop_size);
             copy_individual(parent_pop + tempIndex, result + i);
         }
         else
