@@ -1,4 +1,4 @@
-algorithm_name:MOEAD
+algorithm_name:MOEADDRA--
 test_problem:ZDT3
 problem_param:
 number_variable:30
