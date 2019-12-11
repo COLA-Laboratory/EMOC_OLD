@@ -33,7 +33,7 @@ add_executable(Samaritan main.c
         lib/memory.c
         lib/sort.c
         lib/list.c
-	lib/SVD.c 
+		lib/SVD.c
 
 
         selection/MOEAD/fitness.c
@@ -79,14 +79,14 @@ add_executable(Samaritan main.c
         metaheuristics/HypE.c
         metaheuristics/SPEA2.c
         metaheuristics/MOEADM2M.c
-        	metaheuristics/ENS_MOEAD.c
+		metaheuristics/ENS_MOEAD.c
 		metaheuristics/SPEA2_SDE.c
 		metaheuristics/MOEAD_PAS.c
 		metaheuristics/MOEADFRRMAB.c
 		metaheuristics/PICEA_G.c
 		metaheuristics/SPEA2_R.c
 		metaheuristics/RVEA.c
-        	metaheuristics/TWO_ARCH2.c
+		metaheuristics/TWO_ARCH2.c
 		metaheuristics/ONEBYONE.c
 		metaheuristics/VaEA.c
 		metaheuristics/EFR_RR.c
@@ -96,10 +96,16 @@ add_executable(Samaritan main.c
 		metaheuristics/Borg.c
 		metaheuristics/MTS.c
 		metaheuristics/MaOEAIT.c
+		metaheuristics/tDEA.c
+		metaheuristics/MaOEA_IGD.c
+
 		metaheuristics/CMOEA.c
 		metaheuristics/CNSGA2.c
-
-		metaheuristics/tDEA.c metaheuristics/MaOEA_IGD.c)
+		metaheuristics/I_DBEA.c
+		metaheuristics/TOP.c
+		metaheuristics/CNSGA3.c
+		metaheuristics/CMOEAD.c
+		)
 
 
 target_link_libraries(Samaritan m)

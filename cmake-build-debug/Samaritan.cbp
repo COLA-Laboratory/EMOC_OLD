@@ -180,7 +180,13 @@
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/CMOEA.c">
 			<Option target="Samaritan"/>
 		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/CMOEAD.c">
+			<Option target="Samaritan"/>
+		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/CNSGA2.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/CNSGA3.c">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/EFR_RR.c">
@@ -193,6 +199,9 @@
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/IBEA.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/I_DBEA.c">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/KnEA.c">
@@ -256,6 +265,9 @@
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/SPEA2_SDE.c">
+			<Option target="Samaritan"/>
+		</Unit>
+		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/TOP.c">
 			<Option target="Samaritan"/>
 		</Unit>
 		<Unit filename="/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/TWO_ARCH2.c">

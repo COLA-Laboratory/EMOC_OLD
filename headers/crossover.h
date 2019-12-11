@@ -35,4 +35,6 @@ extern void crossover_Borg(SMRT_individual *parent_table,int pop_num, SMRT_indiv
 extern void real_crossover_Borg(SMRT_individual *parent_table,int pop_num, SMRT_individual *Archive,int archive_num,SMRT_individual *offspring,int currentOPNum, int tournmentSize);
 extern void crossover_tDEA(SMRT_individual *parent_table, SMRT_individual *offspring_table,int popNum);
 extern void crossover_MaOEAIT(SMRT_individual *parent_table, SMRT_individual *offspring_table,int popNum);
+
+extern void crossover_I_DBEA(SMRT_individual *parent_pop_table, SMRT_individual *offspring, int parent_index);
 #endif

@@ -268,7 +268,7 @@ int initialization_real_para (int argc, char** argv)
     PF = fopen (PF_name, "r");
     if (NULL == PF)
     {
-        cal_pf(g_algorithm_entity.testProblem);
+        //cal_pf(g_algorithm_entity.testProblem);
     }
     else
     {

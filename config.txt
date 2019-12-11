@@ -1,7 +1,7 @@
-algorithm_name:MOEADDRA--
-test_problem:ZDT3
+algorithm_name:TOP
+test_problem:CTP1
 problem_param:
-number_variable:30
+number_variable:10
 number_objective:2
 popSize:100
 eliteSize:300

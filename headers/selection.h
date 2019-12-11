@@ -13,6 +13,7 @@ extern double cal_normal_NORM(SMRT_individual *ind, double *weight, int pi);
 extern int update_subproblem(SMRT_individual *offspring, int pop_index, NeighborType type);
 extern int update_subproblem_ENSMOEAD(SMRT_individual *offspring, int pop_index, NeighborType type,double *FEs_success,int NS_index);
 extern int update_subproblem_MOEADFRRMAB(SMRT_individual *offspring, int pop_index, NeighborType type,double *FIR);
+extern int update_subproblem_constraint(SMRT_individual *offspring, int pop_index, NeighborType type);
 extern void tour_selection_subproblem(int *selected, int weight_num);
 extern void comp_utility();
 extern void cal_indicator(SMRT_individual *population, double *fitcomp, int size);

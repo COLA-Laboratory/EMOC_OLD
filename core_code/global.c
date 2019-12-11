@@ -33,7 +33,11 @@ char *g_algorithm_name_str[ALGORITHM_NAME_NUM] = {
 		
         //constraint
 		"CMOEA",
-		"CNSGA2"
+		"CNSGA2",
+		"TOP",
+		"I_DBEA",
+		"CNSGA3",
+		"CMOEAD"
 		
 };
 

@@ -128,7 +128,11 @@ typedef enum{
 
     //constraint
     CMOEA,
-	CNSGA2
+	CNSGA2,
+    TOP,
+    I_DBEA,
+    CNSGA3,
+    CMOEAD
 
 }ALGORITHM_NAME;
 

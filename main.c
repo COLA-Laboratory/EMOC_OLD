@@ -140,8 +140,22 @@ int main(int argc, char** argv) {
                 _CMOEA_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
                         g_algorithm_entity.mix_population);
                 break;
-				
-				
+            case TOP:
+                _TOP_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                        g_algorithm_entity.mix_population);
+                break;
+            case I_DBEA:
+                _I_DBEA_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                      g_algorithm_entity.mix_population);
+                break;
+            case CNSGA3:
+                _CNSGA3_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                         g_algorithm_entity.mix_population);
+                break;
+            case CMOEAD:
+                _CMOEAD_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,
+                         g_algorithm_entity.mix_population);
+                break;
             default:
                 break;
         }

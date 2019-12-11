@@ -40,7 +40,10 @@ extern void _MaOEA_IGD_(SMRT_individual *parent_pop, SMRT_individual *offspring_
 //constraint
 extern void _CNSGA2_(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
 extern void _CMOEA_(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
-
+extern void _TOP_(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
+extern void _I_DBEA_(SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
+extern void _CNSGA3_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
+extern void _CMOEAD_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
 
 typedef struct {
     int Solution_index;

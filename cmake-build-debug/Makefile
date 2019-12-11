@@ -933,6 +933,33 @@ metaheuristics/CMOEA.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CMOEA.c.s
 .PHONY : metaheuristics/CMOEA.c.s
 
+metaheuristics/CMOEAD.o: metaheuristics/CMOEAD.c.o
+
+.PHONY : metaheuristics/CMOEAD.o
+
+# target to build an object file
+metaheuristics/CMOEAD.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.o
+.PHONY : metaheuristics/CMOEAD.c.o
+
+metaheuristics/CMOEAD.i: metaheuristics/CMOEAD.c.i
+
+.PHONY : metaheuristics/CMOEAD.i
+
+# target to preprocess a source file
+metaheuristics/CMOEAD.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.i
+.PHONY : metaheuristics/CMOEAD.c.i
+
+metaheuristics/CMOEAD.s: metaheuristics/CMOEAD.c.s
+
+.PHONY : metaheuristics/CMOEAD.s
+
+# target to generate assembly for a file
+metaheuristics/CMOEAD.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.s
+.PHONY : metaheuristics/CMOEAD.c.s
+
 metaheuristics/CNSGA2.o: metaheuristics/CNSGA2.c.o
 
 .PHONY : metaheuristics/CNSGA2.o
@@ -959,6 +986,33 @@ metaheuristics/CNSGA2.s: metaheuristics/CNSGA2.c.s
 metaheuristics/CNSGA2.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CNSGA2.c.s
 .PHONY : metaheuristics/CNSGA2.c.s
+
+metaheuristics/CNSGA3.o: metaheuristics/CNSGA3.c.o
+
+.PHONY : metaheuristics/CNSGA3.o
+
+# target to build an object file
+metaheuristics/CNSGA3.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CNSGA3.c.o
+.PHONY : metaheuristics/CNSGA3.c.o
+
+metaheuristics/CNSGA3.i: metaheuristics/CNSGA3.c.i
+
+.PHONY : metaheuristics/CNSGA3.i
+
+# target to preprocess a source file
+metaheuristics/CNSGA3.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CNSGA3.c.i
+.PHONY : metaheuristics/CNSGA3.c.i
+
+metaheuristics/CNSGA3.s: metaheuristics/CNSGA3.c.s
+
+.PHONY : metaheuristics/CNSGA3.s
+
+# target to generate assembly for a file
+metaheuristics/CNSGA3.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/CNSGA3.c.s
+.PHONY : metaheuristics/CNSGA3.c.s
 
 metaheuristics/EFR_RR.o: metaheuristics/EFR_RR.c.o
 
@@ -1067,6 +1121,33 @@ metaheuristics/IBEA.s: metaheuristics/IBEA.c.s
 metaheuristics/IBEA.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.s
 .PHONY : metaheuristics/IBEA.c.s
+
+metaheuristics/I_DBEA.o: metaheuristics/I_DBEA.c.o
+
+.PHONY : metaheuristics/I_DBEA.o
+
+# target to build an object file
+metaheuristics/I_DBEA.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o
+.PHONY : metaheuristics/I_DBEA.c.o
+
+metaheuristics/I_DBEA.i: metaheuristics/I_DBEA.c.i
+
+.PHONY : metaheuristics/I_DBEA.i
+
+# target to preprocess a source file
+metaheuristics/I_DBEA.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.i
+.PHONY : metaheuristics/I_DBEA.c.i
+
+metaheuristics/I_DBEA.s: metaheuristics/I_DBEA.c.s
+
+.PHONY : metaheuristics/I_DBEA.s
+
+# target to generate assembly for a file
+metaheuristics/I_DBEA.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.s
+.PHONY : metaheuristics/I_DBEA.c.s
 
 metaheuristics/KnEA.o: metaheuristics/KnEA.c.o
 
@@ -1634,6 +1715,33 @@ metaheuristics/SPEA2_SDE.s: metaheuristics/SPEA2_SDE.c.s
 metaheuristics/SPEA2_SDE.c.s:
 	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_SDE.c.s
 .PHONY : metaheuristics/SPEA2_SDE.c.s
+
+metaheuristics/TOP.o: metaheuristics/TOP.c.o
+
+.PHONY : metaheuristics/TOP.o
+
+# target to build an object file
+metaheuristics/TOP.c.o:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.o
+.PHONY : metaheuristics/TOP.c.o
+
+metaheuristics/TOP.i: metaheuristics/TOP.c.i
+
+.PHONY : metaheuristics/TOP.i
+
+# target to preprocess a source file
+metaheuristics/TOP.c.i:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.i
+.PHONY : metaheuristics/TOP.c.i
+
+metaheuristics/TOP.s: metaheuristics/TOP.c.s
+
+.PHONY : metaheuristics/TOP.s
+
+# target to generate assembly for a file
+metaheuristics/TOP.c.s:
+	$(MAKE) -f CMakeFiles/Samaritan.dir/build.make CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.s
+.PHONY : metaheuristics/TOP.c.s
 
 metaheuristics/TWO_ARCH2.o: metaheuristics/TWO_ARCH2.c.o
 
@@ -2247,9 +2355,15 @@ help:
 	@echo "... metaheuristics/CMOEA.o"
 	@echo "... metaheuristics/CMOEA.i"
 	@echo "... metaheuristics/CMOEA.s"
+	@echo "... metaheuristics/CMOEAD.o"
+	@echo "... metaheuristics/CMOEAD.i"
+	@echo "... metaheuristics/CMOEAD.s"
 	@echo "... metaheuristics/CNSGA2.o"
 	@echo "... metaheuristics/CNSGA2.i"
 	@echo "... metaheuristics/CNSGA2.s"
+	@echo "... metaheuristics/CNSGA3.o"
+	@echo "... metaheuristics/CNSGA3.i"
+	@echo "... metaheuristics/CNSGA3.s"
 	@echo "... metaheuristics/EFR_RR.o"
 	@echo "... metaheuristics/EFR_RR.i"
 	@echo "... metaheuristics/EFR_RR.s"
@@ -2262,6 +2376,9 @@ help:
 	@echo "... metaheuristics/IBEA.o"
 	@echo "... metaheuristics/IBEA.i"
 	@echo "... metaheuristics/IBEA.s"
+	@echo "... metaheuristics/I_DBEA.o"
+	@echo "... metaheuristics/I_DBEA.i"
+	@echo "... metaheuristics/I_DBEA.s"
 	@echo "... metaheuristics/KnEA.o"
 	@echo "... metaheuristics/KnEA.i"
 	@echo "... metaheuristics/KnEA.s"
@@ -2325,6 +2442,9 @@ help:
 	@echo "... metaheuristics/SPEA2_SDE.o"
 	@echo "... metaheuristics/SPEA2_SDE.i"
 	@echo "... metaheuristics/SPEA2_SDE.s"
+	@echo "... metaheuristics/TOP.o"
+	@echo "... metaheuristics/TOP.i"
+	@echo "... metaheuristics/TOP.s"
 	@echo "... metaheuristics/TWO_ARCH2.o"
 	@echo "... metaheuristics/TWO_ARCH2.i"
 	@echo "... metaheuristics/TWO_ARCH2.s"

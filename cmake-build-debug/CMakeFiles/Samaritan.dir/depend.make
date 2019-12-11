@@ -198,6 +198,21 @@ CMakeFiles/Samaritan.dir/metaheuristics/CMOEA.c.o: ../headers/sort.h
 CMakeFiles/Samaritan.dir/metaheuristics/CMOEA.c.o: ../headers/utility.h
 CMakeFiles/Samaritan.dir/metaheuristics/CMOEA.c.o: ../metaheuristics/CMOEA.c
 
+CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.o: ../headers/analysis.h
+CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.o: ../headers/crossover.h
+CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.o: ../headers/global.h
+CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.o: ../headers/list.h
+CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.o: ../headers/metaheuristics.h
+CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.o: ../headers/mutation.h
+CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.o: ../headers/population.h
+CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.o: ../headers/print.h
+CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.o: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.o: ../headers/random.h
+CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.o: ../headers/selection.h
+CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.o: ../headers/sort.h
+CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.o: ../headers/utility.h
+CMakeFiles/Samaritan.dir/metaheuristics/CMOEAD.c.o: ../metaheuristics/CMOEAD.c
+
 CMakeFiles/Samaritan.dir/metaheuristics/CNSGA2.c.o: ../headers/analysis.h
 CMakeFiles/Samaritan.dir/metaheuristics/CNSGA2.c.o: ../headers/crossover.h
 CMakeFiles/Samaritan.dir/metaheuristics/CNSGA2.c.o: ../headers/global.h
@@ -210,6 +225,19 @@ CMakeFiles/Samaritan.dir/metaheuristics/CNSGA2.c.o: ../headers/problem.h
 CMakeFiles/Samaritan.dir/metaheuristics/CNSGA2.c.o: ../headers/selection.h
 CMakeFiles/Samaritan.dir/metaheuristics/CNSGA2.c.o: ../headers/sort.h
 CMakeFiles/Samaritan.dir/metaheuristics/CNSGA2.c.o: ../metaheuristics/CNSGA2.c
+
+CMakeFiles/Samaritan.dir/metaheuristics/CNSGA3.c.o: ../headers/analysis.h
+CMakeFiles/Samaritan.dir/metaheuristics/CNSGA3.c.o: ../headers/crossover.h
+CMakeFiles/Samaritan.dir/metaheuristics/CNSGA3.c.o: ../headers/global.h
+CMakeFiles/Samaritan.dir/metaheuristics/CNSGA3.c.o: ../headers/list.h
+CMakeFiles/Samaritan.dir/metaheuristics/CNSGA3.c.o: ../headers/memory.h
+CMakeFiles/Samaritan.dir/metaheuristics/CNSGA3.c.o: ../headers/mutation.h
+CMakeFiles/Samaritan.dir/metaheuristics/CNSGA3.c.o: ../headers/population.h
+CMakeFiles/Samaritan.dir/metaheuristics/CNSGA3.c.o: ../headers/print.h
+CMakeFiles/Samaritan.dir/metaheuristics/CNSGA3.c.o: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/CNSGA3.c.o: ../headers/sort.h
+CMakeFiles/Samaritan.dir/metaheuristics/CNSGA3.c.o: ../headers/utility.h
+CMakeFiles/Samaritan.dir/metaheuristics/CNSGA3.c.o: ../metaheuristics/CNSGA3.c
 
 CMakeFiles/Samaritan.dir/metaheuristics/EFR_RR.c.o: ../headers/analysis.h
 CMakeFiles/Samaritan.dir/metaheuristics/EFR_RR.c.o: ../headers/crossover.h
@@ -268,6 +296,22 @@ CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o: ../headers/problem.h
 CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o: ../headers/selection.h
 CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o: ../headers/sort.h
 CMakeFiles/Samaritan.dir/metaheuristics/IBEA.c.o: ../metaheuristics/IBEA.c
+
+CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o: ../headers/analysis.h
+CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o: ../headers/crossover.h
+CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o: ../headers/dominance_relation.h
+CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o: ../headers/global.h
+CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o: ../headers/initialize.h
+CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o: ../headers/list.h
+CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o: ../headers/metaheuristics.h
+CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o: ../headers/mutation.h
+CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o: ../headers/population.h
+CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o: ../headers/print.h
+CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o: ../headers/selection.h
+CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o: ../headers/sort.h
+CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o: ../headers/utility.h
+CMakeFiles/Samaritan.dir/metaheuristics/I_DBEA.c.o: ../metaheuristics/I_DBEA.c
 
 CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o: ../headers/analysis.h
 CMakeFiles/Samaritan.dir/metaheuristics/KnEA.c.o: ../headers/crossover.h
@@ -575,6 +619,20 @@ CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_SDE.c.o: ../headers/problem.h
 CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_SDE.c.o: ../headers/sort.h
 CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_SDE.c.o: ../headers/utility.h
 CMakeFiles/Samaritan.dir/metaheuristics/SPEA2_SDE.c.o: ../metaheuristics/SPEA2_SDE.c
+
+CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.o: ../headers/analysis.h
+CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.o: ../headers/crossover.h
+CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.o: ../headers/global.h
+CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.o: ../headers/list.h
+CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.o: ../headers/metaheuristics.h
+CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.o: ../headers/mutation.h
+CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.o: ../headers/population.h
+CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.o: ../headers/print.h
+CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.o: ../headers/problem.h
+CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.o: ../headers/random.h
+CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.o: ../headers/selection.h
+CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.o: ../headers/sort.h
+CMakeFiles/Samaritan.dir/metaheuristics/TOP.c.o: ../metaheuristics/TOP.c
 
 CMakeFiles/Samaritan.dir/metaheuristics/TWO_ARCH2.c.o: ../headers/analysis.h
 CMakeFiles/Samaritan.dir/metaheuristics/TWO_ARCH2.c.o: ../headers/crossover.h

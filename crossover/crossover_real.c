@@ -933,7 +933,21 @@ extern void crossover_MaOEAIT(SMRT_individual *parent_table, SMRT_individual *of
 
 
 
+extern void crossover_I_DBEA(SMRT_individual *parent_pop_table, SMRT_individual *offspring, int parent_index)
+{
+    int rand_index, parent2_index;
+    SMRT_individual *parent1, *parent2,*offspring2;
+    parent1 = &parent_pop_table[parent_index];
 
+    rand_index = rnd(1, g_algorithm_entity.algorithm_para.pop_size - 1);
+    parent2_index = (parent_index + rand_index) % g_algorithm_entity.algorithm_para.pop_size;
+    parent2 = &parent_pop_table[parent2_index];
+    offspring2 = parent2;
+
+    sbx_crossover (parent1, parent2, offspring, offspring2);
+
+    return;
+}
 
 
 
