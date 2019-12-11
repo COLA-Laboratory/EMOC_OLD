@@ -89,6 +89,7 @@ extern void _MOEAD_ (SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_
     while (g_algorithm_entity.algorithm_para.current_evaluation < g_algorithm_entity.algorithm_para.max_evaluation)
     {
         print_progress ();
+
         // crossover and mutation
         for (i = 0; i < weight_num; i++)
         {

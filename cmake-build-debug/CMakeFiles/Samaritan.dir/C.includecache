@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
-
 /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
 pthread.h
 -
@@ -42,24 +38,6 @@ list.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/list.h
 
-/home/maopl/CLionProjects/my_work/Samaritan/headers/metaheuristics.h
-global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-population.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/population.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/headers/mutation.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/headers/population.h
-global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
-../headers/global.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
-
 /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/selection.h
@@ -68,27 +46,11 @@ global.h
 
 /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
 
-/home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
-
-/home/maopl/CLionProjects/my_work/Samaritan/metaheuristics/CMOEAD.c
-../headers/global.h
+/home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/update.c
+../../headers/global.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
-../headers/metaheuristics.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/metaheuristics.h
-../headers/crossover.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/crossover.h
-../headers/mutation.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/mutation.h
-../headers/problem.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/problem.h
-../headers/print.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/print.h
-../headers/utility.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/utility.h
-../headers/selection.h
+../../headers/selection.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/selection.h
-../headers/analysis.h
-/home/maopl/CLionProjects/my_work/Samaritan/headers/analysis.h
-../headers/random.h
+../../headers/random.h
 /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
 

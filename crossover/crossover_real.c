@@ -146,26 +146,36 @@ extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *
 {
     int i = 0;
     int rand = 0;
-    int select_id[2] = {0};
+    int selected_id, *selected_flag = NULL;
+    int parent_id[2] = {0}, choose_num = 0;
 
+    selected_flag = malloc(g_algorithm_entity.algorithm_para.pop_size * sizeof(int));
+    memset(selected_flag, 0, sizeof(int) * g_algorithm_entity.algorithm_para.pop_size);
 
-    for (i = 0; i < 2; i++)
+    while(choose_num < 2)
     {
         if (NEIGHBOR == type)
         {
             rand = rnd (0, g_algorithm_entity.MOEAD_para.neighbor_size - 1);
-            select_id[i] = g_algorithm_entity.MOEAD_para.neighbor_table[parent_index].neighbor[rand];
+            selected_id = g_algorithm_entity.MOEAD_para.neighbor_table[parent_index].neighbor[rand];
         }
         else
         {
             rand = rnd(0, weight_num - 1);
-            select_id[i] = rand;
+            selected_id = rand;
         }
 
+        if (selected_flag[selected_id] == 0)
+        {
+            selected_flag[selected_id] = 1;
+            parent_id[choose_num++] = selected_id;
+        }
     }
-    de_crossover(parent, parent_pop_table + select_id[0],
-                 parent_pop_table + select_id[1], offspring);
 
+    de_crossover(parent, parent_pop_table + parent_id[0],
+                 parent_pop_table + parent_id[1], offspring);
+
+    free(selected_flag);
     return;
 }
 

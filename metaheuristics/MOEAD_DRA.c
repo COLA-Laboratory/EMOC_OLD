@@ -132,7 +132,7 @@ static void ini_MOEAD_dra()
     return ;
 }
 
-extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop) {
+extern void _MOEAD_DRA_(SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop) {
 
     int i, j;
     SMRT_individual *offspring, *parent;

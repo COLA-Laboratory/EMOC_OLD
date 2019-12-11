@@ -709,6 +709,7 @@ CMakeFiles/Samaritan.dir/selection/MOEAD/subproblem_selection.c.o
 CMakeFiles/Samaritan.dir/selection/MOEAD/update.c.o
  /home/maopl/CLionProjects/my_work/Samaritan/headers/global.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/list.h
+ /home/maopl/CLionProjects/my_work/Samaritan/headers/random.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/selection.h
  /home/maopl/CLionProjects/my_work/Samaritan/headers/sort.h
  /home/maopl/CLionProjects/my_work/Samaritan/selection/MOEAD/update.c

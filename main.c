@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
                         g_algorithm_entity.mix_population);
                 break;
             case MOEAD_DRA:
-                MOEAD_dra_framework(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
+                _MOEAD_DRA_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population, g_algorithm_entity.mix_population);
                 break;
             case MOEAD_STM:
                 _MOEAD_STM_(g_algorithm_entity.parent_population, g_algorithm_entity.offspring_population,

@@ -1,11 +1,11 @@
-algorithm_name:TOP
+algorithm_name:CMOEAD
 test_problem:CTP1
 problem_param:
-number_variable:10
+number_variable:30
 number_objective:2
-popSize:100
+popSize:300
 eliteSize:300
-max_evaluation:25000
+max_evaluation:75000
 runtime_output:1
 output_interval:1000
 run_index_begin:1

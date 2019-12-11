@@ -11,7 +11,7 @@ extern void _NSGA2_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop
 extern void _NSGA3_ (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
 extern void _IBEA_ (SMRT_individual *parent_pop, SMRT_individual* offspring_pop, SMRT_individual* mixed_pop);
 extern void _MOEAD_ (SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
-extern void MOEAD_dra_framework(SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
+extern void _MOEAD_DRA_(SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
 extern void _MOEAD_STM_(SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
 extern void _MOEADD_ (SMRT_individual *pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
 extern void _SMSEMOA_  (SMRT_individual *parent_pop, SMRT_individual *offspring_pop, SMRT_individual *mixed_pop);
