@@ -2,7 +2,6 @@
 #include "../headers/print.h"
 #include "../headers/memory.h"
 #include "../headers/random.h"
-#include "../headers/problem.h"
 
 static int parameter_check()
 {

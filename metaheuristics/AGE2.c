@@ -14,7 +14,7 @@
  *  Renzhi Chen
  *
  * Institution:
- *  Computational Optimization and Data Analytics (CODA) Group @ University of Exeter
+ *  Computational Optimization for Learning and Adaptive System (COLA) Laboratory @ University of Exeter
  *
  * Copyright (c) 2019 Peili Mao, Lei Sun, Longfei Zhang ,Ke Li
  *

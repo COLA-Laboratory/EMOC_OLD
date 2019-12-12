@@ -7,61 +7,6 @@
 #include "../headers/population.h"
 
 
-extern void crossover_IBEA(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table)
-{
-    int i, temp, rand;
-    int *a1, *a2;
-    SMRT_individual *parent1, *parent2;
-
-    int *flage_arr = NULL;
-    double *figcomp = NULL;
-
-
-    figcomp = (double*)malloc(sizeof(double) * g_algorithm_entity.algorithm_para.pop_size* g_algorithm_entity.algorithm_para.pop_size * 4);
-    if (NULL == figcomp)
-    {
-        printf("malloc indicator value failed\n");
-        goto IBEA_CROSSOVER_TERMINATE_HANDLE;
-    }
-    a1 = (int *) malloc (g_algorithm_entity.algorithm_para.pop_size * sizeof(int));
-    a2 = (int *) malloc (g_algorithm_entity.algorithm_para.pop_size * sizeof(int));
-
-    cal_indicator(parent_pop_table, figcomp, g_algorithm_entity.algorithm_para.pop_size );
-
-
-    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
-        a1[i] = a2[i] = i;
-
-    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
-    {
-        rand     = rnd (i, g_algorithm_entity.algorithm_para.pop_size - 1);
-        temp     = a1[rand];
-        a1[rand] = a1[i];
-        a1[i]    = temp;
-        temp     = a2[rand];
-        a2[rand] = a2[i];
-        a2[i]    = temp;
-    }
-
-
-
-    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size ; i += 4)
-    {
-        parent1 = tournament_by_fitness(&parent_pop_table[a1[i]], &parent_pop_table[a1[i + 1]], LESSER);
-        parent2 = tournament_by_fitness(&parent_pop_table[a1[i + 2]], &parent_pop_table[a1[i + 3]], LESSER);
-        sbx_crossover (parent1, parent2, offspring_pop_table + i, offspring_pop_table + i + 1);
-        parent1 = tournament_by_fitness(&parent_pop_table[a2[i]], &parent_pop_table[a2[i + 1]], LESSER);
-        parent2 = tournament_by_fitness(&parent_pop_table[a2[i + 2]], &parent_pop_table[a2[i + 3]], LESSER);
-        sbx_crossover (parent1, parent2, &offspring_pop_table[i + 2], &offspring_pop_table[i + 3]);
-    }
-IBEA_CROSSOVER_TERMINATE_HANDLE:
-    free(a1);
-    free(a2);
-    free(figcomp);
-    return;
-    return;
-}
-
 extern void crossover_nsga2(SMRT_individual *parent_pop_table, SMRT_individual *offspring_pop_table)
 {
     int i, temp, rand;
@@ -176,35 +121,6 @@ extern void crossover_MOEAD(SMRT_individual *parent_pop_table, SMRT_individual *
                  parent_pop_table + parent_id[1], offspring);
 
     free(selected_flag);
-    return;
-}
-
-extern void crossover_MOEAD_PAS(SMRT_individual *parent_pop_table, SMRT_individual *parent, int parent_index, SMRT_individual *offspring, NeighborType type, int *select_id)
-{
-    int i = 0;
-    int rand = 0;
-
-
-    for (i = 0; i < 2; i++)
-    {
-        if (NEIGHBOR == type)
-        {
-            rand = rnd (0, g_algorithm_entity.MOEAD_para.neighbor_size - 1);
-            select_id[i] = g_algorithm_entity.MOEAD_para.neighbor_table[parent_index].neighbor[rand];
-        }
-        else
-        {
-            rand = rnd(0, weight_num - 1);
-            select_id[i] = rand;
-        }
-
-    }
-
-    de_crossover(parent, parent_pop_table + select_id[0],
-                 parent_pop_table + select_id[1], offspring);
-
-
-
     return;
 }
 
@@ -389,14 +305,6 @@ extern void crossover_MOEADM2M(SMRT_individual *parent_pop_table, SMRT_individua
                 index_parent2 = rnd(i*S,i*S+S-1);
                 parent2 = parent_pop_table+index_parent2;
                 MOEADM2M_crossover_operator(parent1,parent2,offspring_pop_table+i*S+j);
-               //sbx_crossover(parent1,parent2,offspring_pop_table+i*S+j,offspring_pop_table+i*S+j);
-//                for (int m = 0; m < g_algorithm_entity.algorithm_para.variable_number;m++)
-//                {
-//                    printf("variable[%d]:%f  ", m, offspring_pop_table[i*S+j].variable[m]);
-//                }
-//                printf("\n");
-
-
             }else
             {
                 index_parent2 = rnd(0,K*S-1);
@@ -472,56 +380,6 @@ extern void crossover_MOEADFRRMAB(int op,SMRT_individual *parent,SMRT_individual
 }
 
 
-/*
-extern void crossover_SPEA2_R(SMRT_individual *parent_pop_table, SMRT_individual *offspring)
-{
-    int i, temp, rand;
-    int *a1, *a2;
-    SMRT_individual *parent1, *parent2, *offspring1, *offspring2;
-    DOMINATE_RELATION dominateRelation;
-
-    allocate_memory_for_ind (&offspring1);
-    allocate_memory_for_ind (&offspring2);
-
-    a1 = (int *) malloc (g_algorithm_entity.algorithm_para.pop_size * sizeof(int));
-    a2 = (int *) malloc (g_algorithm_entity.algorithm_para.pop_size * sizeof(int));
-    for (i = 0; i < g_algorithm_entity.algorithm_para.pop_size; i++)
-        a1[i] = a2[i] = i;
-
-    for (i = 0; i < K; i++)
-    {
-        rand     = rnd (i, g_algorithm_entity.algorithm_para.pop_size - 1);
-        temp     = a1[rand];
-        a1[rand] = a1[i];
-        a1[i]    = temp;
-        temp     = a2[rand];
-        a2[rand] = a2[i];
-        a2[i]    = temp;
-    }
-
-    parent1 = tournament_by_rank(&parent_pop_table[a1[0]], &parent_pop_table[a1[1]]);
-    parent2 = tournament_by_rank(&parent_pop_table[a1[2]], &parent_pop_table[a1[3]]);
-    sbx_crossover (parent1, parent2, offspring1, offspring2);
-
-    dominateRelation = check_dominance(offspring1, offspring2);
-
-
-    if (DOMINATED == dominateRelation)
-    {
-        copy_individual(offspring2, offspring);
-    }
-    else
-    {
-        copy_individual(offspring1, offspring);
-    }
-
-    destroy_memory_for_ind(offspring1);
-    destroy_memory_for_ind(offspring2);
-
-    return;
-}
- */
- 
  extern void RVEA_crossover_operator (SMRT_individual *parent_table, SMRT_individual *offspring_table,int popNum)
 {
 
@@ -612,32 +470,6 @@ extern void crossover_ONEBYONE (SMRT_individual *parent_pop_table, SMRT_individu
 }
 
 
-
- extern void crossover_RVEA (SMRT_individual *parent_table, SMRT_individual *offspring_table,int popNum)
-{
-
-    int i = 0;
-    int k = 0, l = 0,index = 0;
-    SMRT_individual *parent1 = NULL, *parent2 = NULL;
-
-    for(i = 0;i < popNum/2;i++)
-    {
-        //随即选两个父代
-        k = rnd(0,popNum-1);
-        l = rnd(0,popNum-1);
-        while(k == l)
-            l = rnd(0,popNum-1);
-
-        parent1 = parent_table + k;
-        parent2 = parent_table + l;
-
-        sbx_crossover(parent1,parent2,offspring_table+index,offspring_table+index+1);
-        index+=2;
-
-    }
-}
-
-
 extern void crossover_KnEA (SMRT_individual *parent_table, SMRT_individual *offspring_table,int *K,int popNum,double *weightedDis)
 {
 
@@ -713,56 +545,6 @@ extern void crossover_AGE2(SMRT_individual *parent_table, SMRT_individual *offsp
 }
 
 
-extern void crossover_Borg(SMRT_individual *parent_table,int pop_num, SMRT_individual *Archive,int archive_num,SMRT_individual *offspring)
-{
-
-    int i = 0;
-    int k = 0, l = 0,index = 0;
-    DOMINATE_RELATION result;
-    SMRT_individual *parent1, *parent2, *offspring1, *offspring2 ;
-
-    allocate_memory_for_ind (&offspring1);
-    allocate_memory_for_ind (&offspring2);
-
-    //从population中随即找两个然后 tournament
-    k = rnd(0,pop_num-1);
-    while(k == l)
-        l = rnd(0,pop_num-1);
-
-    result = check_dominance(parent_table + k,parent_table + l);
-    if( result == DOMINATE )
-        parent1 = parent_table + k;
-    else if(result == DOMINATED)
-        parent1 = parent_table + l;
-    else
-        if(randomperc() < 0.5)
-            parent1 = parent_table + k;
-        else
-            parent1 = parent_table + l;
-
-    index = rnd(0,archive_num - 1);
-    parent2 = Archive+index ;
-
-    sbx_crossover (parent1, parent2, offspring1, offspring2);
-
-    result = check_dominance(offspring1, offspring2);
-    if (DOMINATED == result )
-    {
-        copy_individual(offspring2, offspring);
-    }
-    else
-    {
-        copy_individual(offspring1, offspring);
-    }
-
-
-
-    destroy_memory_for_ind(offspring1);
-    destroy_memory_for_ind(offspring2);
-
-}
-
-
 extern void real_crossover_Borg(SMRT_individual *parent_table,int pop_num, SMRT_individual *Archive,int archive_num,SMRT_individual *offspring,int currentOPNum, int tournmentSize)
 {
     int i = 0;
@@ -806,15 +588,6 @@ extern void real_crossover_Borg(SMRT_individual *parent_table,int pop_num, SMRT_
             copy_individual(tournament_Borg(parent_table,perm,tournmentSize), parent_list + 1);
             sbx_crossover (parent_list, parent_list+1, offspring, offspring + 1);
 
-//            result = check_dominance(offspring1, offspring2);
-//            if (DOMINATED == result )
-//            {
-//                copy_individual(offspring2, offspring);
-//            }
-//            else
-//            {
-//                copy_individual(offspring1, offspring);
-//            }
             break;
         case 2:
             //PCX

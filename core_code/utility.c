@@ -4,9 +4,6 @@
 #include "../headers/random.h"
 
 
-
-
-
 //calculate euclidian_distance between the solution and weight,solution need to be normalized
 extern double calculateDistance_sol_weight (SMRT_individual *solution, double *lambda)
 {

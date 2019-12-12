@@ -1,5 +1,6 @@
 #include "../headers/population.h"
 #include "../headers/random.h"
+
 /* Function to initialize an individual randomly */
 extern void initialize_individual_real (SMRT_individual *ind)
 {
