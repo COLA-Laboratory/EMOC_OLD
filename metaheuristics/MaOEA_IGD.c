@@ -125,48 +125,107 @@ static double MaOEA_IGD_maxEuclidianDistance (double *a, double *b, int dimensio
     return sqrt(distance);
 }
 
-static void MaOEA_IGD_calIndividualRank(SMRT_individual *Parent_pop, int pop_number, SMRT_individual *PF_ind,
-                                        int uniform_PF_point_number)
+static void MaOEA_IGD_calIndividualRank(SMRT_individual * Parent_pop, int pop_number, SMRT_individual * PF_ind, int uniform_PF_point_number)
 {
-    int i, j;
-    int dominate_relation = 0, Flag_Dominate_one = 0, Flag_Dominated = 0;
+    int i, j, k;
+    int * flag_one = malloc(sizeof(int ) * uniform_PF_point_number);
+    int * flag_two = malloc(sizeof(int ) * uniform_PF_point_number);
+    int * flag_final = malloc(sizeof(int ) * uniform_PF_point_number);
 
-    for (i = 0; i < pop_number; i++)
+    int flag_value1 = 0, flag_value_mius_1 = 0;
+    memset(flag_one, 0, uniform_PF_point_number);
+    memset(flag_two, 0, uniform_PF_point_number);
+    memset(flag_final, 0, uniform_PF_point_number);
+
+
+    int init1[uniform_PF_point_number][g_algorithm_entity.algorithm_para.objective_number];
+    int init2[uniform_PF_point_number][g_algorithm_entity.algorithm_para.objective_number];
+
+    for(i = 0; i < pop_number; i++)
     {
-        Flag_Dominate_one = 0;
-        Flag_Dominated = 0;
         for(j = 0; j < uniform_PF_point_number; j++)
         {
-            dominate_relation = check_dominance (Parent_pop + i, PF_ind + j);
-            if (dominate_relation == DOMINATE )
+            init1[i][j] = 0;
+            init2[i][j] = 0;
+        }
+    }
+
+    for(i = 0; i < pop_number; i++)
+    {
+        flag_value_mius_1 = flag_value1 = 0;
+
+        for(j = 0; j < uniform_PF_point_number; j++)
+        {
+            for(k = 0; k < g_algorithm_entity.algorithm_para.objective_number; k++)
             {
-                Flag_Dominate_one = 1;
+                if(Parent_pop[i].obj[k] < PF_ind[j].obj[k])
+                {
+                    init1[j][k] = 1;
+                }
+
+                if(Parent_pop[i].obj[k] > PF_ind[j].obj[k])
+                {
+                    init2[j][k] = 1;
+                }
             }
-            else if(dominate_relation == DOMINATED )
+
+
+            for(k = 0; k < g_algorithm_entity.algorithm_para.objective_number; k++)
             {
-                Flag_Dominated = 1;
+                if(init1[j][k] == 0)
+                {
+                    flag_one[j] = 1;
+                    break;
+                }
+            }
+
+            for(k = 0; k < g_algorithm_entity.algorithm_para.objective_number; k++)
+            {
+                if(init2[j][k] == 0)
+                {
+                    flag_two[j] = 1;
+                    break;
+                }
             }
         }
-        if(Flag_Dominate_one == 1)
+
+        for(j = 0; j < uniform_PF_point_number; j++)
+        {
+            flag_final[j] = flag_one[j] - flag_two[j];
+
+            if(flag_final[j] == 1)
+            {
+                flag_value1 = 1;
+            }
+            else if(flag_final[j] == -1)
+            {
+                flag_value_mius_1 = 1;
+            }
+        }
+        if(flag_value1 == 1)
         {
             Parent_pop[i].rank = 1;
+            break;
         }
-        else if(Flag_Dominated == 1)
+        else if(flag_value_mius_1 == 1)
         {
-
             Parent_pop[i].rank = 3;
         }
         else
         {
             Parent_pop[i].rank = 2;
         }
+
     }
 
-    return;
+    free(flag_final);
+    free(flag_one);
+    free(flag_two);
+
 }
 
 static void MaOEA_IGD_assignRankAndProximityDistance(SMRT_individual *Parent_pop, int parent_number, double **uniform_PF_point,
-                                                    int uniform_PF_point_number, double **Distance_store)
+                                                     int uniform_PF_point_number, double **Distance_store)
 {
     int i, j;
 

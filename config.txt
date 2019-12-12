@@ -1,11 +1,11 @@
-algorithm_name:CMOEAD
-test_problem:CTP1
+algorithm_name:MaOEA_IGD
+test_problem:DTLZ5
 problem_param:
-number_variable:30
-number_objective:2
+number_variable:10
+number_objective:3
 popSize:300
 eliteSize:300
-max_evaluation:75000
+max_evaluation:120000
 runtime_output:1
 output_interval:1000
 run_index_begin:1

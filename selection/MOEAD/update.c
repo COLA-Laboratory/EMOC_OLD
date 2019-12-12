@@ -3,8 +3,6 @@
 #include "../../headers/random.h"
 
 
-
-
 extern int update_subproblem(SMRT_individual *offspring, int pop_index, NeighborType type)
 {
     int i = 0;
@@ -51,62 +49,47 @@ extern int update_subproblem(SMRT_individual *offspring, int pop_index, Neighbor
 extern int update_subproblem_ENSMOEAD(SMRT_individual *offspring, int pop_index, NeighborType type,double *FEs_success,int NS_index)
 {
     int i = 0;
-    int index = 0, replace_num = 0;
+    int index = 0, replace_num = 0, size = 0;
+    int *perm = NULL;
     double temp = 0, old_fit = 0;
 
 
     if (NEIGHBOR == type)
-    {
-        for (i = 0; i < g_algorithm_entity.MOEAD_para.neighbor_size; i++)
-        {
-            if (replace_num >= g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions)
-            {
-                break;
-            }
-            index = g_algorithm_entity.MOEAD_para.neighbor_table[pop_index].neighbor[i];
-            temp = cal_moead_fitness(offspring, lambda[index], g_algorithm_entity.MOEAD_para.function_type);
-            old_fit = cal_moead_fitness(g_algorithm_entity.parent_population + index, lambda[index], g_algorithm_entity.MOEAD_para.function_type);
-            if (temp < g_algorithm_entity.parent_population[index].fitness)
-            {
-                memcpy(g_algorithm_entity.parent_population[index].variable,offspring->variable,
-                       sizeof(double) * g_algorithm_entity.algorithm_para.variable_number);
-                memcpy(g_algorithm_entity.parent_population[index].obj, offspring->obj,
-                       sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
-                g_algorithm_entity.parent_population[index].fitness = temp;
-                replace_num++;
-            }
-        }
-        if(replace_num > 0)
-            FEs_success[NS_index]+=1;
-    }
+        size = g_algorithm_entity.MOEAD_para.neighbor_size;
     else
+        size = g_algorithm_entity.algorithm_para.pop_size;
+
+    perm = malloc(sizeof(int) * size);
+    random_permutation(perm, size);
+
+
+    for (i = 0; i < size; i++)
     {
-        for (i = 0; i < weight_num; i++)
+        if (replace_num >= g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions)
         {
-            if (replace_num >= g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions)
-            {
-                break;
-            }
-            temp = cal_moead_fitness(offspring, lambda[i], g_algorithm_entity.MOEAD_para.function_type);
-            old_fit = cal_moead_fitness(g_algorithm_entity.parent_population + i, lambda[i], g_algorithm_entity.MOEAD_para.function_type);
-            if (temp < g_algorithm_entity.parent_population[i].fitness)
-            {
-                memcpy(g_algorithm_entity.parent_population[i].variable, offspring->variable,
-                       sizeof(double) * g_algorithm_entity.algorithm_para.variable_number);
-                memcpy(g_algorithm_entity.parent_population[i].obj, offspring->obj,
-                       sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
-
-                g_algorithm_entity.parent_population[i].fitness = temp;
-
-
-                replace_num++;
-            }
+            break;
         }
 
+        if (NEIGHBOR == type)
+            index = g_algorithm_entity.MOEAD_para.neighbor_table[pop_index].neighbor[perm[i]];
+        else
+            index = perm[i];
+
+        temp = cal_moead_fitness(offspring, lambda[index], g_algorithm_entity.MOEAD_para.function_type);
+        old_fit = cal_moead_fitness(g_algorithm_entity.parent_population + index, lambda[index], g_algorithm_entity.MOEAD_para.function_type);
+
+        if (temp < old_fit)
+        {
+            memcpy(g_algorithm_entity.parent_population[index].variable,offspring->variable,
+                   sizeof(double) * g_algorithm_entity.algorithm_para.variable_number);
+            memcpy(g_algorithm_entity.parent_population[index].obj, offspring->obj,
+                   sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
+            g_algorithm_entity.parent_population[index].fitness = temp;
+            replace_num++;
+        }
         if(replace_num > 0)
             FEs_success[NS_index]+=1;
     }
-
 
 
 
@@ -117,64 +100,45 @@ extern int update_subproblem_ENSMOEAD(SMRT_individual *offspring, int pop_index,
 extern int update_subproblem_MOEADFRRMAB(SMRT_individual *offspring, int pop_index, NeighborType type,double *FIR)
 {
     int i = 0;
-    int index = 0, replace_num = 0;
+    int index = 0, replace_num = 0, size = 0;
+    int *perm = NULL;
     double temp = 0, old_fit = 0;
 
     if (NEIGHBOR == type)
-    {
-        for (i = 0; i < g_algorithm_entity.MOEAD_para.neighbor_size; i++)
-        {
-            if (replace_num >= g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions)
-            {
-                break;
-            }
-            index = g_algorithm_entity.MOEAD_para.neighbor_table[pop_index].neighbor[i];
-            temp = cal_moead_fitness(offspring, lambda[index], g_algorithm_entity.MOEAD_para.function_type);
-            old_fit = cal_moead_fitness(g_algorithm_entity.parent_population + index, lambda[index], g_algorithm_entity.MOEAD_para.function_type);
-            if (temp < g_algorithm_entity.parent_population[index].fitness)
-            {
-                //计算FIR值
-                *FIR = *FIR + (g_algorithm_entity.parent_population[index].fitness - temp) / g_algorithm_entity.parent_population[index].fitness;
-
-                memcpy(g_algorithm_entity.parent_population[index].variable,offspring->variable,
-                       sizeof(double) * g_algorithm_entity.algorithm_para.variable_number);
-                memcpy(g_algorithm_entity.parent_population[index].obj, offspring->obj,
-                       sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
-                g_algorithm_entity.parent_population[index].fitness = temp;
-
-
-                replace_num++;
-            }
-        }
-    }
+        size = g_algorithm_entity.MOEAD_para.neighbor_size;
     else
+        size = g_algorithm_entity.algorithm_para.pop_size;
+
+    perm = malloc(sizeof(int) * size);
+    random_permutation(perm, size);
+
+    for (i = 0; i < size; i++)
     {
-        for (i = 0; i < weight_num; i++)
+        if (replace_num >= g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions)
         {
-            if (replace_num >= g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions)
-            {
-                break;
-            }
-            temp = cal_moead_fitness(offspring, lambda[i], g_algorithm_entity.MOEAD_para.function_type);
-            old_fit = cal_moead_fitness(g_algorithm_entity.parent_population + i, lambda[index], g_algorithm_entity.MOEAD_para.function_type);
-            if (temp < g_algorithm_entity.parent_population[i].fitness)
-            {
-                //计算FIR值
-                *FIR = *FIR + (g_algorithm_entity.parent_population[i].fitness - temp) / g_algorithm_entity.parent_population[i].fitness;
+            break;
+        }
 
-                memcpy(g_algorithm_entity.parent_population[i].variable, offspring->variable,
-                       sizeof(double) * g_algorithm_entity.algorithm_para.variable_number);
-                memcpy(g_algorithm_entity.parent_population[i].obj, offspring->obj,
-                       sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
+        if (NEIGHBOR == type)
+            index = g_algorithm_entity.MOEAD_para.neighbor_table[pop_index].neighbor[perm[i]];
+        else
+            index = perm[i];
+        temp = cal_moead_fitness(offspring, lambda[index], g_algorithm_entity.MOEAD_para.function_type);
+        old_fit = cal_moead_fitness(g_algorithm_entity.parent_population + index, lambda[index], g_algorithm_entity.MOEAD_para.function_type);
+        if (temp < old_fit)
+        {
+            *FIR = *FIR + (g_algorithm_entity.parent_population[index].fitness - temp) / g_algorithm_entity.parent_population[index].fitness;
 
-                g_algorithm_entity.parent_population[i].fitness = temp;
+            memcpy(g_algorithm_entity.parent_population[index].variable,offspring->variable,
+                   sizeof(double) * g_algorithm_entity.algorithm_para.variable_number);
+            memcpy(g_algorithm_entity.parent_population[index].obj, offspring->obj,
+                   sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
+            g_algorithm_entity.parent_population[index].fitness = temp;
 
-                replace_num++;
-            }
+
+            replace_num++;
         }
     }
-
-
 
     return SUCCESS;
 }
@@ -183,73 +147,47 @@ extern int update_subproblem_MOEADFRRMAB(SMRT_individual *offspring, int pop_ind
 extern int update_subproblem_constraint(SMRT_individual *offspring, int pop_index, NeighborType type)
 {
     int i = 0;
-    int index = 0, replace_num = 0;
-    double cv_pop ,cv_ind;
+    int index = 0, replace_num = 0, size = 0;
+    int *perm = NULL;
     double temp = 0, old_fit = 0;
+    double cv_pop ,cv_ind;
 
     if (NEIGHBOR == type)
-    {
-        for (i = 0; i < g_algorithm_entity.MOEAD_para.neighbor_size; i++)
-        {
-            if (replace_num >= g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions)
-            {
-                break;
-            }
-            index = g_algorithm_entity.MOEAD_para.neighbor_table[pop_index].neighbor[i];
-            temp = cal_moead_fitness(offspring, lambda[index], g_algorithm_entity.MOEAD_para.function_type);
-            old_fit = cal_moead_fitness(g_algorithm_entity.parent_population + index, lambda[index], g_algorithm_entity.MOEAD_para.function_type);
-            cv_pop = g_algorithm_entity.parent_population[index].cv;
-            cv_ind = offspring->cv;
-            if ((temp < g_algorithm_entity.parent_population[index].fitness && cv_pop > - EPS && cv_ind > - EPS) || (cv_ind > cv_pop))
-            {
-                memcpy(g_algorithm_entity.parent_population[index].variable,offspring->variable,
-                       sizeof(double) * g_algorithm_entity.algorithm_para.variable_number);
-                memcpy(g_algorithm_entity.parent_population[index].obj, offspring->obj,
-                       sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
-                g_algorithm_entity.parent_population[index].fitness = temp;
-                g_algorithm_entity.parent_population[index].cv = offspring->cv;
-                replace_num++;
-            }
-        }
-    }
+        size = g_algorithm_entity.MOEAD_para.neighbor_size;
     else
+        size = g_algorithm_entity.algorithm_para.pop_size;
+
+    perm = malloc(sizeof(int) * size);
+    random_permutation(perm, size);
+
+    for (i = 0; i < size; i++)
     {
-        for (i = 0; i < weight_num; i++)
+        if (replace_num >= g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions)
         {
-            if (replace_num >= g_algorithm_entity.MOEAD_para.maximumNumberOfReplacedSolutions)
-            {
-                break;
-            }
-            temp = cal_moead_fitness(offspring, lambda[i], g_algorithm_entity.MOEAD_para.function_type);
-            old_fit = (g_algorithm_entity.parent_population + i, lambda[index], g_algorithm_entity.MOEAD_para.function_type);
-            cv_pop = g_algorithm_entity.parent_population[i].cv;
-            cv_ind = offspring->cv;
-            if ((temp < g_algorithm_entity.parent_population[i].fitness && cv_pop > - EPS && cv_ind > - EPS) || (cv_ind > cv_pop))
-            {
-                memcpy(g_algorithm_entity.parent_population[i].variable, offspring->variable,
-                       sizeof(double) * g_algorithm_entity.algorithm_para.variable_number);
-                memcpy(g_algorithm_entity.parent_population[i].obj, offspring->obj,
-                       sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
-                g_algorithm_entity.parent_population[i].fitness = temp;
-                g_algorithm_entity.parent_population[i].cv = offspring->cv;
-                replace_num++;
-            }
+            break;
+        }
+
+        if (NEIGHBOR == type)
+            index = g_algorithm_entity.MOEAD_para.neighbor_table[pop_index].neighbor[perm[i]];
+        else
+            index = perm[i];
+        temp = cal_moead_fitness(offspring, lambda[index], g_algorithm_entity.MOEAD_para.function_type);
+        old_fit = cal_moead_fitness(g_algorithm_entity.parent_population + index, lambda[index], g_algorithm_entity.MOEAD_para.function_type);
+        cv_pop = g_algorithm_entity.parent_population[index].cv;
+        cv_ind = offspring->cv;
+
+        if ((temp < old_fit && cv_pop > - EPS && cv_ind > - EPS) || (cv_ind > cv_pop))
+        {
+            memcpy(g_algorithm_entity.parent_population[index].variable,offspring->variable,
+                   sizeof(double) * g_algorithm_entity.algorithm_para.variable_number);
+            memcpy(g_algorithm_entity.parent_population[index].obj, offspring->obj,
+                   sizeof(double) * g_algorithm_entity.algorithm_para.objective_number);
+            g_algorithm_entity.parent_population[index].fitness = temp;
+            g_algorithm_entity.parent_population[index].cv = offspring->cv;
+            replace_num++;
         }
     }
-
-
 
 
     return SUCCESS;
 }
-
-
-
-
-
-
-
-
-
-
-
