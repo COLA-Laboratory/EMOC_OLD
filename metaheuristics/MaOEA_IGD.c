@@ -1,38 +1,5 @@
-/*
- * MaOEA_IGD.c:
- *  This file implements the main procedures of MaOEA_IGD. It is based on the following reference:
- *
- *  M. Wagner and F. Neumann, "A fast approximation-guided evolutionary multi-objective algorithm".
- *  Annual Conference on Genetic and Evolutionary Computation. 687-694, 2013.
- *
- * Authors:
- *  Peili Mao
- *  Lei Sun
- *  Longfei Zhang
- *  Ke Li <k.li@exeter.ac.uk>
- *  Xinyu Shan
- *  Renzhi Chen
- *
- * Institution:
- *  Computational Optimization for Learning and Adaptive System (COLA) Laboratory @ University of Exeter
- *
- * Copyright (c) 2019 Peili Mao, Lei Sun, Longfei Zhang ,Ke Li
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>;.
- */
-
 #include "../headers/global.h"
+#include "../headers/metaheuristics.h"
 #include "../headers/crossover.h"
 #include "../headers/mutation.h"
 #include "../headers/problem.h"
@@ -41,6 +8,7 @@
 #include "../headers/utility.h"
 #include "../headers/analysis.h"
 #include "../headers/sort.h"
+#include "../headers/dominance_relation.h"
 #include "../headers/population.h"
 
 
@@ -159,32 +127,46 @@ static double MaOEA_IGD_maxEuclidianDistance (double *a, double *b, int dimensio
 
 static void MaOEA_IGD_calIndividualRank(SMRT_individual * Parent_pop, int pop_number, SMRT_individual * PF_ind, int uniform_PF_point_number)
 {
-    int i, j, k;
+    int i, j, k, l, m;
+    int flag_Rank1 = 0, flag_Rank3 = 0;
     int * flag_one = malloc(sizeof(int ) * uniform_PF_point_number);
     int * flag_two = malloc(sizeof(int ) * uniform_PF_point_number);
     int * flag_final = malloc(sizeof(int ) * uniform_PF_point_number);
 
-    int flag_value1 = 0, flag_value_mius_1 = 0;
+    int ** init1, **init2;
+
     memset(flag_one, 0, uniform_PF_point_number);
     memset(flag_two, 0, uniform_PF_point_number);
     memset(flag_final, 0, uniform_PF_point_number);
+    init1 = (int **)malloc(sizeof(int * ) * uniform_PF_point_number);
+    init2 = (int **)malloc(sizeof(int * ) * uniform_PF_point_number);
 
 
-    int init1[uniform_PF_point_number][g_algorithm_entity.algorithm_para.objective_number];
-    int init2[uniform_PF_point_number][g_algorithm_entity.algorithm_para.objective_number];
-
-    for(i = 0; i < pop_number; i++)
+    for(i = 0; i < uniform_PF_point_number; i++)
     {
-        for(j = 0; j < uniform_PF_point_number; j++)
-        {
-            init1[i][j] = 0;
-            init2[i][j] = 0;
-        }
+        init1[i] = (int *)malloc(sizeof(int) * g_algorithm_entity.algorithm_para.objective_number);
+        init2[i] = (int *)malloc(sizeof(int) * g_algorithm_entity.algorithm_para.objective_number);
+        memset(init1[i], 0, sizeof(int) * g_algorithm_entity.algorithm_para.objective_number);
+        memset(init2[i], 0, sizeof(int) * g_algorithm_entity.algorithm_para.objective_number);
     }
 
+
     for(i = 0; i < pop_number; i++)
     {
-        flag_value_mius_1 = flag_value1 = 0;
+        flag_Rank1 = flag_Rank3 = 0;
+        memset(flag_one, 0, uniform_PF_point_number);
+        memset(flag_two, 0, uniform_PF_point_number);
+        memset(flag_final, 0, uniform_PF_point_number);
+
+
+        for(l = 0; l < uniform_PF_point_number; l++)
+        {
+            for(m = 0; m < g_algorithm_entity.algorithm_para.objective_number; m++)
+            {
+                init1[l][m] = 0;
+                init2[l][m] = 0;
+            }
+        }
 
         for(j = 0; j < uniform_PF_point_number; j++)
         {
@@ -201,10 +183,9 @@ static void MaOEA_IGD_calIndividualRank(SMRT_individual * Parent_pop, int pop_nu
                 }
             }
 
-
             for(k = 0; k < g_algorithm_entity.algorithm_para.objective_number; k++)
             {
-                if(init1[j][k] == 0)
+                if(init1[j][k] != 0)
                 {
                     flag_one[j] = 1;
                     break;
@@ -213,7 +194,7 @@ static void MaOEA_IGD_calIndividualRank(SMRT_individual * Parent_pop, int pop_nu
 
             for(k = 0; k < g_algorithm_entity.algorithm_para.objective_number; k++)
             {
-                if(init2[j][k] == 0)
+                if(init2[j][k] != 0)
                 {
                     flag_two[j] = 1;
                     break;
@@ -221,25 +202,26 @@ static void MaOEA_IGD_calIndividualRank(SMRT_individual * Parent_pop, int pop_nu
             }
         }
 
+
         for(j = 0; j < uniform_PF_point_number; j++)
         {
             flag_final[j] = flag_one[j] - flag_two[j];
 
             if(flag_final[j] == 1)
             {
-                flag_value1 = 1;
+                flag_Rank1 = 1;
             }
             else if(flag_final[j] == -1)
             {
-                flag_value_mius_1 = 1;
+                flag_Rank3 = 1;
             }
         }
-        if(flag_value1 == 1)
+
+        if(flag_Rank1 == 1)
         {
             Parent_pop[i].rank = 1;
-            break;
         }
-        else if(flag_value_mius_1 == 1)
+        else if(flag_Rank3 == 1)
         {
             Parent_pop[i].rank = 3;
         }
@@ -250,6 +232,14 @@ static void MaOEA_IGD_calIndividualRank(SMRT_individual * Parent_pop, int pop_nu
 
     }
 
+    for(i = 0; i < uniform_PF_point_number; i++)
+    {
+        free(init1[i]);
+        free(init2[i]);
+    }
+
+    free(init1);
+    free(init2);
     free(flag_final);
     free(flag_one);
     free(flag_two);
@@ -272,7 +262,9 @@ static void MaOEA_IGD_assignRankAndProximityDistance(SMRT_individual *Parent_pop
         }
     }
 
+
     MaOEA_IGD_calIndividualRank(Parent_pop, parent_number, PF_ind, uniform_PF_point_number);
+
 
     for(i = 0; i < parent_number; i++)
     {
@@ -400,6 +392,7 @@ static void MaOEA_IGD_environmentalSelect(SMRT_individual *merge_pop, int merge_
         else
             break;
     }
+
 
     if (current_pop_num == parent_number)
     {

@@ -1,4 +1,4 @@
-algorithm_name:MOEAD_AWA
+algorithm_name:MaOEA_IGD
 test_problem:DTLZ1
 problem_param:
 number_variable:10
